@@ -45,6 +45,7 @@
                 <!--logo & title end-->
 
                 <!--nav start-->
+                @if(Session::has('loginId'))
                 <div class="col-md-4">
                     <nav class="navbar navbar-expand-lg navbar-light p-0 ">
                         <div class="container-fluid">
@@ -78,7 +79,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i></a>
                                     </li>
-                                    @if(Session::has('loginId'))
+                                    
                                     <li class="nav-item">
                                         <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">My Profile
                                         <i class="fa-solid fa-gear"></i></a>
@@ -90,11 +91,9 @@
                                         </ul>
                                         </a>
                                     </li>
-                                    @else
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Log In</a>
-                                    </li>
-                                    @endif
+                                   
+                                        
+                                    
 
                                     <!-- <li class="nav-item dropdown">
                                         <a class="nav-link " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-gear"></i></a>
@@ -110,6 +109,7 @@
                         </div>
                     </nav>
                 </div>
+                @endif
                 <!--info Bar end-->
             </div>
         </div>

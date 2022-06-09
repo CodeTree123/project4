@@ -10,6 +10,7 @@ use Session;
 class AuthController extends Controller
 {   
     public function login(){
+
         return view('login');
     }
     public function registration()
@@ -45,7 +46,7 @@ class AuthController extends Controller
         ]);
         $doctor =  doctor::where('email','=',$request->email)->first();
         if($doctor){
-            if($request->password=$doctor->password){
+            if($request->password==$doctor->password){
                 if($doctor->BMDC == null){
                     $request->session()->put('loginId',$doctor->id);
                     return redirect()->route('login_profile_edit',[$doctor->id]);

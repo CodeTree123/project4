@@ -120,11 +120,11 @@ class MainController extends Controller
     {
         $doctor_info=doctor::where('id','=',$d_id)->first();
         $patient=patient_infos::findOrFail($p_id);
-        $c_c = chife_complaint::all();
-        $c_f = clinical_finding::all();
-        $t_p = treatment_plan::all();
+        $c_cs = chife_complaint::all();
+        $c_fs = clinical_finding::all();
+        $t_ps = treatment_plan::all();
         $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
-        return view('view_patient',compact('doctor_info','patient','c_c','c_f','t_p','treatment_infos'));
+        return view('view_patient',compact('doctor_info','patient','c_cs','c_fs','t_ps','treatment_infos'));
     }
 
     public function treatment_info(Request $request,$p_id){
@@ -157,17 +157,18 @@ class MainController extends Controller
         $doctor_info=doctor::where('id','=',$d_id)->first();
         $patient=patient_infos::findOrFail($p_id);
         $treatment_info = treatment_info::where('p_id','like',$p_id)->first();
+        return view('treatmentplans',compact('doctor_info','patient','treatment_info'));
 
-            if($t_plans == 'Restoration'){
-                return view('treatmentplans',compact('doctor_info','patient','treatment_info'));
-            }else{
-                return "Hello";
-            }
+            // if($t_plans == 'Restoration'){
+            //     return view('treatmentplans',compact('doctor_info','patient','treatment_info'));
+            // }else{
+            //     return "Hello";
+            // }
         // return view('treatmentplans');
 
     }
     public function prescription($d_id,$p_id){
-        // $patient=patient_infos::findOrFail($id);
+        
         $doctor_info=doctor::where('id','=',$d_id)->first();
         $patient=patient_infos::findOrFail($p_id);
 
@@ -177,16 +178,13 @@ class MainController extends Controller
         $pt_p=$treatment_info->treatment_plans;
         $pc_c = explode(',',$pc_c);
         $pc_f = explode(',',$pc_f);
-        // dd($pc_f);
         $pt_p = explode(',',$pt_p);
-        // dd($pc_c);
         $drugs = prescription::where('p_id','=',$p_id)->get();
-        // dd($drugs->all());
+        // $d = prescription::where('p_id','=',$p_id)->first();
+        // dd($drug->id);
+
 
         return view('prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','drugs'));
-
-        // return view('treatmentplans');
-
     }
 
     public function add_drug(Request $request,$d_id,$p_id){
