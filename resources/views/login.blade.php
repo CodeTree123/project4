@@ -1,40 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dental Office Management System</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-
-    <!-- Bootstrap 5.1.3 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="{{ asset ('assets/css/style.css')}}">
-
-
-</head>
-
-<body>
-    <!-- Header Start -->
-    <div class="header py-2 mb-3">
-        <div class="container-fluid my-2">
-            <div class="row align-items-center">
-                <!--logo & title start-->
-                <div class="col-md-5">
-                    <a class="d-flex align-items-center logo " href="{{route('index')}}">
-                        <img class="logo" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
-                       
-                    </a>
-                </div>
-                <!--logo & title end-->
-
-            </div>
-        </div>
-    </div>
-    <!-- Header end -->
+@include('include.header')
     <!-- main start -->
     <div class="container-fluid">
  <div class="row justify-content-center align-items-center">

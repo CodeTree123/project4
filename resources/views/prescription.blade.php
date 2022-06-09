@@ -214,12 +214,10 @@
                         <div class="right">
                             <div class="single">
 
-                                <div class="mb-3"> 
-
-
+                                <div class="mb-3">
                                   <img src="{{ asset ('assets/img/rx.png')}}" class="img-fluid" alt="">
                                 </div>
-                                <div class="drug-list">
+                                <!-- <div class="drug-list">
                                     <ol>
                                         <li>
                                             <div class="d-flex justify-content-between">
@@ -233,7 +231,7 @@
                                             <P class="qty">1+0+1 [ 5 day(s)] After Meal (Qty. 10)</P>
                                         </li>
                                     </ol>
-                                </div>
+                                </div> -->
                                 
                                 <div class="drug-list">
                                     <ol>
@@ -244,7 +242,8 @@
                                                     <p class="drug-name">{{$drug->drug}}</p>
                                                 </div>
                                                 <div class="align-self-center">
-                                                    <button type="button" class="btn btn-sm p-o edit-drug"><i class="bi bi-pencil-square text-primary"></i></button>
+                                                    <a href="" class="btn btn-sm p-o edit-drug"><i class="bi bi-pencil-square text-primary"></i></a>
+                                                    <a href="" class="btn btn-sm p-o edit-drug"><i class="bi bi-trash text-primary"></i></a>
                                                 </div>
                                             </div>
                                             <P class="qty">{{$drug->drug_time}} [ {{$drug->duration}} day(s) ] {{$drug->meal_time}} </P>

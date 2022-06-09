@@ -120,11 +120,11 @@ class MainController extends Controller
     {
         $doctor_info=doctor::where('id','=',$d_id)->first();
         $patient=patient_infos::findOrFail($p_id);
-        $c_c = chife_complaint::all();
-        $c_f = clinical_finding::all();
-        $t_p = treatment_plan::all();
+        $c_cs = chife_complaint::all();
+        $c_fs = clinical_finding::all();
+        $t_ps = treatment_plan::all();
         $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
-        return view('view_patient',compact('doctor_info','patient','c_c','c_f','t_p','treatment_infos'));
+        return view('view_patient',compact('doctor_info','patient','c_cs','c_fs','t_ps','treatment_infos'));
     }
 
     public function treatment_info(Request $request,$p_id){

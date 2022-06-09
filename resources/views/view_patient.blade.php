@@ -687,11 +687,13 @@
                                         <h5 class="d-flex justify-content-between">C/C Chief Complaint 
                                             <div>
                                                 <i class="bi bi-plus-circle"></i>
-                                                <i class="bi bi-card-list"></i>
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#C_C_list">
+                                                    <i class="bi bi-card-list"></i>
+                                                </a>
                                             </div>
                                         </h5>
                                         <select class="form-control multi" name="pc_c[]" aria-label="Default select example" multiple style="width:100%;">
-                                            @foreach($c_c as $c_c)
+                                            @foreach($c_cs as $c_c)
                                             <option value="{{$c_c -> name}}">{{$c_c -> name}}</option>
                                             @endforeach
                                         </select>
@@ -708,11 +710,13 @@
                                         <h5 class="d-flex justify-content-between">C/F Clinical Findings
                                             <div>
                                                 <i class="bi bi-plus-circle"></i>
-                                                <i class="bi bi-card-list"></i>
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#C_F_list">
+                                                    <i class="bi bi-card-list"></i>
+                                                </a>
                                             </div>
                                         </h5>
                                         <select class="form-control multi" name="pc_f[]" aria-label="Default select example" multiple style="width:100%;">
-                                            @foreach($c_f as $c_f)
+                                            @foreach($c_fs as $c_f)
                                             <option value="{{$c_f -> name}}">{{$c_f -> name}}</option>
                                             @endforeach
                                         </select>
@@ -747,11 +751,13 @@
                                         <h5 class="d-flex justify-content-between">T/P Treatment Plans
                                             <div>
                                                 <i class="bi bi-plus-circle"></i>
-                                                <i class="bi bi-card-list"></i>
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#T_P_list">
+                                                    <i class="bi bi-card-list"></i>
+                                                </a>
                                             </div>
                                         </h5>
                                         <select class="form-control multi" name="pt_p[]" aria-label="Default select example" style="width:100%;">
-                                            @foreach($t_p as $t_p)
+                                            @foreach($t_ps as $t_p)
                                             <option value="{{$t_p -> name}}">{{$t_p -> name}}</option>
                                             @endforeach
                                         </select>
@@ -890,6 +896,145 @@
     <!-- Admin Notice,Ad & Events end -->
 
     <!-- main end -->
+    <!-- Modal For C/C Information-->
+    <div class="modal fade " id="C_C_list" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        C/C List
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- List Table for C/C -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>C/C</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($c_cs as $cc)
+                            <tr>
+                                <td>{{$cc->id}}</td>
+                                <td>{{$cc->name}}</td>
+                                <td>
+                                    <a href="">Edit</a>
+                                    <a href="">Delete</a>
+                                    <a href="">Fav</a>
+                                </td>
+                            </tr>
+                            @empty
+                            <h3>There was no Information about C/C</h3>
+                            @endforelse 
+                        </tbody>
+                    </table>
+                    <!-- List Table for C/C end --> 
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+    <!-- Modal For C/C Information-->
+    <div class="modal fade " id="C_F_list" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        C/F List
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- List Table for C/C -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>C/F</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($c_fs as $cf)
+                            <tr>
+                                <td>{{$cf->id}}</td>
+                                <td>{{$cf->name}}</td>
+                                <td>
+                                    <a href="">Edit</a>
+                                    <a href="">Delete</a>
+                                    <a href="">Fav</a>
+                                </td>
+                            </tr>
+                            @empty
+                            <h3>There was no Information about C/F</h3>
+                            @endforelse 
+                        </tbody>
+                    </table>
+                    <!-- List Table for C/F end --> 
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+    <!-- Modal For C/C Information-->
+    <div class="modal fade " id="T_P_list" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        T/P List
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- List Table for C/C -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>T/P</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($t_ps as $tp)
+                            <tr>
+                                <td>{{$tp->id}}</td>
+                                <td>{{$tp->name}}</td>
+                                <td>
+                                    <a href="">Edit</a>
+                                    <a href="">Delete</a>
+                                    <a href="">Fav</a>
+                                </td>
+                            </tr>
+                            @empty
+                            <h3>There was no Information about T/P</h3>
+                            @endforelse 
+                        </tbody>
+                    </table>
+                    <!-- List Table for T/P end --> 
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+
     <!-- footer -->
     <div class="footer p-3">
         <div class="row container-fluid">
