@@ -123,8 +123,8 @@ main.admin {
 
 }
 .profile .p-header a {
-    background: #c4c4c4;
-    color: #000;
+    /* background: #c4c4c4;
+    color: #000; */
     display: inline-block;
     padding: 8px;
     border-radius: 12px;
@@ -133,16 +133,13 @@ main.admin {
     margin: 0 auto;
     width: 60%;
 }
-.profile .p-header a:hover{
-    background-color: #6e6e6e;
-    color: #000;
-}
+ 
 .btns {
     background: #c4c4c4;
     color: #000;
-    width: 60%;
+    width: 90%;
     padding: 8px;
-    border-radius: 12px;
+    border-radius: 20px;
     font-size: 15px;
     text-decoration: none;
     margin: 0 auto;
@@ -180,13 +177,13 @@ main.admin {
 /* end */
 /* Search */
 .search-border-left {
-    border: 3px solid #ccc;
+    border: 3px solid var(--blue-grey);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: 5px;
 }
 .search-border-right{
-    border: 3px solid #ccc;
+    border: 3px solid var(--blue-grey);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding: 15px;
@@ -214,14 +211,14 @@ main.admin {
 }
 .new-gen-pat a{
     color: #000;
-    background-color: #c4c4c4;
+    /* background-color: #c4c4c4; */
     text-decoration: none;
     padding: 11px;
     border-radius: 10px;
 }
-.new-gen-pat a:hover{
+/* .new-gen-pat a:hover{
     background-color: #6e6e6e;
-}
+} */
 .p-edit a {
     color: #000;
     background-color: #c4c4c4;
@@ -1440,7 +1437,7 @@ ul.mnu li {
 
 a.btn {
     margin: 16px 0;
-    background: #000ec7;
+    /* background: #000ec7; */
     color: #fff;
     font-size: 14px;
     border-radius: 12px;
@@ -1675,11 +1672,80 @@ body {
 
 /* registration page start */
 .sign-in-with-google{
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 .chosen-container{
     width: 100px;
 }
 /* registration page end */
+
+
+/* custom ui  */
+:root {
+    --blue-grey: #4e6f8a; 
+    --light-blue-grey: #365A77; 
+  }
+  .custom-border-radius{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  .bg-blue-grey-light{      
+      background-color: var(--light-blue-grey); 
+  }
+  .text-bg-blue-grey{   
+       color:  var(--blue-grey);  
+  }
+  a.text-bg-blue-grey{
+    color:  var(--blue-grey); 
+  }
+  .bg-blue-grey{    
+      background-color: var(--blue-grey);
+      color: #fff;
+  }
+.btn-outline-blue-grey {
+    color: #fff;
+    background-color: var(--blue-grey);
+    border-color: var(--blue-grey);
+}
+.btn-outline-blue-grey:hover {
+    color: #fff;
+    background-color: var(--blue-grey);
+    border-color: #365A77;
+}
+.custom-form-control {     
+    background-color: #f3f3f3;  
+}
+.custom-form-control:focus {     
+    background-color: #ffffff; 
+    border-color:  var(--blue-grey); 
+}
+a, a:hover {
+    color:  var(--blue-grey); 
+    text-decoration: none;
+}
+.blue-grey-border {
+    border: 3px solid  var(--blue-grey);
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.blue-grey-border-thin {
+    border: 1px solid rgb(54 90 119);
+}
+.accordion-button:not(.collapsed) {    
+    color:  var(--blue-grey); 
+
+}
+.accordion-button::after{
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f0d7"
+}
+.no-paitent-error{
+    margin-left: 150px;
+}
+/* custom ui end */

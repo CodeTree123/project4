@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dental Office Management System</title>
+
+    <link rel="icon" type="image/x-icon" href="{{asset ('assets/img/reflex_logo.png')}}"> 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 
     <!-- Bootstrap 5.1.3 CSS -->
@@ -28,7 +31,7 @@
 
 <body>
     <!-- Header Start -->
-    <div class="header py-2 mb-3">
+    <div class="header py-2 mb-3 shadow">
         <div class="container-fluid my-2">
             <div class="row align-items-center">
                 <!--logo & title start-->
@@ -45,22 +48,23 @@
                 <!--logo & title end-->
 
                 <!--nav start-->
+                @if(Session::has('loginId'))
                 <div class="col-md-4">
-                    <nav class="navbar navbar-expand-lg navbar-light p-0 ">
+                    <nav class="navbar navbar-expand-lg  p-0 ">
                         <div class="container-fluid">
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav fs-4 pe-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                        <a class="nav-link active text-bg-blue-grey" aria-current="page" href="#">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Inventory</a>
+                                        <a class="nav-link text-bg-blue-grey " href="#">Inventory</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Shop</a>
+                                        <a class="nav-link text-bg-blue-grey" href="#">Shop</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Forum</a>
+                                        <a class="nav-link text-bg-blue-grey" href="#">Forum</a>
                                     </li>
                                 </ul>
                             </div>
@@ -73,43 +77,29 @@
                 <div class="col-md-3">
                     <nav class="navbar navbar-expand-lg navbar-light p-0 ">
                         <div class="container-fluid">
-                            <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav fs-5 pe-auto ms-5">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i></a>
-                                    </li>
-                                    @if(Session::has('loginId'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">My Profile
-                                        <i class="fa-solid fa-gear"></i></a>
-                                        <ul class="dropdown-menu">
-
-                                            <li><a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id])}}">Edit Profile</a></li>
-                                            <li><a class="dropdown-item" href="{{route('logout')}}">Log Out</a></li>
-
+                            <div class="collapse navbar-collapse" id="navbarNav">  
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary btn-outline-blue-grey dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                              My Profile 
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id])}}">
+                                                    Edit Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{route('logout')}}">
+                                                 Log Out
+                                                </a>
+                                            </li> 
                                         </ul>
-                                        </a>
-                                    </li>
-                                    @else
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Log In</a>
-                                    </li>
-                                    @endif
-
-                                    <!-- <li class="nav-item dropdown">
-                                        <a class="nav-link " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-gear"></i></a>
-                                        <ul class="dropdown-menu">
-
-                                            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-                                            <li><a class="dropdown-item" href="#">Log Out</a></li>
-
-                                        </ul>
-                                    </li> -->
-                                </ul>
+                                    </div> 
                             </div>
                         </div>
                     </nav>
                 </div>
+                @endif
                 <!--info Bar end-->
             </div>
         </div>

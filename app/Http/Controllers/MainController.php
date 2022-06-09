@@ -158,11 +158,12 @@ class MainController extends Controller
         $patient=patient_infos::findOrFail($p_id);
         $treatment_info = treatment_info::where('p_id','like',$p_id)->first();
 
-            if($t_plans == 'Restoration'){
-                return view('treatmentplans',compact('doctor_info','patient','treatment_info'));
-            }else{
-                return "Hello";
-            }
+        return view('treatmentplans',compact('doctor_info','patient','treatment_info'));
+            // if($t_plans == 'Restoration'){
+            //     return view('treatmentplans',compact('doctor_info','patient','treatment_info'));
+            // }else{
+            //     return "Hello";
+            // }
         // return view('treatmentplans');
 
     }
@@ -181,9 +182,11 @@ class MainController extends Controller
         $pt_p = explode(',',$pt_p);
         // dd($pc_c);
         $drugs = prescription::where('p_id','=',$p_id)->get();
+        $t_id=$treatment_info->id;
+        $t_plans=$treatment_info->treatment_plans;
         // dd($drugs->all());
 
-        return view('prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','drugs'));
+        return view('prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','drugs','t_id','t_plans'));
 
         // return view('treatmentplans');
 

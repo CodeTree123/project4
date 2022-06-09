@@ -74,3 +74,5 @@ Route::get('/view/patient/treatment/{d_id}/{p_id}/{t_id}/{t_plans}',[MainControl
 Route::get('/view/patient/prescription/{d_id}/{p_id}',[MainController::class,'prescription'])->name('prescription');
 Route::post('/patient/prescription/drug/{d_id}/{p_id}',[MainController::class,'add_drug'])->name('add_drug');
 
+// Route::get('/back', function () {redirect()->getTargetUrl();});
+
