@@ -13,7 +13,7 @@
 
                             <h2 class="mb-2">{{$doctor_info->name}}</h2>
                             <p class="mb-2">Dental Consulatant of the Royal <br>Dental</p>
-                            <a href="#_" class="btns mb-2">This Month</a>
+                            <a href="#_" class="btns btn-outline-blue-grey  mb-2">This Month</a>
                             <p class="mb-2">SMS Remaining : 50</p>
                             <p class="mb-2">Buy SMS : 50</p>
 
@@ -23,10 +23,10 @@
                 <div class="profile py-2">
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
-                        <a href="{{route('patient')}}" class="btns my-2">Patient List</a>
-                        <a href="{{route('appointment')}}" class="btns my-2">Appointment</a>
-                        <a href="#" class="btns my-2">Income/Expence</a>
-                        <a href="{{route('subscription')}}" class="btns my-2">Subscription</a>
+                        <a href="{{route('patient')}}" class="btns btn-outline-blue-grey my-2">Patient List</a>
+                        <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
+                        <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a>
+                        <a href="{{route('subscription')}}" class="btns btn-outline-blue-grey my-2">Subscription</a>
                     </div>
 
                     <!-- <a href="">setting</a>
@@ -37,13 +37,13 @@
                 <div class="blank-sec">
                     <!-- slider -->
                     <div id="carouselExampleSlidesOnly" class="carousel slide mb-3" data-bs-ride="carousel">
-                        <div class="carousel-inner slide-border">
+                        <div class="carousel-inner  blue-grey-border ">
                             <div class="carousel-item active">
                                 <div class="row row-cols-1 row-cols-md-3 g-4">
                                     <div class="col">
-                                        <div class="card slider-card-body">
+                                        <div class="card slider-card-body blue-grey-border-thin">
                                             <div class="card-body">
-                                                <h5 class="card-title">Card title 1</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 1</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content. This content is a little
                                                     bit longer.</p>
@@ -51,9 +51,9 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card slider-card-body">
+                                        <div class="card slider-card-body blue-grey-border-thin">
                                             <div class="card-body">
-                                                <h5 class="card-title">Card title 2</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 2</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content. This content is a little
                                                     bit longer.</p>
@@ -61,9 +61,9 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card slider-card-body">
+                                        <div class="card slider-card-body blue-grey-border-thin">
                                             <div class="card-body">
-                                                <h5 class="card-title">Card title 3</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 3</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content.</p>
                                             </div>
@@ -75,9 +75,9 @@
                             <div class="carousel-item">
                                 <div class="row row-cols-1 row-cols-md-3 g-4">
                                     <div class="col">
-                                        <div class="card slider-card-body">
+                                        <div class="card slider-card-body blue-grey-border-thin">
                                             <div class="card-body">
-                                                <h5 class="card-title">Card title 4</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 4</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content. This content is a little
                                                     bit longer.</p>
@@ -85,9 +85,9 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card slider-card-body">
+                                        <div class="card slider-card-body blue-grey-border-thin">
                                             <div class="card-body">
-                                                <h5 class="card-title">Card title 5</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 5</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content. This content is a little
                                                     bit longer.</p>
@@ -95,9 +95,9 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card slider-card-body">
+                                        <div class="card slider-card-body blue-grey-border-thin">
                                             <div class="card-body">
-                                                <h5 class="card-title">Card title 6</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 6</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content.</p>
                                             </div>
@@ -109,9 +109,9 @@
                             <div class="carousel-item">
                                 <div class="row row-cols-1 row-cols-md-3 g-4">
                                     <div class="col">
-                                        <div class="card slider-card-body">
+                                        <div class="card slider-card-body blue-grey-border-thin">
                                             <div class="card-body">
-                                                <h5 class="card-title">Card title 7</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 7</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content. This content is a little
                                                     bit longer.</p>
@@ -119,9 +119,9 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card slider-card-body">
+                                        <div class="card slider-card-body blue-grey-border-thin">
                                             <div class="card-body">
-                                                <h5 class="card-title">Card title 8</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 8</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content. This content is a little
                                                     bit longer.</p>
@@ -129,9 +129,9 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card slider-card-body">
+                                        <div class="card slider-card-body blue-grey-border-thin">
                                             <div class="card-body">
-                                                <h5 class="card-title">Card title 9</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 9</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content.</p>
                                             </div>
@@ -144,19 +144,28 @@
                     </div>
                     <!-- slider end -->
                     <!-- Search & New Patient Start -->
-                    <div class="row m-0">
-                        <div class="col-md-6 search-border-left ">
+                    <div class="row m-0 justify-content-around">
+                         <span class="text-danger no-paitent-error">@error('search') {{$message}} @enderror</span>
+                        <div class="col-md-5 blue-grey-border py-4">
                             <form action="{{route('search',[$doctor_info->id])}}" method="POST">
                                 @csrf
-                                <input type="text" placeholder="Search Old Patient" name="search" class="search-input">
-                                <button class="search-btn me-5">Search</button>
-                                <span class="text-danger ms-2">@error('search') {{$message}} @enderror</span>
+                                <!-- <input type="text" placeholder="Search Old Patient" name="search" class="search-input"> -->
+                            <div class="d-flex my-auto">
+
+                                <input class="form-control me-2 custom-form-control blue-grey-border-thin " type="text" placeholder="Search Old Patient" aria-label="default input example" name="search">
+                                <button class="btn btn-outline-blue-grey ">Search</button>
+
+                                
+                            </div>
+                               
+                                
+
                             </form>
                         </div>
-                        <div class="col-md-6 search-border-right">
+                        <div class="col-md-5 blue-grey-border ">
                             <div class="new-gen-pat">
                                 <!--  a tag trigger modal -->
-                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">New Patient
+                                <a href="" class="btn btn-outline-blue-grey" data-bs-toggle="modal" data-bs-target="#exampleModal">New Patient
                                     registration
                                 </a>
                                 <!-- Modal -->
@@ -280,14 +289,14 @@
 
                     <!-- Search & New Patient end-->
                     <!--Appointment Start  -->
-                    <div class="Appointment-sec my-3">
-                        <div class="Appointment-h p-2">
+                    <div class="Appointment-sec my-3 blue-grey-border ">
+                        <div class="Appointment-h p-2 bg-blue-grey custom-border-radius">
                             <h4 class="m-0">Today we have 6 Appointment</h4>
                         </div>
                         <!-- Appointment Status -->
                         <div class="row p-1">
                             <div class="col-md-3">
-                                <div class="Appointment-details d-flex flex-wrap align-items-center p-1">
+                                <div class="Appointment-details blue-grey-border-thin  d-flex flex-wrap align-items-center p-1">
                                     <div class="Appointment-Patient-img me-2">
                                         <img src="{{ asset('assets/img/profile.png')}}">
 
@@ -303,7 +312,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="Appointment-details d-flex flex-wrap align-items-center p-1">
+                                <div class="Appointment-details blue-grey-border-thin  d-flex flex-wrap align-items-center p-1">
                                     <div class="Appointment-Patient-img me-2">
                                         <img src="{{ asset('assets/img/profile.png')}}">
 
@@ -314,12 +323,12 @@
                                         <p class="m-0"> Root canal</p>
                                     </div>
                                     <div class="patient-status m-auto my-1">
-                                        <h5>Status : <span class="text-warning">Pending</span></h5>
+                                        <h5>Status : <span class="text-info">Pending</span></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="Appointment-details d-flex flex-wrap align-items-center p-1">
+                                <div class="Appointment-details blue-grey-border-thin  d-flex flex-wrap align-items-center p-1">
                                     <div class="Appointment-Patient-img me-2">
                                         <img src="{{ asset('assets/img/profile.png')}}">
 
@@ -330,12 +339,12 @@
                                         <p class="m-0"> Root canal</p>
                                     </div>
                                     <div class="patient-status m-auto my-1">
-                                        <h5>Status : <span class="text-warning">Pending</span></h5>
+                                        <h5>Status : <span class="text-info">Pending</span></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="Appointment-details d-flex flex-wrap align-items-center p-1">
+                                <div class="Appointment-details blue-grey-border-thin  d-flex flex-wrap align-items-center p-1">
                                     <div class="Appointment-Patient-img me-2">
                                         <img src="{{ asset('assets/img/profile.png')}}">
 
@@ -346,7 +355,7 @@
                                         <p class="m-0"> Root canal</p>
                                     </div>
                                     <div class="patient-status m-auto my-1">
-                                        <h5>Status : <span class="text-warning">Pending</span></h5>
+                                        <h5>Status : <span class="text-info">Pending</span></h5>
                                     </div>
                                 </div>
                             </div>
@@ -354,15 +363,18 @@
                     </div>
                     <!--Appointment end  -->
                     <!--Patient list Start  -->
-                    <div class="patient-list-col">
-                        <div class="patient-list-h p-2">
+                    <div class="patient-list-col  blue-grey-border">
+                        <div class="patient-list-h p-2 bg-blue-grey custom-border-radius">
                             <h4 class="m-0">Patient List</h4>
                         </div>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">Day</th>
-                                    <th scope="col">Names</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Name</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -413,8 +425,8 @@
             <!-- Admin Notice,Ad & Events start -->
             <div class="col-md-3 page-home">
 
-                <div class="info-box-col p-2 mb-3">
-                    <h4 class="d-flex justify-content-end">Admin Notice Board</h4>
+                <div class="info-box-col mb-3">
+                    <h4 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Admin Notice Board</h4>
                     <!-- accordion -->
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
@@ -458,8 +470,9 @@
                     </div>
                     <!-- accordion end -->
                 </div>
-                <div class="info-box-col info-box-col-ad p-2 mb-3">
-                    <h4 class="d-flex justify-content-end">Ad</h4>
+                <div class="info-box-col info-box-col-ad mb-3"> 
+                    <h4 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Ad</h4>
+
 
 
                     <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -484,8 +497,9 @@
                         </button>
                     </div>
                 </div>
-                <div class="info-box-col p-2 mb-3">
-                    <h4 class="d-flex justify-content-end">Upcoming Events</h4>
+                <div class="info-box-col mb-3">
+                    <h4 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Upcoming Events</h4>
+
                 </div>
             </div>
         </div>

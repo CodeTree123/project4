@@ -75,3 +75,4 @@ Route::get('/view/patient/prescription/{d_id}/{p_id}',[MainController::class,'pr
 Route::post('/patient/prescription/drug/{d_id}/{p_id}',[MainController::class,'add_drug'])->name('add_drug');
 
 
+

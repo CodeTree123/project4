@@ -15,24 +15,27 @@
         <h1 class="h3 mb-3 fw-normal">Please log in</h1>
 
         <div class="form-floating ">
-            <input type="email" name="email" class="form-control mb-2" id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}">
+            <input type="email" name="email" class="form-control custom-form-control mb-2" id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}">
             <label for="floatingInput">Email address</label>
         </div>
         <span class="text-danger">@error('email') {{$message}} @enderror</span>
         <div class="form-floating">
-            <input type="password" name="password" class="form-control mb-2" id="floatingPassword" placeholder="Password">
+            <input type="password" name="password" class="form-control custom-form-control mb-2" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
         <span class="text-danger">@error('password') {{$message}} @enderror</span>
 
-        <div class="checkbox mb-3">
+        <!-- <div class="checkbox mb-3">
         <label>
             <input type="checkbox" value="remember-me"> Remember me
         </label>
-        </div>
+        </div> -->
         
-        <button class="w-100 btn btn-lg btn-outline-dark mb-2" type="submit">Login</button> 
-      
+        <button class="w-100 btn btn-lg btn-outline-dark btn-outline-blue-grey mb-2" type="submit">Login</button> 
+        <button class="w-100 btn btn-lg btn-outline-dark btn-outline-blue-grey p-1" type="submit">
+            <img src="{{ asset('assets/img/google.png')}}" class="sign-in-with-google img-fluid">
+            Sign up With Google
+        </button> 
             <div class=" my-3">
            <a href="{{route('registration')}}"> <span class="text-dark"> Don't have an account ?</span> Register</a>
         </div>
@@ -40,6 +43,7 @@
      </div>
  </div>
     </div>
+    
     <!-- Admin Notice,Ad & Events end -->
 
     <!-- main end -->
