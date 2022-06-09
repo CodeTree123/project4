@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2022 at 07:23 AM
+-- Generation Time: Jun 09, 2022 at 08:13 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -165,7 +165,7 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `name`, `email`, `password`, `BMDC`, `chemner_name`, `chemner_add`, `chemner_mobile`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Mahadi', 'ma@ma.com', '1234', NULL, NULL, NULL, NULL, NULL, '2022-06-02 04:17:49', '2022-06-02 04:17:49'),
+(1, 'Mahadi', 'ma@ma.com', '1234', 'D-6000', 'asfasfa', 'sdfa', '0998898931', NULL, '2022-06-02 04:17:49', '2022-06-07 23:36:31'),
 (5, 'maha', 'maha@gmail.com', '1234', '98y348', 'hjaosrijhfg', 'wkjehbrffiuw', '28409814', NULL, '2022-06-02 04:55:24', '2022-06-02 06:23:52'),
 (6, 'ami', 'mai@ami.com', '1234', '5600', 'Uttara', 'uttara', '01987654321', NULL, '2022-06-05 03:56:06', '2022-06-05 03:57:38'),
 (7, 'dads', 'sa@sad.com', '1234', NULL, NULL, NULL, NULL, NULL, '2022-06-06 03:36:00', '2022-06-06 03:36:00');
@@ -213,7 +213,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2022_05_24_020633_create_patient_infos_table', 5),
 (10, '2022_06_04_131646_create_treatment_infos_table', 6),
 (11, '2022_06_04_143529_create_treatment_infos_table', 7),
-(12, '2022_06_04_162845_create_treatment_infos_table', 8);
+(12, '2022_06_04_162845_create_treatment_infos_table', 8),
+(13, '2022_06_09_060129_create_prescriptions_table', 9);
 
 -- --------------------------------------------------------
 
@@ -263,7 +264,7 @@ CREATE TABLE `patient_infos` (
 --
 
 INSERT INTO `patient_infos` (`id`, `name`, `age`, `mobile`, `gender`, `Blood_group`, `date`, `occupation`, `address`, `email`, `image`, `bp_high`, `bp_low`, `Bleeding_disorder`, `Heart_Disease`, `Allergy`, `Diabetic`, `Pregnant`, `Helpatics`, `other`, `created_at`, `updated_at`) VALUES
-(1, 'Mahadi', '30', '01938984203', 'Male', 'ab-', '1998-03-12', 'job', 'uttara', 'mah@ma.com', '', '110', '80', 'no', 'no', 'no', 'no', 'no', 'no', NULL, '2022-06-04 05:41:05', '2022-06-04 08:42:08'),
+(1, 'Mahadi', '30', '01938984203', 'Male', 'AB+', '1998-03-12', 'job', 'uttara', 'mah@ma.com', '', '110', '80', 'no', 'no', 'no', 'no', 'no', 'no', NULL, '2022-06-04 05:41:05', '2022-06-09 00:04:23'),
 (2, 'test', '30', '01674746453', 'Male', 'ab-', '2014-03-29', 'job', NULL, NULL, '', '100', '80', 'no', 'yes', 'yes', 'no', 'no', 'yes', NULL, '2022-06-04 09:22:09', '2022-06-05 01:29:40'),
 (3, 'mahadi', '25', '01787654321', 'Male', 'ab-', '2020-02-11', 'job', 'uttara', NULL, '', '120', '80', 'no', 'yes', 'yes', 'yes', 'yes', 'no', NULL, '2022-06-05 03:58:50', '2022-06-05 03:59:44');
 
@@ -284,6 +285,33 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prescriptions`
+--
+
+CREATE TABLE `prescriptions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `d_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `p_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `t_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `drug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `drug_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meal_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `duration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `prescriptions`
+--
+
+INSERT INTO `prescriptions` (`id`, `d_id`, `p_id`, `t_id`, `drug`, `drug_time`, `meal_time`, `duration`, `date`, `created_at`, `updated_at`) VALUES
+(1, '1', '1', '1', 'Napa', '1+0+1', 'Before Meal', '1', NULL, '2022-06-09 00:05:16', '2022-06-09 00:05:16');
 
 -- --------------------------------------------------------
 
@@ -423,6 +451,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `treatment_infos`
 --
 ALTER TABLE `treatment_infos`
@@ -473,7 +507,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `patient_infos`
@@ -486,6 +520,12 @@ ALTER TABLE `patient_infos`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `treatment_infos`
