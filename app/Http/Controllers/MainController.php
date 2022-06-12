@@ -190,7 +190,7 @@ class MainController extends Controller
         // $d = prescription::where('p_id','=',$p_id)->first();
         // dd($drug->id);
 
-
+    }
 
     public function add_drug(Request $request,$d_id,$p_id){
 

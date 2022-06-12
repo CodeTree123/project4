@@ -219,13 +219,7 @@ main.admin {
 /* .new-gen-pat a:hover{
     background-color: #6e6e6e;
 } */
-.p-edit a {
-    color: #000;
-    background-color: #c4c4c4;
-    text-decoration: none;
-    padding: 5px 40px;
-    border-radius: 10px;
-}
+ 
 .p-edit a:hover{
     background-color: #6e6e6e;
 }
@@ -542,7 +536,7 @@ main.admin {
 
 /* treatment-plans start */
 .treatment-info{
-    border: 1px solid;
+    border: 1px solid rgb(54 90 119);;
     border-radius: 11px;
 }
 
@@ -1686,7 +1680,9 @@ body {
 :root {
     --blue-grey: #4e6f8a; 
     --light-blue-grey: #365A77; 
+    --dark-blue-grey: #233b4e; 
   }
+  
   .custom-border-radius{
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -1710,10 +1706,11 @@ body {
     color: #fff;
     background-color: var(--blue-grey);
     border-color: var(--blue-grey);
-}
+    transition: all .2s linear;
+} 
 .btn-outline-blue-grey:hover {
     color: #fff;
-    background-color: var(--blue-grey);
+    background-color: var(--dark-blue-grey); 
     border-color: #365A77;
 }
 .custom-form-control {     
@@ -1745,7 +1742,29 @@ a, a:hover {
     font-weight: 900; 
     content: "\f0d7"
 }
+.accordion-item:not(:last-child) {
+    margin-bottom: 16px;
+  }
+   
+  
+  .accordion-button:not(.collapsed) {
+    background: var(--dark-blue-grey); 
+    color: #ffffff;
+  }
+  
+  .accordion-button:not(.collapsed)::after {
+    background-image: none
+  }
+  
+  .accordion-button::after {
+    background-image: none
+  }
 .no-paitent-error{
     margin-left: 150px;
 }
+.crud-btns i{
+    font-size: 20px ;
+    color: var(--dark-blue-grey); 
+}
+
 /* custom ui end */

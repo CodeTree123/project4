@@ -1,11 +1,11 @@
 
 @include('include.header')
-
+<title>Doctor blade</title>
     <!-- main start -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2 pe-0">
-                <div class="profile">
+                <div class="profile blue-grey-border-thin">
                     <div class="complete">
                         <div class="p-header">
                             <!-- <img src="img/banner.jpg" class="cover"> -->
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="profile py-2">
+                <div class="profile blue-grey-border-thin py-2">
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
                         <a href="{{route('patient')}}" class="btns btn-outline-blue-grey my-2">Patient List</a>
@@ -367,7 +367,7 @@
                         <div class="patient-list-h p-2 bg-blue-grey custom-border-radius">
                             <h4 class="m-0">Patient List</h4>
                         </div>
-                        <table class="table">
+                        <table class="table text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">Day</th>

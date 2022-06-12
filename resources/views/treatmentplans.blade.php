@@ -1,11 +1,11 @@
 @include('include.header')
-
+<title>Treatment Plans</title>
     <!-- main start -->
     <div class="container-fluid">
         <div class="row">
             <!-- Profile start -->
             <div class="col-md-3 pe-0">
-                <div class="profile">
+                <div class="profile  blue-grey-border-thin ">
                     <div class="complete">
                         <div class="p-header">
                             <!-- <img src="img/banner.jpg" class="cover"> -->
@@ -166,19 +166,26 @@
 
                                     <!-- Modal end -->
                                 </div>
-                            </div>
-
+                            </div> 
                         </div>
                     </div>
                 </div>
-                <div class="profile py-2">
+                <div class="profile  blue-grey-border-thin  py-2">
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
 
-                        <a href="{{route('treatmentPlans')}}" class="btns my-2">Treatment Plans</a>
-                        <a href="{{route('appointment')}}" class="btns my-2">Appointment</a>
-                        <a href="{{route('prescription',[$doctor_info->id,$patient->id])}}" class="btns my-2">Prescription</a>
-                        <a href="#" class="btns my-2">Billing</a>
+                        <a href="{{route('treatmentPlans')}}" class="btns btn-outline-blue-grey my-2">
+                            Treatment Plans
+                        </a>
+                        <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">
+                            Appointment
+                        </a>
+                        <a href="{{route('prescription',[$doctor_info->id,$patient->id])}}" class="btns  btn-outline-blue-grey my-2">
+                            Prescription
+                        </a>
+                        <a href="#" class="btns btn-outline-blue-grey my-2">
+                            Billing
+                        </a>
                     </div>
 
                     <!-- <a href="">setting</a>
@@ -215,46 +222,41 @@
 
 
                             <div class="row">
-                                <div class="treatment-info">
+                                <div class="border-top border-dark">
                                     <h4 class="text-center">
                                         Tooth Restoration
                                     </h4>
 
-                                    <div class="d-flex justify-content-between bg-success   text-white bg-opacity-50">
+                                    <div class="d-flex justify-content-between bg-success   text-white bg-opacity-50 p-2">
                                         <h6 class="float-start">Classification</h6>
                                         <h6 class="float-end">Class II</h6>
                                     </div>
 
 
-    <div class="treatment-box text-center d-flex flex-wrap justify-content-between p-2">
-        <!-- <button type="button" class="btn btn-outline-info text-dark mt-2 mb-2 btn-lg ">Class I</button>
-        <button type="button" class="btn btn-outline-info text-dark mt-2 mb-2 btn-lg  ">Class II</button>
-        <button type="button" class="btn btn-outline-info text-dark mt-2 mb-2 btn-lg ">Class III</button>
-        <button type="button" class="btn btn-outline-info text-dark  mb-2 btn-lg ">ClassI</button>
-        <button type="button" class="btn btn-outline-info text-dark  mb-2 btn-lg ">Class V</button>
-        <button type="button" class="btn btn-outline-info text-dark  mb-2 btn-lg ">Class VI</button> -->
+                <div class="treatment-box text-center d-flex flex-wrap justify-content-between p-2"> 
 
-  <input type="checkbox" class="btn-check " name="btnradio" id="classI" autocomplete="off" >
-  <label class="btn btn-outline-dark m-1" for="classI">Class I</label>
+                    <input type="checkbox" class="btn-check " name="btnradio" id="classI" autocomplete="off" >
+                    <label class="btn btn-outline-dark m-1" for="classI">Class I</label>
 
-  <input type="checkbox" class="btn-check " name="btnradio" id="classII" autocomplete="off">
-  <label class="btn btn-outline-dark m-1" for="classII">Class II</label>
+                    <input type="checkbox" class="btn-check " name="btnradio" id="classII" autocomplete="off">
+                    <label class="btn btn-outline-dark m-1" for="classII">Class II</label>
 
-  <input type="checkbox" class="btn-check " name="btnradio" id="classIII" autocomplete="off">
-  <label class="btn btn-outline-dark m-1" for="classIII">Class III</label>
+                    <input type="checkbox" class="btn-check " name="btnradio" id="classIII" autocomplete="off">
+                    <label class="btn btn-outline-dark m-1" for="classIII">Class III</label>
 
-  <input type="checkbox" class="btn-check " name="btnradio" id="classIV" autocomplete="off">
-  <label class="btn btn-outline-dark m-1" for="classIV">Class IV</label>
+                    <input type="checkbox" class="btn-check " name="btnradio" id="classIV" autocomplete="off">
+                    <label class="btn btn-outline-dark m-1" for="classIV">Class IV</label>
 
-  <input type="checkbox" class="btn-check " name="btnradio" id="classV" autocomplete="off">
-  <label class="btn btn-outline-dark m-1" for="classV">Class V</label>
+                    <input type="checkbox" class="btn-check " name="btnradio" id="classV" autocomplete="off">
+                    <label class="btn btn-outline-dark m-1" for="classV">Class V</label>
 
-  <input type="checkbox" class="btn-check " name="btnradio" id="classVI" autocomplete="off">
-  <label class="btn btn-outline-dark m-1" for="classVI">Class VI</label>
+                    <input type="checkbox" class="btn-check " name="btnradio" id="classVI" autocomplete="off">
+                    <label class="btn btn-outline-dark m-1" for="classVI">Class VI</label>
 
-    </div>
+                </div>
                                     <div class="">
-                                        <div class="bg-success pb-4   text-white bg-opacity-50">
+                                    
+                                        <div class="d-flex justify-content-between bg-success   text-white bg-opacity-50 p-2">
                                             <h6 class="float-start">Restorative Material</h6>
                                             <h6 class="float-end">Composite</h6>
                                         </div>
@@ -284,10 +286,11 @@
                                     </div>
 
                                     <div></div>
-                                    <div class="bg-success pb-4   text-white bg-opacity-50">
-                                        <h6 class="float-start ">Treatment Status</h6>
-                                        <h6 class="float-end text-danger">Not Done</h6>
-                                    </div>
+                                    <div class="d-flex justify-content-between bg-success   text-white bg-opacity-50 p-2">
+                                            <h6 class="float-start">Treatment Status</h6>
+                                            <h6 class="float-end text-danger">Not Done</h6>
+                                        </div>
+                                   
 
 
 

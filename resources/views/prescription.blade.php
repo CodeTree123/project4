@@ -214,10 +214,12 @@
                         <div class="right">
                             <div class="single">
 
-                                <div class="mb-3">
+                                <div class="mb-3"> 
+
+
                                   <img src="{{ asset ('assets/img/rx.png')}}" class="img-fluid" alt="">
                                 </div>
-                                <!-- <div class="drug-list">
+                                <div class="drug-list">
                                     <ol>
                                         <li>
                                             <div class="d-flex justify-content-between">
@@ -231,7 +233,7 @@
                                             <P class="qty">1+0+1 [ 5 day(s)] After Meal (Qty. 10)</P>
                                         </li>
                                     </ol>
-                                </div> -->
+                                </div>
                                 
                                 <div class="drug-list">
                                     <ol>
@@ -242,10 +244,7 @@
                                                     <p class="drug-name">{{$drug->drug}}</p>
                                                 </div>
                                                 <div class="align-self-center">
-                                                    <a href="" class="btn btn-sm p-o edit-drug" data-bs-toggle="modal" data-bs-target="#drug_edit" id="drugBtn">
-                                                        <i class="bi bi-pencil-square text-primary"></i>
-                                                    </a>
-                                                    <a href="" class="btn btn-sm p-o edit-drug"><i class="bi bi-trash text-primary"></i></a>
+                                                    <button type="button" class="btn btn-sm p-o edit-drug"><i class="bi bi-pencil-square text-primary"></i></button>
                                                 </div>
                                             </div>
                                             <P class="qty">{{$drug->drug_time}} [ {{$drug->duration}} day(s) ] {{$drug->meal_time}} </P>
@@ -270,6 +269,7 @@
            </a>
         </button>
         <button type="button" class="btn btn-primary preview-btn " id="previewBtn">
+        
             Preview
         </button>
         <!-- <div class="logout"><a href="#" class="btn btn-sm btn-danger">Logout</a></div>  -->
@@ -339,12 +339,6 @@
 <div class="modal fade" id="drug">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    Add Drug
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
             <form action="{{route('add_drug',[$doctor_info->id,$patient->id])}}" method="post">
                 @csrf
                 <div class="modal-body">
@@ -386,26 +380,19 @@
     </div>
 </div>
 <!-- Prescription update Modal--> 
-<div class="modal fade" id="drug_edit">
+<div class="modal fade" id="prescriptionModal">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    Edit Drug
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
             <form action="#">
-
                 <div class="modal-body">
                     <div class="mb-3 drug-name">
-                        <input class="form-control" list="list" placeholder="Drug name-brand/generic" >
-                        <datalist id="list" class="allGrugList" >
+                        <input class="form-control" list="list" placeholder="Drug name-brand/generic">
+                        <datalist id="list" class="allGrugList">
 
                         </datalist>
                     </div>
                     <div class="mb-3 drug-time">
-                        <input type="text" class="form-control" placeholder="Timing" value="1+0+1" >
+                        <input type="text" class="form-control" placeholder="Timing" value="1+0+1">
                     </div>
                     <div class="mb-3 drug-meal-time">
                         <select class="form-select">

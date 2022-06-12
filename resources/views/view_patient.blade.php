@@ -6,17 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient</title>
+
+    <link rel="icon" type="image/x-icon" href="{{asset ('assets/img/reflex_logo.png')}}"> 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
    
     <!-- Bootstrap 5.1.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="{{ asset ('assets/css/style.css')}}">
+   
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-
+ <!-- Style CSS -->
+ <link rel="stylesheet" href="{{ asset ('assets/css/style.css')}}">
 </head>
 
 <body>
@@ -107,7 +110,7 @@
         <div class="row">
             <!-- Profile start -->
             <div class="col-md-3 pe-0">
-                <div class="profile">
+                <div class="profile blue-grey-border-thin   ">
                     <div class="complete">
                         <div class="p-header">
                             <!-- <img src="img/banner.jpg" class="cover"> -->
@@ -144,17 +147,21 @@
                                 <div class="col-12 text-start">Pregnant/Lactating: {{$patient->Pregnant}}</div>
                                 <div class="col-12 text-start">Other: {{$patient->other}}</div>
                                 <!-- <button type="button" class="btn btn-secondary btn-sm">Small button</button> -->
-                                <div class="col-12 text-start d-flex justify-content-center p-edit mt-2">
                                     <!--  a tag trigger modal -->
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Add/Edit</a>
+                                <a href="" class="btns btn-outline-blue-grey" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Add/Edit
+                                    </a>
+                                <div class="col-12 text-start d-flex justify-content-center p-edit mt-2">
+                                   
+                                    
                                     <!-- Modal -->
                                     <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-scrollable">
-                                            <div class="modal-content bg-secondary">
+                                            <div class="modal-content ">
                                                 <!--bg-opacity-50-->
                                                 <!-- Modal Header & Close btn -->
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title text-white" id="exampleModalLabel">
+                                                    <h5 class="modal-title " id="exampleModalLabel">
                                                         Edit Patient Info.
                                                     </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -169,18 +176,18 @@
                                                         <div class="row">
                                                             <!-- 1 -->
                                                             <div class="mb-2 col-6">
-                                                                <label for="exampleInputEmail1" class="form-label text-white">BP</label>
+                                                                <label for="exampleInputEmail1" class="form-label ">BP</label>
                                                                 <div class="d-flex">
-                                                                    <input type="number" name="bp_high" class="form-control me-3">
+                                                                    <input type="number" name="bp_high" class="form-control custom-form-control me-3">
                                                                     <h3 class="m-0">/</h3>
-                                                                    <input type="number" name="bp_low" class="form-control ms-3">
+                                                                    <input type="number" name="bp_low" class="form-control custom-form-control ms-3">
                                                                 </div>
 
                                                                 <!-- <div class="form-text"></div> -->
                                                             </div>
                                                             <!-- 2 -->
                                                             <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Bleeding discorder</label>
+                                                                <label for="mName" class="form-label  ">Bleeding discorder</label>
                                                                 <select class="form-select" name="Bleeding_disorder" aria-label="Heart Disease">
                                                                     <option selected></option>
                                                                     <option value="yes">Yes</option>
@@ -190,7 +197,7 @@
                                                             </div>
                                                             <!-- 3 -->
                                                             <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Heart Disease</label>
+                                                                <label for="mName" class="form-label  ">Heart Disease</label>
                                                                 <select class="form-select" name="Heart_Disease" aria-label="Heart Disease">
                                                                     <option selected></option>
                                                                     <option value="yes">Yes</option>
@@ -200,7 +207,7 @@
                                                             </div>
                                                             <!-- 4 -->
                                                             <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Allergy</label>
+                                                                <label for="mName" class="form-label ">Allergy</label>
                                                                 <select class="form-select" name="Allergy" aria-label="Heart Disease">
                                                                     <option selected></option>
                                                                     <option value="yes">Yes</option>
@@ -210,7 +217,7 @@
                                                             </div>
                                                             <!-- 5 -->
                                                             <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Diabetic</label>
+                                                                <label for="mName" class="form-label ">Diabetic</label>
                                                                 <select class="form-select" name="Diabetic" aria-label="Heart Disease">
                                                                     <option selected></option>
                                                                     <option value="yes">Yes</option>
@@ -220,7 +227,7 @@
                                                             </div>
                                                             <!-- 6 -->
                                                             <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Pregnant/Lactating</label>
+                                                                <label for="mName" class="form-label ">Pregnant/Lactating</label>
                                                                 <select class="form-select" name="Pregnant" aria-label="Heart Disease">
                                                                     <option selected></option>
                                                                     <option value="yes">Yes</option>
@@ -230,7 +237,7 @@
                                                             </div>
                                                             <!-- 7 -->
                                                             <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Helpatics</label>
+                                                                <label for="mName" class="form-label ">Helpatics</label>
                                                                 <select class="form-select" name="Helpatics" aria-label="Heart Disease">
                                                                     <option selected></option>
                                                                     <option value="yes">Yes</option>
@@ -240,20 +247,13 @@
                                                             </div>
                                                             <!-- 8 -->
                                                             <div class="mb-2 col-6">
-                                                                <label for="exampleInputEmail1" class="form-label text-white">Other</label>
-                                                                <input type="text" name="other" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                                                <!-- <div id="emailHelp" class="form-text">We'll never share your
-                                                            email with anyone else.</div> -->
+                                                                <label for="exampleInputEmail1" class="form-label ">Other</label>
+                                                                <input type="text" name="other" class="form-control custom-form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                                             </div>
-                                                            <!-- <div class="mb-3">
-                                                        <label for="formFile" class="form-label text-white">Drop your image</label>
-                                                        <input class="form-control" type="file" id="formFile">
-                                                    </div> -->
-                                                            <!-- <button type="submit" class="btn btn-primary ">Submit</button> -->
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button class="btn btn-primary">Submit</button>
+                                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                                                            <button class="btn btn-outline-blue-grey ">Submit</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -273,14 +273,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="profile py-2">
+                <div class="profile blue-grey-border-thin py-2">
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
 
-                        <a href="{{route('treatmentPlans')}}" class="btns my-2">Treatment Plans</a>
-                        <a href="{{route('appointment')}}" class="btns my-2">Appointment</a>
-                        <a href="{{route('prescription_list')}}" class="btns my-2">Prescription</a>
-                        <a href="#" class="btns my-2">Billing</a>
+                        <a href="{{route('treatmentPlans')}}" class="btns btn-outline-blue-grey my-2">Treatment Plans</a>
+                        <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
+                        <a href="{{route('prescription_list')}}" class="btns btn-outline-blue-grey my-2">Prescription</a>
+                        <a href="#" class="btns btn-outline-blue-grey my-2">Billing</a>
                     </div>
 
                     <!-- <a href="">setting</a>
@@ -687,13 +687,11 @@
                                         <h5 class="d-flex justify-content-between">C/C Chief Complaint 
                                             <div>
                                                 <i class="bi bi-plus-circle"></i>
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#C_C_list">
-                                                    <i class="bi bi-card-list"></i>
-                                                </a>
+                                                <i class="bi bi-card-list"></i>
                                             </div>
                                         </h5>
-                                        <select class="form-control multi" name="pc_c[]" aria-label="Default select example" multiple style="width:100%;">
-                                            @foreach($c_cs as $c_c)
+                                        <select class="form-control custom-form-control multi" name="pc_c[]" aria-label="Default select example" multiple style="width:100%;">
+                                            @foreach($c_c as $c_c)
                                             <option value="{{$c_c -> name}}">{{$c_c -> name}}</option>
                                             @endforeach
                                         </select>
@@ -710,13 +708,11 @@
                                         <h5 class="d-flex justify-content-between">C/F Clinical Findings
                                             <div>
                                                 <i class="bi bi-plus-circle"></i>
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#C_F_list">
-                                                    <i class="bi bi-card-list"></i>
-                                                </a>
+                                                <i class="bi bi-card-list"></i>
                                             </div>
                                         </h5>
-                                        <select class="form-control multi" name="pc_f[]" aria-label="Default select example" multiple style="width:100%;">
-                                            @foreach($c_fs as $c_f)
+                                        <select class="form-control custom-form-control multi" name="pc_f[]" aria-label="Default select example" multiple style="width:100%;">
+                                            @foreach($c_f as $c_f)
                                             <option value="{{$c_f -> name}}">{{$c_f -> name}}</option>
                                             @endforeach
                                         </select>
@@ -736,7 +732,7 @@
                                                 <i class="bi bi-card-list"></i>
                                             </div>
                                         </h5>
-                                        <select class="form-control multi" aria-label="Default select example" multiple style="width:100%;">
+                                        <select class="form-control custom-form-control multi" aria-label="Default select example" multiple style="width:100%;">
                                             <option >Open this select menu</option>
                                             <option value="1">X-ray</option>
                                             <option value="2">OPG</option>
@@ -751,13 +747,11 @@
                                         <h5 class="d-flex justify-content-between">T/P Treatment Plans
                                             <div>
                                                 <i class="bi bi-plus-circle"></i>
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#T_P_list">
-                                                    <i class="bi bi-card-list"></i>
-                                                </a>
+                                                <i class="bi bi-card-list"></i>
                                             </div>
                                         </h5>
-                                        <select class="form-control multi" name="pt_p[]" aria-label="Default select example" style="width:100%;">
-                                            @foreach($t_ps as $t_p)
+                                        <select class="form-control custom-form-control multi" name="pt_p[]" aria-label="Default select example" style="width:100%;">
+                                            @foreach($t_p as $t_p)
                                             <option value="{{$t_p -> name}}">{{$t_p -> name}}</option>
                                             @endforeach
                                         </select>
@@ -800,8 +794,8 @@
                     <!-- teeth chart end -->
                     <!-- Treatment Card start -->
                     <div class="treatment-cards my-3">
-                        <div class="treatment-cards-h p-2">
-                            <h4 class="m-0">Treatment Plans For {{$patient->name}}</h4>
+                        <div class="treatment-cards-h bg-blue-grey custom-border-radius p-2">
+                            <h4 class="m-0 ">Treatment Plans For {{$patient->name}}</h4>
                         </div>
                         <!-- Treatment Plans Status -->
                         <div class="row mx-0">
@@ -834,9 +828,9 @@
             <div class="col-md-3 page-home">
 
                 <!-- We have info-box-col-1 for not fixed height -->
-                <div class="info-box-col p-2 mb-3">
-                    <h4 class="d-flex justify-content-end">Previous Steps List</h4>
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="info-box-col text-center p-2 mb-3">
+                    <h4 class="text-center bg-blue-grey custom-border-radius py-2">Previous Steps List</h4>
+                    <div class="accordion accordion-flush mt-2" id="accordionFlushExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -852,8 +846,8 @@
                     </div>
                 </div>
                 <div class="info-box-col p-2 mb-3">
-                    <h4 class="d-flex justify-content-end">Previous Prescription</h4>
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <h4 class="text-center bg-blue-grey custom-border-radius py-2">Previous Prescription</h4>
+                    <div class="accordion accordion-flush mt-2" id="accordionFlushExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -869,7 +863,7 @@
                     </div>
                 </div>
                 <div class="info-box-col p-2 mb-3 d-flex flex-column">
-                    <h4 class=" justify-content-end">Post to Forums</h4>
+                    <h4 class=" text-center bg-blue-grey custom-border-radius py-2">Post to Forums</h4>
                     <button type="button" class="btn btn-outline-info text-dark mt-2 mb-2 btn-lg  ">Post</button>
                     <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
@@ -896,145 +890,6 @@
     <!-- Admin Notice,Ad & Events end -->
 
     <!-- main end -->
-    <!-- Modal For C/C Information-->
-    <div class="modal fade " id="C_C_list" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <!-- Modal Header & Close btn -->
-                <div class="modal-header">
-                    <h5 class="modal-title text-dark" id="exampleModalLabel">
-                        C/C List
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Modal Header & Close btn end -->
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <!-- List Table for C/C -->
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>C/C</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($c_cs as $cc)
-                            <tr>
-                                <td>{{$cc->id}}</td>
-                                <td>{{$cc->name}}</td>
-                                <td>
-                                    <a href="">Edit</a>
-                                    <a href="">Delete</a>
-                                    <a href="">Fav</a>
-                                </td>
-                            </tr>
-                            @empty
-                            <h3>There was no Information about C/C</h3>
-                            @endforelse 
-                        </tbody>
-                    </table>
-                    <!-- List Table for C/C end --> 
-                </div>
-                <!-- Modal Body end -->
-            </div>
-        </div>
-    </div>
-    <!-- Modal end -->
-    <!-- Modal For C/C Information-->
-    <div class="modal fade " id="C_F_list" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <!-- Modal Header & Close btn -->
-                <div class="modal-header">
-                    <h5 class="modal-title text-dark" id="exampleModalLabel">
-                        C/F List
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Modal Header & Close btn end -->
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <!-- List Table for C/C -->
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>C/F</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($c_fs as $cf)
-                            <tr>
-                                <td>{{$cf->id}}</td>
-                                <td>{{$cf->name}}</td>
-                                <td>
-                                    <a href="">Edit</a>
-                                    <a href="">Delete</a>
-                                    <a href="">Fav</a>
-                                </td>
-                            </tr>
-                            @empty
-                            <h3>There was no Information about C/F</h3>
-                            @endforelse 
-                        </tbody>
-                    </table>
-                    <!-- List Table for C/F end --> 
-                </div>
-                <!-- Modal Body end -->
-            </div>
-        </div>
-    </div>
-    <!-- Modal end -->
-    <!-- Modal For C/C Information-->
-    <div class="modal fade " id="T_P_list" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <!-- Modal Header & Close btn -->
-                <div class="modal-header">
-                    <h5 class="modal-title text-dark" id="exampleModalLabel">
-                        T/P List
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Modal Header & Close btn end -->
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <!-- List Table for C/C -->
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>T/P</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($t_ps as $tp)
-                            <tr>
-                                <td>{{$tp->id}}</td>
-                                <td>{{$tp->name}}</td>
-                                <td>
-                                    <a href="">Edit</a>
-                                    <a href="">Delete</a>
-                                    <a href="">Fav</a>
-                                </td>
-                            </tr>
-                            @empty
-                            <h3>There was no Information about T/P</h3>
-                            @endforelse 
-                        </tbody>
-                    </table>
-                    <!-- List Table for T/P end --> 
-                </div>
-                <!-- Modal Body end -->
-            </div>
-        </div>
-    </div>
-    <!-- Modal end -->
-
     <!-- footer -->
     <div class="footer p-3">
         <div class="row container-fluid">
