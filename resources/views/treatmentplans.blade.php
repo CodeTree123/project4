@@ -227,7 +227,7 @@
                                         Tooth Restoration
                                     </h4>
 
-                                    <div class="d-flex justify-content-between bg-success   text-white bg-opacity-50 p-2">
+                                    <div class="d-flex justify-content-between bg-blue-grey custom-border-radius p-2">
                                         <h6 class="float-start">Classification</h6>
                                         <h6 class="float-end">Class II</h6>
                                     </div>
@@ -254,9 +254,9 @@
                     <label class="btn btn-outline-dark m-1" for="classVI">Class VI</label>
 
                 </div>
-                                    <div class="">
+                                    <div class="mt-2">
                                     
-                                        <div class="d-flex justify-content-between bg-success   text-white bg-opacity-50 p-2">
+                                        <div class="d-flex justify-content-between bg-blue-grey custom-border-radius p-2">
                                             <h6 class="float-start">Restorative Material</h6>
                                             <h6 class="float-end">Composite</h6>
                                         </div>
@@ -286,7 +286,7 @@
                                     </div>
 
                                     <div></div>
-                                    <div class="d-flex justify-content-between bg-success   text-white bg-opacity-50 p-2">
+                                    <div class="d-flex justify-content-between bg-blue-grey custom-border-radius p-2">
                                             <h6 class="float-start">Treatment Status</h6>
                                             <h6 class="float-end text-danger">Not Done</h6>
                                         </div>
@@ -311,7 +311,7 @@
                             <div class="border rounded-3 border-2 border-dark">
                                 <h4 class="text-center">Steps</h4>
 
-                                <ol class="border border-1 border-dark m-2">
+                                <!-- <ol class="border border-1 border-dark m-2">
                                     <li class="border-bottom">Preparation</li>
                                     <li class="border-bottom">Isolations</li>
                                     <li class="border-bottom">Isolations</li>
@@ -338,7 +338,7 @@
 
                                 <div class="text-center">
                                     <button class="btn bg-success px-3 text-white bg-opacity-75 mb-2 ">Done</button>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -355,7 +355,7 @@
 
                 <!-- We have info-box-col-1 for not fixed height -->
                 <div class="info-box-col p-2 mb-3">
-                    <h4 class="d-flex justify-content-end">Previous Steps List</h4>
+                    <h4 class="d-flex justify-content-center bg-blue-grey custom-border-radius">Previous Steps List</h4>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
@@ -375,7 +375,7 @@
                     </div>
                 </div>
                 <div class="info-box-col p-2 mb-3">
-                    <h4 class="d-flex justify-content-end">Previous Prescription</h4>
+                    <h4 class="d-flex justify-content-center bg-blue-grey custom-border-radius">Previous Prescription</h4>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingTwo">
@@ -395,7 +395,7 @@
                     </div>
                 </div>
                 <div class="info-box-col p-2 mb-3">
-                    <h4 class="d-flex justify-content-end">Post to Furums</h4>
+                    <h4 class="d-flex justify-content-center bg-blue-grey custom-border-radius">Post to Furums</h4>
                     <button type="button" class="btn btn-outline-info text-dark mt-2 mb-2 btn-lg  ">Post</button>
                     <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">

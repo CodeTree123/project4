@@ -447,7 +447,8 @@ main.admin {
     cursor: pointer;
 }
 .teeth-btn a:hover{
-    background: #808080;
+    color: #ffffff;
+    background: #365A77; ;
     border-bottom-left-radius: 17px;
 }
 .teeth-btn a:last-child:hover{
@@ -1708,6 +1709,17 @@ body {
     border-color: var(--blue-grey);
     transition: all .2s linear;
 } 
+.btn-outlined-blue-grey{
+    color: #000;
+    background-color: #fff;
+    border-color: var(--blue-grey);
+    transition: all .2s linear;
+}
+.btn-outlined-blue-grey:hover{
+    color: #fff;
+    background-color: var(--dark-blue-grey); 
+    border-color: #365A77;
+}
 .btn-outline-blue-grey:hover {
     color: #fff;
     background-color: var(--dark-blue-grey); 

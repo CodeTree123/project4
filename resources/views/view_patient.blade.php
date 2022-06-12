@@ -691,7 +691,7 @@
                                             </div>
                                         </h5>
                                         <select class="form-control custom-form-control multi" name="pc_c[]" aria-label="Default select example" multiple style="width:100%;">
-                                            @foreach($c_c as $c_c)
+                                            @foreach($c_cs as $c_c)
                                             <option value="{{$c_c -> name}}">{{$c_c -> name}}</option>
                                             @endforeach
                                         </select>
@@ -712,7 +712,7 @@
                                             </div>
                                         </h5>
                                         <select class="form-control custom-form-control multi" name="pc_f[]" aria-label="Default select example" multiple style="width:100%;">
-                                            @foreach($c_f as $c_f)
+                                            @foreach($c_fs as $c_f)
                                             <option value="{{$c_f -> name}}">{{$c_f -> name}}</option>
                                             @endforeach
                                         </select>
@@ -751,7 +751,7 @@
                                             </div>
                                         </h5>
                                         <select class="form-control custom-form-control multi" name="pt_p[]" aria-label="Default select example" style="width:100%;">
-                                            @foreach($t_p as $t_p)
+                                            @foreach($t_ps as $t_p)
                                             <option value="{{$t_p -> name}}">{{$t_p -> name}}</option>
                                             @endforeach
                                         </select>
