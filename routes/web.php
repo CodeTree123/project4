@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\SubMainController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -73,6 +74,23 @@ Route::get('/view/patient/treatment/{d_id}/{p_id}/{t_id}/{t_plans}',[MainControl
 
 Route::get('/view/patient/prescription/{d_id}/{p_id}',[MainController::class,'prescription'])->name('prescription');
 Route::post('/patient/prescription/drug/{d_id}/{p_id}',[MainController::class,'add_drug'])->name('add_drug');
+Route::get('/edit_drug/{id}', [MainController::class, 'edit_drug']);
+Route::put('/update_drug', [MainController::class, 'update_drug'])->name('update_drug');
+Route::delete('/delete_drug', [MainController::class, 'delete_drug'])->name('delete_drug');
+
+// SubMainController
+
+Route::post('/chief_complaint', [SubMainController::class, 'chief_complaint'])->name('chief_complaint');
+Route::get('/edit_chief_complaint/{id}', [SubMainController::class, 'edit_chief_complaint']);
+Route::put('/update_chief_complaint', [SubMainController::class, 'update_chief_complaint'])->name('update_chief_complaint');
+Route::post('/clinical_finding', [SubMainController::class, 'clinical_finding'])->name('clinical_finding');
+Route::get('/edit_clinical_finding/{id}', [SubMainController::class, 'edit_clinical_finding']);
+Route::put('/update_clinical_finding', [SubMainController::class, 'update_clinical_finding'])->name('update_clinical_finding');
+Route::post('/treatment_plan', [SubMainController::class, 'treatment_plan'])->name('treatment_plan');
+Route::get('/edit_treatment_plan/{id}', [SubMainController::class, 'edit_treatment_plan']);
+Route::put('/update_treatment_plan', [SubMainController::class, 'update_treatment_plan'])->name('update_treatment_plan');
+
+
 
 
 

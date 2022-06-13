@@ -680,14 +680,15 @@
                                                     <i class="fa-solid fa-xmark" id="close-btn"></i>
                                                 </div>
                                             </div>
-                                            
-                                            
-                                            
                                         </div> 
                                         <h5 class="d-flex justify-content-between">C/C Chief Complaint 
                                             <div>
-                                                <i class="bi bi-plus-circle"></i>
-                                                <i class="bi bi-card-list"></i>
+                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Chief_Complaint_Add" >
+                                                    <i class="bi bi-plus-circle"></i>
+                                                </a>
+                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Chief_Complaint" >
+                                                    <i class="bi bi-card-list"></i>
+                                                </a>
                                             </div>
                                         </h5>
                                         <select class="form-control custom-form-control multi" name="pc_c[]" aria-label="Default select example" multiple style="width:100%;">
@@ -707,8 +708,12 @@
                                         </ul>
                                         <h5 class="d-flex justify-content-between">C/F Clinical Findings
                                             <div>
-                                                <i class="bi bi-plus-circle"></i>
-                                                <i class="bi bi-card-list"></i>
+                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Clinical_Finding_Add" >
+                                                    <i class="bi bi-plus-circle"></i>
+                                                </a>
+                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Clinical_Findings" >
+                                                    <i class="bi bi-card-list"></i>
+                                                </a>
                                             </div>
                                         </h5>
                                         <select class="form-control custom-form-control multi" name="pc_f[]" aria-label="Default select example" multiple style="width:100%;">
@@ -727,16 +732,18 @@
                                             <li>Check-up</li>
                                         </ul>
                                         <h5 class="d-flex justify-content-between">Investigation
-                                            <div>
+                                            <!-- <div>
                                                 <i class="bi bi-plus-circle"></i>
-                                                <i class="bi bi-card-list"></i>
-                                            </div>
+                                                <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#Chief_Complaint" >
+                                                    <i class="bi bi-card-list"></i>
+                                                </a>
+                                            </div> -->
                                         </h5>
-                                        <select class="form-control custom-form-control multi" aria-label="Default select example" multiple style="width:100%;">
+                                        <select class="form-control custom-form-control multi" name="p_investigation[]" aria-label="Default select example" multiple style="width:100%;">
                                             <option >Open this select menu</option>
-                                            <option value="1">X-ray</option>
-                                            <option value="2">OPG</option>
-                                            <option value="3">CBCT</option>
+                                            <option value="X-ray">X-ray</option>
+                                            <option value="OPG">OPG</option>
+                                            <option value="CBCT">CBCT</option>
                                         </select>
                                         <ul>
                                             <li>X-ray</li>
@@ -746,8 +753,12 @@
 
                                         <h5 class="d-flex justify-content-between">T/P Treatment Plans
                                             <div>
-                                                <i class="bi bi-plus-circle"></i>
-                                                <i class="bi bi-card-list"></i>
+                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Plan_Add" >
+                                                    <i class="bi bi-plus-circle"></i>
+                                                </a>
+                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Plans" >
+                                                    <i class="bi bi-card-list"></i>
+                                                </a>
                                             </div>
                                         </h5>
                                         <select class="form-control custom-form-control multi" name="pt_p[]" aria-label="Default select example" style="width:100%;">
@@ -900,7 +911,349 @@
     </div>
     <!-- footer end-->
 
- 
+ <!-- Modal For C/C Chief Complaint List -->
+ <div class="modal fade " id="Chief_Complaint" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    C/C Chief Complaint List
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <!-- C/C Chief Complaint List-->
+                <table class="table table-bordered mt-4 text-center">
+                    <thead>
+                        <tr>
+                            <th class="">Serial No</th>
+                            <th class="">Chief Complaints</th>
+                            <th class="">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($lc_cs as $key=>$lcc)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$lcc->name}}</td>
+                            <td class="d-flex justify-content-around">
+                                <button type="button" class="crud-btns CC_editbtn" href="" value="{{$lcc->id}}" >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <!--C/C Chief Complaint list end -->
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+ <!-- Modal For C/C Chief Complaint Add -->
+ <div class="modal fade " id="Chief_Complaint_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Add Chief Complaint 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('chief_complaint')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" placeholder="Enter New Chief Complaint" name="cc_name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-black">Confirm</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+ <!-- Modal For C/C Chief Complaint update -->
+ <div class="modal fade " id="Chief_Complaint_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Edit Chief Complaint 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('update_chief_complaint')}}" method="post">
+                    @csrf
+                    @method('PUT')
+
+                    <input type="hidden" id="CCId" name="c_c_id"/>
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" id="c_c_name" placeholder="Enter New Chief Complaint" name="cc_name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-black">Update</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+
+ <!-- Modal For C/F Clinical Findings List -->
+ <div class="modal fade " id="Clinical_Findings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    C/F Clinical Findings List
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <!-- C/C Chief Complaint List-->
+                <table class="table table-bordered mt-4 text-center">
+                    <thead>
+                        <tr>
+                            <th class="">Serial No</th>
+                            <th class="">Clinical Findings</th>
+                            <th class="">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($lc_fs as $key=>$lcf)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$lcf->name}}</td>
+                            <td class="d-flex justify-content-around">
+                                <button class="crud-btns CF_editbtn" href="" value= "{{$lcf->id}}" >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <!--C/C Chief Complaint list end -->
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+  <!-- Modal For C/F Clinical Findings Add -->
+  <div class="modal fade " id="Clinical_Finding_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Add Clinical Finding 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('clinical_finding')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" placeholder="Enter New Clinical Finding" name="cf_name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-black">Confirm</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+  <!-- Modal For C/F Clinical Findings update -->
+  <div class="modal fade " id="Clinical_Finding_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Edit  Clinical Finding 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('update_clinical_finding')}}" method="post">
+                    @csrf
+                    @method('PUT')
+
+                    <input type="hidden" id="CFId" name="c_f_id"/>
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" id="c_f_name" placeholder="Enter New Clinical Finding" name="cf_name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-black">Update</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+ <!-- Modal For T/P Treatment Plans List -->
+ <div class="modal fade " id="Treatment_Plans" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    T/P Treatment Plans List
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <!-- C/C Chief Complaint List-->
+                <table class="table table-bordered mt-4 text-center">
+                    <thead>
+                        <tr>
+                            <th class="">Serial No</th>
+                            <th class="">Treatment Plans</th>
+                            <th class="">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($lt_ps as $key=>$ltp)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$ltp->name}}</td>
+                            <td class="d-flex justify-content-around">
+                                <button class="crud-btns TP_editbtn" href="" value="{{$ltp->id}}" >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <!--C/C Chief Complaint list end -->
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+ <!-- Modal For T/P Treatment Plans Add -->
+   <div class="modal fade " id="Treatment_Plan_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Add Treatment Plan 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('treatment_plan')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" placeholder="Enter New Treatment Plan" name="tp_name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-black">Confirm</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+    </div>
+ <!-- Modal end -->
+   <!-- Modal For T/P Treatment Plans update -->
+   <div class="modal fade " id="Treatment_Plan_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Edit  Treatment Plan 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('update_treatment_plan')}}" method="post">
+                    @csrf
+                    @method('PUT')
+
+                    <input type="hidden" id="TPId" name="t_p_id"/>
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" id="t_p_name" placeholder="Enter New Clinical Finding" name="tp_name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-black">Update</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
 
 
 
@@ -920,6 +1273,62 @@
             // maximumSelectionLength: 2
         });
     </script>
+
+    <script>
+        // script for C/C Chief Complaint update
+        $(document).ready(function(){
+            $(document).on('click', '.CC_editbtn',function(){
+                var cc_id = $(this).val();
+                // alert(edit);
+                $("#Chief_Complaint_Update").modal('show');
+                $.ajax({
+                    type:"GET",
+                    url: "/edit_chief_complaint/"+cc_id,
+                    success: function(response){
+                        // console.log(response.cc.name);
+                        $('#CCId').val(cc_id);
+                        $('#c_c_name').val(response.cc.name);
+                    }
+                });
+            });
+        });
+        // script for C/F Clinical Findings
+        $(document).ready(function(){
+            $(document).on('click', '.CF_editbtn',function(){
+                var cf_id = $(this).val();
+                // alert(cf_id);
+                $("#Clinical_Finding_Update").modal('show');
+                $.ajax({
+                    type:"GET",
+                    url: "/edit_clinical_finding/"+cf_id,
+                    success: function(response){
+                        // console.log(response);
+                        $('#CFId').val(cf_id);
+                        $('#c_f_name').val(response.cf.name);
+                    }
+                });
+            });
+        });
+
+        // script for T/P Treatment Plans
+        $(document).ready(function(){
+            $(document).on('click', '.TP_editbtn',function(){
+                var tp_id = $(this).val();
+                alert(tp_id);
+                $("#Treatment_Plan_Update").modal('show');
+                $.ajax({
+                    type:"GET",
+                    url: "/edit_treatment_plan/"+tp_id,
+                    success: function(response){
+                        // console.log(response);
+                        $('#TPId').val(tp_id);
+                        $('#t_p_name').val(response.tp.name);
+                    }
+                });
+            });
+        });
+    </script>
+
 
 
 

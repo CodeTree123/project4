@@ -8,7 +8,7 @@ use App\Models\chife_complaint;
 use App\Models\clinical_finding;
 use App\Models\treatment_plan;
 use App\Models\treatment_info;
-use App\Models\prescription;
+use App\Models\drugs;
 use Illuminate\Http\Request;
 use Session;
 
@@ -121,10 +121,13 @@ class MainController extends Controller
         $doctor_info=doctor::where('id','=',$d_id)->first();
         $patient=patient_infos::findOrFail($p_id);
         $c_cs = chife_complaint::all();
+        $lc_cs = chife_complaint::orderBy('id','desc')->get();
         $c_fs = clinical_finding::all();
+        $lc_fs = clinical_finding::orderBy('id','desc')->get();
         $t_ps = treatment_plan::all();
+        $lt_ps = treatment_plan::orderBy('id','desc')->get();
         $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
-        return view('view_patient',compact('doctor_info','patient','c_cs','c_fs','t_ps','treatment_infos'));
+        return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','treatment_infos'));
     }
 
     public function treatment_info(Request $request,$p_id){
@@ -134,6 +137,9 @@ class MainController extends Controller
         $pc_f = $request->pc_f;
         $pc_f = implode(',',$pc_f);
         // dd($pc_f);
+        $investigation = $request->p_investigation;
+        $investigation = implode(',',$investigation);
+        // dd($investigation);
         $pt_p = $request->pt_p;
         $pt_p = implode(',',$pt_p);
         // dd($pt_p);
@@ -145,6 +151,7 @@ class MainController extends Controller
         $treatment_info->tooth_side = $request->tooth_side;
         $treatment_info->chife_complaints = $pc_c;
         $treatment_info->clinical_findings = $pc_f;
+        $treatment_info->investigation = $investigation;
         $treatment_info->treatment_plans = $pt_p;
         $res = $treatment_info->save();
 
@@ -168,48 +175,84 @@ class MainController extends Controller
 
     }
     public function prescription($d_id,$p_id){
+
+        $ldate = date('d-m-Y');
+        // dd($ldate);
         
         $doctor_info=doctor::where('id','=',$d_id)->first();
         $patient=patient_infos::findOrFail($p_id);
 
-        $treatment_info = treatment_info::where('p_id','like',$p_id)->first();
+        $treatment_info = treatment_info::where('p_id','=',$p_id)->first();
+        $tooth_no = $treatment_info->tooth_no;
+        // dd($tooth_no);
         $pc_c=$treatment_info->chife_complaints;
         $pc_f=$treatment_info->clinical_findings;
         $pt_p=$treatment_info->treatment_plans;
+        $investigations = $treatment_info->investigation;
         $pc_c = explode(',',$pc_c);
         $pc_f = explode(',',$pc_f);
         $pt_p = explode(',',$pt_p);
-        $drugs = prescription::where('p_id','=',$p_id)->get();
+        $investigations = explode(',',$investigations);
         $t_id=$treatment_info->id;
         $t_plans=$treatment_info->treatment_plans;
-        // dd($drugs->all());
 
-        return view('prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','drugs','t_id','t_plans'));
+        // $drugs = drugs::where('p_id','=',$p_id)->get();
+        $drug_ids = drugs::where('p_id','=',$p_id)->where('date','=',$ldate)->get('id');
+        $drugs = drugs::find($drug_ids);
+        foreach($drug_ids as $drug_id){
+            $drug_id_list[]=$drug_id->id;
+        }
+        $drug_id_list = implode(',',$drug_id_list);
 
-        // return view('treatmentplans');
-        // $d = prescription::where('p_id','=',$p_id)->first();
-        // dd($drug->id);
-
+        return view('prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','investigations','drugs','t_id','t_plans','tooth_no','drug_id_list'));
     }
 
     public function add_drug(Request $request,$d_id,$p_id){
-
+        // dd($request->date);
         $treatment_info = treatment_info::where('p_id','like',$p_id)->first();
         $t_id = $treatment_info->id;
         // dd($t_id);
         
-        $prescription = new prescription();
-        $prescription->d_id = $d_id;
-        $prescription->p_id = $p_id;
-        $prescription->t_id = $t_id;
-        $prescription->drug = $request->drug;
-        $prescription->drug_time = $request->drug_time;
-        $prescription->meal_time = $request->meal_time;
-        $prescription->duration = $request->duration;
-        // $prescription->duration = $request->duration;
-        $res = $prescription->save();
+        $drugs = new drugs();
+        $drugs->d_id = $d_id;
+        $drugs->p_id = $p_id;
+        $drugs->t_id = $t_id;
+        $drugs->drug_name = $request->drug_name;
+        $drugs->drug_time = $request->drug_time;
+        $drugs->meal_time = $request->meal_time;
+        $drugs->duration = $request->duration;
+        $drugs->date = $request->date;
+        $res = $drugs->save();
         return redirect()->route('prescription',[$d_id,$p_id]);
         // return "hello";
+    }
+
+    public function edit_drug($id){
+        $drugInfo = drugs::find($id);
+        return response()->json([
+            'status'=>200,
+            'di' => $drugInfo,
+        ]);
+    }
+
+    public function update_drug(Request $request){
+        $drug_id = $request->drug_id;
+        // dd($drug_id);
+        $drug_info = drugs::find($drug_id);
+        $drug_info->drug_name = $request->drug_name;
+        $drug_info->drug_time = $request->drug_time;
+        $drug_info->meal_time = $request->meal_time;
+        $drug_info->duration = $request->duration;
+        $res = $drug_info->update();
+        return back();
+    }
+
+    public function delete_drug(Request $request){
+        $del_drug_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_drug_info = drugs::find($del_drug_id);
+        $del_drug_info->delete();
+        return back();
     }
 
 

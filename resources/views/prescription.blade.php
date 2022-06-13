@@ -65,7 +65,7 @@
                         <tr class=" ">
                             <td class=""><span class="title">Name : {{$patient->name}}</span> <span class="value pres_pt_name"></span></td>
                             <td class=""><span class="title">Age : {{$patient->age}}</span> <span class="value pres_pt_age"></span></td>
-                            <td class=""><span class="title">Date :</span> <span class="value pres_pt_date"></span></td>
+                            <td class=""><span class="title">Date :{{ date('d-m-Y') }}</span> <span class="value pres_pt_date"></span></td>
                         </tr>
                         <tr class="">
                             <td class="  "><span class="title">Mobile : {{$patient->mobile}}</span> <span class="value pres_pt_mobile"></span></td>
@@ -93,7 +93,7 @@
                                     </ol> 
                                     <table class="tb" >
                                         <tr class="tr-1">
-                                            <th class="top-left" id="tl">12 </th>
+                                            <th class="top-left" id="tl">{{$tooth_no}} </th>
                                             <th class="top-right" id="tr">23  </th> 
                                         </tr>
                                         <tr class="tr-2">
@@ -150,8 +150,9 @@
                                 <div class="complain d-flex justify-content-between align-items-center">
 
                                     <ol class="ms-5">
-                                        <li>pain</li>
-                                        <li>more pain</li>
+                                        @foreach($investigations as $investigation)
+                                        <li>{{$investigation}}</li>
+                                        @endforeach
                                     </ol> 
                                     <table >
                                         <tr class="tr-1">
@@ -259,10 +260,14 @@
                                         <li>
                                             <div class="d-flex justify-content-between">
                                                 <div class="align-self-center">
-                                                    <p class="drug-name">{{$drug->drug}}</p>
+                                                    <p class="drug-name">{{$drug->drug_name}}</p>
                                                 </div>
                                                 <div class="align-self-center">
-                                                    <button type="button" class="btn btn-sm p-o edit-drug"><i class="bi bi-pencil-square text-primary"></i></button>
+                                                    <button type="button" class="btn btn-sm p-o edit_drug" value="{{$drug->id}}">
+                                                        <i class="bi bi-pencil-square text-primary"></i></button>
+                                                        <button class="crud-btns delete-drug" href="#" value="{{$drug->id}}">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
                                                 </div>
                                             </div>
                                             <P class="qty">{{$drug->drug_time}} [ {{$drug->duration}} day(s) ] {{$drug->meal_time}} </P>
@@ -272,8 +277,8 @@
                                 </div>
                                
                                 <button type="button" class="btn btn-sm btn-primary addDrug" data-bs-toggle="modal"
-                                        data-bs-target="#drug" id="drugBtn">Add
-                                    Drug</button>
+                                        data-bs-target="#drug" id="drugBtn">Add Drug
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -301,9 +306,8 @@
         
             Preview
         </button>
-        <button type="button" class="btn btn-primary submitPrescription-btn px-2 " id="submitPrescription">
-        
-            Submit <br> Prescription
+        <button type="button" class="btn btn-primary submitPrescription-btn px-2 "  data-bs-toggle="modal"
+         data-bs-target="#p_submit" id="submitPrescription">Submit <br> Prescription
         </button>
     </div>
 </main>
@@ -374,7 +378,7 @@
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3 drug-name">
-                        <input class="form-control" list="list" placeholder="Drug name-brand/generic" name="drug">
+                        <input class="form-control" list="list" placeholder="Drug name-brand/generic" name="drug_name">
                         <datalist id="list" class="allGrugList">
 
                         </datalist>
@@ -399,6 +403,7 @@
                                     <option>Duration</option>
                                 </select>
                             </div>
+                            <input type="hidden" name="date" value="{{ date('d-m-Y') }}">
                         </div>
                     </div>
                 </div>
@@ -411,22 +416,22 @@
     </div>
 </div>
 <!-- Prescription update Modal--> 
-<div class="modal fade" id="prescriptionModal">
+<div class="modal fade" id="editDrug">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <form action="#">
+            <form action="{{route('update_drug')}}" method="post">
+            @csrf
+            @method('PUT')
                 <div class="modal-body">
+                    <input type="hidden" id="drug-id" name="drug_id">
                     <div class="mb-3 drug-name">
-                        <input class="form-control" list="list" placeholder="Drug name-brand/generic">
-                        <datalist id="list" class="allGrugList">
-
-                        </datalist>
+                        <input class="form-control" list="list" id="drug-name" placeholder="Drug name-brand/generic" name="drug_name">
                     </div>
                     <div class="mb-3 drug-time">
-                        <input type="text" class="form-control" placeholder="Timing" value="1+0+1">
+                        <input type="text" class="form-control" id="drug-time"  placeholder="Timing" value="1+0+1" name="drug_time">
                     </div>
-                    <div class="mb-3 drug-meal-time">
-                        <select class="form-select">
+                    <div class="mb-3 drug-meal-time" >
+                        <select class="form-select" name="meal_time" id="meal-time">
                             <option>Before Meal</option>
                             <option>After Meal</option>
                         </select>
@@ -434,14 +439,15 @@
                     <div class="mb-3 drug-duration">
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Duration/Days" value="1">
+                                <input type="text" class="form-control" placeholder="Duration/Days" value="" name="duration" id="duration">
                             </div>
                             <div class="col">
-                                <select class="form-select">
+                                <select class="form-select" >
                                     <option>Day(s)</option>
                                     <option>Duration</option>
                                 </select>
                             </div>
+                            <!-- <input type="hidden" name="date" value="{{ date('d-m-Y') }}"> -->
                         </div>
                     </div>
                 </div>
@@ -453,6 +459,54 @@
         </div>
     </div>
 </div> 
+
+<!-- Modal For Delete Drugs Information-->
+<div class="modal fade " id="del-drug" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Delete Drugs Information
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('delete_drug')}}" method="POST" >
+                    @csrf
+                    @method('delete')
+                    <div class="mb-3 text-center">
+                        <h5 class="text-danger">Are You Sure to Delete The information?</h5>
+                    </div>
+                    <input type="hidden" id="del-drug-id" name="deletingId">
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                    <!-- Modal Footer end -->
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+</div>
+<!-- Modal end -->
+<!-- test modal -->
+<div class="modal fade" id="p_submit">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <form action="#">
+                <div class="modal-content">
+                    <h4>R u sure to submit this prescription.</h4>
+                    <input type="text" value="{{$drug_id_list}}">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script src="{{asset ('assets/js/jquery-1.12.4.js')}}"></script>
 <script src="{{asset ('assets/js/popper.min.js')}}"></script>
 <script src="{{asset ('assets/js/bootstrap.min.js')}}"></script>
@@ -469,6 +523,37 @@
 <script src="{{asset ('assets/js/prescription_app.js')}}"></script>
 
 <script src="{{asset ('assets/js/prescription.js')}}"></script>
+
+<script>
+    $(document).ready(function(){
+
+        $(document).on('click', '.edit_drug',function(){
+            var drug_id = $(this).val();
+            // alert(drug_id);
+            $("#editDrug").modal('show');
+            $.ajax({
+                    type:"GET",
+                    url: "/edit_drug/"+drug_id,
+                    success: function(response){
+                        console.log(response);
+                        $('#drug-id').val(drug_id);
+                        $('#drug-name').val(response.di.drug_name);
+                        $('#drug-time').val(response.di.drug_time);
+                        $('#meal-time').val(response.di.meal_time);
+                        $('#duration').val(response.di.duration);
+                    }
+                });
+        });
+
+        $(document).on('click', '.delete-drug',function(){
+            var deleteDrugId = $(this).val();
+            // alert(drug_id);
+            $("#del-drug").modal('show');
+            $('#del-drug-id').val(deleteDrugId);
+        });
+
+    });
+</script>
  
 
 </body>

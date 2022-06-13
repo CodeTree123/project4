@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('tooth_side')->nullable();
             $table->string('chife_complaints')->nullable();
             $table->string('clinical_findings')->nullable();
+            $table->string('investigation')->nullable();
             $table->string('treatment_plans')->nullable();
             $table->timestamps();
         });
