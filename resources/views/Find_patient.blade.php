@@ -466,8 +466,8 @@
                                         @method('delete')
                                         @csrf
                                         
-                                        <div class="mb-3">
-                                            <h3>Are You Sure to Delete The information</h3>
+                                        <div class="mb-3 text-center">
+                                            <h5 class="text-danger">Are You Sure to Delete The information</h5>
                                         </div>
                                         
                                         <!-- Modal Footer -->
