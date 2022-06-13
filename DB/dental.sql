@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2022 at 08:13 AM
+-- Generation Time: Jun 14, 2022 at 12:34 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -76,7 +76,8 @@ INSERT INTO `chife_complaints` (`id`, `name`) VALUES
 (37, 'Want to fill the decayed tooth'),
 (38, 'Want to replace the missing tooth'),
 (39, 'Want to wear clip'),
-(40, 'Wants to remove the tooth');
+(40, 'Wants to remove the tooth'),
+(41, 'Helloei');
 
 -- --------------------------------------------------------
 
@@ -138,7 +139,8 @@ INSERT INTO `clinical_findings` (`id`, `name`) VALUES
 (42, 'Sealer'),
 (43, 'Sensitivity'),
 (44, 'Severe Mobility'),
-(45, 'Spacing/Crowding');
+(45, 'Spacing/Crowding'),
+(46, 'helloesi');
 
 -- --------------------------------------------------------
 
@@ -169,6 +171,35 @@ INSERT INTO `doctors` (`id`, `name`, `email`, `password`, `BMDC`, `chemner_name`
 (5, 'maha', 'maha@gmail.com', '1234', '98y348', 'hjaosrijhfg', 'wkjehbrffiuw', '28409814', NULL, '2022-06-02 04:55:24', '2022-06-02 06:23:52'),
 (6, 'ami', 'mai@ami.com', '1234', '5600', 'Uttara', 'uttara', '01987654321', NULL, '2022-06-05 03:56:06', '2022-06-05 03:57:38'),
 (7, 'dads', 'sa@sad.com', '1234', NULL, NULL, NULL, NULL, NULL, '2022-06-06 03:36:00', '2022-06-06 03:36:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drugs`
+--
+
+CREATE TABLE `drugs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `d_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `p_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `t_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `drug_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `drug_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meal_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `duration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `drugs`
+--
+
+INSERT INTO `drugs` (`id`, `d_id`, `p_id`, `t_id`, `drug_name`, `drug_time`, `meal_time`, `duration`, `date`, `created_at`, `updated_at`) VALUES
+(1, '1', '1', '1', 'napas', '1+1+1', 'After Meal', '1', '14-06-2022', '2022-06-13 20:45:03', '2022-06-13 21:51:52'),
+(2, '1', '1', '1', 'Flox', '1+0+1', 'Before Meal', '7', '14-06-2022', '2022-06-13 21:02:44', '2022-06-13 21:02:44'),
+(3, '1', '1', '1', 'gose', '1+0+1', 'Before Meal', '1', '14-06-2022', '2022-06-13 21:22:30', '2022-06-13 21:22:30');
 
 -- --------------------------------------------------------
 
@@ -214,7 +245,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2022_06_04_131646_create_treatment_infos_table', 6),
 (11, '2022_06_04_143529_create_treatment_infos_table', 7),
 (12, '2022_06_04_162845_create_treatment_infos_table', 8),
-(13, '2022_06_09_060129_create_prescriptions_table', 9);
+(13, '2022_06_09_060129_create_prescriptions_table', 9),
+(14, '2022_06_08_194035_create_prescriptions_table', 10),
+(15, '2022_06_13_135839_create_treatment_infos_table', 10),
+(17, '2022_06_13_201818_create_drugs_table', 11);
 
 -- --------------------------------------------------------
 
@@ -264,7 +298,7 @@ CREATE TABLE `patient_infos` (
 --
 
 INSERT INTO `patient_infos` (`id`, `name`, `age`, `mobile`, `gender`, `Blood_group`, `date`, `occupation`, `address`, `email`, `image`, `bp_high`, `bp_low`, `Bleeding_disorder`, `Heart_Disease`, `Allergy`, `Diabetic`, `Pregnant`, `Helpatics`, `other`, `created_at`, `updated_at`) VALUES
-(1, 'Mahadi', '30', '01938984203', 'Male', 'AB+', '1998-03-12', 'job', 'uttara', 'mah@ma.com', '', '110', '80', 'no', 'no', 'no', 'no', 'no', 'no', NULL, '2022-06-04 05:41:05', '2022-06-09 00:04:23'),
+(1, 'Mahadi', '30', '01938984203', 'Male', 'AB+', '1998-03-12', 'student', 'uttara', 'mah@ma.com', '', '110', '80', 'no', 'no', 'no', 'no', 'no', 'no', NULL, '2022-06-04 05:41:05', '2022-06-13 07:53:01'),
 (2, 'test', '30', '01674746453', 'Male', 'ab-', '2014-03-29', 'job', NULL, NULL, '', '100', '80', 'no', 'yes', 'yes', 'no', 'no', 'yes', NULL, '2022-06-04 09:22:09', '2022-06-05 01:29:40'),
 (3, 'mahadi', '25', '01787654321', 'Male', 'ab-', '2020-02-11', 'job', 'uttara', NULL, '', '120', '80', 'no', 'yes', 'yes', 'yes', 'yes', 'no', NULL, '2022-06-05 03:58:50', '2022-06-05 03:59:44');
 
@@ -289,33 +323,6 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prescriptions`
---
-
-CREATE TABLE `prescriptions` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `d_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `p_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `t_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `drug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `drug_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meal_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `duration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `prescriptions`
---
-
-INSERT INTO `prescriptions` (`id`, `d_id`, `p_id`, `t_id`, `drug`, `drug_time`, `meal_time`, `duration`, `date`, `created_at`, `updated_at`) VALUES
-(1, '1', '1', '1', 'Napa', '1+0+1', 'Before Meal', '1', NULL, '2022-06-09 00:05:16', '2022-06-09 00:05:16');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `treatment_infos`
 --
 
@@ -327,6 +334,7 @@ CREATE TABLE `treatment_infos` (
   `tooth_side` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `chife_complaints` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `clinical_findings` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `investigation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `treatment_plans` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -336,16 +344,8 @@ CREATE TABLE `treatment_infos` (
 -- Dumping data for table `treatment_infos`
 --
 
-INSERT INTO `treatment_infos` (`id`, `p_id`, `tooth_type`, `tooth_no`, `tooth_side`, `chife_complaints`, `clinical_findings`, `treatment_plans`, `created_at`, `updated_at`) VALUES
-(1, '1', NULL, '38', 'Lower Right', 'Bad breath,Bad smell', 'Alveolar Bone Loss', 'Restoration', '2022-06-04 10:52:42', '2022-06-04 10:52:42'),
-(2, '1', 'Permanent Teeth', '18', 'Upper Right', 'Broken filling', 'Aesthetic', 'Pulpectomy', '2022-06-04 10:59:24', '2022-06-04 10:59:24'),
-(3, '1', 'Permanent Teeth', '17', 'Upper Right', 'Burning sensation,Pain in the gum,Tooth filling', 'Cracked Tooth Syndrome,Impaction', 'Scaling', '2022-06-04 14:53:04', '2022-06-04 14:53:04'),
-(4, '2', 'Permanent Teeth', '15', 'Upper Right', 'Bad smell,Pain,Pain in the gum', 'Abscess,Alveolar Bone Loss', 'Restoration', '2022-06-05 01:31:10', '2022-06-05 01:31:10'),
-(5, '2', NULL, '44', 'Lower Left', 'Bad smell', 'Apexification', 'Polishing', '2022-06-05 01:32:12', '2022-06-05 01:32:12'),
-(6, '2', 'Permanent Teeth', '16', 'Upper Right', 'Broken filling', 'Abscess', 'Restoration', '2022-06-05 01:34:41', '2022-06-05 01:34:41'),
-(7, '2', NULL, '13', 'Upper Right', 'Bleeding gum,Broken filling', 'Aesthetic', 'Restoration', '2022-06-05 01:35:14', '2022-06-05 01:35:14'),
-(8, '3', 'Permanent Teeth', '21', 'Upper Left', 'Discomfort,Pain', 'Aesthetic,Apexification', 'Restoration', '2022-06-05 04:02:26', '2022-06-05 04:02:26'),
-(9, '3', NULL, '26', 'Upper Left', 'Bad breath', 'Fracutured Tooth/Root', 'Scaling', '2022-06-05 04:03:13', '2022-06-05 04:03:13');
+INSERT INTO `treatment_infos` (`id`, `p_id`, `tooth_type`, `tooth_no`, `tooth_side`, `chife_complaints`, `clinical_findings`, `investigation`, `treatment_plans`, `created_at`, `updated_at`) VALUES
+(1, '1', 'Permanent Teeth', '18', 'Upper Right', 'Bad smell', 'Aesthetic', 'X-ray,OPG', 'Restoration', '2022-06-13 08:08:32', '2022-06-13 08:08:32');
 
 -- --------------------------------------------------------
 
@@ -375,7 +375,8 @@ INSERT INTO `treatment_plans` (`id`, `name`) VALUES
 (10, 'Scaling'),
 (11, 'Apisectomy'),
 (12, 'Abscess Drainage'),
-(13, 'Orthodontic Tratment');
+(13, 'Orthodontic Tratment'),
+(14, 'helloeas');
 
 -- --------------------------------------------------------
 
@@ -418,6 +419,12 @@ ALTER TABLE `doctors`
   ADD UNIQUE KEY `doctors_email_unique` (`email`);
 
 --
+-- Indexes for table `drugs`
+--
+ALTER TABLE `drugs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -451,12 +458,6 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `prescriptions`
---
-ALTER TABLE `prescriptions`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `treatment_infos`
 --
 ALTER TABLE `treatment_infos`
@@ -483,19 +484,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chife_complaints`
 --
 ALTER TABLE `chife_complaints`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `clinical_findings`
 --
 ALTER TABLE `clinical_findings`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `drugs`
+--
+ALTER TABLE `drugs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -507,7 +514,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `patient_infos`
@@ -522,22 +529,16 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `prescriptions`
---
-ALTER TABLE `prescriptions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `treatment_infos`
 --
 ALTER TABLE `treatment_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `treatment_plans`
 --
 ALTER TABLE `treatment_plans`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
