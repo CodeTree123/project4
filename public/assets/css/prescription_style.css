@@ -500,6 +500,18 @@ Prescription
   background: #060606;
   min-width: 200px;
 }
+.print-btn{
+  position: fixed;
+  top: 20%;
+  left: 0;
+  border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  -moz-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
 
 .preview-btn {
   position: fixed;
@@ -516,6 +528,19 @@ Prescription
 .back-btn {
   position: fixed;
   top: 35%;
+  left: 0;
+  border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  -moz-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.submitPrescription-btn{
+  word-wrap: break-word;
+  position: fixed;
+  top: 65%;
   left: 0;
   border-radius: 0 5px 5px 0;
   -webkit-border-radius: 0 5px 5px 0;
@@ -562,6 +587,28 @@ Prescription
   top: 0;
   right: 10px;
 }
+
+table,th,td { 
+  border-collapse: collapse;
+  color: #000000;
+}
+.top-left{
+border-right:1px solid black;
+border-bottom:1px solid black;
+}
+.top-right{
+border-left:1px solid black;
+border-bottom:1px solid black;
+}
+.bottom-left{
+border-right:1px solid black;
+border-top:1px solid black;
+}
+.bottom-right{
+border-left:1px solid black;
+border-top:1px solid black;
+}
+ 
 
 /*--------------------------------------------------------------------
 Responsive

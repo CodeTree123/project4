@@ -27,32 +27,7 @@
         <section class="prescription-header">
             <div class="container">
                 <div class="d-flex justify-content-between">
-                        <div class="mb-3"> 
-                            <button class="btn btn-dark" onclick="printpage()" id="printpagebutton"> 
-                                <i class="fa-solid fa-print"></i>
-                                Print
-                            </button> 
-                        </div>
-                    <!-- <div class="mb-3">
-                        <h2 class="docname"></h2>
-                        <ul class="list-unstyled">
-                            <li>
-                                <p class="bmdcnum"></p>
-                            </li>
-                            <li>
-                                <h4 class="deg1"></h4>
-                            </li>
-                            <li>
-                                <p class="deg2"></p>
-                            </li>
-                            <li>
-                                <p class="DGR"></p>
-                            </li>
-                            <li>
-                                <h3></h3>
-                            </li>
-                        </ul>
-                    </div> -->
+                        
                     <div class="mb-3">
                         <div class="mb-2 qrcode" >
 
@@ -110,44 +85,87 @@
                         <div class="left">
                             <div class="single cc">
                                 <h2>C/C:</h2>
-                                <div class="complain">
+                                <div class="complain d-flex justify-content-between align-items-center">
                                     <ol class="ms-5">
                                         @foreach($pc_c as $c_c)
                                                 <li>{{$c_c}}</li>
                                         @endforeach
-                                    </ol>
+                                    </ol> 
+                                    <table class="tb" >
+                                        <tr class="tr-1">
+                                            <th class="top-left" id="tl">12 </th>
+                                            <th class="top-right" id="tr">23  </th> 
+                                        </tr>
+                                        <tr class="tr-2">
+                                            <th class="bottom-left" id="bl">  12</th>
+                                            <th class="bottom-right" id="br"> 23</th> 
+                                        </tr> 
+                                        </table> 
                                 </div> 
                             </div>
                             <div class="single oe">
                                 <h2>O/E:</h2>
-                                <div class="complain">
+                                <div class="complain d-flex justify-content-between align-items-center">
+
                                     <ol class="ms-5">
                                         @foreach($pc_f as $c_f)
                                             <li>{{$c_f}}</li>
                                         @endforeach
-                                    </ol>
+                                    </ol> 
+                                    <table >
+                                        <tr class="tr-1">
+                                            <th class="top-left">18</th>
+                                            <th class="top-right">27</th> 
+                                        </tr>
+                                        <tr class="tr-2">
+                                            <th class="bottom-left">15</th>
+                                            <th class="bottom-right">8</th> 
+                                        </tr> 
+                                        </table> 
                                 </div> 
                             </div>
                             <div class="single tp">
                                 <h2>T/P:</h2>
-                                <div class="complain">
+                                <div class="complain d-flex justify-content-between align-items-center">
+
                                     <ol class="ms-5">
                                         @foreach($pt_p as $t_p)
                                             <li>{{$t_p}}</li>
                                         @endforeach
-                                    </ol>
+                                    </ol> 
+                                    <table >
+                                        <tr class="tr-1">
+                                            <th class="top-left">18</th>
+                                            <th class="top-right">27</th> 
+                                        </tr>
+                                        <tr class="tr-2">
+                                            <th class="bottom-left">15</th>
+                                            <th class="bottom-right">8</th> 
+                                        </tr> 
+                                        </table> 
                                 </div> 
                             </div>
                             <div class="single investigation">
                                 <h2>Investigation:</h2>
-                                <div class="complain">
+                                <div class="complain d-flex justify-content-between align-items-center">
+
                                     <ol class="ms-5">
                                         <li>pain</li>
                                         <li>more pain</li>
-                                    </ol>
+                                    </ol> 
+                                    <table >
+                                        <tr class="tr-1">
+                                            <th class="top-left">18</th>
+                                            <th class="top-right">27</th> 
+                                        </tr>
+                                        <tr class="tr-2">
+                                            <th class="bottom-left">15</th>
+                                            <th class="bottom-right">8</th> 
+                                        </tr> 
+                                        </table> 
                                 </div> 
                             </div>
-                            <div class="single advice">
+                            <div class="single advice mt-5">
                                 <h2>Advice:</h2>
                                 <!-- <div class="complain">
                                 </div> -->
@@ -157,7 +175,7 @@
                                 <textarea type="text" name="" id="" class="complain m-0 ms-5" value="" rows="3" style="width:80%" readonly></textarea>
                             </div>
                         </div>
-                        <div class="timing my-3">
+                        <div class="timing mb-4 d-inline-block float-end">
                             <h6>Schedule Time</h6>
                             <div class="table-responsive">
                                 <table class="table-sm table-bordered">
@@ -171,8 +189,8 @@
                                     <tbody class="doc_time_shc">
                                     <tr>
                                         <td>SAT</td>
-                                        <td class="sat_mon"></td>
-                                        <td class="sat_eve"></td>
+                                        <td class="sat_mon">09:30-10:30 AM</td>
+                                        <td class="sat_eve">09:30-10:30 AM</td>
                                     </tr>
                                     <tr>
                                         <td>SUN</td>
@@ -261,7 +279,18 @@
                     </div>
                 </div>
             </div>
-        </section> 
+        </section>  
+
+      
+        <!-- <div class="logout"><a href="#" class="btn btn-sm btn-danger">Logout</a></div>  -->
+
+    </div>
+    <div>
+    <button class="btn btn-primary print-btn" onclick="printpage()" id="printpagebutton"> 
+            <i class="fa-solid fa-print"></i>
+            Print
+        </button>  
+        
         <button type="button" class="btn btn-primary back-btn " id=" ">
            <a href="{{route('treatments',[$doctor_info->id,$patient->id,$t_id,$t_plans])}}" class="text-white">
             <i class="fa-solid fa-arrow-left-long"></i>
@@ -272,8 +301,10 @@
         
             Preview
         </button>
-        <!-- <div class="logout"><a href="#" class="btn btn-sm btn-danger">Logout</a></div>  -->
-
+        <button type="button" class="btn btn-primary submitPrescription-btn px-2 " id="submitPrescription">
+        
+            Submit <br> Prescription
+        </button>
     </div>
 </main>
 <!-- ========= M O D A L ========= -->

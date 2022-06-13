@@ -298,7 +298,7 @@
                                         <tbody>
                                             <tr>
                                                 <td class="text-danger bg-dark ">Not Done</td>
-                                                <td class="text-warning ">On Going</td>
+                                                <td class="text-info ">On Going</td>
                                                 <td class="text-success ">Done</td>
 
                                             </tr>

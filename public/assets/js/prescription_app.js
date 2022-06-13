@@ -105,4 +105,26 @@ const drugList = document.querySelector('.drug-list ol');
 
 
 
+
+    // tooth coordinate
+    // const topLeft = document.querySelector('.top-left').innerText ;
+    const topLeft = document.querySelector('.top-left') ;
+    topLeft.innerText ="21"
+    const topRight = document.querySelector('.top-right').innerText;
+    const bottomLeft = document.querySelector('.bottom-left').innerText;
+    const bottomRight = document.querySelector('.bottom-right').innerText; 
+
+    console.log(topLeft,topRight,bottomLeft,bottomRight);
+
+    if (topLeft != null) {  
+        document.getElementById("tl").innerText =    topLeft.toString().substr(1);
+        document.getElementById("tr").style.visibility = "hidden"
+        document.getElementById("bl").style.visibility = "hidden"
+        document.getElementById("br").style.visibility = "hidden"
+    }
+    // document.getElementById("tr").style.visibility = "hidden";.substr(2);
+    // document.getElementById("bl").style.visibility = "hidden";
+    // document.getElementById("br").style.visibility = "hidden";
+    
+
  
