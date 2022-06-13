@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prescriptions', function (Blueprint $table) {
+        Schema::create('drugs', function (Blueprint $table) {
             $table->id();
             $table->string('d_id')->nullable();
             $table->string('p_id')->nullable();
             $table->string('t_id')->nullable();
-            $table->string('drug')->nullable();
+            $table->string('drug_name')->nullable();
             $table->string('drug_time')->nullable();
             $table->string('meal_time')->nullable();
             $table->string('duration')->nullable();
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prescriptions');
+        Schema::dropIfExists('drugs');
     }
 };
