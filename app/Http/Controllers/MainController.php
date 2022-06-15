@@ -9,6 +9,8 @@ use App\Models\clinical_finding;
 use App\Models\treatment_plan;
 use App\Models\treatment_info;
 use App\Models\drugs;
+use App\Models\prescription;
+
 use Illuminate\Http\Request;
 use Session;
 
@@ -164,7 +166,20 @@ class MainController extends Controller
         $doctor_info=doctor::where('id','=',$d_id)->first();
         $patient=patient_infos::findOrFail($p_id);
         $treatment_info = treatment_info::where('p_id','like',$p_id)->first();
-        return view('treatmentplans',compact('doctor_info','patient','treatment_info'));
+        $v_prescriptions = prescription::where('p_id','like',$p_id)->get();
+        // dd($v_prescriptions);
+        // foreach($v_prescriptions as $v_prescription){
+        //     // dd($v_prescription);
+        //     $drug_list = $v_prescription->drug_id_list;
+        //     // dd($drug_list);
+        //     $drug_list = explode(',',$drug_list);
+        //     // dd($drug_list);
+        // }
+        // $drugs_infos = drugs::find($drug_list);
+
+        
+        // dd($drugs_info);
+        return view('treatmentplans',compact('doctor_info','patient','treatment_info','v_prescriptions'));
       
             // if($t_plans == 'Restoration'){
             //     return view('treatmentplans',compact('doctor_info','patient','treatment_info'));
@@ -196,15 +211,8 @@ class MainController extends Controller
         $t_id=$treatment_info->id;
         $t_plans=$treatment_info->treatment_plans;
 
-        // $drugs = drugs::where('p_id','=',$p_id)->get();
-        $drug_ids = drugs::where('p_id','=',$p_id)->where('date','=',$ldate)->get('id');
-        $drugs = drugs::find($drug_ids);
-        foreach($drug_ids as $drug_id){
-            $drug_id_list[]=$drug_id->id;
-        }
-        $drug_id_list = implode(',',$drug_id_list);
-
-        return view('prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','investigations','drugs','t_id','t_plans','tooth_no','drug_id_list'));
+        $drugs = drugs::where('p_id','=',$p_id)->where('date','=',$ldate)->get();
+        return view('prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','investigations','drugs','t_id','t_plans','tooth_no'));
     }
 
     public function add_drug(Request $request,$d_id,$p_id){
@@ -253,6 +261,40 @@ class MainController extends Controller
         $del_drug_info = drugs::find($del_drug_id);
         $del_drug_info->delete();
         return back();
+    }
+    
+    public function get_drug_info($p_id){
+        $ldate = date('d-m-Y');
+        $drug_ids = drugs::where('p_id','=',$p_id)->where('date','=',$ldate)->get('id');
+            // $drugs = drugs::find($drug_ids);
+        foreach($drug_ids as $drug_id){
+            $drug_id_list[]=$drug_id->id;
+        }
+        $drug_id_list = implode(',',$drug_id_list);
+        return response()->json([
+            'status'=>200,
+            'drugIds' => $drug_id_list,
+        ]);
+    }
+
+    public function prescription_add(Request $request,$d_id,$t_id,$t_plans){
+        // return "hello";
+        $p_id = $request->patientID;
+        $date = $request->date;
+        $check = prescription::where('p_id','=',$p_id)->where('date','=',$date)->first();
+        if($check){
+            return back()->with('success','Sorry! You already Add this Information.');;
+        }else{
+        $prescription = new prescription();
+        $prescription->d_id = $d_id;
+        $prescription->p_id = $p_id;
+        $prescription->t_id = $t_id;
+        $prescription->t_plan = $t_plans;
+        $prescription->drug_id_list = $request->drugIdList;
+        $prescription->date = $date;
+        $res = $prescription->save();
+        return back();
+        }
     }
 
 

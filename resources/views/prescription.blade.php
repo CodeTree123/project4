@@ -306,8 +306,7 @@
         
             Preview
         </button>
-        <button type="button" class="btn btn-primary submitPrescription-btn px-2 "  data-bs-toggle="modal"
-         data-bs-target="#p_submit" id="submitPrescription">Submit <br> Prescription
+        <button type="button" class="btn btn-primary submitPrescription-btn px-2 submitPrescription" value="{{$patient->id}}">Submit <br> Prescription
         </button>
     </div>
 </main>
@@ -370,7 +369,7 @@
     </div>
 </div>
 
-<!-- Prescription Modal--> 
+<!--Modal For Drug add--> 
 <div class="modal fade" id="drug">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -415,7 +414,7 @@
         </div>
     </div>
 </div>
-<!-- Prescription update Modal--> 
+<!--Modal For Drug update --> 
 <div class="modal fade" id="editDrug">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -498,15 +497,29 @@
 <div class="modal fade" id="p_submit">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <form action="#">
-                <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('prescription_add',[$doctor_info->id,$t_id,$t_plans])}}" method="post">
+                @csrf
                     <h4>R u sure to submit this prescription.</h4>
-                    <input type="text" value="{{$drug_id_list}}">
-                </div>
-            </form>
+                    <input type="text" id="patientID" name="patientID">
+                    <input type="text" id="drugIdList" name="drugIdList">
+                    <input type="text" value="{{ date('d-m-Y') }}" name="date">
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                    <!-- Modal Footer end -->
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+        
 <script src="{{asset ('assets/js/jquery-1.12.4.js')}}"></script>
 <script src="{{asset ('assets/js/popper.min.js')}}"></script>
 <script src="{{asset ('assets/js/bootstrap.min.js')}}"></script>
@@ -552,6 +565,21 @@
             $('#del-drug-id').val(deleteDrugId);
         });
 
+        $(document).on('click', '.submitPrescription',function(){
+            var patient_id = $(this).val();
+            // alert(patient_id);
+            $("#p_submit").modal('show');
+            $.ajax({
+                    type:"GET",
+                    url: "/get_drug_info/"+patient_id,
+                    success: function(response){
+                        console.log(response);
+                        $('#patientID').val(patient_id);
+                        $('#drugIdList').val(response.drugIds);
+                    }
+                });
+        });
+        
     });
 </script>
  

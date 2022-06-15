@@ -362,36 +362,75 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#flush-collapseOne" aria-expanded="false"
                                     aria-controls="flush-collapseOne">
-                                    Notice #1
+                                    Previous Treatment Steps #1
                                 </button>
                             </h2>
                             <div id="flush-collapseOne" class="accordion-collapse collapse"
                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                    accordion body.</div>
+                                <div class="accordion-body">
+                                    <ol>
+                                        <li>Step</li>
+                                    </ol>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="info-box-col p-2 mb-3">
                     <h4 class="d-flex justify-content-center bg-blue-grey custom-border-radius">Previous Prescription</h4>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
+                        @forelse($v_prescriptions as $key=>$v_prescription)
+                        <div class="accordion-item mb-0">
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                                <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                    aria-controls="flush-collapseTwo">
+                                    <p class="me-5">Prescription {{$key + 1}}</p><p class="ms-5">{{$v_prescription->date}}</p>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <h4>Drug List From Prescription</h4>
+                                        @php
+                                            $ds = $v_prescription->drug_id_list;
+                                            $ds = explode(',',$ds);
+                                            $drug_infos = \App\Models\drugs::find($ds);
+                                        @endphp
+                                    <ol class="mt-2">
+                                        @foreach($drug_infos as $drug_info)
+                                        <li>
+                                            <p>
+                                                {{$drug_info->drug_name}}
+                                            </p>
+                                            <p>
+                                                {{$drug_info->drug_time}} [ {{$drug_info->duration}} day(s) ] {{$drug_info->meal_time}}
+                                            </p>
+                                        </li>
+                                        @endforeach
+                                    </ol>
+                                    <a href="" class="btn btn-black">View</a>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#flush-collapseTwo" aria-expanded="false"
                                     aria-controls="flush-collapseTwo">
-                                    Notice #1
+                                    New Patient
                                 </button>
                             </h2>
                             <div id="flush-collapseTwo" class="accordion-collapse collapse"
                                 aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                    accordion body.</div>
+                                <div class="accordion-body">
+                                    <a href="" class="btn btn-black">View</a>
+                                </div>
                             </div>
                         </div>
+                        @endforelse
                     </div>
                 </div>
                 <div class="info-box-col p-2 mb-3">

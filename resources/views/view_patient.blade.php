@@ -29,7 +29,7 @@
             <div class="row align-items-center">
                 <!--logo & title start-->
                 <div class="col-md-5">
-                    <a class="d-flex align-items-center logo" href="{{route('index')}}">
+                    <a class="d-flex align-items-center logo" href="{{route('doctor')}}">
                     <img class="logo" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
 
                         <!-- <h2 class="ms-3 mb-0 logo-title">

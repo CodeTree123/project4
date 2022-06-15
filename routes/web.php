@@ -20,7 +20,7 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('login');
-});
+})->middleware('AfterLogin');
 
 Route::get('/header', [FrontEndController::class, 'header'])->name('header');
 Route::get('/footer', [FrontEndController::class, 'footer'])->name('footer');
@@ -44,10 +44,10 @@ Route::get('/admin_page', [FrontEndController::class, 'admin_page'])->name('admi
 
 // AuthController
 
-Route::get('/registration', [AuthController::class, 'registration'])->name('registration');
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/registration', [AuthController::class, 'registration'])->name('registration')->middleware('AfterLogin');
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('AfterLogin');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/doctor/{id}', [AuthController::class, 'doctor'])->name('doctor');
+Route::get('/doctor', [AuthController::class, 'doctor'])->name('doctor')->middleware('NotLogin');
 Route::post('/login_user', [AuthController::class, 'login_user'])->name('login_user');
 Route::post('/register_user', [AuthController::class, 'register_user'])->name('register_user');
 Route::get('/doctor/profile_edit/{id}', [AuthController::class, 'profile_edit'])->name('profile_edit');
@@ -77,6 +77,9 @@ Route::post('/patient/prescription/drug/{d_id}/{p_id}',[MainController::class,'a
 Route::get('/edit_drug/{id}', [MainController::class, 'edit_drug']);
 Route::put('/update_drug', [MainController::class, 'update_drug'])->name('update_drug');
 Route::delete('/delete_drug', [MainController::class, 'delete_drug'])->name('delete_drug');
+
+Route::get('/get_drug_info/{p_id}', [MainController::class, 'get_drug_info']);
+Route::post('/prescription_add/{d_id}/{t_id}/{t_plans}', [MainController::class, 'prescription_add'])->name('prescription_add'); 
 
 // SubMainController
 
