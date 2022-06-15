@@ -54,7 +54,7 @@
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav fs-4 pe-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active text-bg-blue-grey" aria-current="page" href="#">Home</a>
+                                        <a class="nav-link active text-bg-blue-grey" aria-current="page" href="{{route('doctor')}}">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-bg-blue-grey " href="#">Inventory</a>

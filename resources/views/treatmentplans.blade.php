@@ -43,128 +43,7 @@
                                 <div class="col-12 text-start">Other: {{$patient->other}}</div>
                                 <!-- <button type="button" class="btn btn-secondary btn-sm">Small button</button> -->
                                 <div class="col-12 text-start d-flex justify-content-center p-edit mt-2">
-                                    <!--  a tag trigger modal -->
-                                    <!-- <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Add/Edit</a> -->
-                                    <!-- Modal -->
-                                    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable">
-                                            <div class="modal-content bg-secondary">
-                                                <!--bg-opacity-50-->
-                                                <!-- Modal Header & Close btn -->
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title text-white" id="exampleModalLabel">
-                                                        Edit Patient Info.
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <!-- Modal Header & Close btn end -->
-                                                <!-- Modal Body -->
 
-                                                <div class="modal-body">
-                                                    <form action="{{url('/update/patient',$patient->id)}}" method="post">
-                                                        @method('PUT')
-                                                        @csrf
-                                                        <div class="row">
-                                                            <!-- 1 -->
-                                                            <div class="mb-2 col-6">
-                                                                <label for="exampleInputEmail1" class="form-label text-white">BP</label>
-                                                                <div class="d-flex">
-                                                                    <input type="number" name="bp_high" class="form-control me-3">
-                                                                    <h3 class="m-0">/</h3>
-                                                                    <input type="number" name="bp_low" class="form-control ms-3">
-                                                                </div>
-
-                                                                <!-- <div class="form-text"></div> -->
-                                                            </div>
-                                                            <!-- 2 -->
-                                                            <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Bleeding discorder</label>
-                                                                <select class="form-select" name="Bleeding_disorder" aria-label="Heart Disease">
-                                                                    <option selected></option>
-                                                                    <option value="yes">Yes</option>
-                                                                    <option value="no">No</option>
-                                                                    <!-- <option value="3">Others</option> -->
-                                                                </select>
-                                                            </div>
-                                                            <!-- 3 -->
-                                                            <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Heart Disease</label>
-                                                                <select class="form-select" name="Heart_Disease" aria-label="Heart Disease">
-                                                                    <option selected></option>
-                                                                    <option value="yes">Yes</option>
-                                                                    <option value="no">No</option>
-                                                                    <!-- <option value="3">Others</option> -->
-                                                                </select>
-                                                            </div>
-                                                            <!-- 4 -->
-                                                            <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Allergy</label>
-                                                                <select class="form-select" name="Allergy" aria-label="Heart Disease">
-                                                                    <option selected></option>
-                                                                    <option value="yes">Yes</option>
-                                                                    <option value="no">No</option>
-                                                                    <!-- <option value="3">Others</option> -->
-                                                                </select>
-                                                            </div>
-                                                            <!-- 5 -->
-                                                            <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Diabetic</label>
-                                                                <select class="form-select" name="Diabetic" aria-label="Heart Disease">
-                                                                    <option selected></option>
-                                                                    <option value="yes">Yes</option>
-                                                                    <option value="no">No</option>
-                                                                    <!-- <option value="3">Others</option> -->
-                                                                </select>
-                                                            </div>
-                                                            <!-- 6 -->
-                                                            <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Pregnant/Lactating</label>
-                                                                <select class="form-select" name="Pregnant" aria-label="Heart Disease">
-                                                                    <option selected></option>
-                                                                    <option value="yes">Yes</option>
-                                                                    <option value="no">No</option>
-                                                                    <!-- <option value="3">Others</option> -->
-                                                                </select>
-                                                            </div>
-                                                            <!-- 7 -->
-                                                            <div class="mb-2 col-6">
-                                                                <label for="mName" class="form-label text-white">Helpatics</label>
-                                                                <select class="form-select" name="Helpatics" aria-label="Heart Disease">
-                                                                    <option selected></option>
-                                                                    <option value="yes">Yes</option>
-                                                                    <option value="no">No</option>
-                                                                    <!-- <option value="3">Others</option> -->
-                                                                </select>
-                                                            </div>
-                                                            <!-- 8 -->
-                                                            <div class="mb-2 col-6">
-                                                                <label for="exampleInputEmail1" class="form-label text-white">Other</label>
-                                                                <input type="text" name="other" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                                                <!-- <div id="emailHelp" class="form-text">We'll never share your
-                                                            email with anyone else.</div> -->
-                                                            </div>
-                                                            <!-- <div class="mb-3">
-                                                        <label for="formFile" class="form-label text-white">Drop your image</label>
-                                                        <input class="form-control" type="file" id="formFile">
-                                                    </div> -->
-                                                            <!-- <button type="submit" class="btn btn-primary ">Submit</button> -->
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button class="btn btn-primary">Submit</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-
-                                                <!-- Modal Body end -->
-                                                <!-- Modal Footer -->
-
-                                                <!-- Modal Footer end -->
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Modal end -->
                                 </div>
                             </div> 
                         </div>
@@ -174,7 +53,7 @@
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
 
-                        <a href="{{route('treatmentPlans')}}" class="btns btn-outline-blue-grey my-2">
+                        <a href="#" class="btns btn-outline-blue-grey my-2">
                             Treatment Plans
                         </a>
                         <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">
@@ -411,6 +290,10 @@
                                         @endforeach
                                     </ol>
                                     <a href="" class="btn btn-black">View</a>
+                                    <a href="" class="btn btn-black">Edit</a>
+                                    <button href="" class="btn btn-black delete-Prescription" value ="{{$v_prescription->id}}">
+                                        Delete
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -460,11 +343,39 @@
     <!-- Admin Notice,Ad & Events end -->
 
     <!-- main end -->
-    
-
-
-
-
- 
+    <!-- Modal For Delete Medicine -->
+        <div class="modal fade " id="del-Prescription" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <!-- Modal Header & Close btn -->
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="exampleModalLabel">
+                            Delete Prescription
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- Modal Header & Close btn end -->
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <form action="{{route('prescription_delete')}}" method="POST" >
+                            @csrf
+                            @method('delete')
+                            <div class="mb-3 text-center">
+                                <h5 class="text-danger">Are You Sure to Delete This information?</h5>
+                            </div>
+                            <input type="hidden" id="del-Prescription-id" name="deletingId">
+                            <!-- Modal Footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                            <!-- Modal Footer end -->
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Modal Body end -->
+                </div>
+            </div>
+        </div>
+    <!-- Modal end -->
 
 @include('include.footer')

@@ -46,7 +46,7 @@
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav fs-4 pe-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                        <a class="nav-link active" aria-current="page" href="{{route('doctor')}}">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Inventory</a>
@@ -277,9 +277,9 @@
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
 
-                        <a href="{{route('treatmentPlans')}}" class="btns btn-outline-blue-grey my-2">Treatment Plans</a>
+                        <a href="#" class="btns btn-outline-blue-grey my-2">Treatment Plans</a>
                         <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
-                        <a href="{{route('prescription_list')}}" class="btns btn-outline-blue-grey my-2">Prescription</a>
+                        <a href="#" class="btns btn-outline-blue-grey my-2">Prescription</a>
                         <a href="#" class="btns btn-outline-blue-grey my-2">Billing</a>
                     </div>
 
@@ -681,12 +681,12 @@
                                                 </div>
                                             </div>
                                         </div> 
-                                        <h5 class="d-flex justify-content-between">C/C Chief Complaint 
+                                        <h5 class="d-flex justify-content-between">C/C Chife Complaint 
                                             <div>
-                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Chief_Complaint_Add" >
+                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#chife_Complaint_Add" >
                                                     <i class="bi bi-plus-circle"></i>
                                                 </a>
-                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Chief_Complaint" >
+                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#chife_Complaint" >
                                                     <i class="bi bi-card-list"></i>
                                                 </a>
                                             </div>
@@ -732,18 +732,19 @@
                                             <li>Check-up</li>
                                         </ul>
                                         <h5 class="d-flex justify-content-between">Investigation
-                                            <!-- <div>
-                                                <i class="bi bi-plus-circle"></i>
-                                                <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#Chief_Complaint" >
+                                            <div>
+                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Investigation_Add" >
+                                                    <i class="bi bi-plus-circle"></i>
+                                                </a>
+                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Investigation" >
                                                     <i class="bi bi-card-list"></i>
                                                 </a>
-                                            </div> -->
+                                            </div>
                                         </h5>
                                         <select class="form-control custom-form-control multi" name="p_investigation[]" aria-label="Default select example" multiple style="width:100%;">
-                                            <option >Open this select menu</option>
-                                            <option value="X-ray">X-ray</option>
-                                            <option value="OPG">OPG</option>
-                                            <option value="CBCT">CBCT</option>
+                                            @foreach($investigations as $investigation)
+                                            <option value="X-ray">{{$investigation->name}}</option>
+                                            @endforeach
                                         </select>
                                         <ul>
                                             <li>X-ray</li>
@@ -911,26 +912,26 @@
     </div>
     <!-- footer end-->
 
- <!-- Modal For C/C Chief Complaint List -->
- <div class="modal fade " id="Chief_Complaint" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <!-- Modal For C/C Chife Complaint List -->
+ <div class="modal fade " id="chife_Complaint" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Modal Header & Close btn -->
             <div class="modal-header">
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    C/C Chief Complaint List
+                    C/C Chife Complaint List
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chief Complaint List-->
+                <!-- C/C Chife Complaint List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
                             <th class="">Serial No</th>
-                            <th class="">Chief Complaints</th>
+                            <th class="">chife Complaints</th>
                             <th class="">Action</th>
                         </tr>
                     </thead>
@@ -943,40 +944,40 @@
                                 <button type="button" class="crud-btns CC_editbtn" href="" value="{{$lcc->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
+                                <button class="crud-btns delete-cc" href="#" value="{{$lcc->id}}">
                                     <i class="fa-solid fa-trash"></i>
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chief Complaint list end -->
+                <!--C/C Chife Complaint list end -->
             </div>
             <!-- Modal Body end -->
         </div>
     </div>
  </div>
  <!-- Modal end -->
- <!-- Modal For C/C Chief Complaint Add -->
- <div class="modal fade " id="Chief_Complaint_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <!-- Modal For C/C Chife Complaint Add -->
+ <div class="modal fade " id="chife_Complaint_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Modal Header & Close btn -->
             <div class="modal-header">
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    Add Chief Complaint 
+                    Add chife Complaint 
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <form action="{{route('chief_complaint')}}" method="post">
+                <form action="{{route('chife_complaint')}}" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3 drug-name">
-                            <input class="form-control" list="list" placeholder="Enter New Chief Complaint" name="cc_name">
+                            <input class="form-control" list="list" placeholder="Enter New chife Complaint" name="cc_name">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -990,28 +991,28 @@
     </div>
  </div>
  <!-- Modal end -->
- <!-- Modal For C/C Chief Complaint update -->
- <div class="modal fade " id="Chief_Complaint_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <!-- Modal For C/C Chife Complaint update -->
+ <div class="modal fade " id="chife_Complaint_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Modal Header & Close btn -->
             <div class="modal-header">
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    Edit Chief Complaint 
+                    Edit chife Complaint 
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <form action="{{route('update_chief_complaint')}}" method="post">
+                <form action="{{route('update_chife_complaint')}}" method="post">
                     @csrf
                     @method('PUT')
 
                     <input type="hidden" id="CCId" name="c_c_id"/>
                     <div class="modal-body">
                         <div class="mb-3 drug-name">
-                            <input class="form-control" list="list" id="c_c_name" placeholder="Enter New Chief Complaint" name="cc_name">
+                            <input class="form-control" list="list" id="c_c_name" placeholder="Enter New chife Complaint" name="cc_name">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -1024,6 +1025,40 @@
         </div>
     </div>
  </div>
+ <!-- Modal end -->
+ <!-- Modal For Delete C/C Chife Complaint -->
+    <div class="modal fade " id="del-CC" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Delete C/C Chife Complaint
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('delete_chife_complaint')}}" method="POST" >
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3 text-center">
+                            <h5 class="text-danger">Are You Sure to Delete This information?</h5>
+                        </div>
+                        <input type="hidden" id="del-cc-id" name="deletingId">
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                        <!-- Modal Footer end -->
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+    </div>
  <!-- Modal end -->
 
  <!-- Modal For C/F Clinical Findings List -->
@@ -1040,7 +1075,7 @@
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chief Complaint List-->
+                <!-- C/C Chife Complaint List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
@@ -1058,15 +1093,15 @@
                                 <button class="crud-btns CF_editbtn" href="" value= "{{$lcf->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
+                                <button class="crud-btns delete-cf" href="#" value= "{{$lcf->id}}">
                                     <i class="fa-solid fa-trash"></i>
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chief Complaint list end -->
+                <!--C/C Chife Complaint list end -->
             </div>
             <!-- Modal Body end -->
         </div>
@@ -1140,6 +1175,191 @@
     </div>
  </div>
  <!-- Modal end -->
+ <!-- Modal For Delete C/F Clinical Findings -->
+ <div class="modal fade " id="del-CF" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Delete C/F Clinical Findings
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('delete_clinical_finding')}}" method="POST" >
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3 text-center">
+                            <h5 class="text-danger">Are You Sure to Delete This information?</h5>
+                        </div>
+                        <input type="hidden" id="del-cf-id" name="deletingId">
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                        <!-- Modal Footer end -->
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+ </div>
+ <!-- Modal end -->
+
+ <!-- Modal For Investigation List -->
+ <div class="modal fade " id="Investigation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Investigation List
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <!-- C/C Chife Complaint List-->
+                <table class="table table-bordered mt-4 text-center">
+                    <thead>
+                        <tr>
+                            <th class="">Serial No</th>
+                            <th class="">Investigations</th>
+                            <th class="">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($investigation_lists as $key=>$investigation_list)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$investigation_list->name}}</td>
+                            <td class="d-flex justify-content-around">
+                                <button class="crud-btns Investigation_editbtn" href="" value= "{{$investigation_list->id}}" >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button class="crud-btns delete-Investigation" href="#" value= "{{$investigation_list->id}}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <!--C/C Chife Complaint list end -->
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+
+ <!-- Modal For Investigation Add -->
+  <div class="modal fade " id="Investigation_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Add Investigation 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('investigation')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" placeholder="Enter New Investigation" name="investigation_name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-black">Confirm</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+  </div>
+ <!-- Modal end -->
+ <!-- Modal For Investigation update -->
+    <div class="modal fade " id="Investigation_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Edit  Investigation 
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('update_investigation')}}" method="post">
+                        @csrf
+                        @method('PUT')
+
+                        <input type="hidden" id="InvestigationId" name="investigation_id"/>
+                        <div class="modal-body">
+                            <div class="mb-3 drug-name">
+                                <input class="form-control" list="list" id="Investigation_name" placeholder="Enter Investigation" name="investigation_name">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                            <button type="submit" class="btn btn-sm btn-black">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+    </div>
+ <!-- Modal end -->
+<!-- Modal For Delete Investigation -->
+ <div class="modal fade " id="del-Investigation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Delete Investigation
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('delete_investigation')}}" method="POST" >
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3 text-center">
+                            <h5 class="text-danger">Are You Sure to Delete This information?</h5>
+                        </div>
+                        <input type="hidden" id="del-Investigation-id" name="deletingId">
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                        <!-- Modal Footer end -->
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+ </div>
+ <!-- Modal end -->
+
  <!-- Modal For T/P Treatment Plans List -->
  <div class="modal fade " id="Treatment_Plans" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -1154,12 +1374,13 @@
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chief Complaint List-->
+                <!-- C/C Chife Complaint List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
                             <th class="">Serial No</th>
                             <th class="">Treatment Plans</th>
+                            <th class="">Cost</th>
                             <th class="">Action</th>
                         </tr>
                     </thead>
@@ -1168,19 +1389,20 @@
                         <tr>
                             <td>{{$key+1}}</td>
                             <td>{{$ltp->name}}</td>
+                            <td>{{$ltp->cost}}</td>
                             <td class="d-flex justify-content-around">
                                 <button class="crud-btns TP_editbtn" href="" value="{{$ltp->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
+                                <button class="crud-btns delete-tp" href="#" value="{{$ltp->id}}">
                                     <i class="fa-solid fa-trash"></i>
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chief Complaint list end -->
+                <!--C/C Chife Complaint list end -->
             </div>
             <!-- Modal Body end -->
         </div>
@@ -1188,7 +1410,7 @@
  </div>
  <!-- Modal end -->
  <!-- Modal For T/P Treatment Plans Add -->
-   <div class="modal fade " id="Treatment_Plan_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade " id="Treatment_Plan_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Modal Header & Close btn -->
@@ -1207,6 +1429,9 @@
                         <div class="mb-3 drug-name">
                             <input class="form-control" list="list" placeholder="Enter New Treatment Plan" name="tp_name">
                         </div>
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" placeholder="Enter Cost" name="tp_cost">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
@@ -1217,10 +1442,10 @@
             <!-- Modal Body end -->
         </div>
     </div>
-    </div>
+ </div>
  <!-- Modal end -->
    <!-- Modal For T/P Treatment Plans update -->
-   <div class="modal fade " id="Treatment_Plan_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade " id="Treatment_Plan_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Modal Header & Close btn -->
@@ -1242,6 +1467,9 @@
                         <div class="mb-3 drug-name">
                             <input class="form-control" list="list" id="t_p_name" placeholder="Enter New Clinical Finding" name="tp_name">
                         </div>
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" id="t_p_cost" placeholder="Enter Cost" name="tp_cost">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
@@ -1252,6 +1480,40 @@
             <!-- Modal Body end -->
         </div>
     </div>
+ </div>
+ <!-- Modal end -->
+ <!-- Modal For Delete T/P Treatment Plans -->
+ <div class="modal fade " id="del-TP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Delete T/P Treatment Plans
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('delete_treatment_plan')}}" method="POST" >
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3 text-center">
+                            <h5 class="text-danger">Are You Sure to Delete This information?</h5>
+                        </div>
+                        <input type="hidden" id="del-TP-id" name="deletingId">
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                        <!-- Modal Footer end -->
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
  </div>
  <!-- Modal end -->
 
@@ -1275,15 +1537,15 @@
     </script>
 
     <script>
-        // script for C/C Chief Complaint update
+        // script for C/C Chife Complaint update
         $(document).ready(function(){
             $(document).on('click', '.CC_editbtn',function(){
                 var cc_id = $(this).val();
                 // alert(edit);
-                $("#Chief_Complaint_Update").modal('show');
+                $("#chife_Complaint_Update").modal('show');
                 $.ajax({
                     type:"GET",
-                    url: "/edit_chief_complaint/"+cc_id,
+                    url: "/edit_chife_complaint/"+cc_id,
                     success: function(response){
                         // console.log(response.cc.name);
                         $('#CCId').val(cc_id);
@@ -1291,9 +1553,15 @@
                     }
                 });
             });
-        });
-        // script for C/F Clinical Findings
-        $(document).ready(function(){
+
+            $(document).on('click', '.delete-cc',function(){
+                var deleteCCId = $(this).val();
+                // alert(deleteCCId);
+                $("#del-CC").modal('show');
+                $('#del-cc-id').val(deleteCCId);
+            });
+
+            // script for C/F Clinical Findings
             $(document).on('click', '.CF_editbtn',function(){
                 var cf_id = $(this).val();
                 // alert(cf_id);
@@ -1308,13 +1576,45 @@
                     }
                 });
             });
-        });
 
-        // script for T/P Treatment Plans
-        $(document).ready(function(){
+            $(document).on('click', '.delete-cf',function(){
+                var deleteCFId = $(this).val();
+                // alert(deleteCFId);
+                $("#del-CF").modal('show');
+                $('#del-cf-id').val(deleteCFId);
+            });
+
+       
+            // script for Investigation
+
+            $(document).on('click', '.Investigation_editbtn',function(){
+                var Investigation_id = $(this).val();
+                // alert(Investigation_id);
+                $("#Investigation_Update").modal('show');
+                $.ajax({
+                    type:"GET",
+                    url: "/edit_investigation/"+Investigation_id,
+                    success: function(response){
+                        console.log(response);
+                        $('#InvestigationId').val(Investigation_id);
+                        $('#Investigation_name').val(response.inves.name);
+                    }
+                });
+            });
+
+            $(document).on('click', '.delete-Investigation',function(){
+                var deleteInvestigationId = $(this).val();
+                // alert(deleteInvestigationId);
+                $("#del-Investigation").modal('show');
+                $('#del-Investigation-id').val(deleteInvestigationId);
+            });
+
+
+            // script for T/P Treatment Plans
+
             $(document).on('click', '.TP_editbtn',function(){
                 var tp_id = $(this).val();
-                alert(tp_id);
+                // alert(tp_id);
                 $("#Treatment_Plan_Update").modal('show');
                 $.ajax({
                     type:"GET",
@@ -1323,9 +1623,18 @@
                         // console.log(response);
                         $('#TPId').val(tp_id);
                         $('#t_p_name').val(response.tp.name);
+                        $('#t_p_cost').val(response.tp.cost);
                     }
                 });
             });
+
+            $(document).on('click', '.delete-tp',function(){
+                var deleteTPId = $(this).val();
+                // alert(deleteTPId);
+                $("#del-TP").modal('show');
+                $('#del-TP-id').val(deleteTPId);
+            });
+
         });
     </script>
 

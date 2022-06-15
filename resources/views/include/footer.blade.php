@@ -30,6 +30,16 @@
             // maximumSelectionLength: 2
         });
     </script>
+    <script>
+        $(document).ready(function(){
+            $(document).on('click', '.delete-Prescription',function(){
+                var deletePrescriptionId = $(this).val();
+                // alert(deletePrescriptionId);
+                $("#del-Prescription").modal('show');
+                $('#del-Prescription-id').val(deletePrescriptionId);
+            });
+        });
+    </script>
 </body>
 
 </html>

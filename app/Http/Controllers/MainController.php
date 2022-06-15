@@ -6,10 +6,12 @@ use App\Models\doctor;
 use App\Models\patient_infos;
 use App\Models\chife_complaint;
 use App\Models\clinical_finding;
+use App\Models\investigation;
 use App\Models\treatment_plan;
 use App\Models\treatment_info;
 use App\Models\drugs;
 use App\Models\prescription;
+use App\Models\medicine;
 
 use Illuminate\Http\Request;
 use Session;
@@ -126,10 +128,12 @@ class MainController extends Controller
         $lc_cs = chife_complaint::orderBy('id','desc')->get();
         $c_fs = clinical_finding::all();
         $lc_fs = clinical_finding::orderBy('id','desc')->get();
+        $investigations = investigation::all();
+        $investigation_lists = investigation::orderBy('id','desc')->get();
         $t_ps = treatment_plan::all();
         $lt_ps = treatment_plan::orderBy('id','desc')->get();
         $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
-        return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','treatment_infos'));
+        return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','treatment_infos','investigations','investigation_lists'));
     }
 
     public function treatment_info(Request $request,$p_id){
@@ -210,9 +214,11 @@ class MainController extends Controller
         $investigations = explode(',',$investigations);
         $t_id=$treatment_info->id;
         $t_plans=$treatment_info->treatment_plans;
+        $medicines = medicine::all();
+        $medicines_lists = medicine::orderBy('id','desc')->get();
 
         $drugs = drugs::where('p_id','=',$p_id)->where('date','=',$ldate)->get();
-        return view('prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','investigations','drugs','t_id','t_plans','tooth_no'));
+        return view('prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','investigations','drugs','t_id','t_plans','tooth_no','medicines','medicines_lists'));
     }
 
     public function add_drug(Request $request,$d_id,$p_id){
@@ -295,6 +301,14 @@ class MainController extends Controller
         $res = $prescription->save();
         return back();
         }
+    }
+
+    public function prescription_delete(Request $request){
+        $del_prescription_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_prescription_info = prescription::find($del_prescription_id);
+        $del_prescription_info->delete();
+        return back();
     }
 
 
