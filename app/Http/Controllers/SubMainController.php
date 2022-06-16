@@ -6,6 +6,8 @@ use App\Models\doctor;
 use App\Models\patient_infos;
 use App\Models\chife_complaint;
 use App\Models\clinical_finding;
+use App\Models\investigation;
+use App\Models\medicine;
 use App\Models\treatment_plan;
 use App\Models\treatment_info;
 use App\Models\prescription;
@@ -13,14 +15,14 @@ use Illuminate\Http\Request;
 
 class SubMainController extends Controller
 {
-    public function chief_complaint(Request $request){
+    public function chife_complaint(Request $request){
         $chife_complaint = new chife_complaint();
         $chife_complaint->name = $request->cc_name;
         $res = $chife_complaint->save();
         return back();
     }
 
-    public function edit_chief_complaint($id){
+    public function edit_chife_complaint($id){
         $chifeComplaint = chife_complaint::find($id);
         return response()->json([
             'status'=>200,
@@ -28,12 +30,20 @@ class SubMainController extends Controller
         ]);
     }
     
-    public function update_chief_complaint(Request $request){
+    public function update_chife_complaint(Request $request){
         $cc_id = $request->c_c_id;
         // dd($cc_id);
         $chife_complaint = chife_complaint::find($cc_id);
         $chife_complaint->name = $request->cc_name;
         $res = $chife_complaint->update();
+        return back();
+    }
+
+    public function delete_chife_complaint(Request $request){
+        $del_cc_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_cc_info = chife_complaint::find($del_cc_id);
+        $del_cc_info->delete();
         return back();
     }
 
@@ -61,10 +71,51 @@ class SubMainController extends Controller
         $res = $clinical_finding->update();
         return back();
     }
-    
+
+    public function delete_clinical_finding(Request $request){
+        $del_cf_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_cf_info = clinical_finding::find($del_cf_id);
+        $del_cf_info->delete();
+        return back();
+    }
+
+    public function investigation(Request $request){
+        $investigation = new investigation();
+        $investigation->name = $request->investigation_name;
+        $res = $investigation->save();
+        return back();
+    }
+
+    public function edit_investigation($id){
+        $investigation = investigation::find($id);
+        return response()->json([
+            'status'=>200,
+            'inves' => $investigation,
+        ]);
+    }
+
+    public function update_investigation(Request $request){
+        $investigation_id = $request->investigation_id;
+        // dd($cc_id);
+        $investigation = investigation::find($investigation_id);
+        $investigation->name = $request->investigation_name;
+        $res = $investigation->update();
+        return back();
+    }
+
+    public function delete_investigation(Request $request){
+        $del_investigation_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_investigation_info = investigation::find($del_investigation_id);
+        $del_investigation_info->delete();
+        return back();
+    }
+
     public function treatment_plan(Request $request){
         $treatment_plan = new treatment_plan();
         $treatment_plan->name = $request->tp_name;
+        $treatment_plan->cost = $request->tp_cost;
         $res = $treatment_plan->save();
         return back();
     }
@@ -81,7 +132,50 @@ class SubMainController extends Controller
         // dd($cc_id);
         $treatment_plan = treatment_plan::find($tp_id);
         $treatment_plan->name = $request->tp_name;
+        $treatment_plan->cost = $request->tp_cost;
         $res = $treatment_plan->update();
+        return back();
+    }
+
+    public function delete_treatment_plan(Request $request){
+        $del_tp_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_tp_info = treatment_plan::find($del_tp_id);
+        $del_tp_info->delete();
+        return back();
+    }
+
+    public function medicine_add(Request $request){
+        $medicine = new medicine();
+        $medicine->name = $request->medicine_name;
+        $medicine->brand = $request->medicine_brand;
+        $res = $medicine->save();
+        return back();
+    }
+
+    public function edit_medicine($id){
+        $medicine = medicine::find($id);
+        return response()->json([
+            'status'=>200,
+            'medicine_info' => $medicine,
+        ]);
+    }
+
+    public function update_medicine(Request $request){
+        $medicine_id = $request->medicine_id;
+        // dd($cc_id);
+        $medicine = medicine::find($medicine_id);
+        $medicine->name = $request->medicine_name;
+        $medicine->brand = $request->medicine_brand;
+        $res = $medicine->update();
+        return back();
+    }
+
+    public function delete_medicine(Request $request){
+        $del_medicine_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_medicine_info = medicine::find($del_medicine_id);
+        $del_medicine_info->delete();
         return back();
     }
 }

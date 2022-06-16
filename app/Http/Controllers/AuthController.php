@@ -52,7 +52,7 @@ class AuthController extends Controller
                     return redirect()->route('login_profile_edit',[$doctor->id]);
                 }else{
                 $request->session()->put('loginId',$doctor->id);
-                return redirect()->route('doctor',[$doctor->id]);
+                return redirect()->route('doctor');
                 }
             }else{
                 return back() ->with('fail','Password not Matches');
@@ -79,10 +79,10 @@ class AuthController extends Controller
             'chemner_add'=>$request->chember_add,
         ]);
 
-        return redirect()->route('doctor',$doctor_id);
+        return redirect()->route('doctor');
     }
 
-    public function doctor($id){
+    public function doctor(){
 
         if(Session::has('loginId')){
             $doctor_info=doctor::where('id','=',Session::get('loginId'))->first();

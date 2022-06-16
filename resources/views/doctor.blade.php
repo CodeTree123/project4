@@ -23,7 +23,7 @@
                 <div class="profile blue-grey-border-thin py-2">
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
-                        <a href="{{route('patient')}}" class="btns btn-outline-blue-grey my-2">Patient List</a>
+                        <a href="#" class="btns btn-outline-blue-grey my-2">Patient List</a>
                         <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
                         <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a>
                         <a href="{{route('subscription')}}" class="btns btn-outline-blue-grey my-2">Subscription</a>

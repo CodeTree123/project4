@@ -5,7 +5,7 @@
  <div class="row justify-content-center align-items-center">
      <div class="col-lg-5 mt-5">
      <form action="{{route('login_user')}}" method="post">
-     @if(Session::has('success'))
+         @if(Session::has('success'))
          <div class="alert alert-success">{{Session::get('success')}}</div>
          @endif
          @if(Session::has('fail'))

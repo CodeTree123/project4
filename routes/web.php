@@ -20,7 +20,7 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('login');
-});
+})->middleware('AfterLogin');
 
 Route::get('/header', [FrontEndController::class, 'header'])->name('header');
 Route::get('/footer', [FrontEndController::class, 'footer'])->name('footer');
@@ -44,10 +44,10 @@ Route::get('/admin_page', [FrontEndController::class, 'admin_page'])->name('admi
 
 // AuthController
 
-Route::get('/registration', [AuthController::class, 'registration'])->name('registration');
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/registration', [AuthController::class, 'registration'])->name('registration')->middleware('AfterLogin');
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('AfterLogin');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/doctor/{id}', [AuthController::class, 'doctor'])->name('doctor');
+Route::get('/doctor', [AuthController::class, 'doctor'])->name('doctor')->middleware('NotLogin');
 Route::post('/login_user', [AuthController::class, 'login_user'])->name('login_user');
 Route::post('/register_user', [AuthController::class, 'register_user'])->name('register_user');
 Route::get('/doctor/profile_edit/{id}', [AuthController::class, 'profile_edit'])->name('profile_edit');
@@ -78,17 +78,36 @@ Route::get('/edit_drug/{id}', [MainController::class, 'edit_drug']);
 Route::put('/update_drug', [MainController::class, 'update_drug'])->name('update_drug');
 Route::delete('/delete_drug', [MainController::class, 'delete_drug'])->name('delete_drug');
 
+Route::get('/get_drug_info/{p_id}', [MainController::class, 'get_drug_info']);
+Route::post('/prescription_add/{d_id}/{t_id}/{t_plans}', [MainController::class, 'prescription_add'])->name('prescription_add'); 
+Route::delete('/prescription_delete', [MainController::class, 'prescription_delete'])->name('prescription_delete'); 
+
 // SubMainController
 
-Route::post('/chief_complaint', [SubMainController::class, 'chief_complaint'])->name('chief_complaint');
-Route::get('/edit_chief_complaint/{id}', [SubMainController::class, 'edit_chief_complaint']);
-Route::put('/update_chief_complaint', [SubMainController::class, 'update_chief_complaint'])->name('update_chief_complaint');
+Route::post('/chife_complaint', [SubMainController::class, 'chife_complaint'])->name('chife_complaint');
+Route::get('/edit_chife_complaint/{id}', [SubMainController::class, 'edit_chife_complaint']);
+Route::put('/update_chife_complaint', [SubMainController::class, 'update_chife_complaint'])->name('update_chife_complaint');
+Route::delete('/delete_chife_complaint', [SubMainController::class, 'delete_chife_complaint'])->name('delete_chife_complaint');
+
 Route::post('/clinical_finding', [SubMainController::class, 'clinical_finding'])->name('clinical_finding');
 Route::get('/edit_clinical_finding/{id}', [SubMainController::class, 'edit_clinical_finding']);
 Route::put('/update_clinical_finding', [SubMainController::class, 'update_clinical_finding'])->name('update_clinical_finding');
+Route::delete('/delete_clinical_finding', [SubMainController::class, 'delete_clinical_finding'])->name('delete_clinical_finding');
+
+Route::post('/investigation', [SubMainController::class, 'investigation'])->name('investigation');
+Route::get('/edit_investigation/{id}', [SubMainController::class, 'edit_investigation']);
+Route::put('/update_investigation', [SubMainController::class, 'update_investigation'])->name('update_investigation');
+Route::delete('/delete_investigation', [SubMainController::class, 'delete_investigation'])->name('delete_investigation');
+
 Route::post('/treatment_plan', [SubMainController::class, 'treatment_plan'])->name('treatment_plan');
 Route::get('/edit_treatment_plan/{id}', [SubMainController::class, 'edit_treatment_plan']);
 Route::put('/update_treatment_plan', [SubMainController::class, 'update_treatment_plan'])->name('update_treatment_plan');
+Route::delete('/delete_treatment_plan', [SubMainController::class, 'delete_treatment_plan'])->name('delete_treatment_plan');
+
+Route::post('/medicine_add', [SubMainController::class, 'medicine_add'])->name('medicine_add');
+Route::get('/edit_medicine/{id}', [SubMainController::class, 'edit_medicine']);
+Route::put('/update_medicine', [SubMainController::class, 'update_medicine'])->name('update_medicine');
+Route::delete('/delete_medicine', [SubMainController::class, 'delete_medicine'])->name('delete_medicine');
 
 
 

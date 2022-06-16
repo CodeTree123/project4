@@ -35,7 +35,7 @@
             <div class="row align-items-center">
                 <!--logo & title start-->
                 <div class="col-md-5">
-                    <a class="d-flex align-items-center logo" href="{{route('index')}}">
+                    <a class="d-flex align-items-center logo" href="{{route('doctor')}}">
                         <!-- <img class="logo" src="img/Logo.png" alt="Logo"> -->
                         <img class="logo" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
 
@@ -54,7 +54,7 @@
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav fs-4 pe-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active text-bg-blue-grey" aria-current="page" href="#">Home</a>
+                                        <a class="nav-link active text-bg-blue-grey" aria-current="page" href="{{route('doctor')}}">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-bg-blue-grey " href="#">Inventory</a>
@@ -83,7 +83,7 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <li>
-                                                <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id])}}">
+                                                <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
                                                     Edit Profile
                                                 </a>
                                             </li>

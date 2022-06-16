@@ -27,6 +27,26 @@
         <section class="prescription-header">
             <div class="container">
                 <div class="d-flex justify-content-between">
+                    <div class="mb-3">
+                        <h2 class="docname">hello</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <p class="bmdcnum">D-5000</p>
+                            </li>
+                            <li>
+                                <h4 class="deg1">MBBS</h4>
+                            </li>
+                            <li>
+                                <p class="deg2"></p>
+                            </li>
+                            <li>
+                                <p class="DGR"></p>
+                            </li>
+                            <li>
+                                <h3></h3>
+                            </li>
+                        </ul>
+                    </div>
                         
                     <div class="mb-3">
                         <div class="mb-2 qrcode" >
@@ -42,11 +62,11 @@
                             <option selected>Select Chamber</option>
                             <option value="1">Chamber 1</option>
                             <option value="2">Chamber 2</option> 
-                          </select>
+                        </select>
                         <h2 class="chem_name"></h2>
 
-                            <p class="chem_phone"></p>
-                            <p>06/06/2022</p>
+                        <p class="chem_phone"></p>
+                        <p>06/06/2022</p>
 
                         <input type="hidden" class="doc_uid">
                         <input type="hidden" class="doc_uid_profile">
@@ -306,8 +326,7 @@
         
             Preview
         </button>
-        <button type="button" class="btn btn-primary submitPrescription-btn px-2 "  data-bs-toggle="modal"
-         data-bs-target="#p_submit" id="submitPrescription">Submit <br> Prescription
+        <button type="button" class="btn btn-primary submitPrescription-btn px-2 submitPrescription" value="{{$patient->id}}">Submit <br> Prescription
         </button>
     </div>
 </main>
@@ -370,18 +389,40 @@
     </div>
 </div>
 
-<!-- Prescription Modal--> 
+<!--Modal For Drug add--> 
 <div class="modal fade" id="drug">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Add Drug For Patient 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="text-end me-2">
+                <a class="crud-btns me-2" href="" data-bs-toggle="modal" data-bs-target="#Medicine_Add" >
+                    <i class="bi bi-plus-circle"></i>
+                </a>
+                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Medicine_List" >
+                    <i class="bi bi-card-list"></i>
+                </a>
+            </div>
             <form action="{{route('add_drug',[$doctor_info->id,$patient->id])}}" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3 drug-name">
-                        <input class="form-control" list="list" placeholder="Drug name-brand/generic" name="drug_name">
+                        <select class="form-control custom-form-control" name="drug_name" aria-label="Default select example" style="width:100%;">
+                            <option value="Selected">Select Drug</option>
+                            @foreach($medicines as $medicine)
+                                <option value="{{$medicine -> name}}">{{$medicine -> name}}</option>
+                            @endforeach
+                        </select>
+                        <!-- <input class="form-control" list="list" placeholder="Drug name-brand/generic" name="drug_name">
                         <datalist id="list" class="allGrugList">
-
-                        </datalist>
+                            @foreach($medicines as $medicine)
+                            <option value="{{$medicine -> name}}">
+                            @endforeach
+                        </datalist> -->
                     </div>
                     <div class="mb-3 drug-time">
                         <input type="text" class="form-control" placeholder="Timing" value="1+0+1" name="drug_time">
@@ -415,7 +456,7 @@
         </div>
     </div>
 </div>
-<!-- Prescription update Modal--> 
+<!--Modal For Drug update --> 
 <div class="modal fade" id="editDrug">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -494,19 +535,188 @@
     </div>
 </div>
 <!-- Modal end -->
-<!-- test modal -->
+<!-- Modal For Save Prescription Information -->
 <div class="modal fade" id="p_submit">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <form action="#">
-                <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('prescription_add',[$doctor_info->id,$t_id,$t_plans])}}" method="post">
+                @csrf
                     <h4>R u sure to submit this prescription.</h4>
-                    <input type="text" value="{{$drug_id_list}}">
-                </div>
-            </form>
+                    <input type="text" id="patientID" name="patientID">
+                    <input type="text" id="drugIdList" name="drugIdList">
+                    <input type="text" value="{{ date('d-m-Y') }}" name="date">
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                    <!-- Modal Footer end -->
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+ <!-- Modal For medicine Add -->
+ <div class="modal fade " id="Medicine_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Add New Medicine 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('medicine_add')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" placeholder="Enter New medicine" name="medicine_name">
+                        </div>
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" placeholder="Enter medicine Brand" name="medicine_brand">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-black">Confirm</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+ <!-- Modal For Medicine List -->
+ <div class="modal fade " id="Medicine_List" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Medicine List
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <!-- C/C Chife Complaint List-->
+                <table class="table table-bordered mt-4 text-center">
+                    <thead>
+                        <tr>
+                            <th class="">Serial No</th>
+                            <th class="">Medicine Name</th>
+                            <th class="">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($medicines_lists as $key=>$medicines_list)
+                        <tr>
+                            <td>{{$key + 1}}</td>
+                            <td>{{$medicines_list->name}}</td>
+                            <td class="d-flex justify-content-around">
+                                <button type="button" class="crud-btns Medicine_editbtn" href="" value="{{$medicines_list->id}}" >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button class="crud-btns delete-Medicine" href="#" value="{{$medicines_list->id}}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <!--C/C Chife Complaint list end -->
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+ <!-- Modal For Medicine update -->
+ <div class="modal fade " id="Medicine_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Edit Medicine Info 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('update_medicine')}}" method="post">
+                    @csrf
+                    @method('PUT')
+
+                    <input type="hidden" id="MedicineId" name="medicine_id"/>
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" id="Medicine_name" placeholder="Enter New chife Complaint" name="medicine_name">
+                        </div>
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" id="Medicine_brand" placeholder="Enter New chife Complaint" name="medicine_brand">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-black">Update</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+ <!-- Modal For Delete Medicine -->
+    <div class="modal fade " id="del-Medicine" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Delete Medicine
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('delete_medicine')}}" method="POST" >
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3 text-center">
+                            <h5 class="text-danger">Are You Sure to Delete This information?</h5>
+                        </div>
+                        <input type="hidden" id="del-Medicine-id" name="deletingId">
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                        <!-- Modal Footer end -->
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+    </div>
+ <!-- Modal end -->
+
+        
 <script src="{{asset ('assets/js/jquery-1.12.4.js')}}"></script>
 <script src="{{asset ('assets/js/popper.min.js')}}"></script>
 <script src="{{asset ('assets/js/bootstrap.min.js')}}"></script>
@@ -532,17 +742,17 @@
             // alert(drug_id);
             $("#editDrug").modal('show');
             $.ajax({
-                    type:"GET",
-                    url: "/edit_drug/"+drug_id,
-                    success: function(response){
-                        console.log(response);
-                        $('#drug-id').val(drug_id);
-                        $('#drug-name').val(response.di.drug_name);
-                        $('#drug-time').val(response.di.drug_time);
-                        $('#meal-time').val(response.di.meal_time);
-                        $('#duration').val(response.di.duration);
-                    }
-                });
+                type:"GET",
+                url: "/edit_drug/"+drug_id,
+                success: function(response){
+                // console.log(response);
+                    $('#drug-id').val(drug_id);
+                    $('#drug-name').val(response.di.drug_name);
+                    $('#drug-time').val(response.di.drug_time);
+                    $('#meal-time').val(response.di.meal_time);
+                    $('#duration').val(response.di.duration);
+                }
+            });
         });
 
         $(document).on('click', '.delete-drug',function(){
@@ -552,6 +762,44 @@
             $('#del-drug-id').val(deleteDrugId);
         });
 
+        $(document).on('click', '.submitPrescription',function(){
+            var patient_id = $(this).val();
+            // alert(patient_id);
+            $("#p_submit").modal('show');
+            $.ajax({
+                type:"GET",
+                url: "/get_drug_info/"+patient_id,
+                success: function(response){
+                    // console.log(response);
+                    $('#patientID').val(patient_id);
+                    $('#drugIdList').val(response.drugIds);
+                }
+            });
+        });
+
+        $(document).on('click', '.Medicine_editbtn',function(){
+            var medicine_id = $(this).val();
+            // alert(medicine_id);
+            $("#Medicine_Update").modal('show');
+            $.ajax({
+                type:"GET",
+                url: "/edit_medicine/"+medicine_id,
+                success: function(response){
+                console.log(response);
+                $('#MedicineId').val(medicine_id);
+                $('#Medicine_name').val(response.medicine_info.name);
+                $('#Medicine_brand').val(response.medicine_info.brand);
+                }
+            });
+        });
+
+        $(document).on('click', '.delete-Medicine',function(){
+            var deleteMedicineId = $(this).val();
+            // alert(drug_id);
+            $("#del-Medicine").modal('show');
+            $('#del-Medicine-id').val(deleteMedicineId);
+        });
+        
     });
 </script>
  
