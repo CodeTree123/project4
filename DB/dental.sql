@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2022 at 12:34 AM
+-- Generation Time: Jun 16, 2022 at 03:12 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -167,7 +167,7 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `name`, `email`, `password`, `BMDC`, `chemner_name`, `chemner_add`, `chemner_mobile`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Mahadi', 'ma@ma.com', '1234', 'D-6000', 'asfasfa', 'sdfa', '0998898931', NULL, '2022-06-02 04:17:49', '2022-06-07 23:36:31'),
+(1, 'Mahadi', 'ma@ma.com', '1234', 'D-6000', 'asfasfa', 'sdfad', '0998898931', NULL, '2022-06-02 04:17:49', '2022-06-15 07:29:19'),
 (5, 'maha', 'maha@gmail.com', '1234', '98y348', 'hjaosrijhfg', 'wkjehbrffiuw', '28409814', NULL, '2022-06-02 04:55:24', '2022-06-02 06:23:52'),
 (6, 'ami', 'mai@ami.com', '1234', '5600', 'Uttara', 'uttara', '01987654321', NULL, '2022-06-05 03:56:06', '2022-06-05 03:57:38'),
 (7, 'dads', 'sa@sad.com', '1234', NULL, NULL, NULL, NULL, NULL, '2022-06-06 03:36:00', '2022-06-06 03:36:00');
@@ -199,7 +199,9 @@ CREATE TABLE `drugs` (
 INSERT INTO `drugs` (`id`, `d_id`, `p_id`, `t_id`, `drug_name`, `drug_time`, `meal_time`, `duration`, `date`, `created_at`, `updated_at`) VALUES
 (1, '1', '1', '1', 'napas', '1+1+1', 'After Meal', '1', '14-06-2022', '2022-06-13 20:45:03', '2022-06-13 21:51:52'),
 (2, '1', '1', '1', 'Flox', '1+0+1', 'Before Meal', '7', '14-06-2022', '2022-06-13 21:02:44', '2022-06-13 21:02:44'),
-(3, '1', '1', '1', 'gose', '1+0+1', 'Before Meal', '1', '14-06-2022', '2022-06-13 21:22:30', '2022-06-13 21:22:30');
+(3, '1', '1', '1', 'gose', '1+0+1', 'Before Meal', '1', '14-06-2022', '2022-06-13 21:22:30', '2022-06-13 21:22:30'),
+(5, '1', '2', '2', 'test', '1+0+1', 'Before Meal', '1', '14-06-2022', '2022-06-14 14:04:05', '2022-06-14 14:04:05'),
+(6, '1', '1', '1', 'test 1', '1+0+1', 'After Meal', '7', '15-06-2022', '2022-06-15 08:34:45', '2022-06-15 08:34:56');
 
 -- --------------------------------------------------------
 
@@ -216,6 +218,47 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `investigations`
+--
+
+CREATE TABLE `investigations` (
+  `id` int(50) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `investigations`
+--
+
+INSERT INTO `investigations` (`id`, `name`) VALUES
+(1, 'X-ray'),
+(2, 'OPG'),
+(3, 'CBCT'),
+(4, 'Helloes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicines`
+--
+
+CREATE TABLE `medicines` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `brand` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `medicines`
+--
+
+INSERT INTO `medicines` (`id`, `name`, `brand`) VALUES
+(1, 'Napa', NULL),
+(2, 'A-Flox', 'Square');
 
 -- --------------------------------------------------------
 
@@ -248,7 +291,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2022_06_09_060129_create_prescriptions_table', 9),
 (14, '2022_06_08_194035_create_prescriptions_table', 10),
 (15, '2022_06_13_135839_create_treatment_infos_table', 10),
-(17, '2022_06_13_201818_create_drugs_table', 11);
+(17, '2022_06_13_201818_create_drugs_table', 11),
+(18, '2022_06_14_220840_create_prescriptions_table', 12),
+(20, '2022_06_15_203335_create_medicines_table', 13);
 
 -- --------------------------------------------------------
 
@@ -323,6 +368,32 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prescriptions`
+--
+
+CREATE TABLE `prescriptions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `d_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `p_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `t_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `t_plan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `drug_id_list` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `prescriptions`
+--
+
+INSERT INTO `prescriptions` (`id`, `d_id`, `p_id`, `t_id`, `t_plan`, `drug_id_list`, `date`, `created_at`, `updated_at`) VALUES
+(1, '1', '1', '1', 'Restoration', '1,2,3', '14-06-2022', '2022-06-14 16:34:57', '2022-06-14 16:34:57'),
+(3, '1', '1', '1', 'Restoration', '6', '15-06-2022', '2022-06-15 09:46:27', '2022-06-15 09:46:27');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `treatment_infos`
 --
 
@@ -345,7 +416,8 @@ CREATE TABLE `treatment_infos` (
 --
 
 INSERT INTO `treatment_infos` (`id`, `p_id`, `tooth_type`, `tooth_no`, `tooth_side`, `chife_complaints`, `clinical_findings`, `investigation`, `treatment_plans`, `created_at`, `updated_at`) VALUES
-(1, '1', 'Permanent Teeth', '18', 'Upper Right', 'Bad smell', 'Aesthetic', 'X-ray,OPG', 'Restoration', '2022-06-13 08:08:32', '2022-06-13 08:08:32');
+(1, '1', 'Permanent Teeth', '18', 'Upper Right', 'Bad smell', 'Aesthetic', 'X-ray,OPG', 'Restoration', '2022-06-13 08:08:32', '2022-06-13 08:08:32'),
+(2, '2', 'Permanent Teeth', '16', 'Upper Right', 'Bad breath', 'Alveolar Bone Loss', 'X-ray,CBCT', 'Restoration', '2022-06-14 13:56:30', '2022-06-14 13:56:30');
 
 -- --------------------------------------------------------
 
@@ -355,28 +427,29 @@ INSERT INTO `treatment_infos` (`id`, `p_id`, `tooth_type`, `tooth_no`, `tooth_si
 
 CREATE TABLE `treatment_plans` (
   `id` int(50) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `cost` int(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `treatment_plans`
 --
 
-INSERT INTO `treatment_plans` (`id`, `name`) VALUES
-(1, 'Restoration'),
-(2, 'Pulpectomy'),
-(3, 'Pulpotomy'),
-(4, 'Extraction'),
-(5, 'Operculectomy'),
-(6, 'Abscess Drainage'),
-(7, 'Cyst Enucleation'),
-(8, 'Polishing'),
-(9, 'Curettage with Scaler'),
-(10, 'Scaling'),
-(11, 'Apisectomy'),
-(12, 'Abscess Drainage'),
-(13, 'Orthodontic Tratment'),
-(14, 'helloeas');
+INSERT INTO `treatment_plans` (`id`, `name`, `cost`) VALUES
+(1, 'Restoration', NULL),
+(2, 'Pulpectomy', NULL),
+(3, 'Pulpotomy', NULL),
+(4, 'Extraction', NULL),
+(5, 'Operculectomy', NULL),
+(6, 'Abscess Drainage', NULL),
+(7, 'Cyst Enucleation', NULL),
+(8, 'Polishing', NULL),
+(9, 'Curettage with Scaler', NULL),
+(10, 'Scaling', NULL),
+(11, 'Apisectomy', NULL),
+(12, 'Abscess Drainage', NULL),
+(13, 'Orthodontic Tratment', NULL),
+(14, 'helloeas', 1000);
 
 -- --------------------------------------------------------
 
@@ -432,6 +505,18 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `investigations`
+--
+ALTER TABLE `investigations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `medicines`
+--
+ALTER TABLE `medicines`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -456,6 +541,12 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `treatment_infos`
@@ -484,13 +575,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chife_complaints`
 --
 ALTER TABLE `chife_complaints`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `clinical_findings`
 --
 ALTER TABLE `clinical_findings`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `doctors`
@@ -502,7 +593,7 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT for table `drugs`
 --
 ALTER TABLE `drugs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -511,10 +602,22 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `investigations`
+--
+ALTER TABLE `investigations`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `medicines`
+--
+ALTER TABLE `medicines`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `patient_infos`
@@ -529,16 +632,22 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `treatment_infos`
 --
 ALTER TABLE `treatment_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `treatment_plans`
 --
 ALTER TABLE `treatment_plans`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
