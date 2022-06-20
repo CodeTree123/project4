@@ -5,13 +5,13 @@
         jQuery("#preloader").delay(250).fadeOut(250);
     });
     // Scrollup
-    $(function() {
-        $.scrollUp({
-            scrollName: 'scrollUp',
-            scrollText: 'Up',
-            activeOverlay: false
-        });
-    });
+    // $(function() {
+    //     $.scrollUp({
+    //         scrollName: 'scrollUp',
+    //         scrollText: 'Up',
+    //         activeOverlay: false
+    //     });
+    // });
     // Restrict Inspect
     document.onkeydown = function(e) {
         if (e.ctrlKey &&

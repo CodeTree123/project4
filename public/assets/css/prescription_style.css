@@ -70,8 +70,7 @@ small {
 }
 
 a,
-a:hover {
-  color: #03A3ED;
+a:hover { 
   text-decoration: none;
 }
 

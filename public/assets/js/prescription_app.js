@@ -104,10 +104,11 @@ Initial
 const drugList = document.querySelector('.drug-list ol');
 
 
-
+ 
 
     // tooth coordinate
     // const topLeft = document.querySelector('.top-left').innerText ;
+    const hidden_teeth_number = document.querySelector('#hidden_teeth_number').value ; 
     const topLeft = document.querySelector('.top-left').innerText ;
     // topLeft.innerText ="21";
     const topRight = document.querySelector('.top-right').innerText;
@@ -116,11 +117,29 @@ const drugList = document.querySelector('.drug-list ol');
 
     // console.log(topLeft,topRight,bottomLeft,bottomRight);
 
-    if (topLeft != null) {  
-        document.getElementById("tl").innerText =    topLeft.toString().substr(1);
-        document.getElementById("tr").style.visibility = "hidden"
-        document.getElementById("bl").style.visibility = "hidden"
+    if (hidden_teeth_number > 10 && hidden_teeth_number < 19 ) {  
+        document.getElementById("tl").innerText =    hidden_teeth_number.toString().substr(1);
+        document.getElementById("tr").style.visibility = "hidden";
+        document.getElementById("bl").style.visibility = "hidden";
+        document.getElementById("br").style.visibility = "hidden";
+    }
+    else if(hidden_teeth_number > 20 && hidden_teeth_number < 29 ) {  
+        document.getElementById("tl").style.visibility =   "hidden";
+        document.getElementById("tr").innerText =  hidden_teeth_number.toString().substr(1);
+        document.getElementById("bl").style.visibility = "hidden";
+        document.getElementById("br").style.visibility = "hidden";
+    }
+    else if(hidden_teeth_number > 40 && hidden_teeth_number < 49 ) {  
+        document.getElementById("tl").style.visibility =   "hidden";
+        document.getElementById("tr").style.visibility =   "hidden"
+        document.getElementById("bl").innerText =  hidden_teeth_number.toString().substr(1);
         document.getElementById("br").style.visibility = "hidden"
+    }
+    else if(hidden_teeth_number > 30 && hidden_teeth_number < 39 ) {  
+        document.getElementById("tl").style.visibility =   "hidden";
+        document.getElementById("tr").style.visibility =   "hidden"
+        document.getElementById("bl").style.visibility =   "hidden"
+        document.getElementById("br").innerText =  hidden_teeth_number.toString().substr(1);
     }
     // document.getElementById("tr").style.visibility = "hidden";.substr(2);
     // document.getElementById("bl").style.visibility = "hidden";

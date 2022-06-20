@@ -15,9 +15,8 @@
     <!-- Bootstrap 5.1.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    
-
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
+ <link rel="stylesheet" href="{{ asset ('assets/css/select2.css')}}">
+ 
  <!-- Style CSS -->
  <link rel="stylesheet" href="{{ asset ('assets/css/style.css')}}">
 </head>
@@ -317,42 +316,42 @@
                                             <div class="upper-right-teeths">
                                                 <ul>
                                                     <li>
-                                                        <p>1</p>
+                                                        <!-- <p>1</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-right/1TMR.png')}}" alt="" id="18">
                                                         <p>18</p>
                                                     </li>
                                                     <li>
-                                                        <p>2</p>
+                                                        <!-- <p>2</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-right/2SMR.png')}}" alt="" id="17">
                                                         <p>17</p>
                                                     </li>
                                                     <li>
-                                                        <p>3</p>
+                                                        <!-- <p>3</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-right/3FMR.png')}}" alt="" id="16">
                                                         <p>16</p>
                                                     </li>
                                                     <li>
-                                                        <p>4</p>
+                                                        <!-- <p>4</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-right/4SPMR.png')}}" alt="" id="15">
                                                         <p>15</p>
                                                     </li>
                                                     <li>
-                                                        <p>5</p>
+                                                        <!-- <p>5</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-right/5FPMR.png')}}" alt="" id="14">
                                                         <p>14</p>
                                                     </li>
                                                     <li>
-                                                        <p>6</p>
+                                                        <!-- <p>6</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-right/6CR.png')}}" alt="" id="13">
                                                         <p>13</p>
                                                     </li>
                                                     <li>
-                                                        <p>7</p>
+                                                        <!-- <p>7</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-right/7LIR.png')}}" alt="" id="12">
                                                         <p>12</p>
                                                     </li>
                                                     <li>
-                                                        <p>8</p>
+                                                        <!-- <p>8</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-right/8CIR.png')}}" alt="" id="11">
                                                         <p>11</p>
                                                     </li>
@@ -368,42 +367,42 @@
                                             <div class="upper-right-teeths">
                                                 <ul>
                                                     <li>
-                                                        <p>9</p>
+                                                        <!-- <p>9</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-left/9CIL.png')}}" alt="" id="21">
                                                         <p>21</p>
                                                     </li>
                                                     <li>
-                                                        <p>10</p>
+                                                        <!-- <p>10</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-left/10LIL.png')}}" alt="" id="22">
                                                         <p>22</p>
                                                     </li>
                                                     <li>
-                                                        <p>11</p>
+                                                        <!-- <p>11</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-left/11CL.png')}}" alt="" id="23">
                                                         <p>23</p>
                                                     </li>
                                                     <li>
-                                                        <p>12</p>
+                                                        <!-- <p>12</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-left/12FPML.png')}}" alt="" id="24">
                                                         <p>24</p>
                                                     </li>
                                                     <li>
-                                                        <p>13</p>
+                                                        <!-- <p>13</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-left/13SPML.png')}}" alt="" id="25">
                                                         <p>25</p>
                                                     </li>
                                                     <li>
-                                                        <p>14</p>
+                                                        <!-- <p>14</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-left/14FML.png')}}" alt="" id="26">
                                                         <p>26</p>
                                                     </li>
                                                     <li>
-                                                        <p>15</p>
+                                                        <!-- <p>15</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-left/15SML.png')}}" alt="" id="27">
                                                         <p>27</p>
                                                     </li>
                                                     <li>
-                                                        <p>16</p>
+                                                        <!-- <p>16</p> -->
                                                         <img src="{{ asset('assets/img/teeths/Upper-left/16TML.png')}}" alt="" id="28">
                                                         <p>28</p>
                                                     </li>
@@ -415,49 +414,49 @@
                                     <!-- end -->
                                     <!-- Lower Right -->
                                     <div class="col-md-6 p-0 T-border-right">
-                                        <div class="upper-right">
+                                        <div class="upper-right  mb-3">
                                             <h4>Lower Right</h4>
                                             <div class="upper-right-teeths">
                                                 <ul>
                                                     <li>
                                                         <p>48</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Right/48TMR.png')}}" alt="" id="48">
-                                                        <p>32</p>
+                                                        <!-- <p>32</p> -->
                                                     </li>
                                                     <li>
                                                         <p>47</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Right/47SMR.png')}}" alt="" id="47">
-                                                        <p>31</p>
+                                                        <!-- <p>31</p> -->
                                                     </li>
                                                     <li>
                                                         <p>46</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Right/46FMR.png')}}" alt="" id="46">
-                                                        <p>30</p>
+                                                        <!-- <p>30</p> -->
                                                     </li>
                                                     <li>
                                                         <p>45</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Right/45SPMR.png')}}" alt="" id="45">
-                                                        <p>29</p>
+                                                        <!-- <p>29</p> -->
                                                     </li>
                                                     <li>
                                                         <p>44</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Right/44FPMR.png')}}" alt="" id="44">
-                                                        <p>28</p>
+                                                        <!-- <p>28</p> -->
                                                     </li>
                                                     <li>
                                                         <p>43</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Right/43CR.png')}}" alt="" id="43">
-                                                        <p>27</p>
+                                                        <!-- <p>27</p> -->
                                                     </li>
                                                     <li>
                                                         <p>42</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Right/42LIR.png')}}" alt="" id="42">
-                                                        <p>26</p>
+                                                        <!-- <p>26</p> -->
                                                     </li>
                                                     <li>
                                                         <p>41</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Right/41CIR.png')}}" alt="" id="41">
-                                                        <p>25</p>
+                                                        <!-- <p>25</p> -->
                                                     </li>
                                                 </ul>
                                             </div>
@@ -473,42 +472,42 @@
                                                     <li>
                                                         <p>31</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Left/31CIL.png')}}" alt="" id="31">
-                                                        <p>24</p>
+                                                        <!-- <p>24</p> -->
                                                     </li>
                                                     <li>
                                                         <p>32</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Left/32LIL.png')}}" alt="" id="32">
-                                                        <p>23</p>
+                                                        <!-- <p>23</p> -->
                                                     </li>
                                                     <li>
                                                         <p>33</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Left/33CL.png')}}" alt="" id="33">
-                                                        <p>22</p>
+                                                        <!-- <p>22</p> -->
                                                     </li>
                                                     <li>
                                                         <p>34</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Left/34FPML.png')}}" alt="" id="34">
-                                                        <p>21</p>
+                                                        <!-- <p>21</p> -->
                                                     </li>
                                                     <li>
                                                         <p>35</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Left/35SPML.png')}}" alt="" id="35">
-                                                        <p>20</p>
+                                                        <!-- <p>20</p> -->
                                                     </li>
                                                     <li>
                                                         <p>36</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Left/36FML.png')}}" alt="" id="36">
-                                                        <p>19</p>
+                                                        <!-- <p>19</p> -->
                                                     </li>
                                                     <li>
                                                         <p>37</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Left/37SML.png')}}" alt="" id="37">
-                                                        <p>18</p>
+                                                        <!-- <p>18</p> -->
                                                     </li>
                                                     <li>
                                                         <p>38</p>
                                                         <img src="{{ asset('assets/img/teeths/Lower-Left/38TML.png')}}" alt="" id="38">
-                                                        <p>17</p>
+                                                        <!-- <p>17</p> -->
                                                     </li>
                                                 </ul>
                                             </div>
@@ -681,7 +680,7 @@
                                                 </div>
                                             </div>
                                         </div> 
-                                        <h5 class="d-flex justify-content-between">C/C Chife Complaint 
+                                        <h5 class="d-flex justify-content-between">C/C Chief Complaint 
                                             <div>
                                                 <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#chife_Complaint_Add" >
                                                     <i class="bi bi-plus-circle"></i>
@@ -778,7 +777,7 @@
                                             <li>Check-up</li>
                                         </ul>
                                         <div class="d-flex">
-                                            <button class="btn btn-primary">Submit</button>
+                                            <button class="btn   btn-outline-blue-grey">Submit</button>
                                             <input type="text" id="tooth_type" name="tooth_type" value="" readonly/>
                                         </div>
                                         
@@ -912,26 +911,26 @@
     </div>
     <!-- footer end-->
 
- <!-- Modal For C/C Chife Complaint List -->
+ <!-- Modal For C/C Chief Complaint List -->
  <div class="modal fade " id="chife_Complaint" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Modal Header & Close btn -->
             <div class="modal-header">
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    C/C Chife Complaint List
+                    C/C Chief Complaint List
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chife Complaint List-->
+                <!-- C/C Chief Complaint List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
                             <th class="">Serial No</th>
-                            <th class="">chife Complaints</th>
+                            <th class="">Chief Complaints</th>
                             <th class="">Action</th>
                         </tr>
                     </thead>
@@ -941,10 +940,10 @@
                             <td>{{$key+1}}</td>
                             <td>{{$lcc->name}}</td>
                             <td class="d-flex justify-content-around">
-                                <button type="button" class="crud-btns CC_editbtn" href="" value="{{$lcc->id}}" >
+                                <button type="button" class="btn crud-btns CC_editbtn" href="" value="{{$lcc->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button class="crud-btns delete-cc" href="#" value="{{$lcc->id}}">
+                                <button class="btn crud-btns delete-cc" href="#" value="{{$lcc->id}}">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
@@ -952,21 +951,21 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chife Complaint list end -->
+                <!--C/C Chief Complaint list end -->
             </div>
             <!-- Modal Body end -->
         </div>
     </div>
  </div>
  <!-- Modal end -->
- <!-- Modal For C/C Chife Complaint Add -->
+ <!-- Modal For C/C Chief Complaint Add -->
  <div class="modal fade " id="chife_Complaint_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Modal Header & Close btn -->
             <div class="modal-header">
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    Add chife Complaint 
+                    Add Cheif Complaint 
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -977,12 +976,12 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3 drug-name">
-                            <input class="form-control" list="list" placeholder="Enter New chife Complaint" name="cc_name">
+                            <input class="form-control custom-form-control" list="list" placeholder="Enter New Cheif Complaint" name="cc_name">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-sm btn-black">Confirm</button>
+                        <button type="submit" class="btn btn-sm btn btn-sm btn-outline-blue-grey">Confirm</button>
                     </div>
                 </form>
             </div>
@@ -991,14 +990,14 @@
     </div>
  </div>
  <!-- Modal end -->
- <!-- Modal For C/C Chife Complaint update -->
+ <!-- Modal For C/C Chief Complaint update -->
  <div class="modal fade " id="chife_Complaint_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Modal Header & Close btn -->
             <div class="modal-header">
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    Edit chife Complaint 
+                    Edit Cheif Complaint 
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -1012,12 +1011,12 @@
                     <input type="hidden" id="CCId" name="c_c_id"/>
                     <div class="modal-body">
                         <div class="mb-3 drug-name">
-                            <input class="form-control" list="list" id="c_c_name" placeholder="Enter New chife Complaint" name="cc_name">
+                            <input class="form-control" list="list" id="c_c_name" placeholder="Enter New Chief Complaint" name="cc_name">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-sm btn-black">Update</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
                     </div>
                 </form>
             </div>
@@ -1026,14 +1025,14 @@
     </div>
  </div>
  <!-- Modal end -->
- <!-- Modal For Delete C/C Chife Complaint -->
+ <!-- Modal For Delete C/C Chief Complaint -->
     <div class="modal fade " id="del-CC" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
                 <!-- Modal Header & Close btn -->
                 <div class="modal-header">
                     <h5 class="modal-title text-dark" id="exampleModalLabel">
-                        Delete C/C Chife Complaint
+                        Delete C/C Chief Complaint
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -1075,7 +1074,7 @@
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chife Complaint List-->
+                <!-- C/C Chief Complaint List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
@@ -1090,10 +1089,10 @@
                             <td>{{$key+1}}</td>
                             <td>{{$lcf->name}}</td>
                             <td class="d-flex justify-content-around">
-                                <button class="crud-btns CF_editbtn" href="" value= "{{$lcf->id}}" >
+                                <button class="btn crud-btns CF_editbtn" href="" value= "{{$lcf->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button class="crud-btns delete-cf" href="#" value= "{{$lcf->id}}">
+                                <button class="btn crud-btns delete-cf" href="#" value= "{{$lcf->id}}">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
@@ -1101,7 +1100,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chife Complaint list end -->
+                <!--C/C Chief Complaint list end -->
             </div>
             <!-- Modal Body end -->
         </div>
@@ -1131,7 +1130,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-sm btn-black">Confirm</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Confirm</button>
                     </div>
                 </form>
             </div>
@@ -1166,7 +1165,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-sm btn-black">Update</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
                     </div>
                 </form>
             </div>
@@ -1224,7 +1223,7 @@
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chife Complaint List-->
+                <!-- C/C Chief Complaint List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
@@ -1239,10 +1238,10 @@
                             <td>{{$key+1}}</td>
                             <td>{{$investigation_list->name}}</td>
                             <td class="d-flex justify-content-around">
-                                <button class="crud-btns Investigation_editbtn" href="" value= "{{$investigation_list->id}}" >
+                                <button class="btn crud-btns Investigation_editbtn" href="" value= "{{$investigation_list->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button class="crud-btns delete-Investigation" href="#" value= "{{$investigation_list->id}}">
+                                <button class="btn crud-btns delete-Investigation" href="#" value= "{{$investigation_list->id}}">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
@@ -1250,7 +1249,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chife Complaint list end -->
+                <!--C/C Chief Complaint list end -->
             </div>
             <!-- Modal Body end -->
         </div>
@@ -1281,7 +1280,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-sm btn-black">Confirm</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Confirm</button>
                     </div>
                 </form>
             </div>
@@ -1316,7 +1315,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                            <button type="submit" class="btn btn-sm btn-black">Update</button>
+                            <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
                         </div>
                     </form>
                 </div>
@@ -1374,7 +1373,7 @@
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chife Complaint List-->
+                <!-- C/C Chief Complaint List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
@@ -1391,10 +1390,10 @@
                             <td>{{$ltp->name}}</td>
                             <td>{{$ltp->cost}}</td>
                             <td class="d-flex justify-content-around">
-                                <button class="crud-btns TP_editbtn" href="" value="{{$ltp->id}}" >
+                                <button class="btn crud-btns TP_editbtn" href="" value="{{$ltp->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button class="crud-btns delete-tp" href="#" value="{{$ltp->id}}">
+                                <button class="btn crud-btns delete-tp" href="#" value="{{$ltp->id}}">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
@@ -1402,7 +1401,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chife Complaint list end -->
+                <!--C/C Chief Complaint list end -->
             </div>
             <!-- Modal Body end -->
         </div>
@@ -1435,7 +1434,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-sm btn-black">Confirm</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Confirm</button>
                     </div>
                 </form>
             </div>
@@ -1473,7 +1472,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-sm btn-black">Update</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
                     </div>
                 </form>
             </div>
@@ -1537,7 +1536,7 @@
     </script>
 
     <script>
-        // script for C/C Chife Complaint update
+        // script for C/C Chief Complaint update
         $(document).ready(function(){
             $(document).on('click', '.CC_editbtn',function(){
                 var cc_id = $(this).val();

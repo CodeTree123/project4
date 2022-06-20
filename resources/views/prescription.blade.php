@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ asset ('assets/css/tab.css')}}"> 
     <link rel="stylesheet" href="{{ asset ('assets/css/multiselect.css')}}"> 
 
+ 
+ <!-- Style CSS -->
+ <link rel="stylesheet" href="{{ asset ('assets/css/style.css')}}">
 
 </head>
 
@@ -105,6 +108,8 @@
                         <div class="left">
                             <div class="single cc">
                                 <h2>C/C:</h2>
+                                    
+                                    <input type="text" value="38" id="hidden_teeth_number">
                                 <div class="complain d-flex justify-content-between align-items-center">
                                     <ol class="ms-5">
                                         @foreach($pc_c as $c_c)
@@ -113,7 +118,7 @@
                                     </ol> 
                                     <table class="tb" >
                                         <tr class="tr-1">
-                                            <th class="top-left" id="tl">{{$tooth_no}} </th>
+                                            <th class="top-left" id="tl">13</th>
                                             <th class="top-right" id="tr">23  </th> 
                                         </tr>
                                         <tr class="tr-2">
@@ -132,14 +137,14 @@
                                             <li>{{$c_f}}</li>
                                         @endforeach
                                     </ol> 
-                                    <table >
+                                    <table class="tb" >
                                         <tr class="tr-1">
-                                            <th class="top-left">18</th>
-                                            <th class="top-right">27</th> 
+                                            <th class="top-left" id="tl">13</th>
+                                            <th class="top-right" id="tr">23  </th> 
                                         </tr>
                                         <tr class="tr-2">
-                                            <th class="bottom-left">15</th>
-                                            <th class="bottom-right">8</th> 
+                                            <th class="bottom-left" id="bl">  12</th>
+                                            <th class="bottom-right" id="br"> 23</th> 
                                         </tr> 
                                         </table> 
                                 </div> 
@@ -283,11 +288,13 @@
                                                     <p class="drug-name">{{$drug->drug_name}}</p>
                                                 </div>
                                                 <div class="align-self-center">
-                                                    <button type="button" class="btn btn-sm p-o edit_drug" value="{{$drug->id}}">
-                                                        <i class="bi bi-pencil-square text-primary"></i></button>
-                                                        <button class="crud-btns delete-drug" href="#" value="{{$drug->id}}">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </button>
+                                                    <button type="button" class="btn crud-btns edit_drug" value="{{$drug->id}}">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    </button>
+
+                                                    <button class="btn crud-btns delete-drug"  value="{{$drug->id}}">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                             <P class="qty">{{$drug->drug_time}} [ {{$drug->duration}} day(s) ] {{$drug->meal_time}} </P>
@@ -296,7 +303,7 @@
                                     </ol>
                                 </div>
                                
-                                <button type="button" class="btn btn-sm btn-primary addDrug" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-sm btn-outline-blue-grey addDrug" data-bs-toggle="modal"
                                         data-bs-target="#drug" id="drugBtn">Add Drug
                                 </button>
                             </div>
@@ -400,10 +407,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="text-end me-2">
-                <a class="crud-btns me-2" href="" data-bs-toggle="modal" data-bs-target="#Medicine_Add" >
+                <a class="crud-btns me-2 add_medicine" href="" data-bs-toggle="modal" data-bs-target="#Medicine_Add" >
                     <i class="bi bi-plus-circle"></i>
                 </a>
-                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Medicine_List" >
+                <a class="crud-btns list_medicine" href="" data-bs-toggle="modal" data-bs-target="#Medicine_List" >
                     <i class="bi bi-card-list"></i>
                 </a>
             </div>
@@ -425,7 +432,14 @@
                         </datalist> -->
                     </div>
                     <div class="mb-3 drug-time">
-                        <input type="text" class="form-control" placeholder="Timing" value="1+0+1" name="drug_time">
+                        
+                        <select class="form-select" name="drug_time" value="">
+                            <option>1+0+1</option>
+                            <option>1+1+0</option>
+                            <option>0+1+0</option>
+                            <option>0+0+1</option>
+                            <option>1+1+1</option>
+                        </select>
                     </div>
                     <div class="mb-3 drug-meal-time" >
                         <select class="form-select" name="meal_time">
@@ -545,10 +559,10 @@
             <div class="modal-body">
                 <form action="{{route('prescription_add',[$doctor_info->id,$t_id,$t_plans])}}" method="post">
                 @csrf
-                    <h4>R u sure to submit this prescription.</h4>
-                    <input type="text" id="patientID" name="patientID">
-                    <input type="text" id="drugIdList" name="drugIdList">
-                    <input type="text" value="{{ date('d-m-Y') }}" name="date">
+                    <h4>Are you sure to submit this prescription?</h4>
+                    <input type="hidden" id="patientID" name="patientID" >
+                    <input type="hidden" id="drugIdList" name="drugIdList" >
+                    <input type="hidden" value="{{ date('d-m-Y') }}" name="date" >
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
@@ -564,7 +578,7 @@
  <!-- Modal For medicine Add -->
  <div class="modal fade " id="Medicine_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
+        <div class="modal-content new-medicine-modal">
             <!-- Modal Header & Close btn -->
             <div class="modal-header">
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
@@ -598,8 +612,8 @@
  <!-- Modal end -->
  <!-- Modal For Medicine List -->
  <div class="modal fade " id="Medicine_List" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
+        <div class="modal-content medicine-list-modal">
             <!-- Modal Header & Close btn -->
             <div class="modal-header">
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
@@ -625,10 +639,10 @@
                             <td>{{$key + 1}}</td>
                             <td>{{$medicines_list->name}}</td>
                             <td class="d-flex justify-content-around">
-                                <button type="button" class="crud-btns Medicine_editbtn" href="" value="{{$medicines_list->id}}" >
+                                <button type="button" class="btn crud-btns Medicine_editbtn" value="{{$medicines_list->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button class="crud-btns delete-Medicine" href="#" value="{{$medicines_list->id}}">
+                                <button class="btn crud-btns delete-Medicine" value="{{$medicines_list->id}}">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
@@ -645,8 +659,8 @@
  <!-- Modal end -->
  <!-- Modal For Medicine update -->
  <div class="modal fade " id="Medicine_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-scrollable">
-        <div class="modal-content">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable ">
+        <div class="modal-content edit-medicine-info-modal">
             <!-- Modal Header & Close btn -->
             <div class="modal-header">
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
@@ -737,6 +751,14 @@
 <script>
     $(document).ready(function(){
 
+        $(document).on('click','.add_medicine',function(){
+            $('#drug').modal('hide');
+        });
+
+        $(document).on('click','.list_medicine',function(){
+            $('#drug').modal('hide');
+        });
+
         $(document).on('click', '.edit_drug',function(){
             var drug_id = $(this).val();
             // alert(drug_id);
@@ -781,6 +803,7 @@
             var medicine_id = $(this).val();
             // alert(medicine_id);
             $("#Medicine_Update").modal('show');
+            $("#Medicine_List").modal('hide');
             $.ajax({
                 type:"GET",
                 url: "/edit_medicine/"+medicine_id,
@@ -802,6 +825,7 @@
         
     });
 </script>
+ 
  
 
 </body>
