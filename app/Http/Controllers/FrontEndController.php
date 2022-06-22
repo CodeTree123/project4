@@ -81,4 +81,8 @@ class FrontEndController extends Controller
     {
         return view('login');
     }
+    public function invoice()
+    {
+        return view('invoice');
+    }
 }

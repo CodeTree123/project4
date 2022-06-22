@@ -36,6 +36,7 @@ Route::get('/treatmentPlans', [FrontEndController::class, 'treatmentPlans'])->na
 
 
 Route::get('/prescription', [FrontEndController::class, 'prescription'])->name('prescription');
+Route::get('/invoice', [FrontEndController::class, 'invoice'])->name('invoice');
 // Route::get('/subscription', [FrontEndController::class, 'subscription'])->name('subscription'); 
 // Route::get('/admin_page', [FrontEndController::class, 'admin_page'])->name('admin_page');
 // Route::get('/profile_edit', [FrontEndController::class, 'profile_edit'])->name('profile_edit');

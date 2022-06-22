@@ -279,7 +279,7 @@
                         <a href="#" class="btns btn-outline-blue-grey my-2">Treatment Plans</a>
                         <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
                         <a href="#" class="btns btn-outline-blue-grey my-2">Prescription</a>
-                        <a href="#" class="btns btn-outline-blue-grey my-2">Billing</a>
+                        <a href="{{route('invoice')}}" class="btns btn-outline-blue-grey my-2">Billing</a>
                     </div>
 
                     <!-- <a href="">setting</a>
