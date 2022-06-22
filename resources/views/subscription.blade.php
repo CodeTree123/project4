@@ -3,29 +3,29 @@
     <!-- main start -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 pe-0">
-                <div class="profile">
+        <div class="col-md-2 pe-0">
+                <div class="profile blue-grey-border-thin">
                     <div class="complete">
                         <div class="p-header">
                             <!-- <img src="img/banner.jpg" class="cover"> -->
                             <img src="{{ asset('assets/img/profile.png')}}" class="doctor-profile my-4">
 
-                            <h2 class="mb-2">Dr Abduallah Bin Sayeed</h2>
+                            <h2 class="mb-2">{{$doctor_info->name}}</h2>
                             <p class="mb-2">Dental Consulatant of the Royal <br>Dental</p>
-                            <a href="#_" class="btns mb-2">This Month</a>
+                            <a href="#_" class="btns btn-outline-blue-grey  mb-2">This Month</a>
                             <p class="mb-2">SMS Remaining : 50</p>
                             <p class="mb-2">Buy SMS : 50</p>
 
                         </div>
                     </div>
                 </div>
-                <div class="profile py-2">
+                <div class="profile blue-grey-border-thin py-2">
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
-                        <a href="{{route('patient')}}" class="btns my-2">Patient</a>
-                        <a href="{{route('appointment')}}" class="btns my-2">Appointment</a>
-                        <a href="#" class="btns my-2">Income/Expence</a>
-                        <a href="#" class="btns my-2">Subscription</a>
+                        <a href="#" class="btns btn-outline-blue-grey my-2">Patient List</a>
+                        <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
+                        <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a>
+                        <a href="{{route('subscription',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Subscription</a>
                     </div>
 
                     <!-- <a href="">setting</a>
@@ -40,18 +40,17 @@
       <p class="fs-5 text-muted">Here Client will give us a brief detail content about subscription</p>
     </div>
                 <main>
+                    
                     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                   
+                    @foreach($subscription_plans as $subscription_plan)
                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                         <div class="card mb-4 rounded-3 shadow-sm">
                         <div class="card-header py-3 bg-dark border-dark text-white">
-                            <h4 class="my-0 fw-normal">Package - 01</h4>
+                            <h4 class="my-0 fw-normal">{{$subscription_plan->package_name}}</h4>
                         </div>
                         <div class="card-body  ">
-                            <h1 class="card-title pricing-card-title">
-                                1000৳ 
-                            </h1>
-                            <h4 class="text-muted fw-light">/ 1 month</h4>
+                            <h1 class="card-title pricing-card-title">{{$subscription_plan->package_price}}৳ </h1>
+                            <h4 class="text-muted fw-light">/ {{$subscription_plan->duration}} month</h4>
 
                             <ul class="list-unstyled list-group mt-3 mb-1 justify-content-left">
                             <li class="list-group-item text-left "><i class="fa-solid fa-check pe-3"></i>asd aeqwe afbfdgh</li>
@@ -59,11 +58,14 @@
                             <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>pocvx mzqwe zxcuopasd</li>
                             <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>asdmqlw isgreat asdoqipwe</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-outline-dark">Buy This</button>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-dark PackageID" value="{{$subscription_plan->id}}">
+                                Buy This
+                            </button>
                         </div>
                         </div>
                     </div>
-                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                    @endforeach
+                    <!-- <div class="col-xxl-6 col-xl-6 col-lg-6">
                         <div class="card mb-4 rounded-3 shadow-sm">
                         <div class="card-header py-3 bg-dark border-dark text-white">
                             <h4 class="my-0 fw-normal">Package - 02</h4>
@@ -122,10 +124,9 @@
                             <button type="button" class="w-100 btn btn-lg btn-outline-dark">Buy This</button>
                         </div>
                         </div>
-                    </div>
+                    </div> -->
                    
                     </div>
- 
                 </main>   
                 </div>
             </div>
@@ -226,5 +227,82 @@
     </div>
     <!-- Admin Notice,Ad & Events end -->
 
+    <!-- Modal For C/C Chief Complaint Add -->
+ <div class="modal fade " id="package" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Subscription Information 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                @if($subscription_check->d_id == $doctor_info->id)
+                <form action="{{route('subscription_add')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                        <input type="text" id="status" name="doctor_id" value="{{$doctor_info->id}}">
+                            <input type="text" id="package_name" name="package_name">
+                            <input type="text" id="package_price" name="package_price">
+                            <input type="text" id="package_duration" name="package_duration">
+                            <!-- <input type="text" id="status" name="status" value="0"> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn btn-sm btn-outline-blue-grey">Update</button>
+                    </div>
+                </form>
+                
+                @else
+                <form action="{{route('subscription_add')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                        <input type="text" id="status" name="doctor_id" value="{{$doctor_info->id}}">
+                            <input type="text" id="package_name" name="package_name">
+                            <input type="text" id="package_price" name="package_price">
+                            <input type="text" id="package_duration" name="package_duration">
+                            <!-- <input type="text" id="status" name="status" value="0"> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn btn-sm btn-outline-blue-grey">Confirm</button>
+                    </div>
+                </form>
+                @endif
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+
     <!-- main end -->
     @include('include.footer')
+    <script>
+        $(document).ready(function(){
+            $(document).on('click', '.PackageID',function(){
+                var packageId = $(this).val();
+                alert(packageId);
+                $("#package").modal('show');
+                $.ajax({
+                    type:"GET",
+                    url: "/subscription_info/"+packageId,
+                    success: function(response){
+                        console.log(response.subscription_info);
+                        $('#package_name').val(response.subscription_info.package_name);
+                        $('#package_price').val(response.subscription_info.package_price);
+                        $('#package_duration').val(response.subscription_info.duration);
+                    }
+                });
+            });
+        });
+
+    </script>

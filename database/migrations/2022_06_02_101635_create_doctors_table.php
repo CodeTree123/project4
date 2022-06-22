@@ -19,9 +19,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('BMDC')->nullable();
-            $table->string('chemner_name')->nullable();
-            $table->string('chemner_add')->nullable();
-            $table->string('chemner_mobile')->nullable();
+            $table->string('chember_name')->nullable();
+            $table->string('chember_add')->nullable();
+            $table->string('phone')->nullable();
+            $table->boolean('role')->default(0);
+            $table->boolean('status')->default(0);
+            $table->boolean('verification')->default(0);
             $table->text('image')->nullable();
             $table->timestamps();
         });

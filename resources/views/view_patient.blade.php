@@ -680,7 +680,7 @@
                                                 </div>
                                             </div>
                                         </div> 
-                                        <h5 class="d-flex justify-content-between">C/C Chief Complaint 
+                                        <h5 class="d-flex justify-content-between">C/C Chife Complaint 
                                             <div>
                                                 <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#chife_Complaint_Add" >
                                                     <i class="bi bi-plus-circle"></i>
@@ -1074,7 +1074,7 @@
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chief Complaint List-->
+                <!-- C/F Clinical Findings List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
@@ -1100,7 +1100,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chief Complaint list end -->
+                <!--C/F Clinical Findings list end -->
             </div>
             <!-- Modal Body end -->
         </div>
@@ -1223,7 +1223,7 @@
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chief Complaint List-->
+                <!-- Investigation List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
@@ -1237,19 +1237,25 @@
                         <tr>
                             <td>{{$key+1}}</td>
                             <td>{{$investigation_list->name}}</td>
+                            @if($investigation_list->status == 1)
                             <td class="d-flex justify-content-around">
+                                
                                 <button class="btn crud-btns Investigation_editbtn" href="" value= "{{$investigation_list->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
                                 <button class="btn crud-btns delete-Investigation" href="#" value= "{{$investigation_list->id}}">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
+                                
                             </td>
+                            @else
+                            <td></td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chief Complaint list end -->
+                <!--Investigation list end -->
             </div>
             <!-- Modal Body end -->
         </div>
@@ -1276,6 +1282,7 @@
                     <div class="modal-body">
                         <div class="mb-3 drug-name">
                             <input class="form-control" list="list" placeholder="Enter New Investigation" name="investigation_name">
+                            <input type="text" name="investigation_status" id="" value="1">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -1373,7 +1380,7 @@
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chief Complaint List-->
+                <!-- T/P Treatment Plans List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
@@ -1401,7 +1408,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chief Complaint list end -->
+                <!--T/P Treatment Plans list end -->
             </div>
             <!-- Modal Body end -->
         </div>

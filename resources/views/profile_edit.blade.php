@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-floating ">
-            <input type="text" name="mobile"  class="form-control mb-2" id="floatingInput" placeholder="Name" value="{{$doctor_info->chemner_mobile}}">
+            <input type="text" name="mobile"  class="form-control mb-2" id="floatingInput" placeholder="Name" value="{{$doctor_info->phone}}">
             <label for="floatingInput">Mobile Number</label>
         </div>
         <!-- <div class="form-floating">
@@ -23,11 +23,11 @@
             <label for="bmdcID">BMDC Registration No.</label>
         </div> -->
         <div class="form-floating">
-            <input type="text" name="chember_name" class="form-control mb-2" id="chamberName" placeholder="chamberName" value="{{$doctor_info->chemner_name}}">
+            <input type="text" name="chember_name" class="form-control mb-2" id="chamberName" placeholder="chamberName" value="{{$doctor_info->chember_name}}">
             <label for="chamberName">Chamber Name</label>
         </div>
         <div class="form-floating">
-            <input type="text" name="chember_add" class="form-control mb-2" id="chamberAddress" placeholder="chamberAddress" value="{{$doctor_info->chemner_add}}">
+            <input type="text" name="chember_add" class="form-control mb-2" id="chamberAddress" placeholder="chamberAddress" value="{{$doctor_info->chember_add}}">
             <label for="chamberAddress">Chamber Address</label>
         </div>
  

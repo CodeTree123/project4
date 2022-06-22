@@ -624,7 +624,7 @@
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <!-- C/C Chife Complaint List-->
+                <!-- Medicine List-->
                 <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
@@ -650,7 +650,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!--C/C Chife Complaint list end -->
+                <!--Medicine list end -->
             </div>
             <!-- Modal Body end -->
         </div>
@@ -798,7 +798,7 @@
                 }
             });
         });
-
+        // Medicine update/edit
         $(document).on('click', '.Medicine_editbtn',function(){
             var medicine_id = $(this).val();
             // alert(medicine_id);
@@ -815,7 +815,7 @@
                 }
             });
         });
-
+        // Medicine delete
         $(document).on('click', '.delete-Medicine',function(){
             var deleteMedicineId = $(this).val();
             // alert(drug_id);

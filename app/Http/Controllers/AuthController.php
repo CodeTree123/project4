@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\doctor;
 use App\Models\patient_infos;
+use App\Models\subscription_plan;
+use App\Models\subscription;
 use Session;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {   
@@ -73,10 +76,10 @@ class AuthController extends Controller
     public function login_update_doctor(Request $request,$doctor_id)
     {
         doctor::find($doctor_id)->update([
-            'chemner_mobile'=>$request->mobile,
+            'phone'=>$request->mobile,
             'BMDC'=>$request->BMDC,
-            'chemner_name'=>$request->chember_name,
-            'chemner_add'=>$request->chember_add,
+            'chember_name'=>$request->chember_name,
+            'chember_add'=>$request->chember_add,
         ]);
 
         return redirect()->route('doctor');
@@ -101,12 +104,40 @@ class AuthController extends Controller
     public function update_doctor(Request $request,$id)
     {
         doctor::find($id)->update([
-            'chemner_mobile'=>$request->mobile,
-            'chemner_name'=>$request->chember_name,
-            'chemner_add'=>$request->chember_add,
+            'phone'=>$request->mobile,
+            'chember_name'=>$request->chember_name,
+            'chember_add'=>$request->chember_add,
         ]);
 
         return redirect()->route('doctor',$id);
+    }
+
+    public function subscription($d_id)
+    {
+
+        $doctor_info=doctor::where('id','=',$d_id)->first();
+        $subscription_plans = subscription_plan::all();
+        $subscription_check = subscription::find($d_id);
+        // dd($subscription_check);
+        return view('subscription',compact('doctor_info','subscription_plans','subscription_check'));
+    }
+
+    public function subscription_info($id){
+        $subscription_info = subscription_plan::find($id);
+        return response()->json([
+            'status'=>200,
+            'subscription_info' => $subscription_info,
+        ]);
+    }
+
+    public function subscription_add(Request $request){
+        $subscription = new subscription();
+        $subscription->d_id = $request->doctor_id;
+        $subscription->package_name = $request->package_name;
+        $subscription->package_price = $request->package_price;
+        $subscription->duration = $request->package_duration;
+        $res = $subscription->save();
+        return back();
     }
 
     public function logout(){

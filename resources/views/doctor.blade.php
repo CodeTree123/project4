@@ -26,7 +26,7 @@
                         <a href="#" class="btns btn-outline-blue-grey my-2">Patient List</a>
                         <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
                         <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a>
-                        <a href="{{route('subscription')}}" class="btns btn-outline-blue-grey my-2">Subscription</a>
+                        <a href="{{route('subscription',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Subscription</a>
                     </div>
 
                     <!-- <a href="">setting</a>
