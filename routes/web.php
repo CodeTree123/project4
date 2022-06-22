@@ -6,6 +6,7 @@ use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\SubMainController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +36,8 @@ Route::get('/treatmentPlans', [FrontEndController::class, 'treatmentPlans'])->na
 
 
 Route::get('/prescription', [FrontEndController::class, 'prescription'])->name('prescription');
-Route::get('/subscription', [FrontEndController::class, 'subscription'])->name('subscription'); 
-Route::get('/admin_page', [FrontEndController::class, 'admin_page'])->name('admin_page');
+// Route::get('/subscription', [FrontEndController::class, 'subscription'])->name('subscription'); 
+// Route::get('/admin_page', [FrontEndController::class, 'admin_page'])->name('admin_page');
 // Route::get('/profile_edit', [FrontEndController::class, 'profile_edit'])->name('profile_edit');
 // Route::get('/registration', [FrontEndController::class, 'registration'])->name('registration');
 // Route::get('/login', [FrontEndController::class, 'login'])->name('login');
@@ -55,6 +56,11 @@ Route::get('/login_profile_edit/{id}', [AuthController::class, 'login_profile_ed
 Route::put('/update/doctor/{id}',[AuthController::class,'update_doctor'])->name('update.doctor');
 Route::put('/login_update/doctor/{id}',[AuthController::class,'login_update_doctor'])->name('login_update_doctor');
 // Route::post('/search',[AuthController::class,'search'])->name('search');
+Route::get('/subscription/{d_id}', [AuthController::class, 'subscription'])->name('subscription');
+Route::get('/subscription_info/{id}', [AuthController::class, 'subscription_info']);
+Route::post('/subscription_add', [AuthController::class, 'subscription_add'])->name('subscription_add');
+
+
 
 
 
@@ -80,7 +86,8 @@ Route::delete('/delete_drug', [MainController::class, 'delete_drug'])->name('del
 
 Route::get('/get_drug_info/{p_id}', [MainController::class, 'get_drug_info']);
 Route::post('/prescription_add/{d_id}/{t_id}/{t_plans}', [MainController::class, 'prescription_add'])->name('prescription_add'); 
-Route::delete('/prescription_delete', [MainController::class, 'prescription_delete'])->name('prescription_delete'); 
+Route::delete('/prescription_delete', [MainController::class, 'prescription_delete'])->name('prescription_delete');
+ 
 
 // SubMainController
 
@@ -109,7 +116,16 @@ Route::get('/edit_medicine/{id}', [SubMainController::class, 'edit_medicine']);
 Route::put('/update_medicine', [SubMainController::class, 'update_medicine'])->name('update_medicine');
 Route::delete('/delete_medicine', [SubMainController::class, 'delete_medicine'])->name('delete_medicine');
 
+// AdminController
 
+Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+Route::delete('/delete_doctor', [AdminController::class, 'delete_doctor'])->name('delete_doctor');
+Route::get('/doctor_status/{id}', [AdminController::class, 'doctor_status'])->name('doctor_status');
+Route::get('/subscription_status/{id}', [AdminController::class, 'subscription_status'])->name('subscription_status');
+ 
+// Route::post('/admin/medicine_add', [AdminController::class, 'medicine_add'])->name('medicine_add');
 
+// Route::put('/admin/update_medicine', [AdminController::class, 'update_medicine'])->name('update_medicine');
+// Route::delete('/admin/delete_medicine', [AdminController::class, 'delete_medicine'])->name('delete_medicine');
 
 

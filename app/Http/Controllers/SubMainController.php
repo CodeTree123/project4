@@ -83,6 +83,7 @@ class SubMainController extends Controller
     public function investigation(Request $request){
         $investigation = new investigation();
         $investigation->name = $request->investigation_name;
+        $investigation->status = $request->investigation_status;
         $res = $investigation->save();
         return back();
     }

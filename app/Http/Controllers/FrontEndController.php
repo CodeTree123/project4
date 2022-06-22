@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\patient_infos;
 use Illuminate\Http\Request;
+use App\Models\subscription_plan;
 
 class FrontEndController extends Controller
 {
@@ -26,7 +27,8 @@ class FrontEndController extends Controller
 
     public function subscription()
     {
-        return view('subscription');
+        $subscription_plans = subscription_plan::all();
+        return view('subscription',compact('subscription_plans'));
     }
 
     public function appointment()
