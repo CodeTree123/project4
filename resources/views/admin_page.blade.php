@@ -1,6 +1,7 @@
 @include('include.header')
 
 
+
   <div class="b-hor-example-divider"></div>
 
    <div class="container-fluid">
@@ -17,19 +18,19 @@
     <hr>
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-                <button class="nav-link text-white bg-dark my-2 active" id="v-pills-doctor-tab" data-bs-toggle="pill" data-bs-target="#v-pills-doctor" type="button" role="tab" aria-controls="v-pills-doctor" aria-selected="true">Doctor's Profile</button>
+                <a class="nav-link text-white text-center bg-dark my-2 active" id="v-pills-doctor-tab" data-bs-toggle="pill" data-bs-target="#v-pills-doctor" type="button" role="tab" aria-controls="v-pills-doctor" aria-selected="true">Doctor's Profile</a>
 
-                <button class="nav-link text-white bg-dark my-2" id="v-pills-subscription-tab" data-bs-toggle="pill" data-bs-target="#v-pills-subscription" type="button" role="tab" aria-controls="v-pills-subscription" aria-selected="false">Subscription</button>
+                <a class="nav-link text-white text-center bg-dark my-2" id="v-pills-subscription-tab" data-bs-toggle="pill" data-bs-target="#v-pills-subscription" type="button" role="tab" aria-controls="v-pills-subscription" aria-selected="false">Subscription</a>
 
-                <button class="nav-link text-white bg-dark my-2" id="v-pills-cc-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cc" type="button" role="tab" aria-controls="v-pills-cc" aria-selected="false">C/C Chife Complaints</button>
+                <a class="nav-link text-white text-center bg-dark my-2" id="v-pills-cc-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cc" type="button" role="tab" aria-controls="v-pills-cc" aria-selected="false">C/C Cheif Complaints</a>
 
-                <button class="nav-link text-white bg-dark my-2" id="v-pills-cf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cf" type="button" role="tab" aria-controls="v-pills-cf" aria-selected="false">C/F Clinical Findings</button>
+                <a class="nav-link text-white text-center bg-dark my-2" id="v-pills-cf-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cf" type="button" role="tab" aria-controls="v-pills-cf" aria-selected="false">C/F Clinical Findings</a>
                 
-                <button class="nav-link text-white bg-dark my-2" id="v-pills-investigation-tab" data-bs-toggle="pill" data-bs-target="#v-pills-investigation" type="button" role="tab" aria-controls="v-pills-investigation" aria-selected="false">Investigation</button>
+                <a class="nav-link text-white text-center bg-dark my-2" id="v-pills-investigation-tab" data-bs-toggle="pill" data-bs-target="#v-pills-investigation" type="button" role="tab" aria-controls="v-pills-investigation" aria-selected="false">Investigation</a>
                 
-                <button class="nav-link text-white bg-dark my-2" id="v-pills-tp-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tp" type="button" role="tab" aria-controls="v-pills-tp" aria-selected="false">T/P Treatment Plans</button>
+                <a class="nav-link text-white text-center bg-dark my-2" id="v-pills-tp-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tp" type="button" role="tab" aria-controls="v-pills-tp" aria-selected="false">T/P Treatment Plans</a>
                 
-                <button class="nav-link text-white bg-dark my-2" id="v-pills-medicine-tab" data-bs-toggle="pill" data-bs-target="#v-pills-medicine" type="button" role="tab" aria-controls="v-pills-medicine" aria-selected="false">Medicine</button>
+                <a class="nav-link text-white text-center bg-dark my-2" id="v-pills-medicine-tab" data-bs-toggle="pill" data-bs-target="#v-pills-medicine" type="button" role="tab" aria-controls="v-pills-medicine" aria-selected="false">Medicine</a>
                 
                 
             </div>
@@ -598,7 +599,7 @@
                     <div class="modal-body">
                         <div class="mb-3 drug-name">
                             <input class="form-control" list="list" placeholder="Enter New Investigation" name="investigation_name">
-                            <input type="text" name="investigation_status" id="" value="1">
+                            <input type="text" name="investigation_status" id="investigation_status" value="1" readonly>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -1050,3 +1051,18 @@
 
     });
    </script>
+
+
+
+<script>
+ $(document).ready(function(){
+    $('a[data-bs-toggle="pill"]').on('show.bs.tab', function(e) {
+        localStorage.setItem('activeTab', 
+        $(e.target).attr('data-bs-target'));
+    });
+    var activeTab = localStorage.getItem('activeTab');
+    if(activeTab){
+        $('#v-pills-tab a[data-bs-target="' + activeTab + '"]').tab('show');
+    }
+});
+</script>

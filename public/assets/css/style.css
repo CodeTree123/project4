@@ -1795,5 +1795,8 @@ a, a:hover {
 } */
 
 
-
+#investigation_status, #investigation_status:focus{
+    border: none;
+    outline: none;
+}
 /* custom ui end */
