@@ -14,15 +14,19 @@ one.addEventListener("click",function(e){
         two.style.display = "block";
         if (trid > 10 && trid < 19){
                 tooth_side.value = "Upper Right";
+                document.getElementById("tooth_type").value="Permanent Teeth";
         }
         else if (trid > 20 && trid < 29){
                 tooth_side.value = "Upper Left";
+                document.getElementById("tooth_type").value="Permanent Teeth";
         }
         else if (trid > 30 && trid < 39){
                 tooth_side.value = "Lower Right";
+                document.getElementById("tooth_type").value="Permanent Teeth";
         }
         else if (trid > 40 && trid < 49){
                 tooth_side.value = "Lower Left";
+                document.getElementById("tooth_type").value="Permanent Teeth";
         }
 
         if(trid == 18){
@@ -500,7 +504,7 @@ closeBtn.addEventListener("click",function(){
 
      if (radio1.checked) {
          permanent.style.display = 'flex';
-         document.getElementById("tooth_type").value="Permanent Teeth";
+        //  document.getElementById("tooth_type").value="Permanent Teeth";
          deciduous.style.display = "none";
 
      } else {

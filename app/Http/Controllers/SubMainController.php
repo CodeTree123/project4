@@ -9,6 +9,7 @@ use App\Models\clinical_finding;
 use App\Models\investigation;
 use App\Models\medicine;
 use App\Models\treatment_plan;
+use App\Models\treatment_cost;
 use App\Models\treatment_info;
 use App\Models\prescription;
 use Illuminate\Http\Request;
@@ -120,6 +121,7 @@ class SubMainController extends Controller
         $res = $treatment_plan->save();
         return back();
     }
+
     public function edit_treatment_plan($id){
         $treatmentPlan = treatment_plan::find($id);
         return response()->json([
@@ -143,6 +145,15 @@ class SubMainController extends Controller
         // dd($del_drug_id);
         $del_tp_info = treatment_plan::find($del_tp_id);
         $del_tp_info->delete();
+        return back();
+    }
+
+    public function treatment_cost(Request $request){
+        $treatment_cost = new treatment_cost();
+        $treatment_cost->d_id = $request->d_id;
+        $treatment_cost->name = $request->tp_name;
+        $treatment_cost->price = $request->tp_price;
+        $res = $treatment_cost->save();
         return back();
     }
 

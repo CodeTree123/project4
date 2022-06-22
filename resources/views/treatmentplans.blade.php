@@ -188,7 +188,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="border rounded-3 border-2 border-dark">
-                                <h4 class="text-center">Steps</h4>
+                                <h4 class="text-center">OT Notes</h4>
 
                                 <!-- <ol class="border border-1 border-dark m-2">
                                     <li class="border-bottom">Preparation</li>
@@ -234,14 +234,14 @@
 
                 <!-- We have info-box-col-1 for not fixed height -->
                 <div class="info-box-col p-2 mb-3">
-                    <h4 class="d-flex justify-content-center bg-blue-grey custom-border-radius">Previous Steps List</h4>
+                    <h4 class="d-flex justify-content-center bg-blue-grey custom-border-radius">Previous OT Notes</h4>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#flush-collapseOne" aria-expanded="false"
                                     aria-controls="flush-collapseOne">
-                                    Previous Treatment Steps #1
+                                    Previous Treatment OT Note #1
                                 </button>
                             </h2>
                             <div id="flush-collapseOne" class="accordion-collapse collapse"
@@ -257,7 +257,7 @@
                 </div>
 
                 <div class="info-box-col p-2 mb-3">
-                    <h4 class="d-flex justify-content-center bg-blue-grey custom-border-radius">Previous Prescription</h4>
+                    <h4 class="d-flex justify-content-center bg-blue-grey custom-border-radius">Report</h4>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         @forelse($v_prescriptions as $key=>$v_prescription)
                         <div class="accordion-item mb-0">

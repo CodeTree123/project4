@@ -18,7 +18,7 @@
     <hr>
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-                <a class="nav-link text-white text-center bg-dark my-2 active" id="v-pills-doctor-tab" data-bs-toggle="pill" data-bs-target="#v-pills-doctor" type="button" role="tab" aria-controls="v-pills-doctor" aria-selected="true">Doctor's Profile</a>
+                <a class="nav-link text-white text-center bg-dark my-2" id="v-pills-doctor-tab" data-bs-toggle="pill" data-bs-target="#v-pills-doctor" type="button" role="tab" aria-controls="v-pills-doctor" aria-selected="true">Doctor's Profile</a>
 
                 <a class="nav-link text-white text-center bg-dark my-2" id="v-pills-subscription-tab" data-bs-toggle="pill" data-bs-target="#v-pills-subscription" type="button" role="tab" aria-controls="v-pills-subscription" aria-selected="false">Subscription</a>
 
@@ -45,7 +45,7 @@
                         <h4 class="">
                             Doctors List
                         </h4>
-                        <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#chife_Complaint_Add" >
+                        <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#doctor_Add" >
                           <i class="bi bi-plus-circle"></i>
                         </a>
                     </div>
@@ -76,7 +76,7 @@
                                     @endif
                                 </td>
                                 <td class="d-flex justify-content-around">
-                                    <button type="button" class="btn crud-btns CC_editbtn" href="" value="" >
+                                    <button type="button" class="btn crud-btns Doctor_editbtn" href="" value="{{$doctor->id}}" >
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
                                     <button class="btn crud-btns delete-doctor" href="#" value="{{$doctor->id}}">
@@ -133,7 +133,7 @@
                                 <!-- <button type="button" class="btn crud-btns CC_editbtn" href="" value="" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button> -->
-                                <button class="btn crud-btns delete-cc" href="#" value="">
+                                <button class="btn crud-btns delete-subscribtion" href="#" value="{{$subscription_list->id}}">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
@@ -341,6 +341,125 @@
 </main>
    </div>
 
+       <!-- Modal For Doctor Add -->
+ <div class="modal fade " id="doctor_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Add Doctor Information 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('doctor_add')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-floating ">
+                            <input type="name" name="name" class="form-control custom-form-control mb-2" placeholder="name@example.com" value="{{ old('name') }}">
+                            <label for="floatingInput">Name</label>
+                        </div>
+                        
+                        <div class="form-floating ">
+                            <input type="email" name="email" class="form-control custom-form-control mb-2" placeholder="name@example.com" value="{{ old('email') }}">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        
+                        <div class="form-floating ">
+                            <input type="text" name="mobile" class="form-control mb-2" placeholder="Name">
+                            <label for="floatingInput">Mobile Number</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" name="BMDC" class="form-control mb-2" placeholder="BMDC Registration No.">
+                            <label for="bmdcID">BMDC Registration No.</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" name="chember_name" class="form-control mb-2" placeholder="chamberName">
+                            <label for="chamberName">Chamber Name</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" name="chember_add" class="form-control mb-2" placeholder="chamberAddress">
+                            <label for="chamberAddress">Chamber Address</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" name="password" class="form-control custom-form-control mb-2" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn btn-sm btn-outline-blue-grey">Add</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+ <!-- Modal For Doctor update -->
+ <div class="modal fade " id="Doctor_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Edit Doctor Information 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('update_doctor')}}" method="post">
+                    @csrf
+                    @method('PUT')
+
+                    <input type="hidden" id="DoctorId" name="doctor_id"/>
+                    <div class="modal-body">
+                        <div class="form-floating ">
+                            <input type="name" name="name"  id="d_name" class="form-control custom-form-control mb-2" placeholder="name@example.com" value="{{ old('name') }}">
+                            <label for="floatingInput">Name</label>
+                        </div>
+                        
+                        <div class="form-floating ">
+                            <input type="email" name="email" id="d_email" class="form-control custom-form-control mb-2" placeholder="name@example.com" value="{{ old('email') }}">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        
+                        <div class="form-floating ">
+                            <input type="text" name="mobile" id="d_mobile" class="form-control mb-2" placeholder="Name">
+                            <label for="floatingInput">Mobile Number</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" name="BMDC" id="d_bmdc" class="form-control mb-2" placeholder="BMDC Registration No.">
+                            <label for="bmdcID">BMDC Registration No.</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" name="chember_name" id="d_c_name" class="form-control mb-2" placeholder="chamberName">
+                            <label for="chamberName">Chamber Name</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" name="chember_add" id="d_c_add" class="form-control mb-2" placeholder="chamberAddress">
+                            <label for="chamberAddress">Chamber Address</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+
     <!-- Modal For Delete Doctor -->
     <div class="modal fade " id="del-Doctor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -362,6 +481,41 @@
                             <h5 class="text-danger">Are You Sure to Delete This information?</h5>
                         </div>
                         <input type="hidden" id="del-doctor-id" name="deletingId">
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                        <!-- Modal Footer end -->
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+    </div>
+ <!-- Modal end -->
+
+  <!-- Modal For Delete Subscribtion -->
+  <div class="modal fade " id="del-Subscribtion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Delete Subscribtion
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('delete_subscription')}}" method="POST" >
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3 text-center">
+                            <h5 class="text-danger">Are You Sure to Delete This information?</h5>
+                        </div>
+                        <input type="hidden" id="del-subscribtion-id" name="deletingId">
                         <!-- Modal Footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
@@ -648,7 +802,7 @@
         </div>
     </div>
  <!-- Modal end -->
-<!-- Modal For Delete Investigation -->
+ <!-- Modal For Delete Investigation -->
  <div class="modal fade " id="del-Investigation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
@@ -906,26 +1060,38 @@
 
         // script for Doctor
 
-    //   $(document).on('click', '.CC_editbtn',function(){
-    //             var cc_id = $(this).val();
-    //             // alert(edit);
-    //             $("#chife_Complaint_Update").modal('show');
-    //             $.ajax({
-    //                 type:"GET",
-    //                 url: "/edit_chife_complaint/"+cc_id,
-    //                 success: function(response){
-    //                     // console.log(response.cc.name);
-    //                     $('#CCId').val(cc_id);
-    //                     $('#c_c_name').val(response.cc.name);
-    //                 }
-    //             });
-    //   });
+      $(document).on('click', '.Doctor_editbtn',function(){
+                var Doctor_id = $(this).val();
+                alert(Doctor_id);
+                $("#Doctor_Update").modal('show');
+                $.ajax({
+                    type:"GET",
+                    url: "/edit_doctor/"+Doctor_id,
+                    success: function(response){
+                        console.log(response.doctor_info);
+                        $('#DoctorId').val(Doctor_id);
+                        $('#d_name').val(response.doctor_info.name);
+                        $('#d_email').val(response.doctor_info.email);
+                        $('#d_mobile').val(response.doctor_info.phone);
+                        $('#d_bmdc').val(response.doctor_info.BMDC);
+                        $('#d_c_name').val(response.doctor_info.chember_name);
+                        $('#d_c_add').val(response.doctor_info.chember_add);
+                    }
+                });
+      });
 
       $(document).on('click', '.delete-doctor',function(){
                 var deleteDoctorId = $(this).val();
                 // alert(deleteCCId);
                 $("#del-Doctor").modal('show');
                 $('#del-doctor-id').val(deleteDoctorId);
+      });
+
+      $(document).on('click', '.delete-subscribtion',function(){
+                var deleteSubscribtionId = $(this).val();
+                alert(deleteSubscribtionId);
+                $("#del-Subscribtion").modal('show');
+                $('#del-subscribtion-id').val(deleteSubscribtionId);
       });
 
       // script for C/C Chief Complaint
@@ -1057,12 +1223,12 @@
 <script>
  $(document).ready(function(){
     $('a[data-bs-toggle="pill"]').on('show.bs.tab', function(e) {
-        localStorage.setItem('activeTab', 
+        sessionStorage.setItem('activeTab', 
         $(e.target).attr('data-bs-target'));
     });
-    var activeTab = localStorage.getItem('activeTab');
+    var activeTab = sessionStorage.getItem('activeTab');
     if(activeTab){
         $('#v-pills-tab a[data-bs-target="' + activeTab + '"]').tab('show');
     }
-});
+ });
 </script>

@@ -22,21 +22,28 @@
 
 <div class="page-content container">
 
-    <a href="{{route('treatmentPlans')}}" class="btn btn-outline-blue-grey ">
+    <!-- <a href="{{route('view_patient',[$doctor_info->id,$patient->id])}}" class="btn btn-outline-blue-grey ">
         Back
-    </a>
+    </a> -->
 
     <div class="page-header d-flex justify-content-between align-items-center text-blue-d2">
-        <h4 class="page-title text-secondary-d1">
+        <!-- <h4 class="page-title text-secondary-d1">
             Invoice
             <small class="page-info">
                 <i class="fa fa-angle-double-right text-80"></i>
-                ID: #111-222
+                ID: #{{$view}}
             </small>
-        </h4>
+        </h4> -->
+        <a href="{{route('view_patient',[$doctor_info->id,$patient->id])}}" class="btn btn-outline-blue-grey ">
+        Back
+        </a>
 
         <div class="page-tools align-self-end">
             <div class="action-buttons">
+                <a class="btn btn-outline-blue-grey mx-1px text-95" href="#" data-title="Print"  data-bs-toggle="modal" data-bs-target="#Treatment_Payment">
+                    <!-- <i class="mr-1 fa fa-print text-dark-m1 text-120 w-2"></i> -->
+                    Add Paymet
+                </a>
                 <a class="btn btn-outline-blue-grey mx-1px text-95" href="#" data-title="Print">
                     <i class="mr-1 fa fa-print text-dark-m1 text-120 w-2"></i>
                     Print
@@ -73,14 +80,14 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div>
-                            <span class="fw-bold">To:</span>Mojammel
+                            <span class="fw-bold">To:</span>{{$doctor_info->name}}
                         </div>
                         <div class="text-grey-m2">
                             <div class="my-1">
-                                <span class="fw-bold">Patient's Name :</span>Mojammel 
+                                <span class="fw-bold">Patient's Name :</span>{{$patient->name}} 
                             </div>
                             <div class="my-1">
-                            <span class="fw-bold"> Patient's Phone Number : </span>016549863  
+                            <span class="fw-bold"> Patient's Phone Number : </span>{{$patient->mobile}}  
                             </div>
                          
                         </div>
@@ -91,7 +98,7 @@
                         <hr class="d-sm-none" />
                         <div class="text-grey-m2">
                             <div class="my-2">  
-                                <span class="fw-bold"> Invoice ID : </span> #111-222 
+                                <span class="fw-bold"> Invoice ID : </span> {{$view}} 
                             </div> 
 
                             <div class="my-2">
@@ -99,7 +106,7 @@
                             </div>
 
                             <div class="my-2">
-                               <span class="fw-bold">Issue Date:</span> 21/06/2022
+                               <span class="fw-bold">Issue Date:</span> {{ date('d-m-Y') }}
                             </div>
                         </div>
                     </div>
@@ -109,22 +116,32 @@
                 <div class="mt-4">
                     <div class="row text-600 text-white  bg-blue-grey py-25">
                         <div class="d-none d-sm-block col-1">#</div>
-                        <div class="col-9 col-sm-5">Treatment Name</div> 
+                        <div class="col-9 col-sm-3">Treatment Name</div> 
                         <div class="d-none d-sm-block col-sm-2">Treatment Cost</div>
                         <div class="col-2">Paid</div>
                         <div class="col-2">Due</div>
+                        <div class="col-2">Status</div>
                     </div>
 
                     <div class="text-95 text-secondary-d3">
+                        @foreach($treatment_infos as $key=>$treatment_info)
                         <div class="row mb-2 mb-sm-0 py-25">
-                            <div class="d-none d-sm-block col-1">1</div>
-                            <div class="col-9 col-sm-5">Domain registration</div> 
-                            <div class="d-none d-sm-block col-2 text-95">৳10</div>
-                            <div class="col-2 text-secondary-d2">৳10</div>
-                            <div class="col-2 text-secondary-d2">৳0</div>
+                            <div class="d-none d-sm-block col-1">{{$key + 1}}</div>
+                            <div class="col-9 col-sm-3">{{$treatment_info->treatment_plans}}</div> 
+                            <div class="d-none d-sm-block col-2 text-95">৳ {{$treatment_info->cost}}</div>
+                            <div class="col-2 text-secondary-d2">৳ {{$treatment_info->paid}}</div>
+                            <div class="col-2 text-secondary-d2">৳ {{$treatment_info->due}}</div>
+                            <div class="col-2 text-secondary-d2">
+                                @if($treatment_info->status == 1)
+                                    Paid
+                                @else
+                                    Due
+                                @endif
+                            </div>
                         </div>
-
-                        <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
+                        @endforeach
+                        <hr/>
+                        <!-- <div class="row mb-2 mb-sm-0 py-25 bgc-default-l4">
                             <div class="d-none d-sm-block col-1">2</div>
                             <div class="col-9 col-sm-5">Web hosting</div> 
                             <div class="d-none d-sm-block col-2 text-95">৳15</div>
@@ -138,17 +155,18 @@
                             <div class="d-none d-sm-block col-2 text-95">৳1,000</div>
                             <div class="col-2 text-secondary-d2">৳0</div>
                             <div class="col-2 text-secondary-d2">৳1,000</div>
-                        </div>
+                        </div> -->
 
                         <div class="row mb-2 mb-sm-0 py-25  ">
                             <div class="d-none d-sm-block col-1">*</div>
-                            <div class="col-9 col-sm-5">Total </div> 
+                            <div class="col-9 col-sm-3">Total </div> 
                             <div class="d-none d-sm-block col-2 text-95">
                                 Total Treatment Cost <br> ৳ 1,025
                             </div>
                             <div class="col-2 text-secondary-d2">Total Paid <br> ৳ 15</div>
                             <div class="col-2 text-secondary-d2">Total Due <br> ৳1,010</div>
-                        </div>
+                            <div class="col-2 text-secondary-d2"></div>
+                        </div> 
  
                     </div>
 
@@ -199,6 +217,48 @@
         </div>
     </div>
 </div>
+
+  <!-- Modal For T/P Treatment Cost Add -->
+  <div class="modal fade " id="Treatment_Payment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Add Treatment Payment 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('treatment_payment')}}" method="post">
+                    @csrf
+                    @method('PUT')
+                        <!-- <input type="text" name="p_id" value="{{$patient->id}}"/> -->
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example" name="t_plan_id">
+                                <option value=""></option>
+                                @foreach($treatment_invoice_infos as $treatment_invoice_info)
+                                <option value="{{$treatment_invoice_info -> id}}">{{$treatment_invoice_info -> treatment_plans}}</option>
+                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" list="list" placeholder="Enter Amount" name="tp_amount">
+                        </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Confirm</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
 
 
     <style type="text/css"> 

@@ -35,11 +35,11 @@ body {
     font-weight: 500;
     font-size: 22px;
 }
-#tooth_type{
+/* #tooth_type{
     border: none;
     width: auto;
     opacity: 0;
-}
+} */
 
 .header {
     background: #fff;

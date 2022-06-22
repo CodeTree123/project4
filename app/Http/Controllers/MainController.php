@@ -9,6 +9,7 @@ use App\Models\clinical_finding;
 use App\Models\investigation;
 use App\Models\treatment_plan;
 use App\Models\treatment_info;
+use App\Models\treatment_cost;
 use App\Models\drugs;
 use App\Models\prescription;
 use App\Models\medicine;
@@ -133,10 +134,11 @@ class MainController extends Controller
         $t_ps = treatment_plan::all();
         $lt_ps = treatment_plan::orderBy('id','desc')->get();
         $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
-        return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','treatment_infos','investigations','investigation_lists'));
+        $v_prescriptions = prescription::where('p_id','like',$p_id)->get();
+        return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','treatment_infos','investigations','investigation_lists','v_prescriptions'));
     }
 
-    public function treatment_info(Request $request,$p_id){
+    public function treatment_info(Request $request,$d_id,$p_id){
         // dd($request->all());
         $pc_c = $request->pc_c;
         $pc_c = implode(',',$pc_c);
@@ -145,10 +147,16 @@ class MainController extends Controller
         // dd($pc_f);
         $investigation = $request->p_investigation;
         $investigation = implode(',',$investigation);
-        // dd($investigation);
+        // dd($investigation); change pt_p after free time
         $pt_p = $request->pt_p;
         $pt_p = implode(',',$pt_p);
         // dd($pt_p);
+
+        $pt_p_cost = treatment_cost::where('name','=',$pt_p)->where('d_id','=',$d_id)->first();
+        $cost = $pt_p_cost->price;
+        $paid='0';
+        $due='0';
+        // dd($pt_p_cost,$cost);
 
         $treatment_info = new treatment_info();
         $treatment_info->p_id = $p_id;
@@ -159,6 +167,9 @@ class MainController extends Controller
         $treatment_info->clinical_findings = $pc_f;
         $treatment_info->investigation = $investigation;
         $treatment_info->treatment_plans = $pt_p;
+        $treatment_info->cost = $cost;
+        $treatment_info->paid = $paid;
+        $treatment_info->due = $due;
         $res = $treatment_info->save();
 
         return redirect()->back();
@@ -308,6 +319,55 @@ class MainController extends Controller
         // dd($del_drug_id);
         $del_prescription_info = prescription::find($del_prescription_id);
         $del_prescription_info->delete();
+        return back();
+    }
+
+    public function invoice($d_id,$p_id)
+    {
+        $doctor_info=doctor::where('id','=',$d_id)->first();
+        $patient=patient_infos::findOrFail($p_id);
+        //test for new patient id custom create
+        $l=patient_infos::latest('id')->first();
+        $last = $l->id;
+        $last++;
+        // dd($last);
+        $ldate = date('dmY');
+        $view = $ldate.'/'.$last;
+        // dd($view);
+        //test end
+        $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
+        $treatment_invoice_infos = treatment_info::where('p_id','like',$p_id)->where('status','=',0)->get();
+
+        return view('invoice',compact('doctor_info','patient','treatment_infos','treatment_invoice_infos','view'));
+    }
+
+    public function treatment_payment(Request $request){
+        $t_info_id = $request->t_plan_id;
+        // dd($t_info_id);
+        $treatment_infos = treatment_info::find($t_info_id);
+        $cost = $treatment_infos->cost;
+        // dd($cost);
+        $previous_paid = $treatment_infos->paid;
+        // dd($previous_paid);
+        $paid_amount = $request->tp_amount;
+        $paid = $previous_paid + $paid_amount;
+        // dd($paid);
+        $due = $cost - $paid;
+        // dd($due);
+
+        treatment_info::find($t_info_id)->update([
+            'paid'=>$paid,
+            'due'=>$due
+        ]);
+
+        if($cost == $paid){
+            $status = 1;
+            treatment_info::find($t_info_id)->update([
+                'status'=>$status,
+            ]);
+        }
+        
+        
         return back();
     }
 

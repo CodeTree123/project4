@@ -74,7 +74,7 @@ Route::post('/search/{id}',[MainController::class,'search'])->name('search');
 //view_patient
 Route::put('/update/patient/{id}',[MainController::class,'update_patient'])->name('update.patient'); 
 Route::get('/view/patient/{d_id}/{p_id}',[MainController::class,'view_patient'])->name('view_patient'); //view 
-Route::post('/view/patient/{p_id}',[MainController::class,'treatment_info'])->name('treatment_info');
+Route::post('/view/patient/{d_id}/{p_id}',[MainController::class,'treatment_info'])->name('treatment_info');
 
 Route::get('/view/patient/treatment/{d_id}/{p_id}/{t_id}/{t_plans}',[MainController::class,'treatments'])->name('treatments');
 // Route::post('/view/patient/treatment/{p_id}/{t_id}/{t_plans}',[MainController::class,'treatments'])->name('treatments');
@@ -84,10 +84,13 @@ Route::post('/patient/prescription/drug/{d_id}/{p_id}',[MainController::class,'a
 Route::get('/edit_drug/{id}', [MainController::class, 'edit_drug']);
 Route::put('/update_drug', [MainController::class, 'update_drug'])->name('update_drug');
 Route::delete('/delete_drug', [MainController::class, 'delete_drug'])->name('delete_drug');
+Route::post('/prescription_add/{d_id}/{t_id}/{t_plans}', [MainController::class, 'prescription_add'])->name('prescription_add');
+Route::delete('/prescription_delete', [MainController::class, 'prescription_delete'])->name('prescription_delete');
 
 Route::get('/get_drug_info/{p_id}', [MainController::class, 'get_drug_info']);
-Route::post('/prescription_add/{d_id}/{t_id}/{t_plans}', [MainController::class, 'prescription_add'])->name('prescription_add'); 
-Route::delete('/prescription_delete', [MainController::class, 'prescription_delete'])->name('prescription_delete');
+Route::get('/invoice/{d_id}/{p_id}', [MainController::class, 'invoice'])->name('invoice');
+Route::put('/treatment_payment', [MainController::class, 'treatment_payment'])->name('treatment_payment');
+
  
 
 // SubMainController
@@ -112,6 +115,8 @@ Route::get('/edit_treatment_plan/{id}', [SubMainController::class, 'edit_treatme
 Route::put('/update_treatment_plan', [SubMainController::class, 'update_treatment_plan'])->name('update_treatment_plan');
 Route::delete('/delete_treatment_plan', [SubMainController::class, 'delete_treatment_plan'])->name('delete_treatment_plan');
 
+Route::post('/treatment_cost', [SubMainController::class, 'treatment_cost'])->name('treatment_cost');
+
 Route::post('/medicine_add', [SubMainController::class, 'medicine_add'])->name('medicine_add');
 Route::get('/edit_medicine/{id}', [SubMainController::class, 'edit_medicine']);
 Route::put('/update_medicine', [SubMainController::class, 'update_medicine'])->name('update_medicine');
@@ -120,9 +125,14 @@ Route::delete('/delete_medicine', [SubMainController::class, 'delete_medicine'])
 // AdminController
 
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+Route::post('/doctor_add', [AdminController::class, 'doctor_add'])->name('doctor_add');
+Route::get('/edit_doctor/{id}', [AdminController::class, 'edit_doctor']);
+Route::put('/update_doctor', [AdminController::class, 'update_doctor'])->name('update_doctor');
 Route::delete('/delete_doctor', [AdminController::class, 'delete_doctor'])->name('delete_doctor');
 Route::get('/doctor_status/{id}', [AdminController::class, 'doctor_status'])->name('doctor_status');
 Route::get('/subscription_status/{id}', [AdminController::class, 'subscription_status'])->name('subscription_status');
+Route::delete('/delete_subscription', [AdminController::class, 'delete_subscription'])->name('delete_subscription');
+
  
 // Route::post('/admin/medicine_add', [AdminController::class, 'medicine_add'])->name('medicine_add');
 
