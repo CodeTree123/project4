@@ -670,7 +670,7 @@
                                                 </div>
                                             </div>
                                         </div> 
-                                        <h5 class="d-flex justify-content-between">C/C Chife Complaint 
+                                        <h5 class="d-flex justify-content-between">C/C Cheif Complaint 
                                             <div>
                                                 <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#chife_Complaint_Add" >
                                                     <i class="bi bi-plus-circle"></i>
@@ -839,9 +839,7 @@
                                 </button>
                             </h2>
                             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                    accordion body.</div>
+                                <div class="accordion-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, incidunt expedita corrupti consequatur voluptatum voluptatibus!</div>
                             </div>
                         </div>
                     </div>
@@ -920,9 +918,7 @@
                             </h2>
                             <div id="flush-collapse1" class="accordion-collapse collapse"
                                 aria-labelledby="flush-heading1" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                    accordion body.</div>
+                                <div class="accordion-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, officiis. Praesentium commodi molestias voluptatibus culpa.</div>
                             </div>
                         </div>
                     </div>

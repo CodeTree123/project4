@@ -246,10 +246,10 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3 drug-name">
-                        <input type="text" id="status" name="doctor_id" value="{{$doctor_info->id}}">
-                            <input type="text" id="package_name" name="package_name">
-                            <input type="text" id="package_price" name="package_price">
-                            <input type="text" id="package_duration" name="package_duration">
+                             <input type="text" class="p-2" id="status" name="doctor_id" value="{{$doctor_info->id}}" readonly>
+                            <input type="text" class="p-2" id="package_name" name="package_name" readonly>
+                            <input type="text" class="p-2" id="package_price" name="package_price" readonly>
+                            <input type="text" class="p-2" id="package_duration" name="package_duration" readonly>
                             <!-- <input type="text" id="status" name="status" value="0"> -->
                         </div>
                     </div>

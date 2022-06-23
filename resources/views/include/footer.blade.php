@@ -40,6 +40,10 @@
             });
         });
     </script>
+    <script src="{{ asset ('assets/js/bs-stepper.js')}}"></script>
+    <script src="{{ asset ('assets/js/main.js')}}"></script>
+ 
+
 </body>
 
 </html>

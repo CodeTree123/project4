@@ -1440,7 +1440,7 @@ ul.mnu li {
 a.btn {
     margin: 16px 0;
     /* background: #000ec7; */
-    color: #fff;
+    /* color: #fff; */
     font-size: 14px;
     border-radius: 12px;
 }.tool {
@@ -1795,7 +1795,7 @@ a, a:hover {
 } */
 
 
-#investigation_status, #investigation_status:focus{
+#investigation_status, #investigation_status:focus, .drug-name input, .drug-name input focus,#hidden_teeth_number{
     border: none;
     outline: none;
 }

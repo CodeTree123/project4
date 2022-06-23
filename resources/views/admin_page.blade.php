@@ -57,6 +57,7 @@
                                 <th class="">Doctor Name</th>
                                 <th class="">BMDC</th>
                                 <th class="">Contact No.</th>
+                                <th class="">Email</th>
                                 <th class="">Status</th>
                                 <th class="">Action</th>
                             </tr>
@@ -68,6 +69,7 @@
                                 <td>{{$doctor->name}}</td>
                                 <td>{{$doctor->BMDC}}</td>
                                 <td>{{$doctor->phone}}</td>
+                                <td>{{$doctor->email}}</td>
                                 <td>
                                     @if($doctor->status == 1)
                                         <a href="{{route('doctor_status',[$doctor->id])}}" class="btn btn-sm btn-danger my-0">Block</a>
@@ -91,7 +93,7 @@
                 </div>
                 <div class="tab-pane fade" id="v-pills-subscription" role="tabpanel" aria-labelledby="v-pills-subscription-tab">
                   <div class="mb-2">
-                    <h4>Permanent Redeem Code</h4>
+                    <!-- <h4>Permanent Redeem Code</h4> -->
                     <h4>Temporary Redeem Code</h4>
                   </div>
                   <h4>Subscription List</h4>
@@ -1062,7 +1064,7 @@
 
       $(document).on('click', '.Doctor_editbtn',function(){
                 var Doctor_id = $(this).val();
-                alert(Doctor_id);
+                // alert(Doctor_id);
                 $("#Doctor_Update").modal('show');
                 $.ajax({
                     type:"GET",

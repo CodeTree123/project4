@@ -109,7 +109,7 @@
                             <div class="single cc">
                                 <h2>C/C:</h2>
                                     
-                                    <input type="text" value="38" id="hidden_teeth_number">
+                                    <input type="text" value="38" id="hidden_teeth_number" readonly>
                                 <div class="complain d-flex justify-content-between align-items-center">
                                     <ol class="ms-5">
                                         @foreach($pc_c as $c_c)

@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset ('assets/css/prescription_style.css')}}"> 
     <link rel="stylesheet" href="{{ asset ('assets/css/tab.css')}}"> 
     <link rel="stylesheet" href="{{ asset ('assets/css/multiselect.css')}}"> 
+    <link rel="stylesheet" href="{{ asset ('assets/css/bs-stepper.css')}}"> 
 
 
 
