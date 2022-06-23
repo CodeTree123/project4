@@ -13,7 +13,7 @@
 
                             <h2 class="mb-2">{{$doctor_info->name}}</h2>
                             <p class="mb-2">Dental Consulatant of the Royal <br>Dental</p>
-                            <a href="#_" class="btns btn-outline-blue-grey  mb-2">This Month</a>
+                            <!-- <a href="#_" class="btns btn-outline-blue-grey  mb-2">This Month</a> -->
                             <p class="mb-2">SMS Remaining : 50</p>
                             <p class="mb-2">Buy SMS : 50</p>
 

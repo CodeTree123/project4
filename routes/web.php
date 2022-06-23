@@ -116,6 +116,9 @@ Route::put('/update_treatment_plan', [SubMainController::class, 'update_treatmen
 Route::delete('/delete_treatment_plan', [SubMainController::class, 'delete_treatment_plan'])->name('delete_treatment_plan');
 
 Route::post('/treatment_cost', [SubMainController::class, 'treatment_cost'])->name('treatment_cost');
+Route::get('/edit_treatment_cost/{id}', [SubMainController::class, 'edit_treatment_cost']);
+Route::put('/update_treatment_cost', [SubMainController::class, 'update_treatment_cost'])->name('update_treatment_cost');
+Route::delete('/delete_treatment_cost', [SubMainController::class, 'delete_treatment_cost'])->name('delete_treatment_cost');
 
 Route::post('/medicine_add', [SubMainController::class, 'medicine_add'])->name('medicine_add');
 Route::get('/edit_medicine/{id}', [SubMainController::class, 'edit_medicine']);

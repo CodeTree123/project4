@@ -19,6 +19,7 @@ class SubMainController extends Controller
     public function chife_complaint(Request $request){
         $chife_complaint = new chife_complaint();
         $chife_complaint->name = $request->cc_name;
+        $chife_complaint->status = $request->cc_status;
         $res = $chife_complaint->save();
         return back();
     }
@@ -52,6 +53,7 @@ class SubMainController extends Controller
     public function clinical_finding(Request $request){
         $clinical_finding = new clinical_finding();
         $clinical_finding->name = $request->cf_name;
+        $clinical_finding->status = $request->cf_status;
         $res = $clinical_finding->save();
         return back();
     }
@@ -117,7 +119,7 @@ class SubMainController extends Controller
     public function treatment_plan(Request $request){
         $treatment_plan = new treatment_plan();
         $treatment_plan->name = $request->tp_name;
-        $treatment_plan->cost = $request->tp_cost;
+        $treatment_plan->status = $request->tp_status;
         $res = $treatment_plan->save();
         return back();
     }
@@ -154,6 +156,33 @@ class SubMainController extends Controller
         $treatment_cost->name = $request->tp_name;
         $treatment_cost->price = $request->tp_price;
         $res = $treatment_cost->save();
+        return back();
+    }
+
+    public function edit_treatment_cost($id){
+        $treatmentCost = treatment_cost::find($id);
+        return response()->json([
+            'status'=>200,
+            'tp_cost' => $treatmentCost,
+        ]);
+    }
+
+    public function update_treatment_cost(Request $request){
+        $tp_id = $request->tp_cost_id;
+        // dd($cc_id);
+        $treatment_cost = treatment_cost::find($tp_id);
+        $treatment_cost->name = $request->tp_cost_name;
+        $treatment_cost->price = $request->tp_cost;
+        $res = $treatment_cost->update();
+
+        return back();
+    }
+
+    public function delete_treatment_cost(Request $request){
+        $del_tpCost_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_tpcost_info = treatment_plan::find($del_tpCost_id);
+        $del_tpcost_info->delete();
         return back();
     }
 
