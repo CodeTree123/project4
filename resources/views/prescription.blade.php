@@ -779,6 +779,7 @@
 
         $(document).on('click', '.delete-drug',function(){
             var deleteDrugId = $(this).val();
+            $("#Medicine_List").modal('hide');
             // alert(drug_id);
             $("#del-drug").modal('show');
             $('#del-drug-id').val(deleteDrugId);
@@ -818,6 +819,7 @@
         // Medicine delete
         $(document).on('click', '.delete-Medicine',function(){
             var deleteMedicineId = $(this).val();
+            $("#Medicine_List").modal('hide');
             // alert(drug_id);
             $("#del-Medicine").modal('show');
             $('#del-Medicine-id').val(deleteMedicineId);

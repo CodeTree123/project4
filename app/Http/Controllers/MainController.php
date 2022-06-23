@@ -133,9 +133,10 @@ class MainController extends Controller
         $investigation_lists = investigation::orderBy('id','desc')->get();
         $t_ps = treatment_plan::all();
         $lt_ps = treatment_plan::orderBy('id','desc')->get();
+        $t_p_costs = treatment_cost::all();
         $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
         $v_prescriptions = prescription::where('p_id','like',$p_id)->get();
-        return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','treatment_infos','investigations','investigation_lists','v_prescriptions'));
+        return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','t_p_costs','treatment_infos','investigations','investigation_lists','v_prescriptions'));
     }
 
     public function treatment_info(Request $request,$d_id,$p_id){
