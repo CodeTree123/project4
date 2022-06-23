@@ -32,6 +32,41 @@ class AdminController extends Controller
         // compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','treatment_infos','investigations','investigation_lists')
     }
 
+    public function doctor_add(Request $request){
+        $doctor = new doctor();
+        $doctor->name = $request->name;
+        $doctor->email = $request->email;
+        $doctor->phone=$request->mobile;
+        $doctor->BMDC=$request->BMDC;
+        $doctor->chember_name=$request->chember_name;
+        $doctor->chember_add=$request->chember_add;
+        $doctor->password = $request->password;
+        $res = $doctor->save();
+        return back();
+    }
+
+    public function edit_doctor($id){
+        $doctor = doctor::find($id);
+        return response()->json([
+            'status'=>200,
+            'doctor_info' => $doctor,
+        ]);
+    }
+
+    public function update_doctor(Request $request){
+        $d_id = $request->doctor_id;
+        // dd($cc_id);
+        $doctor = doctor::find($d_id);
+        $doctor->name = $request->name;
+        $doctor->email = $request->email;
+        $doctor->phone=$request->mobile;
+        $doctor->BMDC=$request->BMDC;
+        $doctor->chember_name=$request->chember_name;
+        $doctor->chember_add=$request->chember_add;
+        $res = $doctor->update();
+        return back();
+    }
+
     public function delete_doctor(Request $request){
         $del_doctor_id = $request->deletingId;
         // dd($del_doctor_id);
@@ -74,6 +109,14 @@ class AdminController extends Controller
         }else{
             subscription::where('id',$id)->update(['status'=>$status,'start'=>$null,'end'=>$null]);
         }
+        return back();
+    }
+
+    public function delete_subscription(Request $request){
+        $del_subscription_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_subscription_info = subscription::find($del_subscription_id);
+        $del_subscription_info->delete();
         return back();
     }
 

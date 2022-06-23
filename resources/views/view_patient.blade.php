@@ -67,34 +67,24 @@
                 <div class="col-md-3">
                     <nav class="navbar navbar-expand-lg navbar-light p-0 ">
                         <div class="container-fluid">
-                            <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav fs-5 pe-auto ms-5">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">My Profile
-                                        <i class="fa-solid fa-gear"></i></a>
-                                        <ul class="dropdown-menu">
-
-                                            <li><a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id])}}">Edit Profile</a></li>
-                                            <li><a class="dropdown-item" href="{{route('logout')}}">Log Out</a></li>
-
+                            <div class="collapse navbar-collapse" id="navbarNav">  
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary btn-outline-blue-grey dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                              My Profile 
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
+                                                    Edit Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{route('logout')}}">
+                                                 Log Out
+                                                </a>
+                                            </li> 
                                         </ul>
-                                        </a>
-
-                                    </li>
-
-                                    <!-- <li class="nav-item dropdown">
-                                        <a class="nav-link " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-gear"></i></a>
-                                        <ul class="dropdown-menu">
-
-                                            <li><a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id])}}">Edit Profile</a></li>
-                                            <li><a class="dropdown-item" href="#">Log Out</a></li>
-
-                                        </ul>
-                                    </li> -->
-                                </ul>
+                                    </div> 
                             </div>
                         </div>
                     </nav>
@@ -278,8 +268,8 @@
 
                         <a href="#" class="btns btn-outline-blue-grey my-2">Treatment Plans</a>
                         <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
-                        <a href="#" class="btns btn-outline-blue-grey my-2">Prescription</a>
-                        <a href="{{route('invoice')}}" class="btns btn-outline-blue-grey my-2">Billing</a>
+                        <a href="{{route('prescription',[$doctor_info->id,$patient->id])}}" class="btns btn-outline-blue-grey my-2">Prescription</a>
+                        <a href="{{route('invoice',[$doctor_info->id,$patient->id])}}" class="btns btn-outline-blue-grey my-2">Billing</a>
                     </div>
 
                     <!-- <a href="">setting</a>
@@ -295,7 +285,7 @@
                         <div class="row mx-0">
                             <div class="col-md-6 p-0">
                                 <div class="top-area1" id="top-area-top">
-                                    <input type="radio" name="tooth-selector" id="radio1">
+                                    <input type="radio" name="tooth-selector" id="radio1" checked>
                                     <label for="radio1">Permanent Teeth</label>
                                     </input>
                                 </div>
@@ -663,7 +653,7 @@
                                 </div>
                                 <!-- Tooth Tools Function Start -->
                                 <div class="tool-out">
-                                    <form action="{{url('/view/patient',$patient->id)}}" method="post">
+                                    <form action="{{route('treatment_info',[$doctor_info->id,$patient->id])}}" method="post">
                                         @csrf
                                         <div class="tools-h">
                                             <div class="row align-items-center">
@@ -778,7 +768,7 @@
                                         </ul>
                                         <div class="d-flex">
                                             <button class="btn   btn-outline-blue-grey">Submit</button>
-                                            <input type="text" id="tooth_type" name="tooth_type" value="" readonly/>
+                                            <input type="hidden" id="tooth_type" name="tooth_type" value="" readonly/>
                                         </div>
                                         
                                     </form>
@@ -857,26 +847,69 @@
                     </div>
                 </div>
                 <div class="info-box-col p-2 mb-3">
-                    <h4 class="text-center bg-blue-grey custom-border-radius py-2">Previous Prescription</h4>
-                    <div class="accordion accordion-flush mt-2" id="accordionFlushExample">
-                        <div class="accordion-item">
+                    <h4 class="d-flex justify-content-center bg-blue-grey custom-border-radius">Previous Prescription</h4>
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        @forelse($v_prescriptions as $key=>$v_prescription)
+                        <div class="accordion-item mb-0">
                             <h2 class="accordion-header" id="flush-headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                    Notice #1
+                                <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                    aria-controls="flush-collapseTwo">
+                                    <p class="me-5">Prescription {{$key + 1}}</p><p class="ms-5">{{$v_prescription->date}}</p>
                                 </button>
                             </h2>
-                            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                    accordion body.</div>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <h4>Drug List From Prescription</h4>
+                                        @php
+                                            $ds = $v_prescription->drug_id_list;
+                                            $ds = explode(',',$ds);
+                                            $drug_infos = \App\Models\drugs::find($ds);
+                                        @endphp
+                                    <ol class="mt-2">
+                                        @foreach($drug_infos as $drug_info)
+                                        <li>
+                                            <p>
+                                                {{$drug_info->drug_name}}
+                                            </p>
+                                            <p>
+                                                {{$drug_info->drug_time}} [ {{$drug_info->duration}} day(s) ] {{$drug_info->meal_time}}
+                                            </p>
+                                        </li>
+                                        @endforeach
+                                    </ol>
+                                    <a href="#" class="btn ">View</a>
+                                    <a href="#" class="btn btn-black">Edit</a>
+                                    <button href="#" class="btn btn-black delete-Prescription" value ="{{$v_prescription->id}}">
+                                        Delete
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                        @empty
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                    aria-controls="flush-collapseTwo">
+                                    New Patient
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <a href="" class="btn btn-black">View</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforelse
                     </div>
                 </div>
                 <div class="info-box-col p-2 mb-3 d-flex flex-column">
-                    <h4 class=" text-center bg-blue-grey custom-border-radius py-2">Post to Forums</h4>
-                    <button type="button" class="btn btn-outline-info text-dark mt-2 mb-2 btn-lg  ">Post</button>
-                    <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <h4 class=" text-center bg-blue-grey custom-border-radius py-2">Ads</h4>
+                    <!-- <button type="button" class="btn btn-outline-info text-dark mt-2 mb-2 btn-lg  ">Post</button> -->
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-heading1">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -892,7 +925,13 @@
                                     accordion body.</div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+                </div>
+                
+                <div>
+                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost_Add" >
+                                                    <i class="bi bi-plus-circle"></i>
+                                                </a>
                 </div>
 
             </div>
@@ -1520,6 +1559,47 @@
                 <!-- Modal Body end -->
             </div>
         </div>
+ </div>
+ <!-- Modal end -->
+
+  <!-- Modal For T/P Treatment Cost Add -->
+  <div class="modal fade " id="Treatment_Cost_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Add Treatment Plan 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('treatment_cost')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="d_id" value="{{$doctor_info->id}}"/>
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example" name="tp_name">
+                                <option value=""></option>
+                                @foreach($t_ps as $t_p)
+                                <option value="{{$t_p -> name}}">{{$t_p -> name}}</option>
+                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" list="list" placeholder="Enter Cost" name="tp_price">
+                        </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Confirm</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
  </div>
  <!-- Modal end -->
 

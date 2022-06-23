@@ -23,6 +23,10 @@ return new class extends Migration
             $table->string('clinical_findings')->nullable();
             $table->string('investigation')->nullable();
             $table->string('treatment_plans')->nullable();
+            $table->string('cost')->nullable();
+            $table->string('paid')->nullable();
+            $table->string('due')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

@@ -324,7 +324,7 @@
         </button>  
         
         <button type="button" class="btn btn-primary back-btn " id=" ">
-           <a href="{{route('treatments',[$doctor_info->id,$patient->id,$t_id,$t_plans])}}" class="text-white">
+           <a href="{{route('view_patient',[$doctor_info->id,$patient->id])}}" class="text-white">
             <i class="fa-solid fa-arrow-left-long"></i>
                 Back
            </a>
