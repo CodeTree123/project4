@@ -22,14 +22,17 @@
 </head>
 
 <body>
+   
+
     <!-- Header Start -->
-    <div class="header py-2 mb-3">
+    <div class="header py-2 mb-3 shadow">
         <div class="container-fluid my-2">
             <div class="row align-items-center">
                 <!--logo & title start-->
                 <div class="col-md-5">
                     <a class="d-flex align-items-center logo" href="{{route('doctor')}}">
-                    <img class="logo" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
+                        <!-- <img class="logo" src="img/Logo.png" alt="Logo"> -->
+                        <img class="logo" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
 
                         <!-- <h2 class="ms-3 mb-0 logo-title">
                             Dental Office Management System
@@ -39,22 +42,23 @@
                 <!--logo & title end-->
 
                 <!--nav start-->
+                @if(Session::has('loginId'))
                 <div class="col-md-4">
-                    <nav class="navbar navbar-expand-lg navbar-light p-0 ">
+                    <nav class="navbar navbar-expand-lg  p-0 ">
                         <div class="container-fluid">
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav fs-4 pe-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="{{route('doctor')}}">Home</a>
+                                        <a class="nav-link active text-bg-blue-grey" aria-current="page" href="{{route('doctor')}}">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Inventory</a>
+                                        <a class="nav-link text-bg-blue-grey " href="#">Inventory</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Shop</a>
+                                        <a class="nav-link text-bg-blue-grey" href="#">Shop</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Forum</a>
+                                        <a class="nav-link text-bg-blue-grey" href="#">Forum</a>
                                     </li>
                                 </ul>
                             </div>
@@ -75,6 +79,11 @@
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <li>
                                                 <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
+                                                    Chember Info
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
                                                     Edit Profile
                                                 </a>
                                             </li>
@@ -89,6 +98,7 @@
                         </div>
                     </nav>
                 </div>
+                @endif
                 <!--info Bar end-->
             </div>
         </div>
@@ -978,7 +988,7 @@
                             <td>{{$key+1}}</td>
                             <td>{{$lcc->name}}</td>
                             @if($lcc->status == 1)
-                            <td class="d-flex justify-content-around">
+                            <td class="d-flex justify-content-around p-0">
                                 <button type="button" class="btn crud-btns CC_editbtn" href="" value="{{$lcc->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
@@ -1132,7 +1142,7 @@
                             <td>{{$key+1}}</td>
                             <td>{{$lcf->name}}</td>
                             @if($lcf->status == 1)
-                            <td class="d-flex justify-content-around">
+                            <td class="d-flex justify-content-around p-0">
                                 <button class="btn crud-btns CF_editbtn" href="" value= "{{$lcf->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
@@ -1286,7 +1296,7 @@
                             <td>{{$key+1}}</td>
                             <td>{{$investigation_list->name}}</td>
                             @if($investigation_list->status == 1)
-                            <td class="d-flex justify-content-around">
+                            <td class="d-flex justify-content-around  p-0">
                                 
                                 <button class="btn crud-btns Investigation_editbtn" href="" value= "{{$investigation_list->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -1445,7 +1455,7 @@
                             <td>{{$ltp->name}}</td>
                             <!-- <td>{{$ltp->cost}}</td> -->
                             @if($ltp->status == 1)
-                            <td class="d-flex justify-content-around">
+                            <td class="d-flex justify-content-around  p-0">
                                 <button class="btn crud-btns TP_editbtn" href="" value="{{$ltp->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
