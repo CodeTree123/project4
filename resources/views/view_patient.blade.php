@@ -77,11 +77,11 @@
                                               My Profile 
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li>
+                                            <!-- <li>
                                                 <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
                                                     Chember Info
                                                 </a>
-                                            </li>
+                                            </li> -->
                                             <li>
                                                 <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
                                                     Edit Profile
@@ -276,8 +276,8 @@
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
 
-                        <a href="#" class="btns btn-outline-blue-grey my-2">Treatment Plans</a>
-                        <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
+                        <!-- <a href="#" class="btns btn-outline-blue-grey my-2">Treatment Plans</a> -->
+                        <a href="{{route('appointment_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
                         <a href="{{route('prescription',[$doctor_info->id,$patient->id])}}" class="btns btn-outline-blue-grey my-2">Prescription</a>
                         <a href="{{route('invoice',[$doctor_info->id,$patient->id])}}" class="btns btn-outline-blue-grey my-2">Billing</a>
                     </div>
@@ -887,9 +887,11 @@
                                         </li>
                                         @endforeach
                                     </ol>
-                                    <a href="{{route('view_prescription',[$doctor_info->id,$patient->id])}}" class="btn ">View</a>
-                                    <a href="{{route('send_mail',[$doctor_info->id,$patient->id])}}" class="btn btn-black">Edit</a>
-                                    <button href="#" class="btn btn-black delete-Prescription" value ="{{$v_prescription->id}}">
+                                    <a href="{{route('view_prescription',[$doctor_info->id,$patient->id])}}" class="btn rounded-pill btn-outline-blue-grey">View</a>
+
+                                    <a href="{{route('send_mail',[$doctor_info->id,$patient->id])}}" class="btn rounded-pill btn-outline-blue-grey">Send Mail</a>
+
+                                    <button href="#" class="btn rounded-pill btn-outline-blue-grey delete-Prescription" value ="{{$v_prescription->id}}" style="font-size:14px ;">
                                         Delete
                                     </button>
                                 </div>
@@ -934,13 +936,16 @@
                     </div>
                 </div>
                 
-                <div>
+                <div class="d-flex justify-content-between">
+                    <h4>Treatment Cost</h4>
+                    <div>
                     <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost_Add">
                         <i class="bi bi-plus-circle"></i>
                     </a>
                     <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost">
                         <i class="bi bi-card-list"></i>
                     </a>
+                    </div>
                 </div>
 
             </div>

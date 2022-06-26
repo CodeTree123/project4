@@ -271,7 +271,7 @@ class MainController extends Controller
         $patient=patient_infos::findOrFail($p_id);
 
         $treatment_info = treatment_info::where('p_id','=',$p_id)->first();
-        $tooth_no = $treatment_info->tooth_no;
+        // $tooth_no = $treatment_info->tooth_no;
         // dd($tooth_no);
         $pc_c=$treatment_info->chife_complaints;
         $pc_f=$treatment_info->clinical_findings;
@@ -287,7 +287,7 @@ class MainController extends Controller
         $medicines_lists = medicine::orderBy('id','desc')->get();
 
         $drugs = drugs::where('p_id','=',$p_id)->where('date','=',$ldate)->get();
-        return view('view_prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','investigations','drugs','t_id','t_plans','tooth_no','medicines','medicines_lists'));
+        return view('view_prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','investigations','drugs','t_id','t_plans','medicines','medicines_lists')); //,'tooth_no'
     }
 
 
@@ -469,7 +469,8 @@ class MainController extends Controller
             ->subject($data["Title"])
             ->attachData($pdf->output(),"test.pdf");
         });
-        dd("email has been sent.");
+        // dd("email has been sent.");
+        return back();
     }
 
 

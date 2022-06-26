@@ -54,7 +54,7 @@
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav fs-4 pe-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active text-bg-blue-grey" aria-current="page" href="#">Home</a>
+                                        <a class="nav-link active text-bg-blue-grey" aria-current="page" href="{{route('doctor')}}">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-bg-blue-grey " href="#">Inventory</a>
@@ -83,7 +83,9 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <li>
-                                                
+                                                <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
+                                                    Edit Profile
+                                                </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="{{route('logout')}}">
@@ -114,9 +116,9 @@
               <!-- <img src="img/banner.jpg" class="cover"> -->
               <img src="{{ asset('assets/img/profile.png')}}"  class="doctor-profile my-4">
               
-              <h2 class="mb-2">Dr Abduallah Bin Sayeed</h2>
+              <h2 class="mb-2">{{$doctor_info->fname." ".$doctor_info->lname}}</h2>
               <p class="mb-2">Dental Consulatant of the Royal <br>Dental</p>
-              <a href="#_" class="btns btn-outline-blue-grey mb-2">This Month</a>
+              <!-- <a href="#_" class="btns btn-outline-blue-grey mb-2">This Month</a> -->
               <p class="mb-2">SMS Remaining : 50</p>
               <p class="mb-2">Buy SMS : 50</p>
 
@@ -126,10 +128,10 @@
         <div class="profile blue-grey-border-thin py-2">
           <!-- <h3>Treatment Plans</h3> -->
           <div class="complete">
-            <a  href="{{route('patient')}}" class="btns btn-outline-blue-grey my-2">Patient</a>
-            <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
-            <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a>
-            <a href="#" class="btns btn-outline-blue-grey my-2">Subscription</a>
+            <a  href="{{route('patient_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Patient List</a>
+            <a href="{{route('appointment_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
+            <!-- <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a> -->
+            <a href="{{route('subscription',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Subscription</a>
           </div>
           
           <!-- <a href="">setting</a>

@@ -53,16 +53,16 @@
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
 
-                        <a href="#" class="btns btn-outline-blue-grey my-2">
+                        <!-- <a href="#" class="btns btn-outline-blue-grey my-2">
                             Treatment Plans
-                        </a>
-                        <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">
+                        </a> -->
+                        <a href="{{route('appointment_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">
                             Appointment
                         </a>
                         <a href="{{route('prescription',[$doctor_info->id,$patient->id])}}" class="btns  btn-outline-blue-grey my-2">
                             Prescription
                         </a>
-                        <a href="#" class="btns btn-outline-blue-grey my-2">
+                        <a href="{{route('invoice',[$doctor_info->id,$patient->id])}}" class="btns btn-outline-blue-grey my-2">
                             Billing
                         </a>
                     </div>

@@ -66,7 +66,7 @@
                          @foreach($doctors as $key=>$doctor)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$doctor->name}}</td>
+                                <td>{{$doctor->fname." ".$doctor->lname}}</td>
                                 <td>{{$doctor->BMDC}}</td>
                                 <td>{{$doctor->phone}}</td>
                                 <td>{{$doctor->email}}</td>
@@ -275,7 +275,7 @@
                           <tr>
                               <th class="">Serial No</th>
                               <th class="">Treatment Plans</th>
-                              <th class="">Cost</th>
+                              <!-- <th class="">Cost</th> -->
                               <th class="">Action</th>
                           </tr>
                       </thead>
@@ -284,7 +284,7 @@
                         <tr>
                             <td>{{$key+1}}</td>
                             <td>{{$ltp->name}}</td>
-                            <td>{{$ltp->cost}}</td>
+                            <!-- <td>{{$ltp->cost}}</td> -->
                             <td class="d-flex justify-content-around">
                                 <button class="btn crud-btns TP_editbtn" href="" value="{{$ltp->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -755,7 +755,7 @@
                     <div class="modal-body">
                         <div class="mb-3 drug-name">
                             <input class="form-control" list="list" placeholder="Enter New Investigation" name="investigation_name">
-                            <input type="text" name="investigation_status" id="investigation_status" value="1" readonly>
+                            <input type="hidden" name="investigation_status" id="investigation_status" value="1" readonly>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -1003,10 +1003,10 @@
                       <input type="hidden" id="MedicineId" name="medicine_id"/>
                       <div class="modal-body">
                           <div class="mb-3 drug-name">
-                              <input class="form-control" list="list" id="Medicine_name" placeholder="Enter New chife Complaint" name="medicine_name">
+                              <input class="form-control" list="list" id="Medicine_name" placeholder="Enter Medicine Name" name="medicine_name">
                           </div>
                           <div class="mb-3 drug-name">
-                              <input class="form-control" list="list" id="Medicine_brand" placeholder="Enter New chife Complaint" name="medicine_brand">
+                              <input class="form-control" list="list" id="Medicine_brand" placeholder="Enter Medicine Brand" name="medicine_brand">
                           </div>
                       </div>
                       <div class="modal-footer">

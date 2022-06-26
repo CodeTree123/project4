@@ -10,9 +10,9 @@
                             <!-- <img src="img/banner.jpg" class="cover"> -->
                             <img src="{{ asset('assets/img/profile.png')}}" class="doctor-profile my-4">
 
-                            <h2 class="mb-2">{{$doctor_info->name}}</h2>
+                            <h2 class="mb-2">{{$doctor_info->fname." ".$doctor_info->lname}}</h2>
                             <p class="mb-2">Dental Consulatant of the Royal <br>Dental</p>
-                            <a href="#_" class="btns btn-outline-blue-grey  mb-2">This Month</a>
+                            <!-- <a href="#_" class="btns btn-outline-blue-grey  mb-2">This Month</a> -->
                             <p class="mb-2">SMS Remaining : 50</p>
                             <p class="mb-2">Buy SMS : 50</p>
 
@@ -22,9 +22,9 @@
                 <div class="profile blue-grey-border-thin py-2">
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
-                        <a href="#" class="btns btn-outline-blue-grey my-2">Patient List</a>
-                        <a href="{{route('appointment')}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
-                        <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a>
+                        <a href="{{route('patient_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Patient List</a>
+                        <a href="{{route('appointment_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
+                        <!-- <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a> -->
                         <a href="{{route('subscription',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Subscription</a>
                     </div>
 
@@ -245,7 +245,7 @@
                 <form action="{{route('subscription_add')}}" method="post">
                     @csrf
                     <div class="modal-body">
-                        <div class="mb-3 drug-name">
+                        <div class="mb-3 subscription-drug-name">
                              <input type="text" class="p-2" id="status" name="doctor_id" value="{{$doctor_info->id}}" readonly>
                             <input type="text" class="p-2" id="package_name" name="package_name" readonly>
                             <input type="text" class="p-2" id="package_price" name="package_price" readonly>

@@ -23,10 +23,16 @@
                 <div class="profile blue-grey-border-thin py-2">
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
+                        @if($subscription->status == 1)
                         <a href="{{route('patient_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Patient List</a>
                         <a href="{{route('appointment_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
-                        <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a>
                         <a href="{{route('subscription',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Subscription</a>
+                        @else
+                        <a href="#" class="btns btn-outline-blue-grey my-2">Patient List</a>
+                        <a href="#" class="btns btn-outline-blue-grey my-2">Appointment</a>
+                        <!-- <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a> -->
+                        <a href="{{route('subscription',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Subscription</a>
+                        @endif
                     </div>
 
                     <!-- <a href="">setting</a>
@@ -144,6 +150,7 @@
                     </div>
                     <!-- slider end -->
                     <!-- Search & New Patient Start -->
+                    @if($subscription->status == 1)
                     <div class="row m-0 justify-content-around">
                          <span class="text-danger no-paitent-error">@error('search') {{$message}} @enderror</span>
                         <div class="col-md-5 blue-grey-border py-4">
@@ -165,7 +172,7 @@
                         <div class="col-md-5 blue-grey-border ">
                             <div class="new-gen-pat">
                                 <!--  a tag trigger modal -->
-                                <a href="" class="btn btn-outline-blue-grey" data-bs-toggle="modal" data-bs-target="#exampleModal">New Patient
+                                <a href="" class="btn btn-outline-blue-grey text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">New Patient
                                     registration
                                 </a>
                                 <!-- Modal -->
@@ -284,9 +291,10 @@
                             </div>
                         </div>
                     </div>
-
-
-
+                    @else
+                    <div class="row m-0 justify-content-around">
+                    </div>
+                    @endif
                     <!-- Search & New Patient end-->
                     <!--Appointment Start  -->
                     <div class="Appointment-sec my-3 blue-grey-border ">

@@ -1795,7 +1795,7 @@ a, a:hover {
 } */
 
 
-#investigation_status, #investigation_status:focus, .drug-name input, .drug-name input focus,#hidden_teeth_number{
+#investigation_status, #investigation_status:focus, .subscription-drug-name input, .subscription-drug-name input:focus,#hidden_teeth_number{
     border: none;
     outline: none;
 }

@@ -110,14 +110,14 @@
                                             <span class="text-danger">@error('gender') {{$message}} @enderror</span>
                                             <select class="form-select" aria-label="Select Blood Group" name="blood_group">
                                                 <option selected> Select Blood Group</option>
-                                                <option value="a+">A+</option> 
-                                                <option value="a-">A-</option> 
-                                                <option value="b+">B+</option> 
-                                                <option value="b-">B-</option> 
-                                                <option value="o+">O+</option> 
-                                                <option value="o-">O-</option> 
-                                                <option value="ab+">AB+</option> 
-                                                <option value="ab-">AB-</option> 
+                                                <option value="A+">A+</option> 
+                                                <option value="A-">A-</option> 
+                                                <option value="B+">B+</option> 
+                                                <option value="B-">B-</option> 
+                                                <option value="O+">O+</option> 
+                                                <option value="O-">O-</option> 
+                                                <option value="AB+">AB+</option> 
+                                                <option value="AB-">AB-</option> 
                                             </select>
                                             <span class="text-danger">@error('blood_group') {{$message}} @enderror</span>
                                             <a class="w-25 btn btn-lg btn-outline-dark my-5 " onclick="stepper1.next()">Next</a>

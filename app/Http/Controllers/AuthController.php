@@ -52,12 +52,21 @@ class AuthController extends Controller
         $doctor =  doctor::where('email','=',$request->email)->first();
         if($doctor){
             if($request->password==$doctor->password){
-                if($doctor->BMDC == null){
-                    $request->session()->put('loginId',$doctor->id);
-                    return redirect()->route('login_profile_edit',[$doctor->id]);
+                if($doctor->status == 0){
+                    if($doctor->BMDC == null){
+                        $request->session()->put('loginId',$doctor->id);
+                        return redirect()->route('login_profile_edit',[$doctor->id]);
+                    }else{
+                        if($doctor->role == 1){
+                            $request->session()->put('loginId',$doctor->id);
+                            return redirect()->route('admin');
+                        }else{
+                        $request->session()->put('loginId',$doctor->id);
+                        return redirect()->route('doctor');
+                        }
+                    }
                 }else{
-                $request->session()->put('loginId',$doctor->id);
-                return redirect()->route('doctor');
+                    return back() ->with('fail','Your Account is Blocked!');
                 }
             }else{
                 return back() ->with('fail','Password not Matches');
@@ -115,7 +124,9 @@ class AuthController extends Controller
 
         if(Session::has('loginId')){
             $doctor_info=doctor::where('id','=',Session::get('loginId'))->first();
-            return view('doctor',compact('doctor_info'));
+            $d_id = $doctor_info->id;
+            $subscription = subscription::find($d_id);
+            return view('doctor',compact('doctor_info','subscription'));
         }
     }
 
@@ -130,9 +141,13 @@ class AuthController extends Controller
     public function update_doctor(Request $request,$id)
     {
         doctor::find($id)->update([
-            'phone'=>$request->mobile,
-            'chember_name'=>$request->chember_name,
-            'chember_add'=>$request->chember_add,
+            'phone'=>$request->phone,
+            'nid'=>$request->nid,
+            'mCollege'=>$request->mCollege,
+            'batch'=>$request->batch,
+            'session'=>$request->session,
+            'passing_year'=>$request->passing_year,
+            'speciality'=>$request->speciality,
         ]);
 
         return redirect()->route('doctor',$id);
