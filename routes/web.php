@@ -26,7 +26,7 @@ Route::get('/', function () {
 Route::get('/header', [FrontEndController::class, 'header'])->name('header');
 Route::get('/footer', [FrontEndController::class, 'footer'])->name('footer');
 
-Route::get('/appointment', [FrontEndController::class, 'appointment'])->name('appointment');
+Route::get('/appointment_list/{d_id}', [FrontEndController::class, 'appointment'])->name('appointment_list');
 Route::get('/index', [FrontEndController::class, 'index'])->name('index');
 Route::get('/loginForm', [FrontEndController::class, 'loginForm'])->name('loginForm');
 Route::get('/patient', [FrontEndController::class, 'patient'])->name('patient');
@@ -66,6 +66,9 @@ Route::post('/subscription_add', [AuthController::class, 'subscription_add'])->n
 
 
 //patient MainController
+Route::get('/patient_appoinment/{id}',[MainController::class,'patient_appoinment'])->name('patient_appoinment');
+Route::post('/appointment',[MainController::class,'appointment'])->name('appointment');
+Route::get('/patient_list/{id}',[MainController::class,'patient_list'])->name('patient_list');
 Route::post('/new/patient/{id}',[MainController::class,'patient_info'])->name('patient_info');
 Route::put('edit/patient/{d_id}/{p_id}',[MainController::class,'edit_patient'])->name('edit.patient'); 
 Route::delete('delete/patient/{d_id}/{p_id}',[MainController::class,'delete_patient'])->name('delete.patient'); 
@@ -80,6 +83,7 @@ Route::get('/view/patient/treatment/{d_id}/{p_id}/{t_id}/{t_plans}',[MainControl
 // Route::post('/view/patient/treatment/{p_id}/{t_id}/{t_plans}',[MainController::class,'treatments'])->name('treatments');
 
 Route::get('/view/patient/prescription/{d_id}/{p_id}',[MainController::class,'prescription'])->name('prescription');
+Route::get('/view_prescription/{d_id}/{p_id}',[MainController::class,'view_prescription'])->name('view_prescription');
 Route::post('/patient/prescription/drug/{d_id}/{p_id}',[MainController::class,'add_drug'])->name('add_drug');
 Route::get('/edit_drug/{id}', [MainController::class, 'edit_drug']);
 Route::put('/update_drug', [MainController::class, 'update_drug'])->name('update_drug');
@@ -142,4 +146,4 @@ Route::delete('/delete_subscription', [AdminController::class, 'delete_subscript
 // Route::put('/admin/update_medicine', [AdminController::class, 'update_medicine'])->name('update_medicine');
 // Route::delete('/admin/delete_medicine', [AdminController::class, 'delete_medicine'])->name('delete_medicine');
 
-
+Route::get('/send_mail/{d_id}/{p_id}',[MainController::class, 'sendMailWithPdf'])->name('send_mail');

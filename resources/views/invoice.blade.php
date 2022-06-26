@@ -161,10 +161,10 @@
                             <div class="d-none d-sm-block col-1">*</div>
                             <div class="col-9 col-sm-3">Total </div> 
                             <div class="d-none d-sm-block col-2 text-95">
-                                Total Treatment Cost <br> ৳ 1,025
+                                Total Treatment Cost <br> ৳ {{$total_cost}}
                             </div>
-                            <div class="col-2 text-secondary-d2">Total Paid <br> ৳ 15</div>
-                            <div class="col-2 text-secondary-d2">Total Due <br> ৳1,010</div>
+                            <div class="col-2 text-secondary-d2">Total Paid <br> ৳ {{$total_paid}}</div>
+                            <div class="col-2 text-secondary-d2">Total Due <br> ৳ {{$total_due}}</div>
                             <div class="col-2 text-secondary-d2"></div>
                         </div> 
  
@@ -186,7 +186,7 @@
                                     SubTotal
                                 </div>
                                 <div class="col-5">
-                                    <span class="text-120 text-secondary-d1">৳2,250</span>
+                                    <span class="text-120 text-secondary-d1">৳ {{$total_cost}}</span>
                                 </div>
                             </div>
 
@@ -195,7 +195,7 @@
                                     Tax (10%)
                                 </div>
                                 <div class="col-5">
-                                    <span class="text-110 text-secondary-d1">৳225</span>
+                                    <span class="text-110 text-secondary-d1">৳ {{$tex}}</span>
                                 </div>
                             </div>
 
@@ -204,7 +204,7 @@
                                     Total Amount
                                 </div>
                                 <div class="col-5">
-                                    <span class="text-150 text-success-d3 opacity-2">৳2,475</span>
+                                    <span class="text-150 text-success-d3 opacity-2">৳ {{$total_Amount}}</span>
                                 </div>
                             </div>
                         </div>

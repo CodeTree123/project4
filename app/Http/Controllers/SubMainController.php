@@ -14,6 +14,7 @@ use App\Models\treatment_info;
 use App\Models\prescription;
 use Illuminate\Http\Request;
 
+
 class SubMainController extends Controller
 {
     public function chife_complaint(Request $request){
@@ -219,4 +220,6 @@ class SubMainController extends Controller
         $del_medicine_info->delete();
         return back();
     }
+
+    
 }

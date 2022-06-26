@@ -142,55 +142,38 @@
 
       <div class="col-md-7 pe-0">
         <div class="blank-sec">
-                  <form class="row g-3">
-            <div class="col-md-12">
-              <label for="location" class="form-label">Location</label>
-              <input type="text" class="form-control" id="inputEmail4">
-            </div>
-            <div class="col-md-12">
-              <label for="phone" class="form-label">Phone Number</label>
-              <input type="tel" class="form-control" id="phone">
-            </div>
-            <div class="col-md-12">
-              <label for="inputAddress" class="form-label">Address</label>
-              <input type="text" class="form-control" id="inputAddress">
-            </div> 
-            <div class="col-md-6">
-              <label for="date" class="form-label">Date</label>
-              <input type="date" class="form-control" id="date">
-            </div>
-            <div class="col-md-6">
-              <label for="time" class="form-label">Time</label>
-              <input type="time" class="form-control" id="time">
-            </div>
-            <div class="col-md-6">
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="m" value="option1">
-              <label class="form-check-label" for="m">Male</label>
-            </div>
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="f" value="option2">
-              <label class="form-check-label" for="f">Female</label>
-            </div>
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="o" value="option2">
-              <label class="form-check-label" for="o">Others</label>
-            </div>
-
-            </div>
-
-            <div class="col-md-6">
-              <label for="patient_id" class="form-label">Patient ID</label>
-              <input type="text" class="form-control" id="patient_id">
-            </div>
-             
-            <div class="col-2">
-              <button type="submit" class="btn btns btn-outline-blue-grey">Submit</button>
-            </div>
-          </form>
+        <table class="table table-bordered mt-4 text-center">
+                        <thead>
+                            <tr>
+                                <th class="">Patient Id</th>
+                                <th class="">Appointment Date</th>
+                                <th class="">Appointment Time</th>
+                                <th class="">Status</th>
+                                <th class="">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($appointment as $a)
+                            <tr>
+                                <td>{{$a->p_id}}</td>
+                                <td>{{$a->date}}</td>
+                                <td>{{$a->time}}</td>
+                                <td>
+                                  @if($a->status == 1)
+                                        <a href="#" class="btn btn-sm btn-danger my-0">Done</a>
+                                    @else
+                                        <a href="#" class="btn btn-sm btn-success my-0">Pending</a>
+                                    @endif
+                                </td>
+                                <td class="d-flex justify-content-around">
+                                    <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
+                                         <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                </table>
         </div>
      </div>
       <!-- body part 2 end -->

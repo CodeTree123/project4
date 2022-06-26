@@ -16,10 +16,15 @@
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
         <div class="form-floating ">
-            <input type="name" name="name" class="form-control custom-form-control mb-2" id="floatingInput" placeholder="name@example.com" value="{{ old('name') }}">
-            <label for="floatingInput">Name</label>
+            <input type="name" name="fname" class="form-control custom-form-control mb-2" id="floatingInput" placeholder="name@example.com" value="{{ old('fname') }}">
+            <label for="floatingInput">First Name</label>
         </div>
-        <span class="text-danger">@error('name') {{$message}} @enderror</span>
+        <span class="text-danger">@error('fname') {{$message}} @enderror</span>
+        <div class="form-floating ">
+            <input type="name" name="lname" class="form-control custom-form-control mb-2" id="floatingInput" placeholder="name@example.com" value="{{ old('lname') }}">
+            <label for="floatingInput">Last Name</label>
+        </div>
+        <span class="text-danger">@error('lname') {{$message}} @enderror</span>
         <div class="form-floating ">
             <input type="email" name="email" class="form-control custom-form-control mb-2" id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}">
             <label for="floatingInput">Email address</label>
