@@ -24,12 +24,14 @@ class AuthController extends Controller
     public function register_user(Request $request)
     {
         $request->validate([
-            'name'=> 'required',
+            'fname'=> 'required',
+            'lname'=> 'required',
             'email'=> 'required|email',
             'password'=> 'required'
         ]);
         $doctor = new doctor();
-        $doctor->name = $request->name;
+        $doctor->fname = $request->fname;
+        $doctor->lname = $request->lname;
         $doctor->email = $request->email;
         $doctor->password = $request->password;
         $res = $doctor->save();
@@ -75,11 +77,35 @@ class AuthController extends Controller
 
     public function login_update_doctor(Request $request,$doctor_id)
     {
+        $request->validate([
+            'phone'=> 'required',
+            'BMDC'=> 'required',
+            'nid'=> 'required',
+            'dob'=> 'required',
+            'gender'=> 'required',
+            'blood_group'=> 'required',
+            'bDegree'=> 'required',
+            'mCollege'=> 'required',
+            'batch'=> 'required',
+            'session'=> 'required',
+            'passing_year'=> 'required',
+            'professional_degree'=> 'required',
+            'speciality'=> 'required'
+        ]);
         doctor::find($doctor_id)->update([
-            'phone'=>$request->mobile,
+            'phone'=>$request->phone,
             'BMDC'=>$request->BMDC,
-            'chember_name'=>$request->chember_name,
-            'chember_add'=>$request->chember_add,
+            'nid'=>$request->nid,
+            'dob'=>$request->dob,
+            'gender'=>$request->gender,
+            'blood_group'=>$request->blood_group,
+            'bDegree'=>$request->bDegree,
+            'mCollege'=>$request->mCollege,
+            'batch'=>$request->batch,
+            'session'=>$request->session,
+            'passing_year'=>$request->passing_year,
+            'professional_degree'=>$request->professional_degree,
+            'speciality'=>$request->speciality,
         ]);
 
         return redirect()->route('doctor');

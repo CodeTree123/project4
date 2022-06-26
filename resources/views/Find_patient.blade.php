@@ -321,7 +321,7 @@
 
                     </table>
                     @empty
-                            <h2>There was no Information about this Number</h2>
+                            <h2 class="mt-2">There was no Information about this Number</h2>
                     @endforelse
                     <!--Search Result For Patient end -->
 

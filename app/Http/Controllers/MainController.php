@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\doctor;
 use App\Models\patient_infos;
+use App\Models\appointment;
 use App\Models\chife_complaint;
 use App\Models\clinical_finding;
 use App\Models\investigation;
@@ -13,6 +14,9 @@ use App\Models\treatment_cost;
 use App\Models\drugs;
 use App\Models\prescription;
 use App\Models\medicine;
+use PDF;
+// use Mail;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 use Session;
@@ -49,9 +53,35 @@ class MainController extends Controller
 
     ]);
 
-    // return redirect()->back();
-    return redirect()->route('doctor',$d_id);
+    return redirect()->back();
+    // return redirect()->route('doctor',$d_id);
 
+    }
+
+    public function patient_appoinment($id){
+        $patient_info=patient_infos::find($id);
+        return response()->json([
+            'status'=>200,
+            'p_info' => $patient_info,
+        ]);
+    }
+    
+    public function appointment(Request $request){
+        appointment::create([
+            'd_id'=>$request->d_id,
+            'p_id'=>$request->p_id,
+            'date'=>$request->date,
+            'time'=>$request->time
+        ]);
+        return redirect()->back();
+    }
+    
+
+    public function patient_list($id){
+        $doctor_info=doctor::where('id','=',$id)->first();
+        $patient_list = patient_infos::all();
+        $patient = patient_infos::all();
+        return view('patient_list',compact('doctor_info','patient_list','patient'));
     }
 
     public function edit_patient(Request $request,$d_id,$p_id){
@@ -232,6 +262,34 @@ class MainController extends Controller
         $drugs = drugs::where('p_id','=',$p_id)->where('date','=',$ldate)->get();
         return view('prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','investigations','drugs','t_id','t_plans','tooth_no','medicines','medicines_lists'));
     }
+    public function view_prescription($d_id,$p_id){
+
+        $ldate = date('d-m-Y');
+        // dd($ldate);
+        
+        $doctor_info=doctor::where('id','=',$d_id)->first();
+        $patient=patient_infos::findOrFail($p_id);
+
+        $treatment_info = treatment_info::where('p_id','=',$p_id)->first();
+        $tooth_no = $treatment_info->tooth_no;
+        // dd($tooth_no);
+        $pc_c=$treatment_info->chife_complaints;
+        $pc_f=$treatment_info->clinical_findings;
+        $pt_p=$treatment_info->treatment_plans;
+        $investigations = $treatment_info->investigation;
+        $pc_c = explode(',',$pc_c);
+        $pc_f = explode(',',$pc_f);
+        $pt_p = explode(',',$pt_p);
+        $investigations = explode(',',$investigations);
+        $t_id=$treatment_info->id;
+        $t_plans=$treatment_info->treatment_plans;
+        $medicines = medicine::all();
+        $medicines_lists = medicine::orderBy('id','desc')->get();
+
+        $drugs = drugs::where('p_id','=',$p_id)->where('date','=',$ldate)->get();
+        return view('view_prescription', compact('doctor_info','patient','pc_c','pc_f','pt_p','investigations','drugs','t_id','t_plans','tooth_no','medicines','medicines_lists'));
+    }
+
 
     public function add_drug(Request $request,$d_id,$p_id){
         // dd($request->date);
@@ -337,9 +395,16 @@ class MainController extends Controller
         // dd($view);
         //test end
         $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
+        $total_cost =  treatment_info::where('p_id','like',$p_id)->sum('cost');
+        $total_paid =  treatment_info::where('p_id','like',$p_id)->sum('paid');
+        $total_due =  treatment_info::where('p_id','like',$p_id)->sum('due');
+
+        $tex = $total_cost*10/100;
+        $total_Amount = $total_cost - $tex;
+        // dd($total_cost,$total_paid,$total_due);
         $treatment_invoice_infos = treatment_info::where('p_id','like',$p_id)->where('status','=',0)->get();
 
-        return view('invoice',compact('doctor_info','patient','treatment_infos','treatment_invoice_infos','view'));
+        return view('invoice',compact('doctor_info','patient','treatment_infos','treatment_invoice_infos','view','total_cost','total_paid','total_due','tex','total_Amount'));
     }
 
     public function treatment_payment(Request $request){
@@ -370,6 +435,41 @@ class MainController extends Controller
         
         
         return back();
+    }
+
+    public function sendMailWithPdf($d_id,$p_id){
+        $ldate = date('d-m-Y');
+        $doctor_info=doctor::where('id','=',$d_id)->first();
+        $patient=patient_infos::findOrFail($p_id);
+        $treatment_info = treatment_info::where('p_id','=',$p_id)->first();
+        $tooth_no = $treatment_info->tooth_no;
+        // dd($tooth_no);
+        $pc_c=$treatment_info->chife_complaints;
+        $pc_f=$treatment_info->clinical_findings;
+        $pt_p=$treatment_info->treatment_plans;
+        $investigations = $treatment_info->investigation;
+        $pc_c = explode(',',$pc_c);
+        $pc_f = explode(',',$pc_f);
+        $pt_p = explode(',',$pt_p);
+        $investigations = explode(',',$investigations);
+        $t_id=$treatment_info->id;
+        $t_plans=$treatment_info->treatment_plans;
+        $medicines = medicine::all();
+        $medicines_lists = medicine::orderBy('id','desc')->get();
+        $drugs = drugs::where('p_id','=',$p_id)->where('date','=',$ldate)->get();
+
+        $data["email"] = "mahadimonna01@gmail.com";
+        $data["Title"] = "Email Test";
+        $data["body"] = "Email Test body";
+
+        $pdf = PDF::loadview('view_prescription',compact('doctor_info','patient','pc_c','pc_f','pt_p','investigations','drugs','t_id','t_plans','tooth_no','medicines','medicines_lists'),$data)->setOptions(['defaultFont' => 'sans-serif']);
+
+        Mail::send([],$data,function($msg) use ($data,$pdf){
+            $msg->to($data["email"])
+            ->subject($data["Title"])
+            ->attachData($pdf->output(),"test.pdf");
+        });
+        dd("email has been sent.");
     }
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\patient_infos;
 use Illuminate\Http\Request;
 use App\Models\subscription_plan;
+use App\Models\appointment;
 
 class FrontEndController extends Controller
 {
@@ -31,10 +32,10 @@ class FrontEndController extends Controller
         return view('subscription',compact('subscription_plans'));
     }
 
-    public function appointment()
+    public function appointment($d_id)
     {
-        
-        return view('appointment');
+        $appointment = appointment::where('d_id','=',$d_id)->get();
+        return view('appointment',compact('appointment'));
     }
     public function index()
     {

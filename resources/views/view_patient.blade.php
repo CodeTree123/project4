@@ -887,8 +887,8 @@
                                         </li>
                                         @endforeach
                                     </ol>
-                                    <a href="#" class="btn ">View</a>
-                                    <a href="#" class="btn btn-black">Edit</a>
+                                    <a href="{{route('view_prescription',[$doctor_info->id,$patient->id])}}" class="btn ">View</a>
+                                    <a href="{{route('send_mail',[$doctor_info->id,$patient->id])}}" class="btn btn-black">Edit</a>
                                     <button href="#" class="btn btn-black delete-Prescription" value ="{{$v_prescription->id}}">
                                         Delete
                                     </button>
