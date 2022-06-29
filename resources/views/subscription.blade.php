@@ -22,10 +22,19 @@
                 <div class="profile blue-grey-border-thin py-2">
                     <!-- <h3>Treatment Plans</h3> -->
                     <div class="complete">
+                    @if($subscription_check->status == 1)
                         <a href="{{route('patient_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Patient List</a>
                         <a href="{{route('appointment_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
                         <!-- <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a> -->
                         <a href="{{route('subscription',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Subscription</a>
+                    @else
+                    <!-- <a href="#" class="btns btn-outline-blue-grey my-2">Patient List</a> -->
+                        <button type="button" class="btns btn-outline-blue-grey my-2 border-0" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Need To Subscribe" data-bs-custom-class="beautifier text-danger">Patient List</button>
+                        <!-- <a href="#" class="btns btn-outline-blue-grey my-2">Appointment</a> -->
+                        <button type="button" class="btns btn-outline-blue-grey my-2 border-0" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Need To Subscribe" data-bs-custom-class="beautifier text-danger">Appointment</button>
+                        <!-- <a href="#" class="btns btn-outline-blue-grey my-2">Income/Expence</a> -->
+                        <a href="{{route('subscription',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Subscription</a>
+                    @endif
                     </div>
 
                     <!-- <a href="">setting</a>
@@ -241,8 +250,8 @@
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
             <div class="modal-body">
-                @if($subscription_check->d_id == $doctor_info->id)
-                <form action="{{route('subscription_add')}}" method="post">
+                @if($subscription_check->status == 1)
+                <!-- <form action="{{route('subscription_add')}}" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3 subscription-drug-name">
@@ -250,25 +259,25 @@
                             <input type="text" class="p-2" id="package_name" name="package_name" readonly>
                             <input type="text" class="p-2" id="package_price" name="package_price" readonly>
                             <input type="text" class="p-2" id="package_duration" name="package_duration" readonly>
-                            <!-- <input type="text" id="status" name="status" value="0"> -->
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
                         <button type="submit" class="btn btn-sm btn btn-sm btn-outline-blue-grey">Update</button>
                     </div>
-                </form>
+                </form> -->
+                <h4>You have already Subscribe {{$subscription_check->package_name}}.</h4> 
                 
                 @else
                 <form action="{{route('subscription_add')}}" method="post">
                     @csrf
+                    @method('PUT')
                     <div class="modal-body">
                         <div class="mb-3 drug-name">
-                        <input type="text" id="status" name="doctor_id" value="{{$doctor_info->id}}">
+                            <input type="text" id="status" name="doctor_id" value="{{$doctor_info->id}}">
                             <input type="text" id="package_name" name="package_name">
                             <input type="text" id="package_price" name="package_price">
                             <input type="text" id="package_duration" name="package_duration">
-                            <!-- <input type="text" id="status" name="status" value="0"> -->
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -290,7 +299,7 @@
         $(document).ready(function(){
             $(document).on('click', '.PackageID',function(){
                 var packageId = $(this).val();
-                alert(packageId);
+                // alert(packageId);
                 $("#package").modal('show');
                 $.ajax({
                     type:"GET",
@@ -305,4 +314,15 @@
             });
         });
 
+    </script>
+    <script>
+        // var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        // var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        // return new bootstrap.Tooltip(tooltipTriggerEl)
+        // })
+
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+        })
     </script>

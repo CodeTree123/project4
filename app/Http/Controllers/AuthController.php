@@ -35,6 +35,13 @@ class AuthController extends Controller
         $doctor->email = $request->email;
         $doctor->password = $request->password;
         $res = $doctor->save();
+        $id = doctor::where('email','=',$request->email)->first()->id;
+
+        subscription::create([
+            'd_id'=>$id
+        ]);
+
+        // dd($id);
         if($res){
             return back() ->with('success','Successfully Registered');
             
@@ -116,6 +123,10 @@ class AuthController extends Controller
             'professional_degree'=>$request->professional_degree,
             'speciality'=>$request->speciality,
         ]);
+        // $subscription = new subscription();
+        // $subscription->d_id = $doctor_id;
+        // $res = $subscription->save();
+
 
         return redirect()->route('doctor');
     }
@@ -125,7 +136,9 @@ class AuthController extends Controller
         if(Session::has('loginId')){
             $doctor_info=doctor::where('id','=',Session::get('loginId'))->first();
             $d_id = $doctor_info->id;
-            $subscription = subscription::find($d_id);
+            // dd($d_id);
+            $subscription = subscription::where('d_id','=',$d_id)->first();
+            // dd($subscription->status);
             return view('doctor',compact('doctor_info','subscription'));
         }
     }
@@ -155,10 +168,10 @@ class AuthController extends Controller
 
     public function subscription($d_id)
     {
-
         $doctor_info=doctor::where('id','=',$d_id)->first();
-        $subscription_plans = subscription_plan::all();
-        $subscription_check = subscription::find($d_id);
+        $subscription_plans = subscription_plan::orderBy('id','desc')->get();
+        // $subscription_check = subscription::find($d_id);
+        $subscription_check = subscription::where('d_id','=',$d_id)->first();
         // dd($subscription_check);
         return view('subscription',compact('doctor_info','subscription_plans','subscription_check'));
     }
@@ -172,12 +185,21 @@ class AuthController extends Controller
     }
 
     public function subscription_add(Request $request){
-        $subscription = new subscription();
-        $subscription->d_id = $request->doctor_id;
-        $subscription->package_name = $request->package_name;
-        $subscription->package_price = $request->package_price;
-        $subscription->duration = $request->package_duration;
-        $res = $subscription->save();
+        $d_id = $request->doctor_id;
+        $id = subscription::where('d_id','=',$d_id)->first()->id;
+        // dd($id);
+        subscription::find($id)->update([
+            'package_name' => $request->package_name,
+            'package_price' => $request->package_price,
+            'duration' => $request->package_duration, 
+        ]);
+        
+        // $subscription = new subscription();
+        // $subscription->d_id = $request->doctor_id;
+        // $subscription->package_name = $request->package_name;
+        // $subscription->package_price = $request->package_price;
+        // $subscription->duration = $request->package_duration;
+        // $res = $subscription->save();
         return back();
     }
 

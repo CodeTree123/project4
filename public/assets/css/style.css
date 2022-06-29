@@ -1800,3 +1800,7 @@ a, a:hover {
     outline: none;
 }
 /* custom ui end */
+
+.beautifier {
+    font-weight: bold;
+}

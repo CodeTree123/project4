@@ -30,15 +30,12 @@
 </head>
 
 <body>
-
-
-
-
     <!-- Header Start -->
     <div class="header py-2 mb-3 shadow">
         <div class="container-fluid my-2">
             <div class="row align-items-center">
                 <!--logo & title start-->
+                
                 <div class="col-md-5">
                     <a class="d-flex align-items-center logo" href="{{route('doctor')}}">
                         <!-- <img class="logo" src="img/Logo.png" alt="Logo"> -->
@@ -62,10 +59,13 @@
                                         <a class="nav-link active text-bg-blue-grey" aria-current="page" href="{{route('doctor')}}">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-bg-blue-grey " href="#">Inventory</a>
+                                        <!-- <a class="nav-link text-bg-blue-grey " href="#">Inventory</a> -->
+                                        <a class="nav-link text-bg-blue-grey" href="#" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Coming Soon" data-bs-custom-class="beautifier text-danger">Inventory</a>
+
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-bg-blue-grey" href="#">Shop</a>
+                                        <!-- <a class="nav-link text-bg-blue-grey" href="#">Shop</a> -->
+                                        <a class="nav-link text-bg-blue-grey" href="#" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Coming Soon" data-bs-custom-class="beautifier text-danger">Shop</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-bg-blue-grey" href="#">Forum</a>
@@ -114,3 +114,14 @@
         </div>
     </div>
     <!-- Header end -->
+    <script>
+        // var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        // var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        // return new bootstrap.Tooltip(tooltipTriggerEl)
+        // })
+
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+        })
+    </script>

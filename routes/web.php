@@ -59,7 +59,7 @@ Route::put('/login_update/doctor/{id}',[AuthController::class,'login_update_doct
 // Route::post('/search',[AuthController::class,'search'])->name('search');
 Route::get('/subscription/{d_id}', [AuthController::class, 'subscription'])->name('subscription');
 Route::get('/subscription_info/{id}', [AuthController::class, 'subscription_info']);
-Route::post('/subscription_add', [AuthController::class, 'subscription_add'])->name('subscription_add');
+Route::put('/subscription_add', [AuthController::class, 'subscription_add'])->name('subscription_add');
 
 
 

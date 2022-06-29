@@ -113,8 +113,8 @@
                     <div class="complete">
                         <div class="p-header">
                             <!-- <img src="img/banner.jpg" class="cover"> -->
-                            <img src="{{ asset('assets/img/profile.png')}}" class="doctor-profile my-4">
-                            <!-- <img src="{{url('/uploads/patient/'.$patient->image)}}" class="doctor-profile my-4"> -->
+                            <!-- <img src="{{ asset('assets/img/profile.png')}}" class="doctor-profile my-4"> -->
+                            <img src="{{url('/uploads/patient/'.$patient->image)}}" class="doctor-profile my-4">
                             <!-- <i class="fa-solid fa-pen-to-square"></i> -->
                             <h2 class="mb-2">{{$patient->name}}</h2>
                         </div>
