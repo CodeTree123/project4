@@ -50,11 +50,14 @@ class MainController extends Controller
         'email'=>$request->email,
         'image'=>$filename,
 
-
     ]);
 
-    return redirect()->back();
+    $p_id = patient_infos::where('mobile','=',$request->mobile)->first()->id;
+    // dd($p_id);
+
+    // return redirect()->back();
     // return redirect()->route('doctor',$d_id);
+    return redirect()->route('view_patient',[$d_id,$p_id]);
 
     }
 
@@ -85,6 +88,17 @@ class MainController extends Controller
     }
 
     public function edit_patient(Request $request,$d_id,$p_id){
+
+        $filename='';
+        if($request->hasFile('image'))
+        {
+
+            $file= $request->file('image');
+            if ($file->isValid()) {
+                $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                $file->storeAs('patient',$filename);
+            }
+        }
         
         patient_infos::find($p_id)->update([
             
@@ -96,8 +110,8 @@ class MainController extends Controller
             'date' => $request->date,
             'occupation' => $request->occupation,
             'address' => $request->address,
-            'email' => $request->email
-            // 'image' => $filename
+            'email' => $request->email,
+            'image' => $filename
         ]);
 
         $doctor_info=doctor::where('id','=',$d_id)->first();
@@ -165,8 +179,9 @@ class MainController extends Controller
         $lt_ps = treatment_plan::orderBy('id','desc')->get();
         $t_p_costs = treatment_cost::all();
         $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
+        $total_cost =  treatment_info::where('p_id','like',$p_id)->sum('cost');
         $v_prescriptions = prescription::where('p_id','like',$p_id)->get();
-        return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','t_p_costs','treatment_infos','investigations','investigation_lists','v_prescriptions'));
+        return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','t_p_costs','treatment_infos','total_cost','investigations','investigation_lists','v_prescriptions'));
     }
 
     public function treatment_info(Request $request,$d_id,$p_id){

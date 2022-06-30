@@ -183,7 +183,7 @@
                                         <div class="modal-content">
                                             <!-- Modal Header & Close btn -->
                                             <div class="modal-header">
-                                                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                                                <h5 class="modal-title text-dark mb-0" id="exampleModalLabel">
                                                     New Patient Registration
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -191,7 +191,7 @@
                                             <!-- Modal Header & Close btn end -->
                                             <!-- Modal Body -->
                                             <div class="modal-body">
-                                                <form action="{{route('patient_info',[$doctor_info->id])}}" method="post" enctype="multipart/form-data">
+                                                <form action="{{route('patient_info',[$doctor_info->id])}}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <!-- <label for="exampleInputEmail1" class="form-label text-dark">Mobile no.</label> -->
@@ -219,7 +219,7 @@
                                                             <div class="mb-3">
                                                                 <!-- <label for="mName" class="form-label text-dark">Gender</label> -->
                                                                 <select class="form-select" name="gender" aria-label="Gender">
-                                                                    <option selected>Select gender</option>
+                                                                    <option selected value="">Select gender</option>
                                                                     <option value="Male">Male</option>
                                                                     <option value="Female">Female</option>
                                                                     <option value="Other">Others</option>
@@ -230,7 +230,7 @@
                                                             <div class="mb-3">
                                                                 <!-- <label for="mName" class="form-label text-dark">Blood Group</label> -->
                                                                 <select class="form-select" name="Blood_group" aria-label="Blood Group">
-                                                                    <option selected> Patient's Blood Group
+                                                                    <option selected value="">Blood Group
                                                                     </option>
                                                                     <option value="A+">A+</option>
                                                                     <option value="A-">A-</option>
@@ -247,7 +247,7 @@
                                                             <div class="mb-3">
                                                                 <!-- <label for="mName" class="form-label text-dark">Date of Birth</label> -->
                                                                 <!-- <br> class="msform"-->
-                                                                <input class="form-control" name="date" type="date" placeholder=" ">
+                                                                <input class="form-control" name="date" type="text" placeholder="Date of Birth">
                                                             </div>
                                                         </div>
                                                         <div class="col">
@@ -268,10 +268,10 @@
                                                     <div class="">
                                                         <!-- <label for="exampleInputEmail1" class="form-label text-dark">Email address</label> -->
                                                         <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address">
-                                                        <div id="emailHelp" class="form-text">We'll never share your
-                                                            email with anyone else.</div>
+                                                        <!-- <div id="emailHelp" class="form-text">We'll never share your
+                                                            email with anyone else.</div> -->
                                                     </div>
-                                                    <div class="">
+                                                    <div class="mt-2">
                                                         <label for="formFile" name="image" class="form-label text-dark">Drop your
                                                             image</label>
                                                         <input class="form-control" name="image" type="file" id="formFile">
@@ -279,8 +279,7 @@
                                                     <!-- Modal Footer -->
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                                        <button class="btn btn-primary  btn-sm">Save
-                                                            changes</button>
+                                                        <button class="btn btn-primary  btn-sm">Save</button>
                                                         <!-- Modal Footer end -->
                                                     </div>
                                                 </form>

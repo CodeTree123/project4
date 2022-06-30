@@ -77,11 +77,11 @@
                                               My Profile 
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <!-- <li>
+                                            <li>
                                                 <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
-                                                    Chember Info
+                                                    Settings
                                                 </a>
-                                            </li> -->
+                                            </li>
                                             <li>
                                                 <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
                                                     Edit Profile
@@ -113,8 +113,11 @@
                     <div class="complete">
                         <div class="p-header">
                             <!-- <img src="img/banner.jpg" class="cover"> -->
-                            <!-- <img src="{{ asset('assets/img/profile.png')}}" class="doctor-profile my-4"> -->
+                            @if($patient->image == null)
+                            <img src="{{ asset('assets/img/profile.png')}}" class="doctor-profile my-4">
+                            @else
                             <img src="{{url('/uploads/patient/'.$patient->image)}}" class="doctor-profile my-4">
+                            @endif
                             <!-- <i class="fa-solid fa-pen-to-square"></i> -->
                             <h2 class="mb-2">{{$patient->name}}</h2>
                         </div>
@@ -937,7 +940,7 @@
                 </div>
                 
                 <div class="d-flex justify-content-between">
-                    <h4>Treatment Cost</h4>
+                    <!-- <h4>Treatment Cost</h4>
                     <div>
                     <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost_Add">
                         <i class="bi bi-plus-circle"></i>
@@ -945,7 +948,14 @@
                     <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost">
                         <i class="bi bi-card-list"></i>
                     </a>
+                    </div> -->
+                    <h4>Estimated Cost</h4>
+                    <div>
+                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Estimated_Cost">
+                        <i class="bi bi-card-list"></i>
+                    </a>
                     </div>
+
                 </div>
 
             </div>
@@ -1169,6 +1179,7 @@
     </div>
  </div>
  <!-- Modal end -->
+
   <!-- Modal For C/F Clinical Findings Add -->
   <div class="modal fade " id="Clinical_Finding_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
@@ -1202,6 +1213,7 @@
     </div>
  </div>
  <!-- Modal end -->
+
   <!-- Modal For C/F Clinical Findings update -->
   <div class="modal fade " id="Clinical_Finding_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
@@ -1237,6 +1249,7 @@
     </div>
  </div>
  <!-- Modal end -->
+
  <!-- Modal For Delete C/F Clinical Findings -->
  <div class="modal fade " id="del-CF" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -1326,7 +1339,7 @@
  </div>
  <!-- Modal end -->
 
- <!-- Modal For Investigation Add -->
+  <!-- Modal For Investigation Add -->
   <div class="modal fade " id="Investigation_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -1358,8 +1371,9 @@
         </div>
     </div>
   </div>
- <!-- Modal end -->
- <!-- Modal For Investigation update -->
+  <!-- Modal end -->
+
+    <!-- Modal For Investigation update -->
     <div class="modal fade " id="Investigation_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -1393,8 +1407,9 @@
             </div>
         </div>
     </div>
- <!-- Modal end -->
-<!-- Modal For Delete Investigation -->
+    <!-- Modal end -->
+
+ <!-- Modal For Delete Investigation -->
  <div class="modal fade " id="del-Investigation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
@@ -1482,6 +1497,7 @@
     </div>
  </div>
  <!-- Modal end -->
+ 
  <!-- Modal For T/P Treatment Plans Add -->
  <div class="modal fade " id="Treatment_Plan_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
@@ -1518,7 +1534,8 @@
     </div>
  </div>
  <!-- Modal end -->
-   <!-- Modal For T/P Treatment Plans update -->
+ 
+ <!-- Modal For T/P Treatment Plans update -->
  <div class="modal fade " id="Treatment_Plan_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -1556,6 +1573,7 @@
     </div>
  </div>
  <!-- Modal end -->
+ 
  <!-- Modal For Delete T/P Treatment Plans -->
  <div class="modal fade " id="del-TP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -1638,8 +1656,8 @@
             <!-- Modal Body end -->
         </div>
     </div>
- </div>
- <!-- Modal end -->
+  </div>
+  <!-- Modal end -->
 
   <!-- Modal For T/P Treatment Cost Add -->
   <div class="modal fade " id="Treatment_Cost_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1679,10 +1697,11 @@
             <!-- Modal Body end -->
         </div>
     </div>
- </div>
- <!-- Modal end -->
-    <!-- Modal For T/P Treatment Cost update -->
-    <div class="modal fade " id="Treatment_Cost_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  </div>
+  <!-- Modal end -->
+  
+  <!-- Modal For T/P Treatment Cost update -->
+  <div class="modal fade " id="Treatment_Cost_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Modal Header & Close btn -->
@@ -1719,6 +1738,7 @@
     </div>
  </div>
  <!-- Modal end -->
+
  <!-- Modal For Delete T/P Treatment Cost -->
  <div class="modal fade " id="del-Cost-TP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -1754,6 +1774,51 @@
  </div>
  <!-- Modal end -->
 
+   <!-- Modal For T/P Estimated Cost List -->
+   <div class="modal fade " id="Estimated_Cost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Estimated Cost List
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <!-- T/P Treatment Cost List-->
+                <table class="table table-bordered mt-3 text-center">
+                    <thead>
+                        <tr>
+                            <th class="">#</th>
+                            <th class="">Treatment Plans</th>
+                            <th class="">Cost</th>
+                            <!-- <th class="">Action</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($treatment_infos as $key=>$t_p_cost)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$t_p_cost->treatment_plans}}</td>
+                            <td>{{$t_p_cost->cost}}</td>
+                        </tr>
+                        @endforeach
+                        <tr>
+                            <td colspan="2">Total</td>
+                            <td>{{$total_cost}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--T/P Treatment Cost list end -->
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+  </div>
+  <!-- Modal end -->
 
 
 
