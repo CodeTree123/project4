@@ -25,6 +25,7 @@ Route::get('/', function () {
 
 Route::get('/header', [FrontEndController::class, 'header'])->name('header');
 Route::get('/footer', [FrontEndController::class, 'footer'])->name('footer');
+Route::get('/doctor_profile_setting', [FrontEndController::class, 'doctor_profile_setting'])->name('doctor_profile_setting');
 
 Route::get('/appointment_list/{d_id}', [FrontEndController::class, 'appointment'])->name('appointment_list');
 Route::get('/index', [FrontEndController::class, 'index'])->name('index');

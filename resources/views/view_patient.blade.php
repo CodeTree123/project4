@@ -281,7 +281,7 @@
 
                         <!-- <a href="#" class="btns btn-outline-blue-grey my-2">Treatment Plans</a> -->
                         <a href="{{route('appointment_list',[$doctor_info->id])}}" class="btns btn-outline-blue-grey my-2">Appointment</a>
-                        <a href="{{route('prescription',[$doctor_info->id,$patient->id])}}" class="btns btn-outline-blue-grey my-2">Prescription</a>
+                        <a href="{{route('prescription',[$doctor_info->id,$patient->id])}}" class="btns btn-outline-blue-grey my-2">Write a Prescription</a>
                         <a href="{{route('invoice',[$doctor_info->id,$patient->id])}}" class="btns btn-outline-blue-grey my-2">Billing</a>
                     </div>
 
@@ -842,7 +842,7 @@
             <div class="col-md-3 page-home">
 
                 <!-- We have info-box-col-1 for not fixed height -->
-                <div class="info-box-col text-center p-2 mb-3">
+                <!-- <div class="info-box-col text-center p-2 mb-3">
                     <h4 class="text-center bg-blue-grey custom-border-radius py-2">Previous Steps List</h4>
                     <div class="accordion accordion-flush mt-2" id="accordionFlushExample">
                         <div class="accordion-item">
@@ -856,7 +856,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="info-box-col p-2 mb-3">
                     <h4 class="d-flex justify-content-center bg-blue-grey custom-border-radius">Previous Prescription</h4>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -939,7 +939,7 @@
                     </div>
                 </div>
                 
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between align-items-center shadow rounded border p-2">
                     <!-- <h4>Treatment Cost</h4>
                     <div>
                     <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost_Add">
@@ -949,7 +949,7 @@
                         <i class="bi bi-card-list"></i>
                     </a>
                     </div> -->
-                    <h4>Estimated Cost</h4>
+                    <h6 class="estimated-cost-title">Estimated Cost</h6>
                     <div>
                     <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Estimated_Cost">
                         <i class="bi bi-card-list"></i>

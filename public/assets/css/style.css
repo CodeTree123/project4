@@ -48,7 +48,7 @@ body {
 .header .logo {
     font-size: 24px;
     font-weight: 700;
-    color: #000ec7;
+    color: #000ec7; 
 }
 /* admin */
 
@@ -87,8 +87,8 @@ main.admin {
 .logo {
     text-decoration: none;
     cursor: pointer;
-    height: 5rem;
-    width: 12rem;    
+    height: 3rem;
+    width: 7rem;    
 }
 .logo img {
     width: 100%;
@@ -160,7 +160,7 @@ main.admin {
 .blank-sec {
     background: #fff;
     border-radius: 11px;
-    padding: 15px 15px;
+    padding: 0px 0px 15px 0px ;
     box-shadow: 0 0 5px 1px #a3a2a2;
     margin-bottom: 12px;
 }
@@ -1804,4 +1804,7 @@ a, a:hover {
 
 .beautifier {
     font-weight: bold;
+}
+.estimated-cost-title{
+    font-size: 15px;
 }

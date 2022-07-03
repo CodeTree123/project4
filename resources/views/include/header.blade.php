@@ -31,8 +31,8 @@
 
 <body>
     <!-- Header Start -->
-    <div class="header py-2 mb-3 shadow">
-        <div class="container-fluid my-2">
+    <div class="header  mb-3 shadow">
+        <div class="container-fluid pt-1">
             <div class="row align-items-center">
                 <!--logo & title start-->
                 

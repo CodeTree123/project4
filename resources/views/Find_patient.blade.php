@@ -296,21 +296,32 @@
                             </tr>
                         </thead>
                         <tbody>
+
+ 
                             
                             <tr>
                                 <td>{{$pf->name}}</td>
                                 <td>{{$pf->mobile}}</td>
                                 <td>{{$pf->id}}</td>
                                 <td class="d-flex justify-content-around">
-                                    <a class="crud-btns" href="{{route('view_patient',[$doctor_info->id,$pf->id])}}" >
-                                        <i class="fa-solid fa-file-lines"></i>
-                                    </a>
-                                    <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentUpdate" >
-                                         <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
+                                    <span>
+                                        <a class="crud-btns" href="{{route('view_patient',[$doctor_info->id,$pf->id])}}" data-bs-toggle="tooltip" data-bs-placement="top" title="View Patient Info">
+                                            <i class="fa-solid fa-file-lines"></i>
+                                        </a> 
+                                    </span>
+
+
+                                   <span  data-bs-toggle="modal" data-bs-target="#patitentUpdate">
+                                    <a class="crud-btns" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Update Patient Info">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                   </span>
+
+                                    <span data-bs-toggle="modal" data-bs-target="#patitentDelete">
+                                    <a class="crud-btns" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Patient Info">
                                          <i class="fa-solid fa-trash"></i>
                                     </a>
+                                    </span>
                                     <!--  -->
                                 </td>
                             </tr>
@@ -686,10 +697,10 @@
         </button>
     </div>
 </div>
-<div class="info-box-col mb-3">
+<!-- <div class="info-box-col mb-3">
     <h4 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Upcoming Events</h4>
 
-</div>
+</div> -->
 </div>
 </div>
 </div>

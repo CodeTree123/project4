@@ -43,7 +43,12 @@
     <script src="{{ asset ('assets/js/bs-stepper.js')}}"></script>
     <script src="{{ asset ('assets/js/main.js')}}"></script>
  
-
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>
 </body>
 
 </html>
