@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::get('/header', [FrontEndController::class, 'header'])->name('header');
 Route::get('/footer', [FrontEndController::class, 'footer'])->name('footer');
-Route::get('/doctor_profile_setting', [FrontEndController::class, 'doctor_profile_setting'])->name('doctor_profile_setting');
+// Route::get('/doctor_profile_setting', [FrontEndController::class, 'doctor_profile_setting'])->name('doctor_profile_setting');
 
 Route::get('/appointment_list/{d_id}', [FrontEndController::class, 'appointment'])->name('appointment_list');
 Route::get('/index', [FrontEndController::class, 'index'])->name('index');
@@ -76,7 +76,7 @@ Route::delete('delete/patient/{d_id}/{p_id}',[MainController::class,'delete_pati
 //search patient
 Route::post('/search/{id}',[MainController::class,'search'])->name('search');
 //view_patient
-Route::put('/update/patient/{id}',[MainController::class,'update_patient'])->name('update.patient'); 
+Route::put('/update/patient/{id}',[MainController::class,'update_patient'])->name('update_patient'); 
 Route::get('/view/patient/{d_id}/{p_id}',[MainController::class,'view_patient'])->name('view_patient'); //view 
 Route::post('/view/patient/{d_id}/{p_id}',[MainController::class,'treatment_info'])->name('treatment_info');
 
@@ -99,6 +99,8 @@ Route::put('/treatment_payment', [MainController::class, 'treatment_payment'])->
  
 
 // SubMainController
+
+Route::get('/doctor_profile_setting/{d_id}', [SubMainController::class, 'doctor_profile_setting'])->name('doctor_profile_setting');
 
 Route::post('/chife_complaint', [SubMainController::class, 'chife_complaint'])->name('chife_complaint');
 Route::get('/edit_chife_complaint/{id}', [SubMainController::class, 'edit_chife_complaint']);

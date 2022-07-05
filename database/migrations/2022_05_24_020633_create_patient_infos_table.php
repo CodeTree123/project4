@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('patient_infos', function (Blueprint $table) {
             $table->id();
+            $table->string('d_id')->nullable();
+            $table->string('patient_id')->nullable();
             $table->string('name')->nullable();
             $table->string('age')->nullable();
             $table->string('mobile')->nullable();

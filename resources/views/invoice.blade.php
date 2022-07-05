@@ -132,7 +132,7 @@
                             <div class="col-2 text-secondary-d2">৳ {{$treatment_info->paid}}</div>
                             <div class="col-2 text-secondary-d2">৳ {{$treatment_info->due}}</div>
                             <div class="col-2 text-secondary-d2">
-                                @if($treatment_info->status == 1)
+                                @if($treatment_info->payment_status == 1)
                                     Paid
                                 @else
                                     Due

@@ -150,14 +150,14 @@
                                 <div class="col-12 text-start">Other: {{$patient->other}}</div>
                                 <!-- <button type="button" class="btn btn-secondary btn-sm">Small button</button> -->
                                     <!--  a tag trigger modal -->
-                                <a href="" class="btns btn-outline-blue-grey" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <a href="" class="btns btn-outline-blue-grey" data-bs-toggle="modal" data-bs-target="#UpdatePatient">
                                         Add/Edit
                                     </a>
                                 <div class="col-12 text-start d-flex justify-content-center p-edit mt-2">
                                    
                                     
                                     <!-- Modal -->
-                                    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade " id="UpdatePatient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-scrollable">
                                             <div class="modal-content ">
                                                 <!--bg-opacity-50-->
@@ -172,7 +172,7 @@
                                                 <!-- Modal Body -->
 
                                                 <div class="modal-body">
-                                                    <form action="{{url('/update/patient',$patient->id)}}" method="post">
+                                                    <form action="{{route('update_patient',$patient->id)}}" method="post">
                                                         @method('PUT')
                                                         @csrf
                                                         <div class="row">

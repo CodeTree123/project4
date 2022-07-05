@@ -125,6 +125,19 @@
             </div>
           </div>
         </div>
+        <div class="profile blue-grey-border-thin">
+                    <div class="d-flex justify-content-evenly my-2   ">
+                        <a href="{{route('doctor_profile_setting',[$doctor_info->id])}}" class="" data-bs-toggle="tooltip" data-bs-placement="top" title="Setting">
+                            <i class="fa-solid fa-gear fa-xl"  ></i>
+                        </a>
+                        <a  href="{{route('profile_edit',[$doctor_info->id ?? 0])}}" class="" data-bs-toggle="tooltip" data-bs-placement="top" title="Profile">
+                            <i class="fa-solid fa-user fa-xl"></i>
+                        </a>
+                        <a  href="{{route('logout')}}" class="" data-bs-toggle="tooltip" data-bs-placement="top" title="Logout">
+                            <i class="fa-solid fa-power-off fa-xl"></i>
+                        </a>
+                    </div>
+                </div>
         <div class="profile blue-grey-border-thin py-2">
           <!-- <h3>Treatment Plans</h3> -->
           <div class="complete">

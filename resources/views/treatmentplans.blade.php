@@ -291,7 +291,7 @@
                                     </ol>
                                     <a href="" class="btn btn-black">View</a>
                                     <a href="" class="btn btn-black">Edit</a>
-                                    <button href="" class="btn btn-black delete-Prescription" value ="{{$v_prescription->id}}">
+                                    <button class="btn btn-black delete-Prescription" value ="{{$v_prescription->id}}">
                                         Delete
                                     </button>
                                 </div>

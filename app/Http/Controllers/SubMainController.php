@@ -17,6 +17,16 @@ use Illuminate\Http\Request;
 
 class SubMainController extends Controller
 {
+    public function doctor_profile_setting($d_id)
+    {
+        $doctor_info=doctor::where('id','=',$d_id)->first();
+        $t_ps = treatment_plan::all();
+        $t_p_costs = treatment_cost::where('d_id','=',$d_id)->get();
+        return view('doctor_profile_setting',compact('doctor_info','t_ps','t_p_costs'));
+    }
+
+
+
     public function chife_complaint(Request $request){
         $chife_complaint = new chife_complaint();
         $chife_complaint->name = $request->cc_name;
