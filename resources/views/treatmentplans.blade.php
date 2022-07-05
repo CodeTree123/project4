@@ -74,7 +74,7 @@
             <!-- Profile end -->
             <!-- Mid Section start -->
             <div class="col-md-6 pe-0">
-                <div class="blank-sec">
+                <div class="blank-sec ps-4 pe-2 pt-2">
                     <!-- treatmentplans start -->
 
                     <div class="row">
@@ -114,22 +114,22 @@
 
                 <div class="treatment-box text-center d-flex flex-wrap justify-content-between p-2"> 
 
-                    <input type="checkbox" class="btn-check " name="btnradio" id="classI" autocomplete="off" >
+                    <input type="radio" class="btn-check " name="btnradio" id="classI" autocomplete="off" >
                     <label class="btn btn-outline-dark m-1" for="classI">Class I</label>
 
-                    <input type="checkbox" class="btn-check " name="btnradio" id="classII" autocomplete="off">
+                    <input type="radio" class="btn-check " name="btnradio" id="classII" autocomplete="off">
                     <label class="btn btn-outline-dark m-1" for="classII">Class II</label>
 
-                    <input type="checkbox" class="btn-check " name="btnradio" id="classIII" autocomplete="off">
+                    <input type="radio" class="btn-check " name="btnradio" id="classIII" autocomplete="off">
                     <label class="btn btn-outline-dark m-1" for="classIII">Class III</label>
 
-                    <input type="checkbox" class="btn-check " name="btnradio" id="classIV" autocomplete="off">
+                    <input type="radio" class="btn-check " name="btnradio" id="classIV" autocomplete="off">
                     <label class="btn btn-outline-dark m-1" for="classIV">Class IV</label>
 
-                    <input type="checkbox" class="btn-check " name="btnradio" id="classV" autocomplete="off">
+                    <input type="radio" class="btn-check " name="btnradio" id="classV" autocomplete="off">
                     <label class="btn btn-outline-dark m-1" for="classV">Class V</label>
 
-                    <input type="checkbox" class="btn-check " name="btnradio" id="classVI" autocomplete="off">
+                    <input type="radio" class="btn-check " name="btnradio" id="classVI" autocomplete="off">
                     <label class="btn btn-outline-dark m-1" for="classVI">Class VI</label>
 
                 </div>
@@ -172,23 +172,26 @@
                                    
 
 
+                    <input type="radio" class="btn-check " name="status" id="notDone" autocomplete="off" >
+                    <label class="btn btn-outline-dark m-1" for="notDone">Not Done</label>
 
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-danger bg-dark ">Not Done</td>
-                                                <td class="text-info ">On Going</td>
-                                                <td class="text-success ">Done</td>
+                    <input type="radio" class="btn-check " name="status" id="onGoing" autocomplete="off">
+                    <label class="btn btn-outline-dark m-1" for="onGoing">On Going</label>
 
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                    <input type="radio" class="btn-check " name="status" id="done" autocomplete="off">
+                    <label class="btn btn-outline-dark m-1" for="done">Done</label>
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="border rounded-3 border-2 border-dark">
+                            <div class="border rounded-3 border-1 border-dark">
                                 <h4 class="text-center">OT Notes</h4>
+
+                                <div class="mb-3 p-2">
+  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
 
                                 <!-- <ol class="border border-1 border-dark m-2">
                                     <li class="border-bottom">Preparation</li>

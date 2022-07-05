@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-md-2 pe-0">
                 <div class="profile blue-grey-border-thin">
+                <h6 class="   p-2 mb-1 d-flex justify-content-center bg-blue-grey custom-border-radius">Doctor's Profile</h6>
                     <div class="complete">
                         <div class="p-header">
                             <!-- <img src="img/banner.jpg" class="cover"> -->
@@ -46,8 +47,9 @@
             </div>
             <div class="col-md-7 pe-0">
                 <div class="blank-sec">
+                <h6 class="   p-2 mb-1 d-flex justify-content-center bg-blue-grey custom-border-radius">Exclusives</h6>
                    <!-- slider -->
-                   <div id="carouselExampleSlidesOnly" class="carousel slide mb-3" data-bs-ride="carousel">
+                   <div id="carouselExampleSlidesOnly" class="carousel slide mx-3 mb-3" data-bs-ride="carousel">
                         <div class="carousel-inner  blue-grey-border ">
                             <div class="carousel-item active">
                                 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -156,6 +158,8 @@
                     <!-- slider end -->
                       <!-- Search & New Patient Start -->
                       <div class="row m-0 justify-content-around">
+                    <h6 class="   p-2 mb-1 d-flex justify-content-center bg-blue-grey  ">Search</h6>
+
                          <span class="text-danger no-paitent-error">@error('search') {{$message}} @enderror</span>
                         <div class="col-md-5 blue-grey-border py-4">
                             <form action="{{route('search',[$doctor_info->id])}}" method="POST">
@@ -511,7 +515,7 @@
 
                     <!-- Search & New Patient end-->
                        <!--Appointment Start  -->
-                       <div class="Appointment-sec my-3 blue-grey-border ">
+                       <div class="Appointment-sec my-3 mx-3 blue-grey-border ">
                         <div class="Appointment-h p-2 bg-blue-grey custom-border-radius">
                             <h4 class="m-0">Today we have 6 Appointment</h4>
                         </div>
@@ -585,7 +589,7 @@
                     </div>
                     <!--Appointment end  -->
                     <!--Patient list Start  -->
-                    <div class="patient-list-col  blue-grey-border">
+                    <!-- <div class="patient-list-col  blue-grey-border">
                         <div class="patient-list-h p-2 bg-blue-grey custom-border-radius">
                             <h4 class="m-0">Patient List</h4>
                         </div>
@@ -639,14 +643,14 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
                     <!-- Appointment list end -->
                 </div>
             </div>
 <!-- Admin Notice,Ad & Events start -->
 <div class="col-md-3 page-home">
 
-<div class="info-box-col mb-3">
+<div class="info-box-col mb-3 pb-1">
     <h4 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Admin Notice Board</h4>
     <!-- accordion -->
     <div class="accordion accordion-flush" id="accordionFlushExample">
