@@ -4,7 +4,7 @@
     <div class="container-fluid">
  <div class="row justify-content-center align-items-center">
      <div class="col-lg-5 mt-5">
-     <form action="{{route('update.doctor',[$doctor_info->id])}}" method="post">
+     <form action="{{route('update.doctor',[$doctor_info->id])}}" method="post" enctype="multipart/form-data">
      @method('PUT')
      @csrf
     <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
@@ -59,6 +59,12 @@
             <div class="form-floating">
                 <input type="text" name="speciality" class="form-control mb-2" id="speciality" placeholder="Speciality" value="{{$doctor_info->speciality}}">
                 <label for="speciality">Speciality</label>
+            </div>
+            <div class="mt-2">
+                <label for="formFile" name="p_image" class="form-label text-dark">Drop your image</label>
+                <input class="form-control" name="p_image" type="file" id="formFile">
+                <img src="{{url('/uploads/doctor/'.$doctor_info->p_image)}}" class="mt-2" style="width: 70px; height: 70px;">
+
             </div>
         </div>
         

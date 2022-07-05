@@ -14,6 +14,10 @@ class FrontEndController extends Controller
     {
         return view('header');
     }
+    public function adminheader()
+    {
+        return view('adminheader');
+    }
     public function footer()
     {
         return view('footer');

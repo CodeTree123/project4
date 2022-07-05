@@ -14,8 +14,10 @@
    
     <!-- Bootstrap 5.1.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
    
- <link rel="stylesheet" href="{{ asset ('assets/css/select2.css')}}">
+ <!-- <link rel="stylesheet" href="{{ asset ('assets/css/select2.css')}}"> -->
  
  <!-- Style CSS -->
  <link rel="stylesheet" href="{{ asset ('assets/css/style.css')}}">
@@ -969,149 +971,160 @@
 
                <!-- tooth tool modal -->
                <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
-</button>
+</button> -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog  modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-         <!-- Tooth Tools Function Start -->
-         <div class=" ">
-                                    <form action="{{route('treatment_info',[$doctor_info->id,$patient->id])}}" method="post">
-                                        @csrf
-                                        <div class="tools-h">
-                                            <div class="row align-items-center">
-                                                <div class="col-5 d-flex align-items-center">
-                                                    <h3 class="pe-0">Tooth No.</h3>
-                                                    <input type="text" id="tooth_no" name="tooth_no" value="" readonly/>
-                                                </div>
-                                                <div class="col-5">
-                                                    <!-- <h3 name="tooth_side">Upper Right</h3> -->
-                                                    <input type="text" id="tooth_side" name="tooth_side" value="" readonly/>
-                                                </div>
-                                                <div class="col-2 text-end">
-                                                    <i class="fa-solid fa-xmark" id="close-btn"></i>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        <h5 class="d-flex justify-content-between">C/C Cheif Complaint 
-                                            <div>
-                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#chife_Complaint_Add" >
-                                                    <i class="bi bi-plus-circle"></i>
-                                                </a>
-                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#chife_Complaint" >
-                                                    <i class="bi bi-card-list"></i>
-                                                </a>
-                                            </div>
-                                        </h5>
-                                        <select class="form-control custom-form-control multi" name="pc_c[]" aria-label="Default select example" multiple style="width:100%;">
-                                            @foreach($c_cs as $c_c)
-                                            <option value="{{$c_c -> name}}">{{$c_c -> name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <ul>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                        </ul>
-                                        <h5 class="d-flex justify-content-between">C/F Clinical Findings
-                                            <div>
-                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Clinical_Finding_Add" >
-                                                    <i class="bi bi-plus-circle"></i>
-                                                </a>
-                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Clinical_Findings" >
-                                                    <i class="bi bi-card-list"></i>
-                                                </a>
-                                            </div>
-                                        </h5>
-                                        <select class="form-control custom-form-control multi" name="pc_f[]" aria-label="Default select example" multiple style="width:100%;">
-                                            @foreach($c_fs as $c_f)
-                                            <option value="{{$c_f -> name}}">{{$c_f -> name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <ul>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                        </ul>
-                                        <h5 class="d-flex justify-content-between">Investigation
-                                            <div>
-                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Investigation_Add" >
-                                                    <i class="bi bi-plus-circle"></i>
-                                                </a>
-                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Investigation" >
-                                                    <i class="bi bi-card-list"></i>
-                                                </a>
-                                            </div>
-                                        </h5>
-                                        <select class="form-control custom-form-control multi" name="p_investigation[]" aria-label="Default select example" multiple style="width:100%;">
-                                            @foreach($investigations as $investigation)
-                                            <option value="X-ray">{{$investigation->name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <ul>
-                                            <li>X-ray</li>
-                                            <li>OPG</li>
-                                            <li>CBCT</li>
-                                        </ul>
+ <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Treatment Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-                                        <h5 class="d-flex justify-content-between">T/P Treatment Plans
-                                            <div>
-                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Plan_Add" >
-                                                    <i class="bi bi-plus-circle"></i>
-                                                </a>
-                                                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Plans" >
-                                                    <i class="bi bi-card-list"></i>
-                                                </a>
-                                            </div>
-                                        </h5>
-                                        <select class="form-control custom-form-control multi" name="pt_p[]" aria-label="Default select example" style="width:100%;">
-                                            @foreach($t_ps as $t_p)
-                                            <option value="{{$t_p -> name}}">{{$t_p -> name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <ul>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                            <li>Pain</li>
-                                            <li>Check-up</li>
-                                        </ul>
-                                        <div class="d-flex">
-                                            <button class="btn   btn-outline-blue-grey">Submit</button>
-                                            <input type="hidden" id="tooth_type" name="tooth_type" value="" readonly/>
-                                        </div>
-                                        
-                                    </form>
+            <div class="modal-body">
+                <!-- Tooth Tools Function Start -->
+                <form action="{{route('treatment_info',[$doctor_info->id,$patient->id])}}" method="post">
+                    @csrf
+                    <div class="tools-h">
+                        <div class="row align-items-center mb-2">
+                            <div class="col-4 d-flex align-items-center">
+                                <h3 class="pe-0">Tooth No.</h3>
+                                <input type="text" id="tooth_no" name="tooth_no" value=""/>
+                            </div>
+                            <div class="col-4">
+                                <!-- <h3 name="tooth_side">Upper Right</h3> -->
+                                <input type="text" id="tooth_side" name="tooth_side" value="" readonly/>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" id="tooth_type" name="tooth_type" value="" readonly/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"> 
+                            <h5 class="d-flex justify-content-between">
+                                C/C Cheif Complaint 
+                                <div>
+                                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#chife_Complaint_Add" >
+                                        <i class="bi bi-plus-circle"></i>
+                                    </a>
+                                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#chife_Complaint" >
+                                        <i class="bi bi-card-list"></i>
+                                    </a>
                                 </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+                            </h5>
+                            <select class="form-control custom-form-control multi" name="pc_c[]" aria-label="Default select example" multiple style="width:100%;">
+                                @foreach($c_cs as $c_c)
+                                    <option value="{{$c_c -> name}}">{{$c_c -> name}}</option>
+                                @endforeach
+                            </select>
+                            <ul>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6">
+                            <h5 class="d-flex justify-content-between">
+                                C/F Clinical Findings
+                                <div>
+                                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Clinical_Finding_Add" >
+                                        <i class="bi bi-plus-circle"></i>
+                                    </a>
+                                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Clinical_Findings" >
+                                        <i class="bi bi-card-list"></i>
+                                    </a>
+                                </div>
+                            </h5>
+                            <select class="form-control custom-form-control multi" name="pc_f[]" aria-label="Default select example" multiple style="width:100%;">
+                                @foreach($c_fs as $c_f)
+                                <option value="{{$c_f -> name}}">{{$c_f -> name}}</option>
+                                @endforeach
+                            </select>
+                            <ul>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6">
+                            <h5 class="d-flex justify-content-between">Investigation
+                                <div>
+                                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Investigation_Add" >
+                                        <i class="bi bi-plus-circle"></i>
+                                    </a>
+                                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Investigation" >
+                                        <i class="bi bi-card-list"></i>
+                                    </a>
+                                </div>
+                            </h5>
+                            <select class="form-control custom-form-control multi" name="p_investigation[]" aria-label="Default select example" multiple style="width:100%;">
+                                @foreach($investigations as $investigation)
+                                <option value="X-ray">{{$investigation->name}}</option>
+                                @endforeach
+                            </select>
+                            <ul>
+                                <li>X-ray</li>
+                                <li>OPG</li>
+                                <li>CBCT</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6">
+                            <h5 class="d-flex justify-content-between">T/P Treatment Plans
+                                <div>
+                                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Plan_Add" >
+                                        <i class="bi bi-plus-circle"></i>
+                                    </a>
+                                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Plans" >
+                                        <i class="bi bi-card-list"></i>
+                                    </a>
+                                </div>
+                            </h5>
+                            <select class="form-control custom-form-control multi" name="pt_p[]" aria-label="Default select example" style="width:100%;">
+                                @foreach($t_ps as $t_p)
+                                <option value="{{$t_p -> name}}">{{$t_p -> name}}</option>
+                                @endforeach
+                            </select>
+                            <ul>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                                <li>Pain</li>
+                                <li>Check-up</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <!-- <button class="btn   btn-outline-blue-grey">Submit</button> -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+ </div>
 
             </div>
         </div>
@@ -1989,8 +2002,12 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
-        $(".multi").select2({
-            // maximumSelectionLength: 2
+        $(document).ready(function(){
+            // $(".multi").select2();
+            $(".multi").select2({
+                dropdownParent: $("#exampleModal")
+            });
+
         });
     </script>
 

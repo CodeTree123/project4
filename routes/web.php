@@ -24,6 +24,7 @@ Route::get('/', function () {
 })->middleware('AfterLogin');
 
 Route::get('/header', [FrontEndController::class, 'header'])->name('header');
+Route::get('/adminheader', [FrontEndController::class, 'adminheader'])->name('adminheader');
 Route::get('/footer', [FrontEndController::class, 'footer'])->name('footer');
 // Route::get('/doctor_profile_setting', [FrontEndController::class, 'doctor_profile_setting'])->name('doctor_profile_setting');
 

@@ -367,7 +367,7 @@
 
                                 <div class="modal-body">
                                     @foreach($patient as $pf)
-                                    <form action="{{route('edit.patient',[$doctor_info->id,$pf->id])}}" method="POST" >
+                                    <form action="{{route('edit.patient',[$doctor_info->id,$pf->id])}}" method="POST" enctype="multipart/form-data">
                                     @method('PUT')
                                     @csrf
                                         
@@ -451,11 +451,13 @@
                                                         <!-- <div id="emailHelp" class="form-text">We'll never share your
                                                             email with anyone else.</div> -->
                                                     </div>
-                                                    <!-- <div class="mt-2">
+                                                    <div class="mt-2">
                                                         <label for="formFile" name="image" class="form-label text-dark">Drop your
                                                             image</label>
                                                         <input class="form-control" name="image" type="file" id="formFile">
-                                                    </div> -->
+                                                        <img src="{{url('/uploads/patient/'.$pf->image)}}" class="mt-2" style="width: 70px; height: 70px;">
+                                                        
+                                                    </div>
                                                     <!-- Modal Footer -->
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>

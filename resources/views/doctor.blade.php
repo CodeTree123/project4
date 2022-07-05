@@ -202,8 +202,7 @@
                         
                             <div class="new-gen-pat">
                                 <!--  a tag trigger modal -->
-                                <a href="" class="btn btn-outline-blue-grey text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">New Patient
-                                    registration
+                                <a href="" class="btn btn-outline-blue-grey text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">New Patient Registration
                                 </a>
                                 <!-- Modal -->
                                 <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
