@@ -35,7 +35,9 @@ return new class extends Migration
             $table->boolean('role')->default(0);
             $table->boolean('status')->default(0);
             $table->boolean('verification')->default(0);
-            $table->text('image')->nullable();
+            $table->text('p_image')->nullable();
+            $table->text('bmdc_image')->nullable();
+            $table->text('postG_image')->nullable();
             $table->timestamps();
         });
     }

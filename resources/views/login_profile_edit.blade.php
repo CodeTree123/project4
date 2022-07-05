@@ -14,7 +14,7 @@
 <div class="container-fluid">
  <div class="row justify-content-center align-items-center">
     <div class="col-lg-10 mt-5">
-     <form action="{{route('login_update_doctor',$doctor_id)}}" method="post">
+     <form action="{{route('login_update_doctor',$doctor_id)}}" method="post" enctype="multipart/form-data">
      @method('PUT')
      @csrf
         <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
@@ -125,6 +125,11 @@
                                 <option value="AB-">AB-</option> 
                             </select>
                             <span class="text-danger">@error('blood_group') {{$message}} @enderror</span>
+                            <div class="mt-2">
+                                <label for="formFile" name="p_image" class="form-label text-dark">Drop your
+                                                            image</label>
+                                <input class="form-control" name="p_image" type="file" id="formFile">
+                            </div>
 
                             <a class="w-25 btn btn-lg btn-outline-dark my-5 " onclick="stepper1.next()">Next</a>
                         </div>
@@ -175,7 +180,7 @@
                             </div>
                             <div class="my-4">
                                 <label for="bmdc_certificate_copy" class="form-label">Upload Your BMDC Certificate Copy <span class="text-danger">(PDF ONLY *)</span></label>
-                                <input class="form-control form-control-lg" id="bmdc_certificate_copy" type="file">
+                                <input class="form-control form-control-lg" id="bmdc_certificate_copy" type="file" name="image1">
                             </div> 
 
                             <a class="w-25 btn btn-lg btn-outline-dark my-5 " onclick="stepper1.previous()">Previous</a>
@@ -203,8 +208,8 @@
                             <span class="text-danger">@error('professional_degree') {{$message}} @enderror</span>
 
                             <div class="my-4">
-                                <label for="professional_degree_certificate_copy" class="form-label">Upload Scan Copy of Your Post-Graduation Degree <span class="text-danger">(PDF ONLY *)</span></label>
-                                <input class="form-control form-control-lg" id="professional_degree_certificate_copy" type="file">
+                                <label for="professional_degree_certificate_copy" class="form-label">Upload Scan Copy of Your Post-Graduation Degree </label>
+                                <input class="form-control form-control-lg" id="professional_degree_certificate_copy" type="file" name="image2">
                             </div>
                             <div class="form-floating">
                                 <input type="text" name="speciality" class="form-control mb-2" id="speciality" placeholder="Speciality" value="{{ old('speciality')}}">

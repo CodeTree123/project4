@@ -93,6 +93,37 @@ class AuthController extends Controller
 
     public function login_update_doctor(Request $request,$doctor_id)
     {
+        $P_filename='';
+        $bmdc_filename='';
+        $post_filename='';
+        if($request->hasFile('p_image'))
+        {
+
+            $file= $request->file('p_image');
+            if ($file->isValid()) {
+                $P_filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                $file->storeAs('doctor',$P_filename);
+            }
+        }
+        if($request->hasFile('image1'))
+        {
+
+            $file= $request->file('image1');
+            if ($file->isValid()) {
+                $bmdc_filename=date('mdhms').'.'.$file->getClientOriginalExtension();
+                $file->storeAs('doctor',$bmdc_filename);
+            }
+        }
+        if($request->hasFile('image2'))
+        {
+
+            $file= $request->file('image2');
+            if ($file->isValid()) {
+                $post_filename=date('Ymdhm').'.'.$file->getClientOriginalExtension();
+                $file->storeAs('doctor',$post_filename);
+            }
+        }
+
         $request->validate([
             'phone'=> 'required',
             'BMDC'=> 'required',
@@ -105,7 +136,7 @@ class AuthController extends Controller
             'batch'=> 'required',
             'session'=> 'required',
             'passing_year'=> 'required',
-            'professional_degree'=> 'required',
+            // 'professional_degree'=> 'required',
             'speciality'=> 'required'
         ]);
         doctor::find($doctor_id)->update([
@@ -122,6 +153,9 @@ class AuthController extends Controller
             'passing_year'=>$request->passing_year,
             'professional_degree'=>$request->professional_degree,
             'speciality'=>$request->speciality,
+            'p_image'=>$P_filename,
+            'bmdc_image'=>$bmdc_filename,
+            'postG_image'=>$post_filename
         ]);
         // $subscription = new subscription();
         // $subscription->d_id = $doctor_id;
