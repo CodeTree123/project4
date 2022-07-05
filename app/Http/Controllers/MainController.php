@@ -39,6 +39,7 @@ class MainController extends Controller
 
     patient_infos::create([
 
+        'd_id'=>$d_id,
         'name'=>$request->name,
         'age'=>$request->age,
         'mobile'=>$request->mobile,
@@ -82,9 +83,9 @@ class MainController extends Controller
 
     public function patient_list($id){
         $doctor_info=doctor::where('id','=',$id)->first();
-        $patient_list = patient_infos::all();
-        $patient = patient_infos::all();
-        return view('patient_list',compact('doctor_info','patient_list','patient'));
+        $patient_list = patient_infos::where('d_id','=',$doctor_info->id)->get();
+        // $patient = patient_infos::all();
+        return view('patient_list',compact('doctor_info','patient_list'));
     }
 
     public function edit_patient(Request $request,$d_id,$p_id){
@@ -149,8 +150,6 @@ class MainController extends Controller
     public function update_patient(Request $request,$id)
     {
         patient_infos::find($id)->update([
-
-
             'bp_high'=>$request->bp_high,
             'bp_low'=>$request->bp_low,
             'Bleeding_disorder'=>$request->Bleeding_disorder,
@@ -162,7 +161,8 @@ class MainController extends Controller
             'other'=>$request->other
         ]);
 
-        return redirect()->route('view_patient',$id);
+        // return redirect()->route('view_patient',$d_id,$p_id);
+        return redirect()->back();
     }
 
     public function view_patient($d_id,$p_id)
@@ -178,7 +178,7 @@ class MainController extends Controller
         $t_ps = treatment_plan::all();
         $lt_ps = treatment_plan::orderBy('id','desc')->get();
         $t_p_costs = treatment_cost::all();
-        $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
+        $treatment_infos = treatment_info::where('p_id','like',$p_id)->where('d_id','=',$d_id)->get();
         $total_cost =  treatment_info::where('p_id','like',$p_id)->sum('cost');
         $v_prescriptions = prescription::where('p_id','like',$p_id)->get();
         return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','t_p_costs','treatment_infos','total_cost','investigations','investigation_lists','v_prescriptions'));
@@ -205,6 +205,7 @@ class MainController extends Controller
         // dd($pt_p_cost,$cost);
 
         $treatment_info = new treatment_info();
+        $treatment_info->d_id = $d_id;
         $treatment_info->p_id = $p_id;
         $treatment_info->tooth_type = $request->tooth_type;
         $treatment_info->tooth_no = $request->tooth_no;
@@ -409,10 +410,10 @@ class MainController extends Controller
         $view = $ldate.'/'.$last;
         // dd($view);
         //test end
-        $treatment_infos = treatment_info::where('p_id','like',$p_id)->get();
-        $total_cost =  treatment_info::where('p_id','like',$p_id)->sum('cost');
-        $total_paid =  treatment_info::where('p_id','like',$p_id)->sum('paid');
-        $total_due =  treatment_info::where('p_id','like',$p_id)->sum('due');
+        $treatment_infos = treatment_info::where('p_id','=',$p_id)->where('d_id','=',$d_id)->get();
+        $total_cost =  treatment_info::where('p_id','=',$p_id)->sum('cost');
+        $total_paid =  treatment_info::where('p_id','=',$p_id)->sum('paid');
+        $total_due =  treatment_info::where('p_id','=',$p_id)->sum('due');
 
         $tex = $total_cost*10/100;
         $total_Amount = $total_cost - $tex;

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('treatment_infos', function (Blueprint $table) {
             $table->id();
+            $table->string('d_id')->nullable();
             $table->string('p_id')->nullable();
             $table->string('tooth_type')->nullable();
             $table->string('tooth_no')->nullable();
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->string('cost')->nullable();
             $table->string('paid')->nullable();
             $table->string('due')->nullable();
+            $table->boolean('payment_status')->default(0);
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

@@ -18,10 +18,7 @@ class FrontEndController extends Controller
     {
         return view('footer');
     }
-    public function doctor_profile_setting()
-    {
-        return view('doctor_profile_setting');
-    }
+    
     public function admin_page()
     {
         return view('admin_page');
