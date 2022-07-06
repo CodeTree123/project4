@@ -34,12 +34,13 @@ class AdminController extends Controller
 
     public function doctor_add(Request $request){
         $doctor = new doctor();
-        $doctor->name = $request->name;
+        $doctor->fname = $request->name;
+        $doctor->lname = $request->name;
         $doctor->email = $request->email;
-        $doctor->phone=$request->mobile;
-        $doctor->BMDC=$request->BMDC;
-        $doctor->chember_name=$request->chember_name;
-        $doctor->chember_add=$request->chember_add;
+        // $doctor->phone=$request->mobile;
+        // $doctor->BMDC=$request->BMDC;
+        // $doctor->chember_name=$request->chember_name;
+        // $doctor->chember_add=$request->chember_add;
         $doctor->password = $request->password;
         $res = $doctor->save();
         return back();

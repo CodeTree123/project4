@@ -1,4 +1,4 @@
-@include('include.header')
+@include('include.adminheader')
 
 
 
@@ -361,8 +361,12 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-floating ">
-                            <input type="name" name="name" class="form-control custom-form-control mb-2" placeholder="name@example.com" value="{{ old('name') }}">
-                            <label for="floatingInput">Name</label>
+                            <input type="name" name="fname" class="form-control custom-form-control mb-2" placeholder="name@example.com" value="{{ old('name') }}">
+                            <label for="floatingInput">First Name</label>
+                        </div>
+                        <div class="form-floating ">
+                            <input type="name" name="lname" class="form-control custom-form-control mb-2" placeholder="name@example.com" value="{{ old('name') }}">
+                            <label for="floatingInput">Last Name</label>
                         </div>
                         
                         <div class="form-floating ">
@@ -370,22 +374,14 @@
                             <label for="floatingInput">Email address</label>
                         </div>
                         
-                        <div class="form-floating ">
+                        <!-- <div class="form-floating ">
                             <input type="text" name="mobile" class="form-control mb-2" placeholder="Name">
                             <label for="floatingInput">Mobile Number</label>
-                        </div>
-                        <div class="form-floating">
+                        </div> -->
+                        <!-- <div class="form-floating">
                             <input type="text" name="BMDC" class="form-control mb-2" placeholder="BMDC Registration No.">
                             <label for="bmdcID">BMDC Registration No.</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="text" name="chember_name" class="form-control mb-2" placeholder="chamberName">
-                            <label for="chamberName">Chamber Name</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="text" name="chember_add" class="form-control mb-2" placeholder="chamberAddress">
-                            <label for="chamberAddress">Chamber Address</label>
-                        </div>
+                        </div> -->
                         <div class="form-floating">
                             <input type="password" name="password" class="form-control custom-form-control mb-2" placeholder="Password">
                             <label for="floatingPassword">Password</label>

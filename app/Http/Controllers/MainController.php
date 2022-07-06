@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
 use App\Models\doctor;
 use App\Models\patient_infos;
 use App\Models\appointment;
@@ -32,7 +33,7 @@ class MainController extends Controller
 
             $file= $request->file('image');
             if ($file->isValid()) {
-                $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                $filename="patient".date('Ymdhms').'.'.$file->getClientOriginalExtension();
                 $file->storeAs('patient',$filename);
             }
         }
@@ -90,18 +91,25 @@ class MainController extends Controller
 
     public function edit_patient(Request $request,$d_id,$p_id){
 
+        $patient_info = patient_infos::find($p_id);
+
         $filename='';
         if($request->hasFile('image'))
         {
-
+            $destination = 'uploads/patient/'.$patient_info->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
             $file= $request->file('image');
             if ($file->isValid()) {
-                $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                $filename="patient".date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                // dd($filename);
                 $file->storeAs('patient',$filename);
             }
         }
         
-        patient_infos::find($p_id)->update([
+        
+        $patient_info->update([
             
             'name' => $request->name,
             'age' => $request->age,
@@ -121,12 +129,19 @@ class MainController extends Controller
     }
 
     public function delete_patient(Request $request,$d_id,$p_id){
-        $patient=patient_infos::where('id','=',$p_id)->get();
-        $patient->each->delete();
-        $doctor_info=doctor::where('id','=',$d_id)->first();
-        $patient=patient_infos::where('id','=',$p_id)->get();
+        $patient=patient_infos::where('id','=',$p_id)->first();
+        // dd($patient);
+        $destination = 'uploads/patient/'.$patient->image;
+        // dd($destination);
+        if(File::exists($destination)){
+            File::delete($destination);
+        }
+        $patient->delete();
+        // $doctor_info=doctor::where('id','=',$d_id)->first();
+        // $patient=patient_infos::where('id','=',$p_id)->get();
         // return view('Find_patient',compact('doctor_info','patient'));
-        return redirect()->route('doctor',$d_id);
+        return redirect()->route('doctor');
+        // return redirect()->back();
         // return "hello";
     }
 

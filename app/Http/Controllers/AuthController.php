@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\File;
+
 
 use Illuminate\Http\Request;
 use App\Models\doctor;
@@ -187,7 +189,22 @@ class AuthController extends Controller
 
     public function update_doctor(Request $request,$id)
     {
-        doctor::find($id)->update([
+        $doctor = doctor::find($id);
+        $P_filename='';
+        if($request->hasFile('p_image'))
+        {
+            $destination = 'uploads/doctor/'.$doctor->p_image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $file= $request->file('p_image');
+            if ($file->isValid()) {
+                $P_filename="P".date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                // dd($P_filename);
+                $file->storeAs('doctor',$P_filename);
+            }
+        }
+        $doctor->update([
             'phone'=>$request->phone,
             'nid'=>$request->nid,
             'mCollege'=>$request->mCollege,
@@ -195,6 +212,7 @@ class AuthController extends Controller
             'session'=>$request->session,
             'passing_year'=>$request->passing_year,
             'speciality'=>$request->speciality,
+            'p_image'=>$P_filename,
         ]);
 
         return redirect()->route('doctor',$id);
