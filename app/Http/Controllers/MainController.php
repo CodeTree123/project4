@@ -200,7 +200,7 @@ class MainController extends Controller
     }
 
     public function treatment_info(Request $request,$d_id,$p_id){
-        // dd($request->all());
+        dd($request->all());
         $pc_c = $request->pc_c;
         $pc_c = implode(',',$pc_c);
         $pc_f = $request->pc_f;

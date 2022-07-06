@@ -324,42 +324,43 @@
                                                 <ul>
                                                     <li>
                                                         <!-- <p>1</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/1TMR.png')}}" alt="" id="18">
-                                                        <p>18</p>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/1TMR.png')}}" alt="" id="18" class="test">
+                                                        <p class="mb-0">18</p>
+                                                        <input type="checkbox" id="18" name="" value="" style="display:none" class="select">
                                                     </li>
                                                     <li>
                                                         <!-- <p>2</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/2SMR.png')}}" alt="" id="17">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/2SMR.png')}}" alt="" id="17" class="test">
                                                         <p>17</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>3</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/3FMR.png')}}" alt="" id="16">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/3FMR.png')}}" alt="" id="16" class="test">
                                                         <p>16</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>4</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/4SPMR.png')}}" alt="" id="15">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/4SPMR.png')}}" alt="" id="15" class="test">
                                                         <p>15</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>5</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/5FPMR.png')}}" alt="" id="14">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/5FPMR.png')}}" alt="" id="14" class="test">
                                                         <p>14</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>6</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/6CR.png')}}" alt="" id="13">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/6CR.png')}}" alt="" id="13" class="test">
                                                         <p>13</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>7</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/7LIR.png')}}" alt="" id="12">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/7LIR.png')}}" alt="" id="12" class="test">
                                                         <p>12</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>8</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/8CIR.png')}}" alt="" id="11">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/8CIR.png')}}" alt="" id="11" class="test">
                                                         <p>11</p>
                                                     </li>
                                                 </ul>
@@ -375,42 +376,42 @@
                                                 <ul>
                                                     <li>
                                                         <!-- <p>9</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/9CIL.png')}}" alt="" id="21">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/9CIL.png')}}" alt="" id="21" class="test">
                                                         <p>21</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>10</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/10LIL.png')}}" alt="" id="22">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/10LIL.png')}}" alt="" id="22" class="test">
                                                         <p>22</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>11</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/11CL.png')}}" alt="" id="23">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/11CL.png')}}" alt="" id="23" class="test">
                                                         <p>23</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>12</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/12FPML.png')}}" alt="" id="24">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/12FPML.png')}}" alt="" id="24" class="test">
                                                         <p>24</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>13</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/13SPML.png')}}" alt="" id="25">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/13SPML.png')}}" alt="" id="25" class="test">
                                                         <p>25</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>14</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/14FML.png')}}" alt="" id="26">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/14FML.png')}}" alt="" id="26" class="test">
                                                         <p>26</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>15</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/15SML.png')}}" alt="" id="27">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/15SML.png')}}" alt="" id="27" class="test">
                                                         <p>27</p>
                                                     </li>
                                                     <li>
                                                         <!-- <p>16</p> -->
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/16TML.png')}}" alt="" id="28">
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/16TML.png')}}" alt="" id="28" class="test">
                                                         <p>28</p>
                                                     </li>
                                                 </ul>
@@ -427,42 +428,42 @@
                                                 <ul>
                                                     <li>
                                                         <p>48</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/48TMR.png')}}" alt="" id="48">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/48TMR.png')}}" alt="" id="48" class="test">
                                                         <!-- <p>32</p> -->
                                                     </li>
                                                     <li>
                                                         <p>47</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/47SMR.png')}}" alt="" id="47">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/47SMR.png')}}" alt="" id="47" class="test">
                                                         <!-- <p>31</p> -->
                                                     </li>
                                                     <li>
                                                         <p>46</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/46FMR.png')}}" alt="" id="46">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/46FMR.png')}}" alt="" id="46" class="test">
                                                         <!-- <p>30</p> -->
                                                     </li>
                                                     <li>
                                                         <p>45</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/45SPMR.png')}}" alt="" id="45">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/45SPMR.png')}}" alt="" id="45" class="test">
                                                         <!-- <p>29</p> -->
                                                     </li>
                                                     <li>
                                                         <p>44</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/44FPMR.png')}}" alt="" id="44">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/44FPMR.png')}}" alt="" id="44" class="test">
                                                         <!-- <p>28</p> -->
                                                     </li>
                                                     <li>
                                                         <p>43</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/43CR.png')}}" alt="" id="43">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/43CR.png')}}" alt="" id="43" class="test">
                                                         <!-- <p>27</p> -->
                                                     </li>
                                                     <li>
                                                         <p>42</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/42LIR.png')}}" alt="" id="42">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/42LIR.png')}}" alt="" id="42" class="test">
                                                         <!-- <p>26</p> -->
                                                     </li>
                                                     <li>
                                                         <p>41</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/41CIR.png')}}" alt="" id="41">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/41CIR.png')}}" alt="" id="41" class="test">
                                                         <!-- <p>25</p> -->
                                                     </li>
                                                 </ul>
@@ -478,42 +479,42 @@
                                                 <ul>
                                                     <li>
                                                         <p>31</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/31CIL.png')}}" alt="" id="31">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/31CIL.png')}}" alt="" id="31" class="test">
                                                         <!-- <p>24</p> -->
                                                     </li>
                                                     <li>
                                                         <p>32</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/32LIL.png')}}" alt="" id="32">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/32LIL.png')}}" alt="" id="32" class="test">
                                                         <!-- <p>23</p> -->
                                                     </li>
                                                     <li>
                                                         <p>33</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/33CL.png')}}" alt="" id="33">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/33CL.png')}}" alt="" id="33" class="test">
                                                         <!-- <p>22</p> -->
                                                     </li>
                                                     <li>
                                                         <p>34</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/34FPML.png')}}" alt="" id="34">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/34FPML.png')}}" alt="" id="34" class="test">
                                                         <!-- <p>21</p> -->
                                                     </li>
                                                     <li>
                                                         <p>35</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/35SPML.png')}}" alt="" id="35">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/35SPML.png')}}" alt="" id="35" class="test">
                                                         <!-- <p>20</p> -->
                                                     </li>
                                                     <li>
                                                         <p>36</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/36FML.png')}}" alt="" id="36">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/36FML.png')}}" alt="" id="36" class="test">
                                                         <!-- <p>19</p> -->
                                                     </li>
                                                     <li>
                                                         <p>37</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/37SML.png')}}" alt="" id="37">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/37SML.png')}}" alt="" id="37" class="test">
                                                         <!-- <p>18</p> -->
                                                     </li>
                                                     <li>
                                                         <p>38</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/38TML.png')}}" alt="" id="38">
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/38TML.png')}}" alt="" id="38" class="test">
                                                         <!-- <p>17</p> -->
                                                     </li>
                                                 </ul>
@@ -530,29 +531,29 @@
                                             <div class="upper-right-teeths">
                                                 <ul>
                                                     <li>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/4SPMR.png')}}" alt="" id="A" class="test">
                                                         <p>A</p>
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/4SPMR.png')}}" alt="" id="A">
-                                                        <p>15</p>
+                                                        <!-- <p>15</p> -->
                                                     </li>
                                                     <li>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/5FPMR.png')}}" alt="" id="B" class="test">
                                                         <p>B</p>
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/5FPMR.png')}}" alt="" id="B">
-                                                        <p>14</p>
+                                                        <!-- <p>14</p> -->
                                                     </li>
                                                     <li>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/6CR.png')}}" alt="" id="C" class="test">
                                                         <p>C</p>
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/6CR.png')}}" alt="" id="C">
-                                                        <p>13</p>
+                                                        <!-- <p>13</p> -->
                                                     </li>
                                                     <li>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/7LIR.png')}}" alt="" id="D" class="test">
                                                         <p>D</p>
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/7LIR.png')}}" alt="" id="D">
-                                                        <p>12</p>
+                                                        <!-- <p>12</p> -->
                                                     </li>
                                                     <li>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-right/8CIR.png')}}" alt="" id="E" class="test">
                                                         <p>E</p>
-                                                        <img src="{{ asset('assets/img/teeths/Upper-right/8CIR.png')}}" alt="" id="E">
-                                                        <p>11</p>
+                                                        <!-- <p>11</p> -->
                                                     </li>
                                                 </ul>
                                             </div>
@@ -566,29 +567,29 @@
                                             <div class="upper-right-teeths">
                                                 <ul>
                                                     <li>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/9CIL.png')}}" alt="" id="F" class="test">
                                                         <p>F</p>
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/9CIL.png')}}" alt="" id="F">
-                                                        <p>21</p>
+                                                        <!-- <p>21</p> -->
                                                     </li>
                                                     <li>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/10LIL.png')}}" alt="" id="G" class="test">
                                                         <p>G</p>
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/10LIL.png')}}" alt="" id="G">
-                                                        <p>22</p>
+                                                        <!-- <p>22</p> -->
                                                     </li>
                                                     <li>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/11CL.png')}}" alt="" id="H" class="test">
                                                         <p>H</p>
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/11CL.png')}}" alt="" id="H">
-                                                        <p>23</p>
+                                                        <!-- <p>23</p> -->
                                                     </li>
                                                     <li>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/12FPML.png')}}" alt="" id="I" class="test">
                                                         <p>I</p>
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/12FPML.png')}}" alt="" id="I">
-                                                        <p>24</p>
+                                                        <!-- <p>24</p> -->
                                                     </li>
                                                     <li>
+                                                        <img src="{{ asset('assets/img/teeths/Upper-left/13SPML.png')}}" alt="" id="J" class="test">
                                                         <p>J</p>
-                                                        <img src="{{ asset('assets/img/teeths/Upper-left/13SPML.png')}}" alt="" id="J">
-                                                        <p>25</p>
+                                                        <!-- <p>25</p> -->
                                                     </li>
                                                 </ul>
                                             </div>
@@ -599,32 +600,32 @@
                                     <div class="col-md-6 p-0 T-border-right">
                                         <div class="upper-right">
                                             <h4>Lower Right</h4>
-                                            <div class="upper-right-teeths">
+                                            <div class="upper-right-teeths mb-3">
                                                 <ul>
                                                     <li>
-                                                        <p>45</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/45SPMR.png')}}" alt="" id="T">
+                                                        <!-- <p>45</p> -->
                                                         <p>T</p>
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/45SPMR.png')}}" alt="" id="T" class="test">
                                                     </li>
                                                     <li>
-                                                        <p>44</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/44FPMR.png')}}" alt="" id="S">
+                                                        <!-- <p>44</p> -->
                                                         <p>S</p>
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/44FPMR.png')}}" alt="" id="S" class="test">
                                                     </li>
                                                     <li>
-                                                        <p>43</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/43CR.png')}}" alt="" id="R">
+                                                        <!-- <p>43</p> -->
                                                         <p>R</p>
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/43CR.png')}}" alt="" id="R" class="test">
                                                     </li>
                                                     <li>
-                                                        <p>42</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/42LIR.png')}}" alt="" id="Q">
+                                                        <!-- <p>42</p> -->
                                                         <p>Q</p>
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/42LIR.png')}}" alt="" id="Q" class="test">
                                                     </li>
                                                     <li>
-                                                        <p>41</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/41CIR.png')}}" alt="" id="P">
+                                                        <!-- <p>41</p> -->
                                                         <p>P</p>
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Right/41CIR.png')}}" alt="" id="P" class="test">
                                                     </li>
                                                 </ul>
                                             </div>
@@ -638,29 +639,29 @@
                                             <div class="upper-right-teeths">
                                                 <ul>
                                                     <li>
-                                                        <p>31</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/31CIL.png')}}" alt="" id="O">
+                                                        <!-- <p>31</p> -->
                                                         <p>O</p>
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/31CIL.png')}}" alt="" id="O" class="test">
                                                     </li>
                                                     <li>
-                                                        <p>32</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/32LIL.png')}}" alt="" id="N">
+                                                        <!-- <p>32</p> -->
                                                         <p>N</p>
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/32LIL.png')}}" alt="" id="N" class="test">
                                                     </li>
                                                     <li>
-                                                        <p>33</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/33CL.png')}}" alt="" id="M">
+                                                        <!-- <p>33</p> -->
                                                         <p>M</p>
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/33CL.png')}}" alt="" id="M" class="test">
                                                     </li>
                                                     <li>
-                                                        <p>34</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/34FPML.png')}}" alt="" id="L">
+                                                        <!-- <p>34</p> -->
                                                         <p>L</p>
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/34FPML.png')}}" alt="" id="L" class="test">
                                                     </li>
                                                     <li>
-                                                        <p>35</p>
-                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/35SPML.png')}}" alt="" id="K">
+                                                        <!-- <p>35</p> -->
                                                         <p>K</p>
+                                                        <img src="{{ asset('assets/img/teeths/Lower-Left/35SPML.png')}}" alt="" id="K" class="test">
                                                     </li>
                                                 </ul>
                                             </div>
@@ -679,7 +680,7 @@
                                                     <input type="text" id="tooth_no" name="tooth_no" value="" readonly/>
                                                 </div>
                                                 <div class="col-5">
-                                                    <!-- <h3 name="tooth_side">Upper Right</h3> -->
+                                                    
                                                     <input type="text" id="tooth_side" name="tooth_side" value="" readonly/>
                                                 </div>
                                                 <div class="col-2 text-end">
@@ -796,8 +797,10 @@
                             <!-- Teeth Button -->
                             <div class="col-md-12 teeth-bottom px-0">
                                 <div class="teeth-btn">
-                                    <a>Full Mouth</a>
-                                    <a>Multi Teeth</a>
+                                    <a class="test" id="All">Full Mouth</a>
+                                    
+                                    <a class="mul">Multi Teeth</a>
+                                    <a class="confirm" style="display:none">Confirm</a>
                                 </div>
                                 <!-- <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
                     <label class="btn btn-outline-primary" for="btncheck1">Full Mouth</label>
@@ -971,38 +974,51 @@
 
                <!-- tooth tool modal -->
                <!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
-</button> -->
+</button>
 
 <!-- Modal -->
- <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="exampleModal_1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Treatment Information</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-                <!-- Tooth Tools Function Start -->
-                <form action="{{route('treatment_info',[$doctor_info->id,$patient->id])}}" method="post">
-                    @csrf
-                    <div class="tools-h">
-                        <div class="row align-items-center mb-2">
-                            <div class="col-4 d-flex align-items-center">
-                                <h3 class="pe-0">Tooth No.</h3>
-                                <input type="text" id="tooth_no" name="tooth_no" value=""/>
+            <form action="{{route('treatment_info',[$doctor_info->id,$patient->id])}}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">Treatment Information</h5> -->
+                    <div class="modal_header">
+                            <div class="row align-items-center">
+                                <div class="col-4 d-flex align-items-center">
+                                    <h3 class="ps-0">Tooth No.</h3>
+                                    <input type="text" id="tooth_no_modal" name="tooth_no" value=""/>
+                                </div>
+                                <div class="col-8 text-center">
+                                    <!-- <h3 name="tooth_side">Upper Right</h3> -->
+                                    <input type="text" id="tooth_side_modal" name="tooth_side" value="" readonly class="text-center"/>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <!-- <input type="hidden" id="tooth_type_modal" name="tooth_type" value="" readonly/> -->
+                                </div>
                             </div>
-                            <div class="col-4">
-                                <!-- <h3 name="tooth_side">Upper Right</h3> -->
-                                <input type="text" id="tooth_side" name="tooth_side" value="" readonly/>
-                            </div>
-                            <div class="col-4">
-                                <input type="text" id="tooth_type" name="tooth_type" value="" readonly/>
-                            </div>
-                        </div>
                     </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tooth Tools Function Start -->
+                    <!-- <div class="tools-h">
+                            <div class="row align-items-center mb-2">
+                                <div class="col-3 d-flex align-items-center">
+                                    <h3 class="pe-0">Tooth No.</h3>
+                                    <input type="text" id="tooth_no_modal" name="tooth_no" value=""/>
+                                </div>
+                                <div class="col-5 text-center">
+                                    <input type="text" id="tooth_side_modal" name="tooth_side" value="" readonly class="text-center"/>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <input type="text" id="tooth_type_modal" name="tooth_type" value="" readonly/>
+                                </div>
+                            </div>
+                </div> -->
                     <div class="row">
                         <div class="col-6"> 
                             <h5 class="d-flex justify-content-between">
@@ -1017,11 +1033,12 @@
                                 </div>
                             </h5>
                             <select class="form-control custom-form-control multi" name="pc_c[]" aria-label="Default select example" multiple style="width:100%;">
+                                <option value="">Nothing To Select</option>
                                 @foreach($c_cs as $c_c)
                                     <option value="{{$c_c -> name}}">{{$c_c -> name}}</option>
                                 @endforeach
                             </select>
-                            <ul>
+                            <ul class="modal_ul">
                                 <li>Pain</li>
                                 <li>Check-up</li>
                                 <li>Pain</li>
@@ -1046,11 +1063,12 @@
                                 </div>
                             </h5>
                             <select class="form-control custom-form-control multi" name="pc_f[]" aria-label="Default select example" multiple style="width:100%;">
+                                <option value="">Nothing To Select</option>
                                 @foreach($c_fs as $c_f)
-                                <option value="{{$c_f -> name}}">{{$c_f -> name}}</option>
+                                    <option value="{{$c_f -> name}}">{{$c_f -> name}}</option>
                                 @endforeach
                             </select>
-                            <ul>
+                            <ul class="modal_ul">
                                 <li>Pain</li>
                                 <li>Check-up</li>
                                 <li>Pain</li>
@@ -1074,11 +1092,12 @@
                                 </div>
                             </h5>
                             <select class="form-control custom-form-control multi" name="p_investigation[]" aria-label="Default select example" multiple style="width:100%;">
+                                <option value="">Nothing To Select</option>
                                 @foreach($investigations as $investigation)
-                                <option value="X-ray">{{$investigation->name}}</option>
+                                    <option value="X-ray">{{$investigation->name}}</option>
                                 @endforeach
                             </select>
-                            <ul>
+                            <ul class="modal_ul">
                                 <li>X-ray</li>
                                 <li>OPG</li>
                                 <li>CBCT</li>
@@ -1087,7 +1106,7 @@
 
                         <div class="col-6">
                             <h5 class="d-flex justify-content-between">T/P Treatment Plans
-                                <div>
+                                 <div>
                                     <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Plan_Add" >
                                         <i class="bi bi-plus-circle"></i>
                                     </a>
@@ -1097,11 +1116,12 @@
                                 </div>
                             </h5>
                             <select class="form-control custom-form-control multi" name="pt_p[]" aria-label="Default select example" style="width:100%;">
+                                <option value="">Nothing To Select</option>
                                 @foreach($t_ps as $t_p)
-                                <option value="{{$t_p -> name}}">{{$t_p -> name}}</option>
+                                    <option value="{{$t_p -> name}}">{{$t_p -> name}}</option>
                                 @endforeach
                             </select>
-                            <ul>
+                            <ul class="modal_ul">
                                 <li>Pain</li>
                                 <li>Check-up</li>
                                 <li>Pain</li>
@@ -1113,15 +1133,15 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <!-- <button class="btn   btn-outline-blue-grey">Submit</button> -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
-            </div>
+                        <div class="d-flex">
+                            <!-- <button class="btn   btn-outline-blue-grey">Submit</button> -->
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
     </div>
  </div>
@@ -1202,7 +1222,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     Add Cheif Complaint 
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#exampleModal_1" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1216,7 +1236,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal_1">Discard</button>
                         <button type="submit" class="btn btn-sm btn btn-sm btn-outline-blue-grey">Confirm</button>
                     </div>
                 </form>
@@ -1357,7 +1377,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     Add Clinical Finding 
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#exampleModal_1" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1371,7 +1391,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal_1">Discard</button>
                         <button type="submit" class="btn btn-sm btn-outline-blue-grey">Confirm</button>
                     </div>
                 </form>
@@ -1516,7 +1536,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     Add Investigation 
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#exampleModal_1" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1530,7 +1550,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal_1">Discard</button>
                         <button type="submit" class="btn btn-sm btn-outline-blue-grey">Confirm</button>
                     </div>
                 </form>
@@ -1675,7 +1695,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     Add Treatment Plan 
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#exampleModal_1" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1692,7 +1712,7 @@
                         </div> -->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal_1">Discard</button>
                         <button type="submit" class="btn btn-sm btn-outline-blue-grey">Confirm</button>
                     </div>
                 </form>
@@ -2005,7 +2025,53 @@
         $(document).ready(function(){
             // $(".multi").select2();
             $(".multi").select2({
-                dropdownParent: $("#exampleModal")
+                dropdownParent: $("#exampleModal_1")
+            });
+
+            $(document).on('click','.test',function(){
+                var id = $(this).attr("id");
+                // console.log(id);
+                $("#exampleModal_1").modal('show');
+                $("#tooth_no_modal").val(id);
+                if(id > 10 && id < 19){
+                    $("#tooth_side_modal").val('Upper Right');
+                    $("#tooth_type_modal").val('Permanent Teeth');
+                }
+                else if(id > 20 && id < 29){
+                    $("#tooth_side_modal").val('Upper Left');
+                    $("#tooth_type_modal").val('Permanent Teeth');
+                }
+                else if(id > 30 && id < 39){
+                    $("#tooth_side_modal").val('Lower Left');
+                    $("#tooth_type_modal").val('Permanent Teeth');
+                }
+                else if(id > 40 && id < 49){
+                    $("#tooth_side_modal").val('Lower Right');
+                    $("#tooth_type_modal").val('Permanent Teeth');
+                }
+                else if(id=="A"||id=="B"||id=="C"||id=="D"||id=="E"){
+                    $("#tooth_side_modal").val('Upper Right');
+                    $("#tooth_type_modal").val('Deciduous Teeth');
+                }
+                else if(id=="F"||id=="G"||id=="H"||id=="I"||id=="J"){
+                    $("#tooth_side_modal").val('Upper Left');
+                    $("#tooth_type_modal").val('Deciduous Teeth');
+                }
+                else if(id=="K"||id=="L"||id=="M"||id=="N"||id=="O"){
+                    $("#tooth_side_modal").val('Lower Left');
+                    $("#tooth_type_modal").val('Deciduous Teeth');
+                }
+                else if(id=="P"||id=="Q"||id=="R"||id=="S"||id=="T"){
+                    $("#tooth_side_modal").val('Lower Right');
+                    $("#tooth_type_modal").val('Deciduous Teeth');
+                }
+
+            });
+
+            $(document).on('click', '.mul',function(){
+                $('.confirm').show();
+                $('.select').show();
+
             });
 
         });

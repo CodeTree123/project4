@@ -4,14 +4,14 @@ const two = document.querySelector(".tool-out");
 const tooth_no = document.getElementById("tooth_no");
 const tooth_side = document.getElementById("tooth_side");
 
-let twoSide = window.getComputedStyle(two,'::before');
-let twoSide2 = window.getComputedStyle(two,'::after');
+// let twoSide = window.getComputedStyle(two,'::before');
+// let twoSide2 = window.getComputedStyle(two,'::after');
 
 
 one.addEventListener("click",function(e){
         var trid = e.target.id;
         tooth_no.value = trid;
-        two.style.display = "block";
+        two.style.display = "none";
         if (trid > 10 && trid < 19){
                 tooth_side.value = "Upper Right";
                 document.getElementById("tooth_type").value="Permanent Teeth";
@@ -313,7 +313,7 @@ three.addEventListener("click",function(e){
         console.log(e);
         var dTrid = e.target.id;
         tooth_no.value = dTrid;
-        two.style.display = "block";
+        two.style.display = "none";
         
         if(dTrid == "A"){
                 // two.style.left = "37px";

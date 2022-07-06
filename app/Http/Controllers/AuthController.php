@@ -103,7 +103,7 @@ class AuthController extends Controller
 
             $file= $request->file('p_image');
             if ($file->isValid()) {
-                $P_filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                $P_filename="P".date('Ymdhms').'.'.$file->getClientOriginalExtension();
                 $file->storeAs('doctor',$P_filename);
             }
         }
