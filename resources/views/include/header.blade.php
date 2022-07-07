@@ -39,9 +39,8 @@
                 <div class="col-md-5">
                     <a class="d-flex align-items-center logo" href="{{route('doctor')}}">
                         <!-- <img class="logo" src="img/Logo.png" alt="Logo"> -->
-                        <div class="logo_container">
-                          <img class="img-fluid" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
-                        </div>
+                       
+                        <img class=" logo" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
 
                         <!-- <h2 class="ms-3 mb-0 logo-title">
                             Dental Office Management System

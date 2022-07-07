@@ -1,7 +1,7 @@
 @include('include.adminheader')
 
 
-
+<title>Reflexdn-Admin</title>
   <div class="b-hor-example-divider"></div>
 
    <div class="container-fluid">
@@ -78,6 +78,10 @@
                                     @endif
                                 </td>
                                 <td class="d-flex justify-content-around">
+                                      
+                                    <button type="button" class="btn crud-btns Doctor_viewbtn" href="" value="{{$doctor->id}}" >
+                                         <i class="fa-solid fa-file-lines"></i>
+                                    </button>
                                     <button type="button" class="btn crud-btns Doctor_editbtn" href="" value="{{$doctor->id}}" >
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
@@ -411,6 +415,35 @@
     </div>
  </div>
  <!-- Modal end -->
+ <!-- Modal For Doctor VIEW -->
+ <div class="modal fade " id="Doctor_View" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    View Doctor Information 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p>Name: <span id="doctor_view_name"></span></p>
+                <p>Email: <span id="doctor_view_email"></span></p>
+                <p>Phone: <span id="doctor_view_phone"></span></p>
+                <p>BMDC No:<span id="doctor_view_bmdc"></span> </p>
+                <p>NID No: <span id="doctor_view_nid"></span></p>
+                <p>Profile Picture:<img src="" id="doctor_view_profile_pic"></img> </p>
+                <p>BMDC Registration:<img src="" id="doctor_view_bmdc_reg"></img> </p>
+                <p>Post Graduate Degree: <img src="" id="doctor_view_post_grad"></img></p>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+
  <!-- Modal For Doctor update -->
  <div class="modal fade " id="Doctor_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
@@ -1195,6 +1228,39 @@
     $(document).ready(function(){
 
         // script for Doctor
+
+        // <p>Name: <span id="doctor_view_name"> </span></p>
+        //         <p>Email: <span id="doctor_view_email"> </span></p>
+        //         <p>Phone: <span id="doctor_view_phone"> </span></p>
+        //         <p>BMDC No:<span id="doctor_view_bmdc"> </span> </p>
+        //         <p>NID No: <span id="doctor_view_nid"> </span></p>
+        //         <p>Profile Picture:<span id="doctor_view_profile_pic"> </span> </p>
+        //         <p>BMDC Registration:<span id="doctor_view_bmdc_reg"> </span> </p>
+        //         <p>Post Graduate Degree: <span id="doctor_view_post_grad"> </span></p>
+
+      $(document).on('click', '.Doctor_viewbtn',function(){
+                var Doctor_id = $(this).val();
+                // alert(Doctor_id);
+                $("#Doctor_View").modal('show');
+                $.ajax({
+                    type:"GET",
+                    url: "/edit_doctor/"+Doctor_id,
+                    success: function(response){
+                        console.log(response.doctor_info); 
+                        console.log(response.doctor_info); 
+                        $("#doctor_view_name").text(response.doctor_info.fname +" " +response.doctor_info.lname);
+                        $('#doctor_view_email').text(response.doctor_info.email);
+                        $('#doctor_view_phone').text(response.doctor_info.phone);
+                        $('#doctor_view_bmdc').text(response.doctor_info.BMDC);
+                        $('#doctor_view_nid').text(response.doctor_info.nid);
+
+                        $('#doctor_view_profile_pic').attr("src","url('/uploads/doctor/'+response.doctor_info.p_image");
+                        $('#doctor_view_bmdc_reg').text(response.doctor_info.chember_add);
+                        $('#doctor_view_post_grad').text(response.doctor_info.chember_add);
+                    }
+                }); 
+                // .attr("src","anotherImg.jpg");
+      });
 
       $(document).on('click', '.Doctor_editbtn',function(){
                 var Doctor_id = $(this).val();

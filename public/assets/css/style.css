@@ -1854,6 +1854,10 @@ a, a:hover {
     height: 50px;
     width: 114px;
 }
+
+.classification_radio{
+    width: 100px;
+}
 /* doctor profile setting end */ 
  
 /* --blue-grey: #4e6f8a; 

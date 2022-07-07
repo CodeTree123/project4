@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Profile start -->
-            <div class="col-md-3 pe-0">
+            <div class="col-md-2 pe-0">
                 <div class="profile  blue-grey-border-thin ">
                     <div class="complete">
                         <div class="p-header">
@@ -20,10 +20,10 @@
                         </div>
                         <div class="Patient-personal-info">
                             <div class="row">
-                                <div class="col-8 text-start">Patient ID: {{$patient->id}}</div>
-                                <div class="col-4 text-start">Age: {{$patient->age}}</div>
-                                <div class="col-6 text-start pe-0">Gender: {{$patient->gender}}</div>
-                                <div class="col-6 text-start ps-0">Blood Group: {{$patient->Blood_group}}</div>
+                                <div class="col-12 text-start">Patient ID: {{$patient->id}}</div>
+                                <div class="col-12 text-start">Age: {{$patient->age}}</div>
+                                <div class="col-12 text-start pe-0">Gender: {{$patient->gender}}</div>
+                                <div class="col-12 text-start  ">Blood Group: {{$patient->Blood_group}}</div>
                                 <div class="col-12 text-start">Date of Birth: {{$patient->date}}</div>
 
 
@@ -80,8 +80,14 @@
             </div>
             <!-- Profile end -->
             <!-- Mid Section start -->
-            <div class="col-md-6 pe-0">
+            <div class="col-md-7 pe-0">
                 <div class="blank-sec ps-4 pe-2 pt-2">
+                @if(Session::has('success'))
+                <div class="alert alert-success">{{Session::get('success')}}</div>
+                @endif
+                @if(Session::has('fail'))
+                <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                @endif
                     <!-- treatmentplans start -->
                     <div class="row">
                         <div class="col-md-6 treatment-info">
@@ -114,25 +120,29 @@
                                 <h6 class="float-end">Class II</h6>
                             </div>
 
-                            <div class="treatment-box text-center d-flex flex-wrap justify-content-between p-2"> 
+                            <div class="treatment-box text-center   p-2"> 
 
-                                <input type="radio" class="btn-check " name="btnradio" id="classI" autocomplete="off" value="Class I">
-                                <label class="btn btn-outline-dark m-1" for="classI">Class I</label>
+                            <div class="d-flex justify-content-evenly">
+                               <input type="radio" class="btn-check " name="btnradio" id="classI" autocomplete="off" value="Class I">
+                                <label class="btn btn-outline-dark  classification_radio m-1" for="classI">Class I</label>
 
                                 <input type="radio" class="btn-check " name="btnradio" id="classII" autocomplete="off" value="Class II">
-                                <label class="btn btn-outline-dark m-1" for="classII">Class II</label>
+                                <label class="btn btn-outline-dark classification_radio m-1" for="classII">Class II</label>
 
                                 <input type="radio" class="btn-check " name="btnradio" id="classIII" autocomplete="off" value="Class III">
-                                <label class="btn btn-outline-dark m-1" for="classIII">Class III</label>
-
+                                <label class="btn btn-outline-dark classification_radio m-1" for="classIII">Class III</label>
+                            </div>
+                            <div class="d-flex justify-content-evenly">
+    
                                 <input type="radio" class="btn-check " name="btnradio" id="classIV" autocomplete="off" value="classIV">
-                                <label class="btn btn-outline-dark m-1" for="classIV">Class IV</label>
+                                <label class="btn btn-outline-dark classification_radio m-1" for="classIV">Class IV</label>
 
                                 <input type="radio" class="btn-check " name="btnradio" id="classV" autocomplete="off" value="Class V">
-                                <label class="btn btn-outline-dark m-1" for="classV">Class V</label>
+                                <label class="btn btn-outline-dark classification_radio m-1" for="classV">Class V</label>
 
                                 <input type="radio" class="btn-check " name="btnradio" id="classVI" autocomplete="off" value="classVI">
-                                <label class="btn btn-outline-dark m-1" for="classVI">Class VI</label>
+                                <label class="btn btn-outline-dark classification_radio m-1" for="classVI">Class VI</label>
+                            </div>
 
                             </div>
                             <div class="mt-2">
@@ -178,21 +188,9 @@
                                 <h4 class="text-center">OT Notes</h4>
                                 <div class="p-2">
                                     <label for="exampleFormControlTextarea1" class="form-label">Enter Steps :</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="22" name="steps"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="25" name="steps"></textarea>
                                 </div>
-                                <!-- <ol class="border border-1 border-dark m-2">
-                                    <li class="border-bottom">Preparation</li>
-                                    <li class="border-bottom">Isolations</li>
-                                    <li class="border-bottom">Isolations</li>
-
-                                    <li class="border-bottom">Pulp Protection</li>
-                                    <li class="border-bottom">Eching & Bonding</li>
-                                    <li class="border-bottom">Composite Application</li>
-                                    <li class="border-bottom">Curing Time</li>
-                                    <li class="border-bottom">Polishing</li>
-                                    <li class="border-bottom">Bite CheckingS</li>
-                                    <br><br><br><br><br><br><br><br><br><br><br><br>
-                                </ol> -->
+                               
                             </div>
                         </div>
                         <div class="text-center">
