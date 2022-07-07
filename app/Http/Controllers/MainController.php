@@ -501,6 +501,21 @@ class MainController extends Controller
 
     }
 
+    public function report_delete(Request $request){
+        $del_report_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_report_info = report::find($del_report_id);
+
+        $destination = 'uploads/report/'.$del_report_info->image;
+        // dd($destination);
+        if(File::exists($destination)){
+            File::delete($destination);
+        }
+
+        $del_report_info->delete();
+        return back();
+    }
+
     public function treatment_steps(Request $request,$d_id,$p_id,$t_id){
         // dd($request->all());
         // $s = $request->steps;

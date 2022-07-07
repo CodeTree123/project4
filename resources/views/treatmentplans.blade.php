@@ -299,7 +299,7 @@
                                                     <img src="{{url('/uploads/report/'.$report->image)}}" >
                                                 </td>
                                                 <td>
-                                                <button class="btn crud-btns delete-cc" href="#" value="{{$report->id}}">
+                                                <button class="btn crud-btns delete-report" href="#" value="{{$report->id}}">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
                                                 </td>
@@ -412,4 +412,53 @@
  </div>
  <!-- Modal end -->
 
+  <!-- Modal For Delete Report -->
+  <div class="modal fade " id="del-Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Delete Report
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#Investigation" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('report_delete')}}" method="POST" >
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3 text-center">
+                            <h5 class="text-danger">Are You Sure to Delete This Report information?</h5>
+                        </div>
+                        <input type="hidden" id="del-Report-id" name="deletingId">
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#Investigation">Close</button>
+                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                        <!-- Modal Footer end -->
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+ </div>
+ <!-- Modal end -->
+
 @include('include.footer')
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '.delete-report',function(){
+                var deleteReportId = $(this).val();
+                // $("#Treatment_Plans").modal('hide');
+                // alert(deleteTPId);
+                $("#del-Report").modal('show');
+                $('#del-Report-id').val(deleteReportId);
+            });
+    });
+</script>
+
+

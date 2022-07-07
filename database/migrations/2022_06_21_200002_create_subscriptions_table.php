@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('package_name')->nullable();
             $table->string('package_price')->nullable();
             $table->string('duration')->nullable();
+            $table->string('duration_types')->nullable();
             $table->string('start')->nullable();
             $table->string('end')->nullable();
             $table->boolean('status')->default(0);

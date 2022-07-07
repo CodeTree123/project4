@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\doctor;
 use App\Models\patient_infos;
+use App\Models\redeem_code;
 use App\Models\subscription_plan;
 use App\Models\subscription;
 use Session;
@@ -237,7 +238,10 @@ class AuthController extends Controller
     }
 
     public function subscription_add(Request $request){
-        if($request->redeem_code == null){
+        $r_redeem = $request->redeem_code;
+        
+        
+        if($r_redeem == null){
             
             $d_id = $request->doctor_id;
             $id = subscription::where('d_id','=',$d_id)->first()->id;
@@ -246,31 +250,69 @@ class AuthController extends Controller
                 'package_name' => $request->package_name,
                 'package_price' => $request->package_price,
                 'duration' => $request->package_duration, 
+                'duration_types' => $request->package_duration_types, 
             ]);
             return back()->with('success','Subscription Successfully Registered, Please Wait for Admin Approval.');
+            // return "hello null";
         }
-        else if($request->redeem_code == "reflexDN2022"){
-           // return "$request->redeem_code";
-           $duration = "7 Days(Trial)";
+        else{
+            $check_redeem = redeem_code::where('redeem_code','=',$r_redeem)->first();
+            if($check_redeem == null){
+                return back()->with('fail','Please Enter Redeem Code Properly');
+                // return "hello empty";
+            }else{
+            // return "$request->redeem_code";
+           $duration = $check_redeem->duration;
+           $duration_type = $check_redeem->duration_type;
+        //    dd($duration,$duration_type);
            $status = "1";
            $d_id = $request->doctor_id;
            $id = subscription::where('d_id','=',$d_id)->first()->id;
            $start = Carbon::now()->format('d/m/Y');
-           $end = now()->copy()->addDays(7)->format('d/m/Y');
-        //    dd($id,$start,$end,$duration);
+                if($duration_type == "Days"){
+                    $end = now()->copy()->addDays($duration)->format('d/m/Y');
+                }else if($duration_type == "Months"){
+                    $end = now()->copy()->addMonths($duration)->format('d/m/Y');
+                }else if($duration_type == "Years"){
+                    $end = now()->copy()->addYears($duration)->format('d/m/Y');
+                }
+        //    dd($id,$duration,$duration_type,$start,$end);
         subscription::find($id)->update([
                 'package_name' => $request->package_name,
                 'package_price' => $request->package_price,
                 'duration' => $duration,
+                'duration_types' => $duration_type,
                 'start' => $start,
                 'end' => $end,
                 'status' => $status,
             ]);
             return back()->with('success','Subscription Added Successfully');
+                // return "hello";       
+            }
         }
-        else if($request->redeem_code != "reflexDN2022"){
-            return back()->with('fail','Please Enter Redeem Code Properly');
-        }
+
+        // else if($request->redeem_code == "reflexDN2022"){
+        //    // return "$request->redeem_code";
+        //    $duration = "7 Days(Trial)";
+        //    $status = "1";
+        //    $d_id = $request->doctor_id;
+        //    $id = subscription::where('d_id','=',$d_id)->first()->id;
+        //    $start = Carbon::now()->format('d/m/Y');
+        //    $end = now()->copy()->addDays(7)->format('d/m/Y');
+        // //    dd($id,$start,$end,$duration);
+        // subscription::find($id)->update([
+        //         'package_name' => $request->package_name,
+        //         'package_price' => $request->package_price,
+        //         'duration' => $duration,
+        //         'start' => $start,
+        //         'end' => $end,
+        //         'status' => $status,
+        //     ]);
+        //     return back()->with('success','Subscription Added Successfully');
+        // }
+        // else if($request->redeem_code != "reflexDN2022"){
+        //     return back()->with('fail','Please Enter Redeem Code Properly');
+        // }
         
         
         // $subscription = new subscription();
