@@ -99,7 +99,7 @@ Route::put('/treatment_payment', [MainController::class, 'treatment_payment'])->
 
 Route::post('/treatment_steps/{d_id}/{p_id}/{t_id}', [MainController::class, 'treatment_steps'])->name('treatment_steps');
 Route::post('/report/{d_id}/{p_id}/{t_id}', [MainController::class, 'report'])->name('report');
-
+Route::delete('/report_delete', [MainController::class, 'report_delete'])->name('report_delete');
 
  
 

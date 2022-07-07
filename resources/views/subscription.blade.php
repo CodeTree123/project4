@@ -82,8 +82,7 @@
                         </div>
                         <div class="card-body  ">
                             <h1 class="card-title pricing-card-title">{{$subscription_plan->package_price}}৳ </h1>
-                            <h4 class="text-muted fw-light">/ {{$subscription_plan->duration}} month</h4>
-
+                            <h4 class="text-muted fw-light">/ {{$subscription_plan->duration." ".$subscription_plan->duration_types}}</h4>
                             <ul class="list-unstyled list-group mt-3 mb-1 justify-content-left">
                             <li class="list-group-item text-left "><i class="fa-solid fa-check pe-3"></i>asd aeqwe afbfdgh</li>
                             <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>qweqw laskd qweqw asd</li>
@@ -309,7 +308,8 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <h6>Duration:</h6>
-                                <input type="text" id="package_duration" name="package_duration" class="subscription_info ms-2" readonly>
+                                <input type="text" id="package_duration" name="package_duration" class="subscription_info ms-2" style="width: 20px;" readonly>
+                                <input type="text" id="package_duration_types" name="package_duration_types" class="subscription_info" readonly>
                             </div>
                             <div class="d-flex mb-2">
                                 <h6>Price:</h6>
@@ -350,6 +350,7 @@
                         $('#package_name').val(response.subscription_info.package_name);
                         $('#package_price').val(response.subscription_info.package_price);
                         $('#package_duration').val(response.subscription_info.duration);
+                        $('#package_duration_types').val(response.subscription_info.duration_types);
                     }
                 });
             });

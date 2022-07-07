@@ -133,7 +133,7 @@
                             <td>{{$subscription_list->d_id}}</td>
                             <td>{{$subscription_list->package_name}}</td>
                             <td>{{$subscription_list->package_price}}</td>
-                            <td>{{$subscription_list->duration}} month</td>
+                            <td>{{$subscription_list->duration." ".$subscription_list->duration_types}}</td>
                             <td>{{$subscription_list->start}}</td>
                             <td>{{$subscription_list->end}}</td>
                             <td>
