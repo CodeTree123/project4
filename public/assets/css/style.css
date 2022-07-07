@@ -438,16 +438,18 @@ main.admin {
     margin: 2px;
 }
 .teeth-btn a {
-    padding: 7px 38px;
+    color: #000;
+    padding: 7px 7px 7px 7px;
     cursor: pointer;
 }
 .teeth-btn a:hover{
     color: #ffffff;
     background: #365A77; ;
-    border-bottom-left-radius: 17px;
+    border-radius: 17px;
 }
 .teeth-btn a:last-child:hover{
-    border-radius: 0px;
+    /* border-radius: 0px; */
+    background: #436fff; ;
 }
 /* teeth Chart end */
 
@@ -469,7 +471,7 @@ main.admin {
     border-bottom: 2px solid gray;
 }
 .treatment-card-details h4 {
-    font-size: 17px;
+    font-size: 14px;
     border-bottom: 2px solid gray;
     font-weight: 700;
 }
@@ -545,7 +547,7 @@ main.admin {
     margin: 0;
 }
 #All{
-    color: #000;;
+    /* color: #000;; */
 }
 .modal_ul {
     list-style: none;
@@ -1837,3 +1839,23 @@ a, a:hover {
 .estimated-cost-title{
     font-size: 15px;
 }
+/* doctor profile setting */
+.doctor_profile_setting .nav-link{
+    color: #000;
+    background-color: #ffffff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+.doctor_profile_setting .nav-link.active{
+    color: #ffffff;
+    background-color: var(--dark-blue-grey);
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+.logo_container {
+    height: 50px;
+    width: 114px;
+}
+/* doctor profile setting end */ 
+ 
+/* --blue-grey: #4e6f8a; 
+    --light-blue-grey: #365A77; 
+    --dark-blue-grey: #233b4e;  */

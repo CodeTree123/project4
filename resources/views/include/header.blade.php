@@ -39,7 +39,9 @@
                 <div class="col-md-5">
                     <a class="d-flex align-items-center logo" href="{{route('doctor')}}">
                         <!-- <img class="logo" src="img/Logo.png" alt="Logo"> -->
-                        <img class="logo" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
+                        <div class="logo_container">
+                          <img class="img-fluid" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
+                        </div>
 
                         <!-- <h2 class="ms-3 mb-0 logo-title">
                             Dental Office Management System
@@ -78,36 +80,7 @@
                 <!--nav end-->
 
                 <!--info Bar start-->
-                <div class="col-md-3">
-                    <nav class="navbar navbar-expand-lg navbar-light p-0 ">
-                        <div class="container-fluid">
-                            <div class="collapse navbar-collapse" id="navbarNav">  
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary btn-outline-blue-grey dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                              My Profile 
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li>
-                                                <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
-                                                    Settings
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
-                                                    Edit Profile
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="{{route('logout')}}">
-                                                 Log Out
-                                                </a>
-                                            </li> 
-                                        </ul>
-                                    </div> 
-                            </div>
-                        </div>
-                    </nav>
-                </div>
+               
                 @endif
                 <!--info Bar end-->
             </div>

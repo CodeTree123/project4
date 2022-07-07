@@ -306,7 +306,7 @@
                                                     <!-- Modal Footer -->
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                                        <button class="btn btn-primary  btn-sm">Save</button>
+                                                        <button class="btn btn-outline-blue-grey  btn-sm">Save</button>
                                                         <!-- Modal Footer end -->
                                                     </div>
                                                 </form>

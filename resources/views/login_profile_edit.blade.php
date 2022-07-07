@@ -12,7 +12,11 @@
 @include('include.header')
     <!-- main start -->
 <div class="container-fluid">
+<div> 
+    <a class="btn btn-danger" href="{{route('logout')}}"> Log Out  </a>
+</div>
  <div class="row justify-content-center align-items-center">
+     
     <div class="col-lg-10 mt-5">
      <form action="{{route('login_update_doctor',$doctor_id)}}" method="post" enctype="multipart/form-data">
      @method('PUT')

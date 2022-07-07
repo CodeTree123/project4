@@ -25,16 +25,18 @@
 
 <body>
    
-
     <!-- Header Start -->
-    <div class="header py-2 mb-3 shadow">
-        <div class="container-fluid my-2">
+    <div class="header  mb-3 shadow">
+        <div class="container-fluid pt-1">
             <div class="row align-items-center">
                 <!--logo & title start-->
+                
                 <div class="col-md-5">
                     <a class="d-flex align-items-center logo" href="{{route('doctor')}}">
                         <!-- <img class="logo" src="img/Logo.png" alt="Logo"> -->
-                        <img class="logo" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
+                        <div class="logo_container">
+                          <img class="img-fluid" src="{{asset ('assets/img/reflex_logo.png')}}" alt="Logo">
+                        </div>
 
                         <!-- <h2 class="ms-3 mb-0 logo-title">
                             Dental Office Management System
@@ -49,15 +51,18 @@
                     <nav class="navbar navbar-expand-lg  p-0 ">
                         <div class="container-fluid">
                             <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav fs-4 pe-auto">
+                                <ul class="navbar-nav fs-5 pe-auto">
                                     <li class="nav-item">
                                         <a class="nav-link active text-bg-blue-grey" aria-current="page" href="{{route('doctor')}}">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-bg-blue-grey " href="#">Inventory</a>
+                                        <!-- <a class="nav-link text-bg-blue-grey " href="#">Inventory</a> -->
+                                        <a class="nav-link text-bg-blue-grey" href="#" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Coming Soon" data-bs-custom-class="beautifier text-danger">Inventory</a>
+
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-bg-blue-grey" href="#">Shop</a>
+                                        <!-- <a class="nav-link text-bg-blue-grey" href="#">Shop</a> -->
+                                        <a class="nav-link text-bg-blue-grey" href="#" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Coming Soon" data-bs-custom-class="beautifier text-danger">Shop</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-bg-blue-grey" href="#">Forum</a>
@@ -70,36 +75,7 @@
                 <!--nav end-->
 
                 <!--info Bar start-->
-                <div class="col-md-3">
-                    <nav class="navbar navbar-expand-lg navbar-light p-0 ">
-                        <div class="container-fluid">
-                            <div class="collapse navbar-collapse" id="navbarNav">  
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary btn-outline-blue-grey dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                              My Profile 
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li>
-                                                <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
-                                                    Settings
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="{{route('profile_edit',[$doctor_info->id ?? 0])}}">
-                                                    Edit Profile
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="{{route('logout')}}">
-                                                 Log Out
-                                                </a>
-                                            </li> 
-                                        </ul>
-                                    </div> 
-                            </div>
-                        </div>
-                    </nav>
-                </div>
+               
                 @endif
                 <!--info Bar end-->
             </div>
@@ -796,7 +772,7 @@
 
                             <!-- Teeth Button -->
                             <div class="col-md-12 teeth-bottom px-0">
-                                <div class="teeth-btn">
+                                <div class="teeth-btn d-flex">
                                     <a class="test" id="All">Full Mouth</a>
                                     
                                     <a class="mul">Multi Teeth</a>
@@ -979,7 +955,7 @@
     <div class="footer p-3">
         <div class="row container-fluid">
             <p class="text-center my-auto">
-                © Developed By CODETREE
+                © Developed By Hospitalin
             </p>
         </div>
     </div>

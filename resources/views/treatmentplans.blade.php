@@ -226,9 +226,9 @@
                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
                                     <ul>
-                                        <li><p>Class Name:</p> {{$t->class}}</li>
+                                        <li><span>Class Name:</span> {{$t->class}}</li>
                                     
-                                        <li><p>Steps:</p> {{$t->steps}}</li>
+                                        <li><span>Steps:</span> {{$t->steps}}</li>
                                     </ul>                                
                                     
                                 </div>

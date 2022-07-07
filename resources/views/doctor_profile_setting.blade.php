@@ -4,7 +4,7 @@
     <div class="container-fluid">
  <div class="row justify-content-center align-items-center">
      <div class="col-lg-12 mt-1">
-     <ul class="nav nav-tabs" id="myTab" role="tablist">
+     <ul class="nav nav-tabs doctor_profile_setting" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="Treatment_cost-tab" data-bs-toggle="tab" data-bs-target="#Treatment_cost" type="button" role="tab" aria-controls="Treatment_cost" aria-selected="true">Treatment Cost</button>
         </li>

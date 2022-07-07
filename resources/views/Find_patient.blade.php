@@ -9,7 +9,11 @@
                     <div class="complete">
                         <div class="p-header">
                             <!-- <img src="img/banner.jpg" class="cover"> -->
+                            @if($doctor_info->p_image == null)
                             <img src="{{ asset('assets/img/profile.png')}}" class="doctor-profile my-4">
+                            @else
+                            <img src="{{url('/uploads/doctor/'.$doctor_info->p_image)}}" class="doctor-profile my-4">
+                            @endif
 
                             <h2 class="mb-2">{{$doctor_info->fname." ".$doctor_info->lname}}</h2>
                             <p class="mb-2">Dental Consulatant of the Royal <br>Dental</p>
