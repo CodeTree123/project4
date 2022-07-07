@@ -237,14 +237,41 @@ class AuthController extends Controller
     }
 
     public function subscription_add(Request $request){
-        $d_id = $request->doctor_id;
-        $id = subscription::where('d_id','=',$d_id)->first()->id;
-        // dd($id);
+        if($request->redeem_code == null){
+            
+            $d_id = $request->doctor_id;
+            $id = subscription::where('d_id','=',$d_id)->first()->id;
+            // dd($id);
+            subscription::find($id)->update([
+                'package_name' => $request->package_name,
+                'package_price' => $request->package_price,
+                'duration' => $request->package_duration, 
+            ]);
+            return back()->with('success','Subscription Successfully Registered, Please Wait for Admin Approval.');
+        }
+        else if($request->redeem_code == "reflexDN2022"){
+           // return "$request->redeem_code";
+           $duration = "7 Days(Trial)";
+           $status = "1";
+           $d_id = $request->doctor_id;
+           $id = subscription::where('d_id','=',$d_id)->first()->id;
+           $start = Carbon::now()->format('d/m/Y');
+           $end = now()->copy()->addDays(7)->format('d/m/Y');
+        //    dd($id,$start,$end,$duration);
         subscription::find($id)->update([
-            'package_name' => $request->package_name,
-            'package_price' => $request->package_price,
-            'duration' => $request->package_duration, 
-        ]);
+                'package_name' => $request->package_name,
+                'package_price' => $request->package_price,
+                'duration' => $duration,
+                'start' => $start,
+                'end' => $end,
+                'status' => $status,
+            ]);
+            return back()->with('success','Subscription Added Successfully');
+        }
+        else if($request->redeem_code != "reflexDN2022"){
+            return back()->with('fail','Please Enter Redeem Code Properly');
+        }
+        
         
         // $subscription = new subscription();
         // $subscription->d_id = $request->doctor_id;
@@ -252,7 +279,7 @@ class AuthController extends Controller
         // $subscription->package_price = $request->package_price;
         // $subscription->duration = $request->package_duration;
         // $res = $subscription->save();
-        return back();
+        // return back()->with('success','Successfully Registered');
     }
 
     public function logout(){

@@ -225,8 +225,11 @@
                             <div id="flush-collapseOne{{$key +1}}" class="accordion-collapse collapse"
                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                
-                                    <p>{{$t->steps}}</p>
+                                    <ul>
+                                        <li><p>Class Name:</p> {{$t->class}}</li>
+                                    
+                                        <li><p>Steps:</p> {{$t->steps}}</li>
+                                    </ul>                                
                                     
                                 </div>
                             </div>

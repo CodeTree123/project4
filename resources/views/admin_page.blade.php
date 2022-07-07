@@ -94,7 +94,19 @@
                 <div class="tab-pane fade" id="v-pills-subscription" role="tabpanel" aria-labelledby="v-pills-subscription-tab">
                   <div class="mb-2">
                     <!-- <h4>Permanent Redeem Code</h4> -->
-                    <h4>Temporary Redeem Code</h4>
+                    <!-- <h4>Temporary Redeem Code</h4> -->
+                    <h5 class="d-flex">
+                        Redeem Code Information
+                        <div class="ms-5">
+                            <a class="crud-btns me-1" href="" data-bs-toggle="modal" data-bs-target="#Redeem_Add" >
+                                <i class="bi bi-plus-circle"></i>
+                            </a>
+                            <a class="crud-btns ms-1" href="" data-bs-toggle="modal" data-bs-target="#Redeem_list" >
+                                <i class="bi bi-card-list"></i>
+                            </a>
+                        </div>
+                    </h5>
+
                   </div>
                   <h4>Subscription List</h4>
                   <!-- Subscription List-->
@@ -1051,6 +1063,132 @@
     </div>
  <!-- Modal end -->
 
+  <!-- Modal For Redeem Code List -->
+  <div class="modal fade " id="Redeem_list" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Redeem Code List
+                </h5>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#exampleModal_1" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <!-- Investigation List-->
+                <table class="table table-bordered mt-4 text-center">
+                    <thead>
+                        <tr>
+                            <th class="">#</th>
+                            <th class="">Redeem Code</th>
+                            <th class="">Redeem Code Duration</th>
+                            <th class="">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($redeems as $key=>$redeem)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$redeem->redeem_code}}</td>
+                            <td>{{$redeem->duration." ".$redeem->duration_type}}</td>
+                            <td class="d-flex justify-content-around  p-0">
+
+                                <button class="btn crud-btns delete-redeem" href="#" value= "{{$redeem->id}}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <!--Investigation list end -->
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+
+  <!-- Modal For Redeem Code Add -->
+  <div class="modal fade " id="Redeem_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Add Redeem Code 
+                </h5>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#exampleModal_1" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('redeem_add')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" placeholder="Enter New Redeem Code" name="redeem_code">
+                        </div>
+                        <div class="mb-3 drug-name">
+                            <input class="form-control" list="list" placeholder="Enter Duration" name="duration">
+                        </div>
+                        <div class="mb-3 drug-name">
+                        <select class="form-select" aria-label="Default select example" name="duration_type">
+                            <option value="Days">Days</option>
+                            <option value="Months">Months</option>
+                            <option value="Years">Years</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal_1">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Confirm</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+  </div>
+  <!-- Modal end -->
+   <!-- Modal For Delete Redeem Code -->
+ <div class="modal fade " id="del-Redeem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Delete Redeem Code
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#Redeem_list" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('delete_redeem')}}" method="POST" >
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3 text-center">
+                            <h5 class="text-danger">Are You Sure to Delete This Redeem Code?</h5>
+                        </div>
+                        <input type="hidden" id="del-Redeem-id" name="deletingId">
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#Redeem_list">Close</button>
+                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                        <!-- Modal Footer end -->
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+ </div>
+ <!-- Modal end -->
+
    @include('include.footer')
 
    <script>
@@ -1214,6 +1352,14 @@
       });
 
     });
+    // script for Redeem Code delete
+    $(document).on('click', '.delete-redeem',function(){
+                var deleteRedeemId = $(this).val();
+                // alert(deleteRedeemId);
+                $("#Redeem_list").modal('hide');
+                $("#del-Redeem").modal('show');
+                $('#del-Redeem-id').val(deleteRedeemId);
+      });
    </script>
 
 

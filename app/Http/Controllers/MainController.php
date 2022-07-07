@@ -212,7 +212,7 @@ class MainController extends Controller
         $investigation = implode(',',$investigation);
         // dd($investigation); change pt_p after free time
         $pt_p = $request->pt_p;
-        // $pt_p = implode(',',$pt_p);
+        $pt_p = implode(',',$pt_p);
         // dd($pt_p);
 
         $pt_p_cost = treatment_cost::where('name','=',$pt_p)->where('d_id','=',$d_id)->first();
@@ -244,11 +244,12 @@ class MainController extends Controller
     public function treatments($d_id,$p_id,$t_id,$t_plans){
         $doctor_info=doctor::where('id','=',$d_id)->first();
         $patient=patient_infos::findOrFail($p_id);
-        $treatment_info = treatment_info::where('p_id','like',$p_id)->first();
+        $treatment_info = treatment_info::where('p_id','like',$p_id)->where('d_id','=',$d_id)->first();
+        // dd($treatment_info->id);
         $v_prescriptions = prescription::where('p_id','like',$p_id)->get();
         $reports = report::where('d_id','=',$d_id)->where('p_id','=',$p_id)->where('treatment_id','=',$t_id)->get();
         $reports_count = report::where('d_id','=',$d_id)->where('p_id','=',$p_id)->where('treatment_id','=',$t_id)->count();
-        // dd($reports);
+        // dd($reports->all());
         $total_report = 10;
         $total_report = $total_report - $reports_count;
         $t_steps = treatment_step::where('d_id','=',$d_id)->where('p_id','=',$p_id)->where('treatment_id','=',$t_id)->get();
@@ -510,6 +511,7 @@ class MainController extends Controller
         $t_step->d_id = $d_id;
         $t_step->p_id = $p_id;
         $t_step->treatment_id = $t_id; 
+        $t_step->class = $request->btnradio; 
         $t_step->steps = $request->steps; 
         $t_step->date = $ldate; 
         $t_step->save(); 

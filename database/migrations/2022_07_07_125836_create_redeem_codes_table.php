@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('treatment_steps', function (Blueprint $table) {
+        Schema::create('redeem_codes', function (Blueprint $table) {
             $table->id();
-            $table->string('d_id')->nullable();
-            $table->string('p_id')->nullable();
-            $table->string('treatment_id')->nullable();
-            $table->string('class')->nullable();
-            $table->string('steps','500')->nullable();
-            $table->string('date')->nullable();
+            $table->string('redeem_code')->nullable();
+            $table->string('duration')->nullable();
+            $table->string('duration_type')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('treatment_steps');
+        Schema::dropIfExists('redeem_codes');
     }
 };

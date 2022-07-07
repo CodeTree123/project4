@@ -12,6 +12,7 @@ use App\Models\treatment_info;
 use App\Models\drugs;
 use App\Models\prescription;
 use App\Models\medicine;
+use App\Models\redeem_code;
 use App\Models\subscription;
 use Carbon\Carbon;
 
@@ -27,8 +28,9 @@ class AdminController extends Controller
         $investigation_lists = investigation::orderBy('id','desc')->get();
         $lt_ps = treatment_plan::orderBy('id','desc')->get();
         $medicines_lists = medicine::orderBy('id','desc')->get();
+        $redeems = redeem_code::all();
         $subscription_lists = subscription::orderBy('id','desc')->get();
-        return view('admin_page',compact('doctors','lc_cs','lc_fs','investigation_lists','lt_ps','medicines_lists','subscription_lists'));
+        return view('admin_page',compact('doctors','lc_cs','lc_fs','investigation_lists','lt_ps','medicines_lists','redeems','subscription_lists'));
         // compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','treatment_infos','investigations','investigation_lists')
     }
 
@@ -87,9 +89,27 @@ class AdminController extends Controller
         return back();
     }
 
+    public function redeem_add(Request $request){
+        // dd($request->all());
+        $redeem = new redeem_code();
+        $redeem->redeem_code = $request->redeem_code;
+        $redeem->duration = $request->duration;
+        $redeem->duration_type = $request->duration_type;
+        $redeem->save();
+        return back();
+    }
+
+    public function delete_redeem(Request $request){
+        $del_redeem_id = $request->deletingId;
+        // dd($del_drug_id);
+        $del_redeem_info = redeem_code::find($del_redeem_id);
+        $del_redeem_info->delete();
+        return back();
+    }
+
     public function subscription_status($id){
         $null = "";
-        $today = Carbon::now()->format('d/m/Y');
+        // $today = Carbon::now()->format('d/m/Y');
         $start = Carbon::now()->format('d/m/Y');
         $getStatus = subscription::where('id',$id)->first();
         $getStatusMonth = $getStatus->duration;

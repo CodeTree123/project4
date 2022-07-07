@@ -145,6 +145,8 @@ Route::get('/edit_doctor/{id}', [AdminController::class, 'edit_doctor']);
 Route::put('/update_doctor', [AdminController::class, 'update_doctor'])->name('update_doctor');
 Route::delete('/delete_doctor', [AdminController::class, 'delete_doctor'])->name('delete_doctor');
 Route::get('/doctor_status/{id}', [AdminController::class, 'doctor_status'])->name('doctor_status');
+Route::post('/redeem_add', [AdminController::class, 'redeem_add'])->name('redeem_add');
+Route::delete('/delete_redeem', [AdminController::class, 'delete_redeem'])->name('delete_redeem');
 Route::get('/subscription_status/{id}', [AdminController::class, 'subscription_status'])->name('subscription_status');
 Route::delete('/delete_subscription', [AdminController::class, 'delete_subscription'])->name('delete_subscription');
 

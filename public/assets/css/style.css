@@ -563,6 +563,11 @@ main.admin {
     margin-top: 5px;
 }
 
+.subscription_info {
+    border: none;
+    width: 80%;
+}
+
 /* 200018-fp start */
 
 

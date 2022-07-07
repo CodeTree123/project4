@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2022 at 06:46 AM
+-- Generation Time: Jul 07, 2022 at 10:41 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -343,7 +343,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (38, '2022_05_24_020633_create_patient_infos_table', 23),
 (39, '2022_06_02_101635_create_doctors_table', 24),
 (41, '2022_07_06_214848_create_reports_table', 25),
-(43, '2022_07_07_010735_create_treatment_steps_table', 26);
+(44, '2022_07_07_010735_create_treatment_steps_table', 26),
+(46, '2022_07_07_125836_create_redeem_codes_table', 27);
 
 -- --------------------------------------------------------
 
@@ -444,6 +445,28 @@ INSERT INTO `prescriptions` (`id`, `d_id`, `p_id`, `t_id`, `t_plan`, `drug_id_li
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `redeem_codes`
+--
+
+CREATE TABLE `redeem_codes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `redeem_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `duration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `duration_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `redeem_codes`
+--
+
+INSERT INTO `redeem_codes` (`id`, `redeem_code`, `duration`, `duration_type`, `created_at`, `updated_at`) VALUES
+(1, 'Reflex', '7', 'Days', '2022-07-07 07:21:16', '2022-07-07 07:21:16');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reports`
 --
 
@@ -465,7 +488,8 @@ INSERT INTO `reports` (`id`, `d_id`, `p_id`, `treatment_id`, `image`, `created_a
 (1, '5', '4', '3', 'r20220706100725.PNG', '2022-07-06 16:33:25', '2022-07-06 16:33:25'),
 (2, '5', '4', '3', 'r20220706100738.jpg', '2022-07-06 16:33:38', '2022-07-06 16:33:38'),
 (3, '5', '4', '3', 'r20220706100734.PNG', '2022-07-06 16:36:34', '2022-07-06 16:36:34'),
-(4, '5', '4', '3', 'r20220706100711.PNG', '2022-07-06 16:48:11', '2022-07-06 16:48:11');
+(4, '5', '4', '3', 'r20220706100711.PNG', '2022-07-06 16:48:11', '2022-07-06 16:48:11'),
+(5, '7', '4', '5', 'r20220707020714.jpg', '2022-07-07 08:40:14', '2022-07-07 08:40:14');
 
 -- --------------------------------------------------------
 
@@ -492,7 +516,7 @@ CREATE TABLE `subscriptions` (
 
 INSERT INTO `subscriptions` (`id`, `d_id`, `package_name`, `package_price`, `duration`, `start`, `end`, `status`, `created_at`, `updated_at`) VALUES
 (12, '5', 'Package - 04', '6000', '12', '07/07/2022', '07/07/2023', 1, '2022-07-05 13:46:24', '2022-07-06 21:49:07'),
-(13, '7', NULL, NULL, NULL, NULL, NULL, 0, '2022-07-06 21:26:23', '2022-07-06 21:26:23');
+(13, '7', 'Package - 04', '6000', '7 Days(Trial)', '07/07/2022', '14/07/2022', 1, '2022-07-06 21:26:23', '2022-07-07 06:39:17');
 
 -- --------------------------------------------------------
 
@@ -541,7 +565,8 @@ INSERT INTO `treatment_costs` (`id`, `d_id`, `name`, `price`) VALUES
 (4, '1', 'Curettage with Scaler', '1200'),
 (5, '1', 'Operculectomy', '1000'),
 (6, '3', 'Restoration', '1550'),
-(7, '5', 'Restoration', '12');
+(7, '5', 'Restoration', '12'),
+(8, '7', 'Restoration', '1');
 
 -- --------------------------------------------------------
 
@@ -577,7 +602,8 @@ INSERT INTO `treatment_infos` (`id`, `d_id`, `p_id`, `tooth_type`, `tooth_no`, `
 (1, '1', '1', 'Permanent Teeth', '18', 'Upper Right', 'Bad breath', 'Abrassion', 'X-ray', 'Restoration', '1200', '0', '0', 0, 0, '2022-07-05 07:28:00', '2022-07-05 07:28:00'),
 (2, '1', '1', 'Permanent Teeth', '18', 'Upper Right', 'Bad breath', 'Abscess', 'X-ray', 'Pulpectomy', '1500', '0', '0', 0, 0, '2022-07-05 07:31:55', '2022-07-05 07:31:55'),
 (3, '5', '4', NULL, '18', 'Upper Right', 'Bad breath', 'Abscess', 'X-ray', 'Restoration', '12', '0', '0', 0, 0, '2022-07-06 15:33:03', '2022-07-06 15:33:03'),
-(4, '5', '4', NULL, '18', 'Upper Right', '', '', '', 'Restoration', '12', '0', '0', 0, 0, '2022-07-06 17:06:30', '2022-07-06 17:06:30');
+(4, '5', '4', NULL, '18', 'Upper Right', '', '', '', 'Restoration', '12', '0', '0', 0, 0, '2022-07-06 17:06:30', '2022-07-06 17:06:30'),
+(5, '7', '4', NULL, '18', 'Upper Right', 'Bleeding gum', 'Aesthetic', 'X-ray', 'Restoration', '1', '0', '0', 0, 0, '2022-07-07 07:46:55', '2022-07-07 07:46:55');
 
 -- --------------------------------------------------------
 
@@ -621,6 +647,7 @@ CREATE TABLE `treatment_steps` (
   `d_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `p_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `treatment_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `class` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `steps` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -631,9 +658,11 @@ CREATE TABLE `treatment_steps` (
 -- Dumping data for table `treatment_steps`
 --
 
-INSERT INTO `treatment_steps` (`id`, `d_id`, `p_id`, `treatment_id`, `steps`, `date`, `created_at`, `updated_at`) VALUES
-(2, '5', '4', '3', 'bfsdhbfdbbdf\r\ndfbnsdf\r\ndfjn', '07-07-2022', '2022-07-06 20:30:07', '2022-07-06 20:30:07'),
-(3, '5', '4', '3', '1.asdsdd\r\n2.sdjndnf\r\n3.knfnjdjdfjdl sdfkmsdkf skdfmmsdf ujiufee.', '07-07-2022', '2022-07-06 20:39:43', '2022-07-06 20:39:43');
+INSERT INTO `treatment_steps` (`id`, `d_id`, `p_id`, `treatment_id`, `class`, `steps`, `date`, `created_at`, `updated_at`) VALUES
+(1, '5', '4', '3', 'Class II', 'hgjkkggfhklf.', '07-07-2022', '2022-07-07 05:18:23', '2022-07-07 05:18:23'),
+(2, '5', '4', '3', 'classVI', 'hjjhfg. lkhk.', '07-07-2022', '2022-07-07 05:20:46', '2022-07-07 05:20:46'),
+(3, '7', '4', '5', 'Class II', 'fsdfcfg', '07-07-2022', '2022-07-07 07:47:15', '2022-07-07 07:47:15'),
+(4, '7', '4', '5', 'Class V', 'hello', '07-07-2022', '2022-07-07 07:48:04', '2022-07-07 07:48:04');
 
 -- --------------------------------------------------------
 
@@ -736,6 +765,12 @@ ALTER TABLE `personal_access_tokens`
 -- Indexes for table `prescriptions`
 --
 ALTER TABLE `prescriptions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `redeem_codes`
+--
+ALTER TABLE `redeem_codes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -843,7 +878,7 @@ ALTER TABLE `medicines`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `patient_infos`
@@ -864,10 +899,16 @@ ALTER TABLE `prescriptions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `redeem_codes`
+--
+ALTER TABLE `redeem_codes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `subscriptions`
@@ -885,13 +926,13 @@ ALTER TABLE `subscription_plans`
 -- AUTO_INCREMENT for table `treatment_costs`
 --
 ALTER TABLE `treatment_costs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `treatment_infos`
 --
 ALTER TABLE `treatment_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `treatment_plans`
@@ -903,7 +944,7 @@ ALTER TABLE `treatment_plans`
 -- AUTO_INCREMENT for table `treatment_steps`
 --
 ALTER TABLE `treatment_steps`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

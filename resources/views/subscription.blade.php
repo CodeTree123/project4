@@ -56,6 +56,12 @@
             </div>
             <div class="col-md-7 pe-0">
                 <div class="blank-sec">
+                @if(Session::has('success'))
+                <div class="alert alert-success">{{Session::get('success')}}</div>
+                @endif
+                @if(Session::has('fail'))
+                <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                @endif
                 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
       
                 <h1 class="  fw-normal">Pricing of Reflex Subscription</h1>
@@ -84,9 +90,9 @@
                                 <button type="button" class="w-100 btn btn-lg btn-outline-dark PackageID me-1" value="{{$subscription_plan->id}}">
                                     Buy This
                                 </button>
-                                <button type="button" class="w-100 btn btn-lg btn-outline-dark PackageID ms-1" value="{{$subscription_plan->id}}">
+                                <!-- <button type="button" class="w-100 btn btn-lg btn-outline-dark PackageID ms-1" value="{{$subscription_plan->id}}">
                                     Try This
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                         </div>
@@ -292,10 +298,23 @@
                     @method('PUT')
                     <div class="modal-body">
                         <div class="mb-3 drug-name">
-                            <input type="text" id="status" name="doctor_id" value="{{$doctor_info->id}}">
-                            <input type="text" id="package_name" name="package_name">
-                            <input type="text" id="package_price" name="package_price">
-                            <input type="text" id="package_duration" name="package_duration">
+                            <input type="hidden" id="status" name="doctor_id" value="{{$doctor_info->id}}">
+                            <div class="d-flex mb-2">
+                                <h6>Package:</h6>
+                                <input type="text" id="package_name" name="package_name" class="subscription_info ms-2" readonly>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <h6>Duration:</h6>
+                                <input type="text" id="package_duration" name="package_duration" class="subscription_info ms-2" readonly>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <h6>Price:</h6>
+                                <input type="text" id="package_price" name="package_price" class="subscription_info ms-2" readonly>
+                            </div>
+
+                            <input class="form-control" list="list" id="redeem_code" placeholder="Please Enter redeem code" name="redeem_code">
+                            
+                            
                         </div>
                     </div>
                     <div class="modal-footer">
