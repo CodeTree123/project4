@@ -80,9 +80,14 @@
                             <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>pocvx mzqwe zxcuopasd</li>
                             <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>asdmqlw isgreat asdoqipwe</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-outline-dark PackageID" value="{{$subscription_plan->id}}">
-                                Buy This
-                            </button>
+                            <div class="d-flex">
+                                <button type="button" class="w-100 btn btn-lg btn-outline-dark PackageID me-1" value="{{$subscription_plan->id}}">
+                                    Buy This
+                                </button>
+                                <button type="button" class="w-100 btn btn-lg btn-outline-dark PackageID ms-1" value="{{$subscription_plan->id}}">
+                                    Try This
+                                </button>
+                            </div>
                         </div>
                         </div>
                     </div>

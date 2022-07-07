@@ -15,6 +15,8 @@ use App\Models\treatment_cost;
 use App\Models\drugs;
 use App\Models\prescription;
 use App\Models\medicine;
+use App\Models\report;
+use App\Models\treatment_step;
 use PDF;
 // use Mail;
 use Illuminate\Support\Facades\Mail;
@@ -28,10 +30,10 @@ class MainController extends Controller
     {
 
         $filename='';
-        if($request->hasFile('image'))
+        if($request->hasFile('r_image'))
         {
 
-            $file= $request->file('image');
+            $file= $request->file('r_image');
             if ($file->isValid()) {
                 $filename="patient".date('Ymdhms').'.'.$file->getClientOriginalExtension();
                 $file->storeAs('patient',$filename);
@@ -200,7 +202,7 @@ class MainController extends Controller
     }
 
     public function treatment_info(Request $request,$d_id,$p_id){
-        dd($request->all());
+        // dd($request->all());
         $pc_c = $request->pc_c;
         $pc_c = implode(',',$pc_c);
         $pc_f = $request->pc_f;
@@ -210,7 +212,7 @@ class MainController extends Controller
         $investigation = implode(',',$investigation);
         // dd($investigation); change pt_p after free time
         $pt_p = $request->pt_p;
-        $pt_p = implode(',',$pt_p);
+        // $pt_p = implode(',',$pt_p);
         // dd($pt_p);
 
         $pt_p_cost = treatment_cost::where('name','=',$pt_p)->where('d_id','=',$d_id)->first();
@@ -244,6 +246,14 @@ class MainController extends Controller
         $patient=patient_infos::findOrFail($p_id);
         $treatment_info = treatment_info::where('p_id','like',$p_id)->first();
         $v_prescriptions = prescription::where('p_id','like',$p_id)->get();
+        $reports = report::where('d_id','=',$d_id)->where('p_id','=',$p_id)->where('treatment_id','=',$t_id)->get();
+        $reports_count = report::where('d_id','=',$d_id)->where('p_id','=',$p_id)->where('treatment_id','=',$t_id)->count();
+        // dd($reports);
+        $total_report = 10;
+        $total_report = $total_report - $reports_count;
+        $t_steps = treatment_step::where('d_id','=',$d_id)->where('p_id','=',$p_id)->where('treatment_id','=',$t_id)->get();
+        // dd($t_steps->all());
+
         // dd($v_prescriptions);
         // foreach($v_prescriptions as $v_prescription){
         //     // dd($v_prescription);
@@ -256,7 +266,7 @@ class MainController extends Controller
 
         
         // dd($drugs_info);
-        return view('treatmentplans',compact('doctor_info','patient','treatment_info','v_prescriptions'));
+        return view('treatmentplans',compact('doctor_info','patient','treatment_info','v_prescriptions','reports','total_report','t_steps'));
       
             // if($t_plans == 'Restoration'){
             //     return view('treatmentplans',compact('doctor_info','patient','treatment_info'));
@@ -464,6 +474,45 @@ class MainController extends Controller
             ]);
         }
         
+        
+        return back();
+    }
+
+    public function report(Request $request,$d_id,$p_id,$t_id){
+        $filename='';
+        if($request->hasFile('r_image'))
+        {
+
+            $file= $request->file('r_image');
+            if ($file->isValid()) {
+                $filename="r".date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                $file->storeAs('report',$filename);
+            }
+        }
+        $report = new report();
+        $report->d_id = $d_id;
+        $report->p_id = $p_id;
+        $report->treatment_id = $t_id;
+        $report->image = $filename;
+        $report->save();
+
+        return back();
+
+    }
+
+    public function treatment_steps(Request $request,$d_id,$p_id,$t_id){
+        // dd($request->all());
+        // $s = $request->steps;
+        // $s = implode(' ',$s);
+        // dd($s);
+        $ldate = date('d-m-Y');
+        $t_step = new treatment_step();
+        $t_step->d_id = $d_id;
+        $t_step->p_id = $p_id;
+        $t_step->treatment_id = $t_id; 
+        $t_step->steps = $request->steps; 
+        $t_step->date = $ldate; 
+        $t_step->save(); 
         
         return back();
     }

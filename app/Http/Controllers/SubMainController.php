@@ -28,11 +28,11 @@ class SubMainController extends Controller
 
 
     public function chife_complaint(Request $request){
-        $chife_complaint = new chife_complaint();
-        $chife_complaint->name = $request->cc_name;
-        $chife_complaint->status = $request->cc_status;
-        $res = $chife_complaint->save();
-        return back();
+        // $chife_complaint = new chife_complaint();
+        // $chife_complaint->name = $request->cc_name;
+        // $chife_complaint->status = $request->cc_status;
+        // $res = $chife_complaint->save();
+        // return back();
     }
 
     public function edit_chife_complaint($id){

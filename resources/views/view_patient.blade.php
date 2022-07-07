@@ -947,38 +947,45 @@
                         </div>
                     </div>
                 </div>
-               <div class="shadow  rounded border">
-               <h6 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Cost</h6>
+                <div class="shadow  rounded border">
+                    <h6 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Cost</h6>
                 
-                <div class="d-flex justify-content-between align-items-center   p-2">
+                    <div class="d-flex justify-content-between align-items-center   p-2">
                     
-                    <!-- <h4>Treatment Cost</h4>
-                    <div>
-                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost_Add">
-                        <i class="bi bi-plus-circle"></i>
-                    </a>
-                    <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost">
-                        <i class="bi bi-card-list"></i>
-                    </a>
-                    </div> -->
-                    <h6 class="estimated-cost-title">Estimated Cost</h6>
-                    <div>
+                        <!-- <h4>Treatment Cost</h4>
+                        <div>
+                        <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost_Add">
+                            <i class="bi bi-plus-circle"></i>
+                        </a>
+                        <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost">
+                            <i class="bi bi-card-list"></i>
+                        </a>
+                        </div> -->
+                            <h6 class="estimated-cost-title">Estimated Cost</h6>
+                        <div>
                         <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Estimated_Cost">
                             <i class="bi bi-card-list"></i>
                         </a>
                     </div>
-
                 </div>
-               </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Admin Notice,Ad & Events end -->
 
+    <!-- main end -->
+    <!-- footer -->
+    <div class="footer p-3">
+        <div class="row container-fluid">
+            <p class="text-center my-auto">
+                © Developed By CODETREE
+            </p>
+        </div>
+    </div>
+    <!-- footer end-->
 
-               <!-- tooth tool modal -->
-               <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
+ <!-- Modal -->
  <div class="modal fade" id="exampleModal_1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -1018,7 +1025,7 @@
                                     <input type="text" id="tooth_type_modal" name="tooth_type" value="" readonly/>
                                 </div>
                             </div>
-                </div> -->
+                    </div> -->
                     <div class="row">
                         <div class="col-6"> 
                             <h5 class="d-flex justify-content-between">
@@ -1145,22 +1152,7 @@
         </div>
     </div>
  </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- Admin Notice,Ad & Events end -->
-
-    <!-- main end -->
-    <!-- footer -->
-    <div class="footer p-3">
-        <div class="row container-fluid">
-            <p class="text-center my-auto">
-                © Developed By CODETREE
-            </p>
-        </div>
-    </div>
-    <!-- footer end-->
+ <!-- Mpdal end -->
 
  <!-- Modal For C/C Chief Complaint List -->
  <div class="modal fade " id="chife_Complaint" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1171,7 +1163,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     C/C Chief Complaint List
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#exampleModal_1" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1255,7 +1247,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     Edit Cheif Complaint 
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#chife_Complaint" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1271,7 +1263,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#chife_Complaint">Discard</button>
                         <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
                     </div>
                 </form>
@@ -1290,7 +1282,7 @@
                     <h5 class="modal-title text-dark" id="exampleModalLabel">
                         Delete C/C Chief Complaint
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#chife_Complaint" aria-label="Close"></button>
                 </div>
                 <!-- Modal Header & Close btn end -->
                 <!-- Modal Body -->
@@ -1304,7 +1296,7 @@
                         <input type="hidden" id="del-cc-id" name="deletingId">
                         <!-- Modal Footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#chife_Complaint">Close</button>
                             <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
                         <!-- Modal Footer end -->
                         </div>
@@ -1325,7 +1317,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     C/F Clinical Findings List
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#exampleModal_1" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1411,7 +1403,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     Edit  Clinical Finding 
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#Clinical_Findings" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1427,7 +1419,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#Clinical_Findings">Discard</button>
                         <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
                     </div>
                 </form>
@@ -1447,7 +1439,7 @@
                     <h5 class="modal-title text-dark" id="exampleModalLabel">
                         Delete C/F Clinical Findings
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#Clinical_Findings" aria-label="Close"></button>
                 </div>
                 <!-- Modal Header & Close btn end -->
                 <!-- Modal Body -->
@@ -1461,7 +1453,7 @@
                         <input type="hidden" id="del-cf-id" name="deletingId">
                         <!-- Modal Footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#Clinical_Findings">Close</button>
                             <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
                         <!-- Modal Footer end -->
                         </div>
@@ -1482,7 +1474,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     Investigation List
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#exampleModal_1" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1570,7 +1562,7 @@
                     <h5 class="modal-title text-dark" id="exampleModalLabel">
                         Edit  Investigation 
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#Investigation" aria-label="Close"></button>
                 </div>
                 <!-- Modal Header & Close btn end -->
                 <!-- Modal Body -->
@@ -1586,7 +1578,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#Investigation">Discard</button>
                             <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
                         </div>
                     </form>
@@ -1606,7 +1598,7 @@
                     <h5 class="modal-title text-dark" id="exampleModalLabel">
                         Delete Investigation
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#Investigation" aria-label="Close"></button>
                 </div>
                 <!-- Modal Header & Close btn end -->
                 <!-- Modal Body -->
@@ -1620,7 +1612,7 @@
                         <input type="hidden" id="del-Investigation-id" name="deletingId">
                         <!-- Modal Footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#Investigation">Close</button>
                             <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
                         <!-- Modal Footer end -->
                         </div>
@@ -1641,7 +1633,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     T/P Treatment Plans List
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#exampleModal_1" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1732,7 +1724,7 @@
                 <h5 class="modal-title text-dark" id="exampleModalLabel">
                     Edit  Treatment Plan 
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#Treatment_Plans" aria-label="Close"></button>
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
@@ -1751,7 +1743,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#Treatment_Plans">Discard</button>
                         <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
                     </div>
                 </form>
@@ -1771,7 +1763,7 @@
                     <h5 class="modal-title text-dark" id="exampleModalLabel">
                         Delete T/P Treatment Plans
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#Treatment_Plans" aria-label="Close"></button>
                 </div>
                 <!-- Modal Header & Close btn end -->
                 <!-- Modal Body -->
@@ -1785,172 +1777,7 @@
                         <input type="hidden" id="del-TP-id" name="deletingId">
                         <!-- Modal Footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
-                        <!-- Modal Footer end -->
-                        </div>
-                    </form>
-                </div>
-                <!-- Modal Body end -->
-            </div>
-        </div>
- </div>
- <!-- Modal end -->
-
-  <!-- Modal For T/P Treatment Cost List -->
-  <div class="modal fade " id="Treatment_Cost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <!-- Modal Header & Close btn -->
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    Treatment Cost List
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <!-- Modal Header & Close btn end -->
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <!-- T/P Treatment Cost List-->
-                <table class="table table-bordered mt-4 text-center">
-                    <thead>
-                        <tr>
-                            <th class="">Serial No</th>
-                            <th class="">Treatment Plans</th>
-                            <th class="">Cost</th>
-                            <th class="">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($t_p_costs as $key=>$t_p_cost)
-                        <tr>
-                            <td>{{$key+1}}</td>
-                            <td>{{$t_p_cost->name}}</td>
-                            <td>{{$t_p_cost->price}}</td>
-                            <td class="d-flex justify-content-around">
-                                <button class="btn crud-btns TP_Cost_editbtn" href="" value="{{$t_p_cost->id}}" >
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                                <button class="btn crud-btns delete-tp_Cost" href="#" value="{{$t_p_cost->id}}">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <!--T/P Treatment Cost list end -->
-            </div>
-            <!-- Modal Body end -->
-        </div>
-    </div>
-  </div>
-  <!-- Modal end -->
-
-  <!-- Modal For T/P Treatment Cost Add -->
-  <div class="modal fade " id="Treatment_Cost_Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <!-- Modal Header & Close btn -->
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    Add Treatment Plan 
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <!-- Modal Header & Close btn end -->
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <form action="{{route('treatment_cost')}}" method="post">
-                    @csrf
-                    <input type="hidden" name="d_id" value="{{$doctor_info->id}}"/>
-                        <div class="mb-3">
-                            <select class="form-select" aria-label="Default select example" name="tp_name">
-                                <option value=""></option>
-                                @foreach($t_ps as $t_p)
-                                <option value="{{$t_p -> name}}">{{$t_p -> name}}</option>
-                                 @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <input class="form-control" list="list" placeholder="Enter Cost" name="tp_price">
-                        </div>
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Confirm</button>
-                    </div>
-                </form>
-            </div>
-            <!-- Modal Body end -->
-        </div>
-    </div>
-  </div>
-  <!-- Modal end -->
-  
-  <!-- Modal For T/P Treatment Cost update -->
-  <div class="modal fade " id="Treatment_Cost_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <!-- Modal Header & Close btn -->
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    Edit Treatment Cost 
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <!-- Modal Header & Close btn end -->
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <form action="{{route('update_treatment_cost')}}" method="post">
-                    @csrf
-                    @method('PUT')
-
-                    <input type="hidden" id="TPCostId" name="tp_cost_id"/>
-                    <div class="modal-body">
-                        <div class="mb-3 drug-name">
-                            <input class="form-control" list="list" id="tp_cost_name" placeholder="Enter New Clinical Finding" name="tp_cost_name">
-                        </div>
-                        <div class="mb-3 drug-name">
-                            <input class="form-control" list="list" id="tp_cost" placeholder="Enter Cost" name="tp_cost">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
-                    </div>
-                </form>
-            </div>
-            <!-- Modal Body end -->
-        </div>
-    </div>
- </div>
- <!-- Modal end -->
-
- <!-- Modal For Delete T/P Treatment Cost -->
- <div class="modal fade " id="del-Cost-TP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <!-- Modal Header & Close btn -->
-                <div class="modal-header">
-                    <h5 class="modal-title text-dark" id="exampleModalLabel">
-                        Delete Treatment Cost
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Modal Header & Close btn end -->
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <form action="{{route('delete_treatment_cost')}}" method="POST" >
-                        @csrf
-                        @method('delete')
-                        <div class="mb-3 text-center">
-                            <h5 class="text-danger">Are You Sure to Delete This information?</h5>
-                        </div>
-                        <input type="hidden" id="del-TP-cost-id" name="deletingId">
-                        <!-- Modal Footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#Treatment_Plans">Close</button>
                             <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
                         <!-- Modal Footer end -->
                         </div>
@@ -1963,7 +1790,7 @@
  <!-- Modal end -->
 
    <!-- Modal For T/P Estimated Cost List -->
-   <div class="modal fade " id="Estimated_Cost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade " id="Estimated_Cost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Modal Header & Close btn -->
@@ -2005,7 +1832,7 @@
             <!-- Modal Body end -->
         </div>
     </div>
-  </div>
+ </div>
   <!-- Modal end -->
 
 

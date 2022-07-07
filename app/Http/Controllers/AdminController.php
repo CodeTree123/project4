@@ -89,6 +89,7 @@ class AdminController extends Controller
 
     public function subscription_status($id){
         $null = "";
+        $today = Carbon::now()->format('d/m/Y');
         $start = Carbon::now()->format('d/m/Y');
         $getStatus = subscription::where('id',$id)->first();
         $getStatusMonth = $getStatus->duration;
