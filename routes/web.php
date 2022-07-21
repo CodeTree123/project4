@@ -62,6 +62,7 @@ Route::put('/login_update/doctor/{id}',[AuthController::class,'login_update_doct
 Route::get('/subscription/{d_id}', [AuthController::class, 'subscription'])->name('subscription');
 Route::get('/subscription_info/{id}', [AuthController::class, 'subscription_info']);
 Route::put('/subscription_add', [AuthController::class, 'subscription_add'])->name('subscription_add');
+Route::put('/subscription_add_redeem', [AuthController::class, 'subscription_add_redeem'])->name('subscription_add_redeem');
 
 
 

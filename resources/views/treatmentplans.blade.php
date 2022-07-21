@@ -110,7 +110,7 @@
                             </div>
                             <div class="border-top border-dark">
                             <h4 class="text-center">
-                                Tooth Restoration
+                                Tooth {{$treatment_info->treatment_plans}}
                             </h4>
 
                             <form action="{{route('treatment_steps',[$doctor_info->id,$patient->id,$treatment_info->id])}}" method="post">

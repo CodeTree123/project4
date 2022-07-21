@@ -72,6 +72,27 @@
       <p class="fs-5 text-muted">Here Client will give us a brief detail content about subscription</p>
     </div>
                 <main>
+
+                <form action="{{route('subscription_add_redeem')}}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <div class="d-flex justify-content-center mb-3">
+                        <input type="hidden" id="status" name="doctor_id" value="{{$doctor_info->id}}">
+                        
+                        <input type="hidden" name="package_name" class="subscription_info ms-2" value="Redeem Code">
+                        
+                        
+                            <!-- <input type="text" id="package_duration" name="package_duration" class="subscription_info ms-2" style="width: 20px;" readonly>
+                                <input type="text" id="package_duration_types" name="package_duration_types" class="subscription_info" readonly> -->
+                       
+                        <input type="hidden" name="package_price" class="subscription_info ms-2" value="0">
+                    
+
+                        <input class="form-control me-3" list="list" id="redeem_code" placeholder="Please Enter redeem code" name="redeem_code" style="width:30%;">
+                            
+                        <button type="submit" class="btn btn-sm btn btn-sm btn-outline-blue-grey">Activate</button>
+                    </div>
+                </form>
                     
                     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
                     @foreach($subscription_plans as $subscription_plan)
@@ -316,7 +337,7 @@
                                 <input type="text" id="package_price" name="package_price" class="subscription_info ms-2" readonly>
                             </div>
 
-                            <input class="form-control" list="list" id="redeem_code" placeholder="Please Enter redeem code" name="redeem_code">
+                            <!-- <input class="form-control" list="list" id="redeem_code" placeholder="Please Enter redeem code" name="redeem_code"> -->
                             
                             
                         </div>

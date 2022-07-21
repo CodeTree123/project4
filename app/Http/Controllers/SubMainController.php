@@ -128,10 +128,18 @@ class SubMainController extends Controller
     }
 
     public function treatment_plan(Request $request){
+        // dd($request->all());
         $treatment_plan = new treatment_plan();
         $treatment_plan->name = $request->tp_name;
         $treatment_plan->status = $request->tp_status;
-        $res = $treatment_plan->save();
+        $treatment_plan->save();
+
+        $treatment_cost = new treatment_cost();
+        $treatment_cost->d_id = $request->d_id;
+        $treatment_cost->name = $request->tp_name;
+        $treatment_cost->price = $request->tp_cost;
+        $treatment_cost->save();
+
         return back();
     }
 
@@ -192,7 +200,7 @@ class SubMainController extends Controller
     public function delete_treatment_cost(Request $request){
         $del_tpCost_id = $request->deletingId;
         // dd($del_drug_id);
-        $del_tpcost_info = treatment_plan::find($del_tpCost_id);
+        $del_tpcost_info = treatment_cost::find($del_tpCost_id);
         $del_tpcost_info->delete();
         return back();
     }

@@ -29,7 +29,7 @@ class AuthController extends Controller
         $request->validate([
             'fname'=> 'required',
             'lname'=> 'required',
-            'email'=> 'required|email',
+            'email'=> 'required|email|unique:doctors',
             'password'=> 'required'
         ]);
         $doctor = new doctor();
@@ -46,7 +46,9 @@ class AuthController extends Controller
 
         // dd($id);
         if($res){
-            return back() ->with('success','Successfully Registered');
+            // return back() ->with('success','Successfully Registered');
+            return redirect()->route('login_profile_edit',[$id]);
+
             
         }else{
             return back() ->with('fail','Please Check Your Information Properly');
@@ -134,7 +136,7 @@ class AuthController extends Controller
             'dob'=> 'required',
             'gender'=> 'required',
             'blood_group'=> 'required',
-            'bDegree'=> 'required',
+            // 'bDegree'=> 'required',
             'mCollege'=> 'required',
             'batch'=> 'required',
             'session'=> 'required',
@@ -165,7 +167,8 @@ class AuthController extends Controller
         // $res = $subscription->save();
 
 
-        return redirect()->route('doctor');
+        return redirect()->route('login')->with('success','Successfully Registered,Please LogIn.');
+        // return "hello";
     }
 
     public function doctor(){
@@ -237,12 +240,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function subscription_add(Request $request){
-        $r_redeem = $request->redeem_code;
-        
-        
-        if($r_redeem == null){
-            
+    public function subscription_add(Request $request){ 
             $d_id = $request->doctor_id;
             $id = subscription::where('d_id','=',$d_id)->first()->id;
             // dd($id);
@@ -254,42 +252,6 @@ class AuthController extends Controller
             ]);
             return back()->with('success','Subscription Successfully Registered, Please Wait for Admin Approval.');
             // return "hello null";
-        }
-        else{
-            $check_redeem = redeem_code::where('redeem_code','=',$r_redeem)->first();
-            if($check_redeem == null){
-                return back()->with('fail','Please Enter Redeem Code Properly');
-                // return "hello empty";
-            }else{
-            // return "$request->redeem_code";
-           $duration = $check_redeem->duration;
-           $duration_type = $check_redeem->duration_type;
-        //    dd($duration,$duration_type);
-           $status = "1";
-           $d_id = $request->doctor_id;
-           $id = subscription::where('d_id','=',$d_id)->first()->id;
-           $start = Carbon::now()->format('d/m/Y');
-                if($duration_type == "Days"){
-                    $end = now()->copy()->addDays($duration)->format('d/m/Y');
-                }else if($duration_type == "Months"){
-                    $end = now()->copy()->addMonths($duration)->format('d/m/Y');
-                }else if($duration_type == "Years"){
-                    $end = now()->copy()->addYears($duration)->format('d/m/Y');
-                }
-        //    dd($id,$duration,$duration_type,$start,$end);
-        subscription::find($id)->update([
-                'package_name' => $request->package_name,
-                'package_price' => $request->package_price,
-                'duration' => $duration,
-                'duration_types' => $duration_type,
-                'start' => $start,
-                'end' => $end,
-                'status' => $status,
-            ]);
-            return back()->with('success','Subscription Added Successfully');
-                // return "hello";       
-            }
-        }
 
         // else if($request->redeem_code == "reflexDN2022"){
         //    // return "$request->redeem_code";
@@ -322,6 +284,45 @@ class AuthController extends Controller
         // $subscription->duration = $request->package_duration;
         // $res = $subscription->save();
         // return back()->with('success','Successfully Registered');
+    }
+
+    public function subscription_add_redeem(Request $request){
+
+        $r_redeem = $request->redeem_code;
+        $check_redeem = redeem_code::where('redeem_code','=',$r_redeem)->first();
+        if($check_redeem == null){
+            return back()->with('fail','Please Enter Redeem Code Properly');
+            // return "hello empty";
+        }else{
+        // return "$request->redeem_code";
+       $duration = $check_redeem->duration;
+       $duration_type = $check_redeem->duration_type;
+    //    dd($duration,$duration_type);
+       $status = "1";
+       $d_id = $request->doctor_id;
+       $id = subscription::where('d_id','=',$d_id)->first()->id;
+       $start = Carbon::now()->format('d/m/Y');
+            if($duration_type == "Days"){
+                $end = now()->copy()->addDays($duration)->format('d/m/Y');
+            }else if($duration_type == "Months"){
+                $end = now()->copy()->addMonths($duration)->format('d/m/Y');
+            }else if($duration_type == "Years"){
+                $end = now()->copy()->addYears($duration)->format('d/m/Y');
+            }
+    //    dd($id,$duration,$duration_type,$start,$end);
+        subscription::find($id)->update([
+            'package_name' => $request->package_name,
+            'package_price' => $request->package_price,
+            'duration' => $duration,
+            'duration_types' => $duration_type,
+            'start' => $start,
+            'end' => $end,
+            'status' => $status,
+        ]);
+        return back()->with('success','Subscription Added Successfully');
+            // return "hello";       
+        }
+
     }
 
     public function logout(){

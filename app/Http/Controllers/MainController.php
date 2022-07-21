@@ -56,7 +56,7 @@ class MainController extends Controller
 
     ]);
 
-    $p_id = patient_infos::where('mobile','=',$request->mobile)->first()->id;
+    $p_id = patient_infos::where('mobile','=',$request->mobile)->where('d_id','=',$d_id)->first()->id;
     // dd($p_id);
 
     // return redirect()->back();
@@ -156,7 +156,7 @@ class MainController extends Controller
             'search'=> 'required'
         ]);
         $mobile = $request->search;
-        $patient=patient_infos::where('mobile','=',$mobile)->get();
+        $patient=patient_infos::where('mobile','=',$mobile)->where('d_id','=',$id)->get();
         // $patient=patient_infos::where('mobile','like','%'.$request->search.'%')->get();
         // dd($patient->all());
 
@@ -216,9 +216,15 @@ class MainController extends Controller
         // dd($pt_p);
 
         $pt_p_cost = treatment_cost::where('name','=',$pt_p)->where('d_id','=',$d_id)->first();
+        if($pt_p_cost == null){
+            
+            return redirect()->route('doctor_profile_setting',[$d_id])->with('fail','Please Add Treatment Cost Frist..!');
+            // return "hello";
+        }else{
         $cost = $pt_p_cost->price;
         $paid='0';
         $due='0';
+        }
         // dd($pt_p_cost,$cost);
 
         $treatment_info = new treatment_info();
@@ -437,14 +443,14 @@ class MainController extends Controller
         // dd($view);
         //test end
         $treatment_infos = treatment_info::where('p_id','=',$p_id)->where('d_id','=',$d_id)->get();
-        $total_cost =  treatment_info::where('p_id','=',$p_id)->sum('cost');
-        $total_paid =  treatment_info::where('p_id','=',$p_id)->sum('paid');
-        $total_due =  treatment_info::where('p_id','=',$p_id)->sum('due');
+        $total_cost =  treatment_info::where('p_id','=',$p_id)->where('d_id','=',$d_id)->sum('cost');
+        $total_paid =  treatment_info::where('p_id','=',$p_id)->where('d_id','=',$d_id)->sum('paid');
+        $total_due =  treatment_info::where('p_id','=',$p_id)->where('d_id','=',$d_id)->sum('due');
 
         $tex = $total_cost*10/100;
         $total_Amount = $total_cost - $tex;
         // dd($total_cost,$total_paid,$total_due);
-        $treatment_invoice_infos = treatment_info::where('p_id','like',$p_id)->where('status','=',0)->get();
+        $treatment_invoice_infos = treatment_info::where('p_id','like',$p_id)->where('d_id','=',$d_id)->where('payment_status','=',0)->get();
 
         return view('invoice',compact('doctor_info','patient','treatment_infos','treatment_invoice_infos','view','total_cost','total_paid','total_due','tex','total_Amount'));
     }
@@ -468,10 +474,10 @@ class MainController extends Controller
             'due'=>$due
         ]);
 
-        if($cost == $paid){
-            $status = 1;
+        if($cost == $paid || $due < 0){
+            $payment_status = 1;
             treatment_info::find($t_info_id)->update([
-                'status'=>$status,
+                'payment_status'=>$payment_status,
             ]);
         }
         

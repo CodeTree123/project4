@@ -1684,10 +1684,11 @@
                         <div class="mb-3 drug-name">
                             <input class="form-control" list="list" placeholder="Enter New Treatment Plan" name="tp_name">
                             <input type="hidden" name="tp_status" id="" value="1">
+                            <input type="hidden" name="d_id" id="" value="{{$doctor_info->id}}">
                         </div>
-                        <!-- <div class="mb-3 drug-name">
+                        <div class="mb-3 drug-name">
                             <input class="form-control" list="list" placeholder="Enter Cost" name="tp_cost">
-                        </div> -->
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal_1">Discard</button>

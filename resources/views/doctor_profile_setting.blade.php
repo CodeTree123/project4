@@ -26,6 +26,12 @@
                     <i class="bi bi-card-list"></i>
                 </a> -->
             </div>
+                @if(Session::has('success'))
+                <div class="alert alert-success">{{Session::get('success')}}</div>
+                @endif
+                @if(Session::has('fail'))
+                <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                @endif
             <table class="table table-bordered mt-4 text-center">
                     <thead>
                         <tr>
