@@ -30,10 +30,10 @@ class MainController extends Controller
     {
 
         $filename='';
-        if($request->hasFile('r_image'))
+        if($request->hasFile('image'))
         {
 
-            $file= $request->file('r_image');
+            $file= $request->file('image');
             if ($file->isValid()) {
                 $filename="patient".date('Ymdhms').'.'.$file->getClientOriginalExtension();
                 $file->storeAs('patient',$filename);
@@ -489,6 +489,8 @@ class MainController extends Controller
                 $filename="r".date('Ymdhms').'.'.$file->getClientOriginalExtension();
                 $file->storeAs('report',$filename);
             }
+        }else{
+            return back() ->with('fail','File Empty');
         }
         $report = new report();
         $report->d_id = $d_id;
@@ -497,7 +499,8 @@ class MainController extends Controller
         $report->image = $filename;
         $report->save();
 
-        return back();
+        return back() ->with('success','Successfully Report Picture Added');
+
 
     }
 

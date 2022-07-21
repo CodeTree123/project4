@@ -86,7 +86,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Profile start -->
-            <div class="col-md-3 pe-0">
+            <div class="col-md-2 pe-0">
                 <div class="profile blue-grey-border-thin   ">
                 <h6 class="   p-2 mb-1 d-flex justify-content-center bg-blue-grey custom-border-radius">Patient's Profile</h6>
                     <div class="complete">
@@ -125,7 +125,12 @@
                                 <div class="col-12 text-start">Helpatics: {{$patient->Helpatics}}</div>
                                 <div class="col-12 text-start">Bleeding disorder: {{$patient->Bleeding_disorder}}</div>
                                 <div class="col-12 text-start">Allergy: {{$patient->Allergy}}</div>
+
+                                @if($patient->gender == "Male")
+                                <div class="col-12 text-start"> </div>
+                                @else
                                 <div class="col-12 text-start">Pregnant/Lactating: {{$patient->Pregnant}}</div>
+                                @endif
                                 <div class="col-12 text-start">Other: {{$patient->other}}</div>
                                 <!-- <button type="button" class="btn btn-secondary btn-sm">Small button</button> -->
                                     <!--  a tag trigger modal -->
@@ -207,6 +212,10 @@
                                                                 </select>
                                                             </div>
                                                             <!-- 6 -->
+                                                            
+                                @if($patient->gender == "Male")
+                                <div></div>
+                                @else
                                                             <div class="mb-2 col-6">
                                                                 <label for="mName" class="form-label ">Pregnant/Lactating</label>
                                                                 <select class="form-select" name="Pregnant" aria-label="Heart Disease">
@@ -216,6 +225,7 @@
                                                                     <!-- <option value="3">Others</option> -->
                                                                 </select>
                                                             </div>
+                                @endif
                                                             <!-- 7 -->
                                                             <div class="mb-2 col-6">
                                                                 <label for="mName" class="form-label ">Helpatics</label>
@@ -270,7 +280,7 @@
             </div>
             <!-- Profile end -->
             <!-- Mid Section start -->
-            <div class="col-md-6 pe-0">
+            <div class="col-md-7 pe-0">
                 <div class="blank-sec">
                 <h6 class="   p-2 mb-1 d-flex justify-content-center bg-blue-grey custom-border-radius">Tooth Selection</h6>
                     <!-- teeth chart start -->

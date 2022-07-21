@@ -12,8 +12,10 @@
 @include('include.header')
     <!-- main start -->
 <div class="container-fluid">
-<div> 
-    <a class="btn btn-danger" href="{{route('logout')}}"> Log Out  </a>
+<div class="float-end"> 
+    <a class="btn btn-danger text-center  d-flex align-items-center" href="{{route('logout')}}" style="height: 30px; "> 
+            <i class="fa-solid fa-power-off fa-xl "></i> 
+    </a>
 </div>
  <div class="row justify-content-center align-items-center">
      
@@ -143,7 +145,7 @@
                                             
                         <!-- Academic Information Step  -->  
                         <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
-                            <div class="rounded border p-2 my-2">
+                            <!-- <div class="rounded border p-2 my-2">
                                 <p>Select Basic Degree: </p>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="bDegree" id="mbbs" value="mbbs">
@@ -153,7 +155,7 @@
                                     <input class="form-check-input" type="radio" name="bDegree" id="bds" value="bds">
                                     <label class="form-check-label" for="bds">BDS</label>
                                 </div> 
-                            </div>
+                            </div> -->
                             <span class="text-danger">@error('bDegree') {{$message}} @enderror</span>
                             
                             <div class="d-flex justify-content-between my-4">
