@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->string('fname');
-            $table->string('lname');
+            $table->string('fname')->nullable();
+            $table->string('lname')->nullable();
             $table->string('email')->unique();
             $table->string('password')->nullable();
-            $table->integer('phone',255)->nullable();
+            $table->string('phone')->nullable();
             $table->string('BMDC')->nullable();
-            $table->integer('nid',255)->nullable();
+            $table->string('nid')->nullable();
             $table->string('dob')->nullable();
             $table->string('gender')->nullable();
             $table->string('blood_group')->nullable();
