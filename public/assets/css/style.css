@@ -569,6 +569,16 @@ main.admin {
     border: none;
     width: 80%;
 }
+#redeem_code::placeholder{
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
+#redeem_code{
+    background-color: #ffffff00;
+    border: none;
+    color: #fff;
+}
 
 /* 200018-fp start */
 
@@ -1722,7 +1732,11 @@ body {
     --light-blue-grey: #365A77; 
     --dark-blue-grey: #233b4e; 
   }
-  
+  .dental_bg{
+    background-image:  url('../img/dental_bg1.png');
+    background-size: contain;
+    background-repeat: repeat;
+  }
   .custom-border-radius{
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;

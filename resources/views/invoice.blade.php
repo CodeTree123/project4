@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8">
     <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
-    <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>Reflex-Invoice</title>
+    <!--  All snippets are MIT license http://bootdey.com/license --> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" type="image/x-icon" href="{{asset ('assets/img/reflex_logo.png')}}"> 

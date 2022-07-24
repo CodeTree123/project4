@@ -22,8 +22,8 @@
     <!-- Prescription CSS -->
     <link rel="stylesheet" href="{{ asset ('assets/css/prescription_style.css')}}"> 
     <link rel="stylesheet" href="{{ asset ('assets/css/tab.css')}}"> 
-    <link rel="stylesheet" href="{{ asset ('assets/css/multiselect.css')}}"> 
-<title>Appointment</title>
+    <link rel="stylesheet" href="{{ asset ('assets/css/multiselect.css')}}">  
+    <title>ReflexDN</title>
 
 
 </head>
