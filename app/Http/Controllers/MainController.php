@@ -82,6 +82,14 @@ class MainController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function delete_appointment(Request $request){
+        $del_appointment_id = $request->deletingId;
+        // dd($del_doctor_id);
+        $del_appointment_info = appointment::find($del_appointment_id);
+        $del_appointment_info->delete();
+        return back();
+    }
     
 
     public function patient_list($id){
@@ -196,7 +204,7 @@ class MainController extends Controller
         $lt_ps = treatment_plan::orderBy('id','desc')->get();
         $t_p_costs = treatment_cost::all();
         $treatment_infos = treatment_info::where('p_id','like',$p_id)->where('d_id','=',$d_id)->get();
-        $total_cost =  treatment_info::where('p_id','like',$p_id)->sum('cost');
+        $total_cost =  treatment_info::where('p_id','like',$p_id)->where('d_id','=',$d_id)->sum('cost');
         $v_prescriptions = prescription::where('p_id','like',$p_id)->get();
         return view('view_patient',compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','t_p_costs','treatment_infos','total_cost','investigations','investigation_lists','v_prescriptions'));
     }

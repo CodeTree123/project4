@@ -13,6 +13,10 @@
     <!-- Bootstrap 5.1.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    
     
     
     <!--Main Style CSS -->
@@ -161,7 +165,14 @@
 
       <div class="col-md-7 pe-0">
         <div class="blank-sec">
-        <table class="table table-bordered mt-4 text-center">
+            <div class="d-flex justify-content-between align-item-center p-2">
+                <h4>Appointment List</h4>
+                <button class="btn btn-outline-blue-grey crud-btns Appointment" value="" data-bs-toggle="modal" data-bs-target="#Appointment_form">
+                    <!-- <i class="fa-solid fa-pen-to-square"></i> -->
+                     Set Appointment
+                </button>
+            </div>
+        <table class="table table-bordered mt-2 text-center">
                         <thead>
                             <tr>
                                 <th class="">Patient Id</th>
@@ -185,9 +196,9 @@
                                     @endif
                                 </td>
                                 <td class="d-flex justify-content-around">
-                                    <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
-                                         <i class="fa-solid fa-trash"></i>
-                                    </a>
+                                    <button class="btn crud-btns delete-appointment" href="#" value="{{$a->id}}">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                             @endforeach
@@ -217,5 +228,122 @@
   </div>
   <!-- body end-->
 
+        <!-- Modal For Appointment -->
+        <div class="modal fade " id="Appointment_form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    Edit  Clinical Finding 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('appointment')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="text" id="d_id" value = "{{$doctor_info->id}}" name="d_id">
+                        <input type="text" id="p_id" value = "" name="p_id">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <select class="form-control custom-form-control multi" id="phone" name="" aria-label="Default select example" style="width:100%;">
+                                <option value="">Nothing To Select</option>
+                                @foreach($patient_list as $t_p)
+                                    <option value="{{$t_p->mobile}}">{{$t_p->mobile}}</option>
+                                @endforeach
+                        </select>
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" >
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" name="date">
+                        <label for="time" class="form-label">Time</label>
+                        <input type="time" class="form-control" id="time" name="time">
+                        <label for="patient_id" class="form-label">Patient ID</label>
+                        <input type="text" class="form-control" id="patient_id" name="p_id_later">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Appointment</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+
+     <!-- Modal For Delete Appointment -->
+     <div class="modal fade " id="del-Appointment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Delete Appointment Information
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('delete_appointment')}}" method="POST" >
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3 text-center">
+                            <h5 class="text-danger">Are You Sure to Delete This information?</h5>
+                        </div>
+                        <input type="hidden" id="del-Appointment-id" name="deletingId">
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                        <!-- Modal Footer end -->
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+    </div>
+ <!-- Modal end -->
+
  
   @include('include.footer')
+
+   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <script>
+    $(".multi").select2({
+        dropdownParent: $("#Appointment_form")
+    });
+    $(document).ready(function(){
+
+    $('#phone').change(function(){
+        var mobile = $(this).val();
+        var d_id = $('#d_id').val();
+        //  alert(d_id);
+         $.ajax({
+            type:"GET",
+            url: "/action/"+d_id+"/"+mobile,
+            success: function(response){
+                // console.log(response.p_info);
+                $('#p_id').val(response.p_info.id)
+                // $('#patient_id').val(response.p_info.patient_id);
+                $('#name').val(response.p_info.name);
+                // $('#phone').val(response.p_info.mobile);
+            }
+        });
+
+    });
+    $(document).on('click', '.delete-appointment',function(){
+                var deleteDoctorId = $(this).val();
+                // alert(deleteCCId);
+                $("#del-Appointment").modal('show');
+                $('#del-Appointment-id').val(deleteDoctorId);
+      });
+});
+
+</script>

@@ -71,6 +71,8 @@ Route::put('/subscription_add_redeem', [AuthController::class, 'subscription_add
 //patient MainController
 Route::get('/patient_appoinment/{id}',[MainController::class,'patient_appoinment'])->name('patient_appoinment');
 Route::post('/appointment',[MainController::class,'appointment'])->name('appointment');
+Route::delete('/delete_appointment', [MainController::class, 'delete_appointment'])->name('delete_appointment');
+
 Route::get('/patient_list/{id}',[MainController::class,'patient_list'])->name('patient_list');
 Route::post('/new/patient/{id}',[MainController::class,'patient_info'])->name('patient_info');
 Route::put('edit/patient/{d_id}/{p_id}',[MainController::class,'edit_patient'])->name('edit.patient'); 
@@ -158,3 +160,4 @@ Route::delete('/delete_subscription', [AdminController::class, 'delete_subscript
 // Route::delete('/admin/delete_medicine', [AdminController::class, 'delete_medicine'])->name('delete_medicine');
 
 Route::get('/send_mail/{d_id}/{p_id}',[MainController::class, 'sendMailWithPdf'])->name('send_mail');
+Route::get('/action/{d_id}/{mobile}',[FrontEndController::class, 'action'])->name('action');

@@ -54,29 +54,30 @@
                 <table class="table table-bordered mt-4 text-center">
                         <thead>
                             <tr>
+                                <th class="">#</th>
                                 <th class="">name</th>
                                 <th class="">mobile</th>
-                                <th class="">Patient ID:</th>
+                                <!-- <th class="">Patient ID:</th> -->
                                 <th class="">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($patient_list as $patient)
+                            @foreach($patient_list as $key=>$patient)
                             <tr>
+                                <td>{{$key + 1}}</td>
                                 <td>{{$patient->name}}</td>
                                 <td>{{$patient->mobile}}</td>
-                                <td>{{$patient->id}}</td>
+                                {{-- <td>{{$patient->id}}</td> --}}
                                 <td class="d-flex justify-content-around">
-                                    <!-- <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentUpdate" >
+                                    <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentUpdate" >
                                          <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
                                          <i class="fa-solid fa-trash"></i>
-                                    </a> -->
-                                    <button class="btn btn-outline-blue-grey crud-btns Appointment" href="" value="{{$patient->id}}" >
-                                    <!-- <i class="fa-solid fa-pen-to-square"></i> -->
-                                     Set Appointment
-                                    </button>
+                                    </a>
+                                    <!-- <button class="btn crud-btns Patient_Edit" href="" value="{{$patient->id}}" >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    </button> -->
                                     <!--  -->
                                 </td>
                             </tr>
@@ -164,68 +165,5 @@
     <!-- Admin Notice,Ad & Events end -->
 
     <!-- main end -->
-      <!-- Modal For C/F Clinical Findings update -->
-  <div class="modal fade " id="Appointment_form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <!-- Modal Header & Close btn -->
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="exampleModalLabel">
-                    Edit  Clinical Finding 
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <!-- Modal Header & Close btn end -->
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <form action="{{route('appointment')}}" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <input type="text" value = "{{$doctor_info->id}}" name="d_id">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" id="phone" >
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" >
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date" name="date">
-                        <label for="time" class="form-label">Time</label>
-                        <input type="time" class="form-control" id="time" name="time">
-                        <label for="patient_id" class="form-label">Patient ID</label>
-                        <input type="text" class="form-control" id="patient_id" name="p_id">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Appointment</button>
-                    </div>
-                </form>
-            </div>
-            <!-- Modal Body end -->
-        </div>
-    </div>
- </div>
- <!-- Modal end -->
 
     @include('include.footer')
-<script>
-    $(document).ready(function(){
-
-        // script for C/C Chief Complaint update
-        $(document).on('click', '.Appointment',function(){
-            var p_id = $(this).val();
-            // $("#chife_Complaint").modal('hide');
-            // alert(p_id);
-            $("#Appointment_form").modal('show');
-            $.ajax({
-                type:"GET",
-                url: "/patient_appoinment/"+p_id,
-                success: function(response){
-                    console.log(response.p_info);
-                    $('#patient_id').val(p_id);
-                    $('#name').val(response.p_info.name);
-                    $('#phone').val(response.p_info.mobile);
-                }
-            });
-        });
-    });
-
-</script>

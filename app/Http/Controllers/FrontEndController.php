@@ -42,7 +42,18 @@ class FrontEndController extends Controller
     {
         $doctor_info=doctor::where('id','=',$d_id)->first();
         $appointment = appointment::where('d_id','=',$d_id)->get();
-        return view('appointment',compact('doctor_info','appointment'));
+        $patient_list = patient_infos::where('d_id','=',$doctor_info->id)->get('mobile');
+        // dd($patient_list);
+        return view('appointment',compact('doctor_info','appointment','patient_list'));
+    }
+    public function action(Request $request,$d_id,$mobile)
+    {
+        $patient_info = patient_infos::where('mobile','=',$mobile)->where('d_id','=',$d_id)->first();
+        return response()->json([
+            'status'=>200,
+            'p_info' => $patient_info,
+        ]);
+        // return view('appointment',compact('doctor_info','appointment','patient_list'));
     }
     public function index()
     {
