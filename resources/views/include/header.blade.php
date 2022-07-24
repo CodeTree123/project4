@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset ('assets/css/bs-stepper.css')}}"> 
 
 
-
+    <title>ReflexDN</title>
 </head>
 
 <body>

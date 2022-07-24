@@ -1,6 +1,5 @@
 
-@include('include.header')
-<title>Doctor blade</title>
+@include('include.header') 
     <!-- main start -->
     <div class="container-fluid">
         <div class="row">

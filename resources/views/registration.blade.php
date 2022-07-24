@@ -1,7 +1,7 @@
 @include('include.header')
 
     <!-- main start -->
-    <div class="container-fluid">
+    <div class="container-fluid dental_bg">
  <div class="row justify-content-center align-items-center">
      <div class="col-lg-5 mt-5">
      <form action="{{route('register_user')}}" method="post">

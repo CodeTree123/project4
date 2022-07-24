@@ -1,5 +1,4 @@
-@include('include.header')
-<title>Treatment Plans</title>
+@include('include.header') 
     <!-- main start -->
     <div class="container-fluid">
         <div class="row">

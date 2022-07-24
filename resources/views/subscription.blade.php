@@ -1,5 +1,4 @@
-@include('include.header')
- 
+@include('include.header') 
     <!-- main start -->
     <div class="container-fluid">
         <div class="row">
@@ -59,7 +58,7 @@
                 </div>
             </div>
             <div class="col-md-7 pe-0">
-                <div class="blank-sec">
+                <div class="blank-sec dental_bg">
                 @if(Session::has('success'))
                 <div class="alert alert-success">{{Session::get('success')}}</div>
                 @endif
@@ -68,8 +67,8 @@
                 @endif
                 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
       
-                <h1 class="  fw-normal">Pricing of Reflex Subscription</h1>
-      <p class="fs-5 text-muted">Here Client will give us a brief detail content about subscription</p>
+                <h1 class="  fw-bold">ReflexDN</h1>
+                <h1 class="text-bg-blue-grey">Choose a plan</h1> 
     </div>
                 <main>
 
@@ -87,101 +86,57 @@
                        
                         <input type="hidden" name="package_price" class="subscription_info ms-2" value="0">
                     
+                        <div class="d-flex  bg-blue-grey rounded-pill p-2 m-2 ">
 
-                        <input class="form-control me-3" list="list" id="redeem_code" placeholder="Please Enter redeem code" name="redeem_code" style="width:30%;">
+                            <input class="form-control " list="list" id="redeem_code" placeholder="Redeem Code" name="redeem_code" style="width:100%;">
                             
-                        <button type="submit" class="btn btn-sm btn btn-sm btn-outline-blue-grey">Activate</button>
+                            <button type="submit" class="btn btn-sm btn btn-sm btn-light rounded-pill">Activate</button>
+                        </div>
+                        
                     </div>
                 </form>
-                    
-                    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                    <div class="container p-0">
+                    <div class="row   mb-3 text-center mx-1 px-1 ">
                     @foreach($subscription_plans as $subscription_plan)
-                    <div class="col-xxl-6 col-xl-6 col-lg-6">
-                        <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3 bg-dark border-dark text-white">
-                            <h4 class="my-0 fw-normal">{{$subscription_plan->package_name}}</h4>
+                    <div class="col-xxl-3 col-xl-3 col-lg-3 px-1">
+                        <div class=" bg-blue-grey card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3 blue-grey-border text-white">
+                            <h4 class="">Save {{$subscription_plan->descount}}%</h4>
                         </div>
-                        <div class="card-body  ">
-                            <h1 class="card-title pricing-card-title">{{$subscription_plan->package_price}}৳ </h1>
-                            <h4 class="text-muted fw-light">/ {{$subscription_plan->duration." ".$subscription_plan->duration_types}}</h4>
-                            <ul class="list-unstyled list-group mt-3 mb-1 justify-content-left">
-                            <li class="list-group-item text-left "><i class="fa-solid fa-check pe-3"></i>asd aeqwe afbfdgh</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>qweqw laskd qweqw asd</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>pocvx mzqwe zxcuopasd</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>asdmqlw isgreat asdoqipwe</li>
-                            </ul>
+                        <div class="card-body bg-white mx-1 p-0 py-3"> 
+                        <h6 class="my-0 fw-normal">{{$subscription_plan->package_name}}</h6>
+
+                            <h3 class="text-dark fw-bold"> {{$subscription_plan->duration." ".$subscription_plan->duration_types}}</h3>
+                            <p class="fw-bold text-dark   pricing-card-title py-3">Basic Price - {{$subscription_plan->basic_price}} ৳ </p>
+
+                            <h5 class="fw-bold text-bg-blue-grey  pricing-card-title py-3">Discounted Price  <br>
+                                 <span class="fw-bolder  fs-3 ">
+                                 ৳ {{$subscription_plan->package_price}}
+                            </span>  
+                        </h5>
+
+                            <p class=" fw-bold text-dark  pricing-card-title">Save
+                            {{$subscription_plan->saved_price}}৳ </p>
+                            
+                        </div> 
                             <div class="d-flex">
-                                <button type="button" class="w-100 btn btn-lg btn-outline-dark PackageID me-1" value="{{$subscription_plan->id}}">
-                                    Buy This
+                                <button type="button" class="w-100 btn btn-lg   PackageID me-1" value="{{$subscription_plan->id}}">
+                                    <span class="fw-bolder text-white fs-3">Buy Now</span>
                                 </button>
                                 <!-- <button type="button" class="w-100 btn btn-lg btn-outline-dark PackageID ms-1" value="{{$subscription_plan->id}}">
                                     Try This
                                 </button> -->
                             </div>
                         </div>
-                        </div>
                     </div>
                     @endforeach
-                    <!-- <div class="col-xxl-6 col-xl-6 col-lg-6">
-                        <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3 bg-dark border-dark text-white">
-                            <h4 class="my-0 fw-normal">Package - 02</h4>
-                        </div>
-                        <div class="card-body">
-                            <h1 class="card-title pricing-card-title">
-                                2000৳ 
-                            </h1>
-                            <h4 class="text-muted fw-light">/ 3 month</h4>
-                            <ul class="list-unstyled list-group mt-3 mb-1 justify-content-left">
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>asd aeqwe afbfdgh</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>qweqw laskd qweqw asd</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>pocvx mzqwe zxcuopasd</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>asdmqlw isgreat asdoqipwe</li>
-                            </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-outline-dark">Buy This</button>
-                        </div>
-                        </div>
                     </div>
-                    <div class="col-xxl-6 col-xl-6 col-lg-6">
-                        <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3 bg-dark border-dark text-white">
-                            <h4 class="my-0 fw-normal">Package - 03</h4>
-                        </div>
-                        <div class="card-body">
-                            <h1 class="card-title pricing-card-title">
-                                4000৳ 
-                            </h1>
-                            <h4 class="text-muted fw-light">/ 6 month</h4>
-                            <ul class="list-unstyled list-group mt-3 mb-1 justify-content-left">
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>asd aeqwe afbfdgh</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>qweqw laskd qweqw asd</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>pocvx mzqwe zxcuopasd</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>asdmqlw isgreat asdoqipwe</li>
-                            </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-outline-dark">Buy This</button>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-6 col-xl-6 col-lg-6">
-                        <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3 bg-dark border-dark text-white">
-                            <h4 class="my-0 fw-normal">Package - 04</h4>
-                        </div>
-                        <div class="card-body">
-                            <h1 class="card-title pricing-card-title">
-                                6000৳ 
-                            </h1>
-                            <h4 class="text-muted fw-light">/ 12 month</h4>
-                            <ul class="list-unstyled list-group mt-3 mb-1 justify-content-left">
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>asd aeqwe afbfdgh</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>qweqw laskd qweqw asd</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>pocvx mzqwe zxcuopasd</li>
-                            <li class="list-group-item text-left"><i class="fa-solid fa-check pe-3"></i>asdmqlw isgreat asdoqipwe</li>
-                            </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-outline-dark">Buy This</button>
-                        </div>
-                        </div>
-                    </div> -->
+                       <div class="d-flex justify-content-end align-items-center  ">
+                       <p class=" bg-white py-3 ps-2">We Accept Only
+                        </p>
+                        <img class=" logo" src="{{asset ('assets/img/bkash_logo.png')}}" alt="Logo">
+                        
+                       </div>
                    
                     </div>
                 </main>   
