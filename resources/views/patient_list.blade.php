@@ -4,6 +4,7 @@
         <div class="row">
             <div class="col-md-2 pe-0">
                 <div class="profile blue-grey-border-thin">
+                <h6 class="   p-2 mb-1 d-flex justify-content-center bg-blue-grey custom-border-radius">Doctor's Profile</h6>
                     <div class="complete">
                         <div class="p-header">
                             <!-- <img src="img/banner.jpg" class="cover"> -->
@@ -13,7 +14,7 @@
                             <img src="{{url('/uploads/doctor/'.$doctor_info->p_image)}}" class="doctor-profile my-4">
                             @endif
 
-                            <h2 class="mb-2">{{$doctor_info->name}}</h2>
+                            <h2 class="mb-2">{{$doctor_info->fname." ".$doctor_info->lname}}</h2>
                             <p class="mb-2">Dental Consulatant of the Royal <br>Dental</p>
                             <!-- <a href="#_" class="btns btn-outline-blue-grey  mb-2">This Month</a> -->
                             <p class="mb-2">SMS Remaining : 50</p>
@@ -50,7 +51,10 @@
             </div>
             <div class="col-md-7 pe-0">
                 <div class="blank-sec">
-                <table class="table table-bordered mt-4 text-center">
+                <div class="d-flex justify-content-between align-items-center p-2">
+                    <h4>Patient List</h4>
+                </div>
+                <table class="table table-bordered mt-2 text-center">
                         <thead>
                             <tr>
                                 <th class="">#</th>
@@ -144,18 +148,16 @@
                 <div class="info-box-col info-box-col-ad mb-3"> 
                     <h4 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Ad</h4>
 
-
-
                     <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('assets/img/ad_slider_img/ad_slider_1.jpg')}}" class="d-block w-100" alt="...">
+                                <img src="{{ asset('assets/img/slider_img/ad_slider_1.jpg')}}" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('assets/img/ad_slider_img/ad_slider_2.png')}}" class="d-block w-100" alt="...">
+                                <img src="{{ asset('assets/img/slider_img/ad_slider_2.png')}}" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('assets/img/ad_slider_img/ad_slider_3.jpg')}}" class="d-block w-100" alt="...">
+                                <img src="{{ asset('assets/img/slider_img/ad_slider_3.jpg')}}" class="d-block w-100" alt="...">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

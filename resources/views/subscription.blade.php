@@ -4,6 +4,7 @@
         <div class="row">
         <div class="col-md-2 pe-0">
                 <div class="profile blue-grey-border-thin">
+                <h6 class="   p-2 mb-1 d-flex justify-content-center bg-blue-grey custom-border-radius">Doctor's Profile</h6>
                     <div class="complete">
                         <div class="p-header">
                             <!-- <img src="img/banner.jpg" class="cover"> -->
@@ -207,15 +208,15 @@
                     <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('assets/img/ad_slider_img/ad_slider_1.jpg')}}" class="d-block w-100"
+                                <img src="{{ asset('assets/img/slider_img/ad_slider_1.jpg')}}" class="d-block w-100"
                                     alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('assets/img/ad_slider_img/ad_slider_2.png')}}" class="d-block w-100"
+                                <img src="{{ asset('assets/img/slider_img/ad_slider_2.png')}}" class="d-block w-100"
                                     alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('assets/img/ad_slider_img/ad_slider_3.jpg')}}" class="d-block w-100"
+                                <img src="{{ asset('assets/img/slider_img/ad_slider_3.jpg')}}" class="d-block w-100"
                                     alt="...">
                             </div>
                         </div>

@@ -63,7 +63,7 @@
             </div>
             <div class="col-md-7 pe-0">
                 <div class="blank-sec ">
-            <h6 class="   p-2 mb-1 d-flex justify-content-center bg-blue-grey custom-border-radius">Exclusives</h6>
+                    <h6 class="   p-2 mb-1 d-flex justify-content-center bg-blue-grey custom-border-radius">Exclusives</h6>
                     <!-- slider -->  
                         <div class="slide_items_wrapper  blue-grey-border mx-3 mb-3">   
                                     <div class="slick_slide_items">
