@@ -64,16 +64,11 @@
             <div class="col-md-7 pe-0">
                 <div class="blank-sec ">
             <h6 class="   p-2 mb-1 d-flex justify-content-center bg-blue-grey custom-border-radius">Exclusives</h6>
-                    <!-- slider -->
-                    <div id="carouselExampleSlidesOnly" class="carousel slide mx-3 mb-3" data-bs-ride="carousel">
-                    
-                        <div class="carousel-inner  blue-grey-border "> 
+                    <!-- slider -->  
+                        <div class="slide_items_wrapper  blue-grey-border mx-3 mb-3">   
+                                    <div class="slick_slide_items">
 
-                            <div class="carousel-item active">
-                                <div class="row row-cols-1 row-cols-md-3 g-4">
-                                    <div class="col">
-                                     
-                                        <div class="card slider-card-body blue-grey-border-thin">
+                                        <div class="card slider-card-body blue-grey-border-thin me-2">
                                             
                                             <div class="card-body">
                                                 <h5 class="card-title text-bg-blue-grey">Card title 1</h5>
@@ -83,99 +78,131 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="card slider-card-body blue-grey-border-thin">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-bg-blue-grey">Card title 2</h5>
-                                                <p class="card-text">This is a longer card with supporting text below as
-                                                    a natural lead-in to additional content. This content is a little
-                                                    bit longer.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card slider-card-body blue-grey-border-thin">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-bg-blue-grey">Card title 3</h5>
-                                                <p class="card-text">This is a longer card with supporting text below as
-                                                    a natural lead-in to additional content.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="slick_slide_items">
 
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row row-cols-1 row-cols-md-3 g-4">
-                                    <div class="col">
-                                        <div class="card slider-card-body blue-grey-border-thin">
+                                        <div class="card slider-card-body blue-grey-border-thin me-2">
+                                            
                                             <div class="card-body">
-                                                <h5 class="card-title text-bg-blue-grey">Card title 4</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 1</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content. This content is a little
                                                     bit longer.</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="card slider-card-body blue-grey-border-thin">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-bg-blue-grey">Card title 5</h5>
-                                                <p class="card-text">This is a longer card with supporting text below as
-                                                    a natural lead-in to additional content. This content is a little
-                                                    bit longer.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card slider-card-body blue-grey-border-thin">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-bg-blue-grey">Card title 6</h5>
-                                                <p class="card-text">This is a longer card with supporting text below as
-                                                    a natural lead-in to additional content.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="slick_slide_items">
 
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row row-cols-1 row-cols-md-3 g-4">
-                                    <div class="col">
-                                        <div class="card slider-card-body blue-grey-border-thin">
+                                        <div class="card slider-card-body blue-grey-border-thin me-2">
+                                            
                                             <div class="card-body">
-                                                <h5 class="card-title text-bg-blue-grey">Card title 7</h5>
+                                                <h5 class="card-title text-bg-blue-grey">Card title 1</h5>
                                                 <p class="card-text">This is a longer card with supporting text below as
                                                     a natural lead-in to additional content. This content is a little
                                                     bit longer.</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="card slider-card-body blue-grey-border-thin">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-bg-blue-grey">Card title 8</h5>
-                                                <p class="card-text">This is a longer card with supporting text below as
-                                                    a natural lead-in to additional content. This content is a little
-                                                    bit longer.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card slider-card-body blue-grey-border-thin">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-bg-blue-grey">Card title 9</h5>
-                                                <p class="card-text">This is a longer card with supporting text below as
-                                                    a natural lead-in to additional content.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="slick_slide_items">
 
-                                </div>
-                            </div>
-                        </div>
+                                        <div class="card slider-card-body blue-grey-border-thin me-2">
+                                            
+                                            <div class="card-body">
+                                                <h5 class="card-title text-bg-blue-grey">Card title 1</h5>
+                                                <p class="card-text">This is a longer card with supporting text below as
+                                                    a natural lead-in to additional content. This content is a little
+                                                    bit longer.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick_slide_items">
+
+                                        <div class="card slider-card-body blue-grey-border-thin me-2">
+                                            
+                                            <div class="card-body">
+                                                <h5 class="card-title text-bg-blue-grey">Card title 1</h5>
+                                                <p class="card-text">This is a longer card with supporting text below as
+                                                    a natural lead-in to additional content. This content is a little
+                                                    bit longer.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick_slide_items">
+
+                                        <div class="card slider-card-body blue-grey-border-thin me-2">
+                                            
+                                            <div class="card-body">
+                                                <h5 class="card-title text-bg-blue-grey">Card title 1</h5>
+                                                <p class="card-text">This is a longer card with supporting text below as
+                                                    a natural lead-in to additional content. This content is a little
+                                                    bit longer.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick_slide_items">
+
+                                        <div class="card slider-card-body blue-grey-border-thin me-2">
+                                            
+                                            <div class="card-body">
+                                                <h5 class="card-title text-bg-blue-grey">Card title 1</h5>
+                                                <p class="card-text">This is a longer card with supporting text below as
+                                                    a natural lead-in to additional content. This content is a little
+                                                    bit longer.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick_slide_items">
+
+                                        <div class="card slider-card-body blue-grey-border-thin me-2">
+                                            
+                                            <div class="card-body">
+                                                <h5 class="card-title text-bg-blue-grey">Card title 1</h5>
+                                                <p class="card-text">This is a longer card with supporting text below as
+                                                    a natural lead-in to additional content. This content is a little
+                                                    bit longer.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick_slide_items">
+
+                                        <div class="card slider-card-body blue-grey-border-thin me-2">
+                                            
+                                            <div class="card-body">
+                                                <h5 class="card-title text-bg-blue-grey">Card title 1</h5>
+                                                <p class="card-text">This is a longer card with supporting text below as
+                                                    a natural lead-in to additional content. This content is a little
+                                                    bit longer.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     
+                                 
+ 
                     </div>
-                    <!-- slider end -->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
+                    <!-- slider end ----------------------------------------------------------->
                     <!-- Search & New Patient Start -->
                     @if($subscription->status == 1)
                     <div class="row m-0 justify-content-around">
@@ -318,11 +345,6 @@
                             </div>
                         </div>
                     </div>
-                    @else
-                    <div class="row m-0 justify-content-around">
-                    </div>
-                    @endif
-                    <!-- Search & New Patient end-->
                     <!--Appointment Start  -->
                     <div class="Appointment-sec my-3 mx-3 blue-grey-border ">
                         <div class="Appointment-h p-2 bg-blue-grey custom-border-radius">
@@ -397,6 +419,35 @@
                         </div>
                     </div>
                     <!--Appointment end  -->
+                    @else
+                    <!-- Greetings Section  -->
+                    <div class="greetings-sec m-3 p-3 blue-grey-border">
+
+                        <h3 class="mb-3">Welcome to <span class="fw-bold">Reflex Dental Network.</span></h3>                  
+                        <p class="">
+
+                             <span class="fw-bold">ReflexDN</span> is an inclusive and reliable Dental Office Information System. It is developed to offer complete and autonomous solutions for Dental service management. Get our software today! the needs of independent solutions. Now with <span class="fw-bold">ReflexDN</span>, practicians can effortlessly manage all major functions through one intuitive platform. 
+                        <br><br>
+
+                             <span class="fw-bold">ReflexDN</span> offers cloud-based practice management software to the dental professionals in Bangladesh. Dental offices can use <span class="fw-bold">ReflexDN</span> to schedule, invoice, manage recall, manage Patient's records, chart and more using from anywhere using only a browser and Internet connection. <span class="fw-bold">ReflexDN</span>'s brilliantly designed interface makes it easy for any member of your team to learn and use regardless of their practice management experience. 
+                        <br><br>
+
+                             With <span class="fw-bold">ReflexDN</span>, you can securely access patient data anywhere, anytime, gain deeper insights into practice production, and help providers spend time on what matters most - <span class="fw-bold">taking care of their patients.</span> 
+                        <br><br>
+                             We welcome you to explore our system and help us to grow together.
+                       
+
+                        <br> <br> <br>
+                             Team Hospitalin.
+                        </p>
+                    </div> 
+                    <!-- Greetings Section End -->
+                    @endif
+                    <!-- Search & New Patient end-->
+                    
+
+                    
+
                     <!--Patient list Start  -->
                     <!-- <div class="patient-list-col  blue-grey-border">
                         <div class="patient-list-h p-2 bg-blue-grey custom-border-radius">
@@ -496,23 +547,23 @@
                         </div>
                     </div>
                     <!-- accordion end -->
+
+                    <!--  -->
+                    <!--  -->
                 </div>
                 <div class="info-box-col info-box-col-ad mb-3"> 
-                    <h6 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Ad</h6>
-
-
-
-                    <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ asset('assets/img/ad_slider_img/ad_slider_1.jpg')}}" class="d-block w-100" alt="...">
-                            </div>
+                    <h6 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Ad</h6> 
+                    <div id="carouselExampleControls" class="carousel carousel-dark  slide" data-bs-ride="carousel">
+                        <div class="carousel-inner"> 
+                            <div class="carousel-item active"> 
+                                <img src="{{ asset('assets/img/slider_img/ad_slider_1.jpg')}}" class="d-block w-100" alt="..."> 
+                            </div> 
+                            <div class="carousel-item"> 
+                                <img src="{{ asset('assets/img/slider_img/ad_slider_2.png')}}" class="d-block w-100" alt="..."> 
+                            </div> 
                             <div class="carousel-item">
-                                <img src="{{ asset('assets/img/ad_slider_img/ad_slider_2.png')}}" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('assets/img/ad_slider_img/ad_slider_3.jpg')}}" class="d-block w-100" alt="...">
-                            </div>
+                                <img src="{{ asset('assets/img/slider_img/ad_slider_3.jpg')}}" class="d-block w-100" alt="..."> 
+                            </div> 
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -522,7 +573,8 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
-                    </div>
+                    </div> 
+
                 </div>
                 <!-- <div class="info-box-col mb-3">
                     <h6 class="p-2 d-flex justify-content-center bg-blue-grey custom-border-radius">Upcoming Events</h6>
@@ -547,3 +599,38 @@
         return new bootstrap.Popover(popoverTriggerEl)
         })
     </script>
+
+
+<script type="text/javascript">
+     
+    $('.slide_items_wrapper').slick({
+  centerMode: true,
+  centerPadding: '30px',
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  arrows: false,
+
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+  </script>

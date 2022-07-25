@@ -12,11 +12,11 @@
 @include('include.header')
     <!-- main start -->
 <div class="container-fluid">
-<div class="float-end"> 
+<!-- <div class="float-end"> 
     <a class="btn btn-danger text-center  d-flex align-items-center" href="{{route('logout')}}" style="height: 30px; "> 
             <i class="fa-solid fa-power-off fa-xl "></i> 
     </a>
-</div>
+</div> -->
  <div class="row justify-content-center align-items-center">
      
     <div class="col-lg-10 mt-5">

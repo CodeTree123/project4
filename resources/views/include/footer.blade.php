@@ -49,6 +49,9 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 </script>
+
+
+<script type="text/javascript" src="{{ asset ('assets/js/slick.js')}}"></script>
 </body>
 
 </html>

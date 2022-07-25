@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="{{ asset ('assets/css/multiselect.css')}}"> 
     <link rel="stylesheet" href="{{ asset ('assets/css/bs-stepper.css')}}"> 
 
+<!-- Slick Slider CSS -->
+<link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/slick_slider.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/slick_slider_theme.css')}}"/>
+
 
     <title>ReflexDN</title>
 </head>
