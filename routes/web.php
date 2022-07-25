@@ -77,6 +77,13 @@ Route::get('/patient_list/{id}',[MainController::class,'patient_list'])->name('p
 Route::post('/new/patient/{id}',[MainController::class,'patient_info'])->name('patient_info');
 Route::put('edit/patient/{d_id}/{p_id}',[MainController::class,'edit_patient'])->name('edit.patient'); 
 Route::delete('delete/patient/{d_id}/{p_id}',[MainController::class,'delete_patient'])->name('delete.patient'); 
+
+// edit patient info from patient list
+Route::get('/edit_patient/{id}', [MainController::class, 'edit_patient_list']);
+Route::put('/update_patient', [MainController::class, 'update_patient_list'])->name('update_patient_list');
+Route::delete('/delete_patient', [MainController::class, 'delete_patient_list'])->name('delete_patient_list');
+
+
 //search patient
 Route::post('/search/{id}',[MainController::class,'search'])->name('search');
 //view_patient

@@ -350,55 +350,53 @@
 
                     </table>
                     @empty
-                            <h2 class="mt-2">There was no Information about this Number</h2>
+                            <h4 class="mt-2 px-4 text-danger">There was no Information about this Number</h2>
                     @endforelse
                     <!--Search Result For Patient end -->
 
-                    <!-- Modal For Uptade Patient Information-->
+                    <!-- Modal For Update Patient Information-->
                     <div class="modal fade " id="patitentUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-scrollable">
                             <div class="modal-content">
                                 <!-- Modal Header & Close btn -->
                                 <div class="modal-header">
                                     <h5 class="modal-title text-dark mb-0" id="exampleModalLabel">
-                                        Uptade Patient Information
+                                        Update Patient Information
                                     </h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <!-- Modal Header & Close btn end -->
                                 <!-- Modal Body -->
 
-                                <div class="modal-body">
+                                <div class="modal-body pt-1 pb-0">
                                     @foreach($patient as $pf)
                                     <form action="{{route('edit.patient',[$doctor_info->id,$pf->id])}}" method="POST" enctype="multipart/form-data">
                                      @method('PUT')
                                      @csrf
                                         
-                                        <div class="mb-3">
-                                            <!-- <label for="exampleInputEmail1" class="form-label text-dark">Mobile no.</label> -->
-                                            <input type="number" name="mobile" class="form-control custom-form-control" placeholder="Mobile No" value="{{$pf->mobile}}">
-                                            <!-- <div class="form-text"></div> -->
+                                        <div class="mb-2">
+                                            <label for=" " class="form-label text-dark">Mobile no.</label>
+                                            <input type="number" name="mobile" class="form-control custom-form-control" placeholder="Mobile No" value="{{$pf->mobile}}"> 
                                         </div>
                                         <div class="row">
                                             <div class="col-9">
-                                                <div class="mb-3">
-                                                    <!-- <label for="exampleInputEmail1" class="form-label text-dark">Name</label> -->
+                                                <div class="mb-2">
+                                                    <label for=" " class="form-label text-dark">Name</label>
                                                     <input type="name" name="name" class="form-control custom-form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" value="{{$pf->name}}">
-                                                    <!-- <div id="emailHelp" class="form-text"></div> -->
+                                                     
                                                 </div>
                                             </div>
                                             <div class="col-3">
-                                                <div class="mb-3">
-                                                    <!-- <label for="exampleInputEmail1" class="form-label text-dark">Name</label> -->
-                                                     <input type="number" name="age" class="form-control custom-form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Age" value="{{$pf->age}}">
-                                                        <!-- <div id="emailHelp" class="form-text"></div> -->
+                                                <div class="mb-2">
+                                                    <label for=" " class="form-label text-dark">Age</label>
+                                                     <input type="number" name="age" class="form-control custom-form-control" id=" " aria-describedby="emailHelp" placeholder="Age" value="{{$pf->age}}"> 
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <div class="mb-3">
-                                                    <!-- <label for="mName" class="form-label text-dark">Gender</label> -->
+                                                <div class="mb-2">
+                                                    <label for="mName" class="form-label text-dark">Gender</label>
                                                     <!-- <select class="form-select" name="gender" aria-label="Gender">
                                                             <option selected>Select gender</option>
                                                             <option value="Male">Male</option>
@@ -409,8 +407,8 @@
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <div class="mb-3">
-                                                    <!-- <label for="mName" class="form-label text-dark">Blood Group</label> -->
+                                                <div class="mb-2">
+                                                    <label for="mName" class="form-label text-dark">Blood Group</label>
                                                     <!-- <select class="form-select" name="Blood_group" aria-label="Blood Group">
                                                         <option selected> Patient's Blood Group
                                                                     </option>
@@ -427,15 +425,15 @@
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <div class="mb-3">
-                                                    <!-- <label for="mName" class="form-label text-dark">Date of Birth</label> -->
+                                                <div class="mb-2">
+                                                    <label for="mName" class="form-label text-dark">Date of Birth</label>
                                                                 <!-- <br> class="msform"-->
                                                     <input class="form-control custom-form-control" name="date" type="text" placeholder="Date of Birth" value="{{$pf->date}}">
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <div class="mb-3">
-                                                    <!-- <label for="exampleInputEmail1" class="form-label text-dark">Occupation</label> -->
+                                                <div class="mb-2">
+                                                    <label for=" " class="form-label text-dark">Occupation</label>
                                                     <input type="text" class="form-control custom-form-control" name="occupation" placeholder="Occupation" value="{{$pf->occupation}}">
                                                     <!-- <div class="form-text"></div> -->
                                                 </div>
@@ -443,21 +441,26 @@
                                         </div>
 
 
-                                        <div class="mb-3">
-                                            <!-- <label for="exampleInputEmail1" class="form-label text-dark">Address</label> -->
-                                            <input type="address" class="form-control custom-form-control" name="address" placeholder="Address" value="{{$pf->address}}">
-                                            <!-- <div class="form-text"></div> -->
+                                        <div class="mb-2">
+                                            <label for="" class="form-label text-dark">Address</label>
+                                            <input type="address" class="form-control custom-form-control" name="address" placeholder="Address" value="{{$pf->address}}"> 
                                         </div>
                                         <div class="">
-                                            <!-- <label for="exampleInputEmail1" class="form-label text-dark">Email address</label> -->
-                                            <input type="email" name="email" class="form-control custom-form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address" value="{{$pf->email}}">
-                                            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                                            <label for="" class="form-label text-dark">Email address</label>
+                                            <input type="email" name="email" class="form-control custom-form-control" id=" " aria-describedby="emailHelp" placeholder="Email address" value="{{$pf->email}}">
+                                             
                                         </div>
-                                        <div class="mt-2">
+                                        <div class="mt-2 row   ">
+                                            <div class="col">
                                             <label for="formFile" name="image" class="form-label text-dark">Drop your
                                                             image</label>
-                                            <input class="form-control" name="image" type="file" id="formFile">
+                                            <input class="form-control" name="image" type="file" id="formFile"  >
+                                            </div>
+                                            <div class="col"> 
+                                            <p>Last Profile Image</p>
                                             <img src="{{url('/uploads/patient/'.$pf->image)}}" class="mt-2" style="width: 70px; height: 70px;">
+
+                                            </div>
                                                         
                                         </div>
                                         <!-- Modal Footer -->

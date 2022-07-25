@@ -1229,15 +1229,6 @@
 
         // script for Doctor
 
-        // <p>Name: <span id="doctor_view_name"> </span></p>
-        //         <p>Email: <span id="doctor_view_email"> </span></p>
-        //         <p>Phone: <span id="doctor_view_phone"> </span></p>
-        //         <p>BMDC No:<span id="doctor_view_bmdc"> </span> </p>
-        //         <p>NID No: <span id="doctor_view_nid"> </span></p>
-        //         <p>Profile Picture:<span id="doctor_view_profile_pic"> </span> </p>
-        //         <p>BMDC Registration:<span id="doctor_view_bmdc_reg"> </span> </p>
-        //         <p>Post Graduate Degree: <span id="doctor_view_post_grad"> </span></p>
-
       $(document).on('click', '.Doctor_viewbtn',function(){
                 var Doctor_id = $(this).val();
                 // alert(Doctor_id);
@@ -1246,7 +1237,6 @@
                     type:"GET",
                     url: "/edit_doctor/"+Doctor_id,
                     success: function(response){
-                        console.log(response.doctor_info); 
                         console.log(response.doctor_info); 
                         $("#doctor_view_name").text(response.doctor_info.fname +" " +response.doctor_info.lname);
                         $('#doctor_view_email').text(response.doctor_info.email);

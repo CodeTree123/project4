@@ -99,11 +99,73 @@ class MainController extends Controller
         return view('patient_list',compact('doctor_info','patient_list'));
     }
 
+    // edit Patient form Patient List
+    public function edit_patient_list($id){
+        $patient = patient_infos::find($id);
+        return response()->json([
+            'status'=>200,
+            'patient_infos' => $patient,
+        ]);
+    }
+    public function update_patient_list(Request $request){
+
+        $p_id = $request->patient_id;
+
+        $patient_info = patient_infos::find($p_id);
+        // dd($request->all());
+
+        $filename=$patient_info->image;
+        if($request->hasFile('image'))
+        {
+            $destination = 'uploads/patient/'.$patient_info->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $file= $request->file('image');
+            if ($file->isValid()) {
+                $filename="patient".date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                // dd($filename);
+                $file->storeAs('patient',$filename);
+            }
+        }
+        
+        
+        $patient_info->update([
+            
+            'name' => $request->name,
+            'age' => $request->age,
+            'mobile' => $request->mobile,
+            'gender' => $request->gender,
+            'Blood_group' => $request->Blood_group,
+            'date' => $request->date,
+            'occupation' => $request->occupation,
+            'address' => $request->address,
+            'email' => $request->email,
+            'image' => $filename
+        ]);
+        return back();
+    }
+
+    public function delete_patient_list(Request $request){
+        $del_doctor_id = $request->deletingId;
+        $patient=patient_infos::where('id','=',$del_doctor_id)->first();
+        // dd($patient);
+        $destination = 'uploads/patient/'.$patient->image;
+        // dd($destination);
+        if(File::exists($destination)){
+            File::delete($destination);
+        }
+        $patient->delete();
+        return back();
+
+
+    }
+
     public function edit_patient(Request $request,$d_id,$p_id){
 
         $patient_info = patient_infos::find($p_id);
 
-        $filename='';
+        $filename=$patient_info->image;
         if($request->hasFile('image'))
         {
             $destination = 'uploads/patient/'.$patient_info->image;

@@ -56,8 +56,8 @@
                                 <th class="">#</th>
                                 <th class="">name</th>
                                 <th class="">mobile</th>
-                                <!-- <th class="">Patient ID:</th> -->
-                                <th class="">Action</th>
+                                <th class="">Due</th>
+                                <th class="" style="width:50px">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,14 +66,28 @@
                                 <td>{{$key + 1}}</td>
                                 <td>{{$patient->name}}</td>
                                 <td>{{$patient->mobile}}</td>
-                                {{-- <td>{{$patient->id}}</td> --}}
+                                <td>
+                                    @php
+                                        $id = $patient->id;
+                                        $cost = \App\Models\treatment_info::where('p_id','=',$id)->sum('cost');
+                                        $paid = \App\Models\treatment_info::where('p_id','=',$id)->sum('paid');
+                                        $due = $cost - $paid;
+                                        echo $due;
+                                    @endphp
+                                    @if($due>0)
+                                    Taka
+                                    @endif
+                                </td>
                                 <td class="d-flex justify-content-around">
-                                    <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentUpdate" >
-                                         <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a class="crud-btns" href="#" data-bs-toggle="modal" data-bs-target="#patitentDelete">
-                                         <i class="fa-solid fa-trash"></i>
-                                    </a>
+                                    <button type="button" class="btn crud-btns Patient_viewbtn" href="" value="{{$patient->id}}" >
+                                         <i class="fa-solid fa-file-lines"></i>
+                                    </button>
+                                    <button type="button" class="btn crud-btns Patient_editbtn" href="" value="{{$patient->id}}" >
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                    <button class="btn crud-btns delete-patient" href="#" value="{{$patient->id}}">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
                                     <!-- <button class="btn crud-btns Patient_Edit" href="" value="{{$patient->id}}" >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     </button> -->
@@ -166,3 +180,236 @@
     <!-- main end -->
 
     @include('include.footer')
+
+     <!-- Modal For Patient VIEW -->
+ <div class="modal fade " id="Patient_View" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    View Doctor Information 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body" id="view_patient_info">
+                <p>Name: <span id="doctor_view_name"></span></p>
+                <p>Email: <span id="doctor_view_email"></span></p>
+                <p>Phone: <span id="doctor_view_phone"></span></p>
+                <p>BMDC No:<span id="doctor_view_bmdc"></span> </p>
+                <p>NID No: <span id="doctor_view_nid"></span></p>
+                <p>Profile Picture:<img src="" id="doctor_view_profile_pic"></img> </p>
+                <p>BMDC Registration:<img src="" id="doctor_view_bmdc_reg"></img> </p>
+                <p>Post Graduate Degree: <img src="" id="doctor_view_post_grad"></img></p>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+
+ <!-- Modal For Patient update -->
+ <div class="modal fade " id="Patient_Update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header my-auto  align-items-center justify-content-between">
+                <h5 class="modal-title text-dark mb-0" id="exampleModalLabel">
+                    Edit Patient Information 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="{{route('update_patient_list')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+
+                    <input type="hidden"  name="doctor_id" value="{{$doctor_info->id}}"/>
+                    <input type="hidden"  name="patient_id" id="patient_id" value=""/>
+                    <div class="modal-body py-0">
+                        <div class="mb-2">
+                            <label for="mobile"> Mobile No.</label>
+                            <input type="number" name="mobile" class="form-control custom-form-control" placeholder="Mobile No" id="mobile" value="">
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="mb-2">
+                                    <label for="name"> Name</label> 
+                                    <input type="name" name="name" id="name" class="form-control custom-form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" value="">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="mb-2">
+                                        <label for="age"> Age</label> 
+                                        <input type="number" name="age" id="age" class="form-control custom-form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Age" value="">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-2">
+                                    <label for="gender"> Gender</label> 
+                                    <input type="text" name="gender" class="form-control custom-form-control" id="gender" aria-describedby="emailHelp" placeholder="Gender" value="">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-2">
+
+                                    <label for="Blood_group"> Blood Group</label>  
+                                    <input type="text" name="Blood_group" id="Blood_group" class="form-control custom-form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Blood Group" value="">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-2">
+                                    <label for="date"> Date</label>  
+                                    <input class="form-control custom-form-control" name="date" type="text" placeholder="Date of Birth" value="" id="date">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-2">
+                                    <label for="occupation"> Occupation</label>  
+                                    <input type="text" class="form-control custom-form-control" name="occupation" id="occupation" placeholder="Occupation" value="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="address"> Address</label>   
+                            <input type="address" class="form-control custom-form-control" name="address" placeholder="Address" value="" id="address">
+                        </div>
+
+                        <div class="">
+                            <label for="email"> Email</label>   
+                            <input type="email" name="email" class="form-control custom-form-control" id="email" aria-describedby="emailHelp" placeholder="Email address" value="">
+                        </div>
+
+
+                        <div class="my-2">
+                            <label for="formFile" name="image" class="form-label text-dark">
+                                Drop your image <span class="text-danger" style="font-size:12px ;">*If You Want To Change Profile Picture</span>
+                            </label>
+                            <input class="form-control" name="image" type="file" id="formFile">                                        
+                        </div>
+                        <div id="img_show" class="mt-2">
+                            <img src="" class="mt-2" style="width: 70px; height: 70px;">
+                        </div>
+                    </div>
+                    <div class="modal-footer py-0">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Discard</button>
+                        <button type="submit" class="btn btn-sm btn-outline-blue-grey">Update</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+
+    <!-- Modal For Delete Patient -->
+    <div class="modal fade " id="del-Patient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!-- Modal Header & Close btn -->
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">
+                        Delete Patient Information
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Header & Close btn end -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form action="{{route('delete_patient_list')}}" method="POST" >
+                        @csrf
+                        @method('delete')
+                        <div class="mb-3 text-center">
+                            <h5 class="text-danger">Are You Sure to Delete This information?</h5>
+                        </div>
+                        <input type="hidden" id="del-patient-id" name="deletingId">
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-blue-grey  btn-sm">Yes,Delete</button>
+                        <!-- Modal Footer end -->
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body end -->
+            </div>
+        </div>
+    </div>
+ <!-- Modal end -->
+
+    <script>
+    $(document).ready(function(){
+
+        $(document).on('click', '.Patient_viewbtn',function(){
+                var Patient_id = $(this).val();
+                // alert(Patient_id);
+                $("#Patient_View").modal('show');
+                $.ajax({
+                    type:"GET",
+                    url: "/edit_patient/"+Patient_id,
+                    success: function(response){
+                        // console.log(response.patient_infos); 
+                        $('#view_patient_info').html("");
+                        $('#view_patient_info').append('\
+                        <p>Name: <span>'+response.patient_infos.name+'</span></p>\
+                        <p>Name: <span>'+response.patient_infos.age+'</span></p>\
+                        <p>Email: <span>'+response.patient_infos.email+'</span></p>\
+                        <p>Mobile: <span>'+response.patient_infos.mobile+'</span></p>\
+                        <p>Gender: <span>'+response.patient_infos.gender+'</span></p>\
+                        <p>Blood Group: <span>'+response.patient_infos.Blood_group+'</span></p>\
+                        <p>Birth Date: <span>'+response.patient_infos.date+'</span></p>\
+                        <p>Occupation: <span>'+response.patient_infos.occupation+'</span></p>\
+                        <p>Address: <span>'+response.patient_infos.address+'</span></p>\
+                        <p>Profile Picture: <img src="/uploads/patient/'+response.patient_infos.image+'" id="doctor_view_profile_pic" style="width:100px; height:"50px;"></img> </p>\
+                        ');  
+                    }
+                }); 
+
+      });
+
+      $(document).on('click', '.Patient_editbtn',function(){
+                var Patient_id = $(this).val();
+                // alert(Patient_id);
+                $("#Patient_Update").modal('show');
+                $.ajax({
+                    type:"GET",
+                    url: "/edit_patient/"+Patient_id,
+                    success: function(response){
+                        // console.log(response.patient_infos);
+                        $('#patient_id').val(Patient_id);
+                        $('#mobile').val(response.patient_infos.mobile);
+                        $('#name').val(response.patient_infos.name);
+                        $('#age').val(response.patient_infos.age);
+                        $('#gender').val(response.patient_infos.gender);
+                        $('#Blood_group').val(response.patient_infos.Blood_group);
+                        $('#date').val(response.patient_infos.date);
+                        $('#occupation').val(response.patient_infos.occupation);
+                        $('#address').val(response.patient_infos.address);
+                        $('#email').val(response.patient_infos.email);
+                        $('#img_show').html("");
+                        $('#img_show').append('\
+                        <p>Profile Picture: <img src="/uploads/patient/'+response.patient_infos.image+'" style="width:100px; height:"50px;"></img> </p>\
+                        ');
+                    }
+                });
+      });
+
+      $(document).on('click', '.delete-patient',function(){
+                var deletePatientId = $(this).val();
+                // alert(deletePatientId);
+                $("#del-Patient").modal('show');
+                $('#del-patient-id').val(deletePatientId);
+      });
+
+    });
+    </script>

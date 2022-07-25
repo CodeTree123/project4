@@ -165,7 +165,7 @@
 
       <div class="col-md-7 pe-0">
         <div class="blank-sec">
-            <div class="d-flex justify-content-between align-item-center p-2">
+            <div class="d-flex justify-content-between align-items-center p-2">
                 <h4>Appointment List</h4>
                 <button class="btn btn-outline-blue-grey crud-btns Appointment" value="" data-bs-toggle="modal" data-bs-target="#Appointment_form">
                     <!-- <i class="fa-solid fa-pen-to-square"></i> -->
@@ -175,7 +175,9 @@
         <table class="table table-bordered mt-2 text-center">
                         <thead>
                             <tr>
-                                <th class="">Patient Id</th>
+                                <th class="">#</th>
+                                <th class="">Name</th>
+                                <th class="">Mobile</th>
                                 <th class="">Appointment Date</th>
                                 <th class="">Appointment Time</th>
                                 <th class="">Status</th>
@@ -183,9 +185,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($appointment as $a)
+                            @foreach($appointment as $key=>$a)
                             <tr>
-                                <td>{{$a->p_id}}</td>
+                                <td>{{$key +1}}</td>
+                                <td>{{$a->name}}</td>
+                                <td>{{$a->mobile}}</td>
                                 <td>{{$a->date}}</td>
                                 <td>{{$a->time}}</td>
                                 <td>

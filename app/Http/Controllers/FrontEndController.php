@@ -41,7 +41,8 @@ class FrontEndController extends Controller
     public function appointment($d_id)
     {
         $doctor_info=doctor::where('id','=',$d_id)->first();
-        $appointment = appointment::where('d_id','=',$d_id)->get();
+        $appointment = appointment::leftJoin('patient_infos','appointments.p_id','=','patient_infos.id')->where('appointments.d_id','=',$d_id)->get(['appointments.*','patient_infos.name','patient_infos.mobile']);
+        // dd($appointment);
         $patient_list = patient_infos::where('d_id','=',$doctor_info->id)->get('mobile');
         // dd($patient_list);
         return view('appointment',compact('doctor_info','appointment','patient_list'));

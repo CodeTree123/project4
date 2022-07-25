@@ -194,7 +194,7 @@ class AuthController extends Controller
     public function update_doctor(Request $request,$id)
     {
         $doctor = doctor::find($id);
-        $P_filename='';
+        $P_filename=$doctor->p_image;
         if($request->hasFile('p_image'))
         {
             $destination = 'uploads/doctor/'.$doctor->p_image;

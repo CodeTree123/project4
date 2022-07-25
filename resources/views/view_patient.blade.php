@@ -857,12 +857,12 @@
                         <div class="accordion-item mb-0">
                             <h2 class="accordion-header" id="flush-headingTwo">
                                 <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                    data-bs-target="#flush-collapseTwo{{$key +1}}" aria-expanded="false"
                                     aria-controls="flush-collapseTwo">
                                     <p class="me-5">Prescription {{$key + 1}}</p><p class="ms-5">{{$v_prescription->date}}</p>
                                 </button>
                             </h2>
-                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            <div id="flush-collapseTwo{{$key +1}}" class="accordion-collapse collapse"
                                 aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
                                     <h4>Drug List From Prescription</h4>
