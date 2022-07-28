@@ -64,21 +64,25 @@ class AuthController extends Controller
         $doctor =  doctor::where('email','=',$request->email)->first();
         if($doctor){
             if($request->password==$doctor->password){
-                if($doctor->status == 0){
-                    if($doctor->BMDC == null){
-                        $request->session()->put('loginId',$doctor->id);
-                        return redirect()->route('login_profile_edit',[$doctor->id]);
-                    }else{
-                        if($doctor->role == 1){
+                if($doctor->verification == 1){
+                    if($doctor->status == 0){
+                        if($doctor->BMDC == null){
                             $request->session()->put('loginId',$doctor->id);
-                            return redirect()->route('admin');
+                            return redirect()->route('login_profile_edit',[$doctor->id]);
                         }else{
-                        $request->session()->put('loginId',$doctor->id);
-                        return redirect()->route('doctor');
+                            if($doctor->role == 1){
+                                $request->session()->put('loginId',$doctor->id);
+                                return redirect()->route('admin');
+                            }else{
+                            $request->session()->put('loginId',$doctor->id);
+                            return redirect()->route('doctor');
+                            }
                         }
+                    }else{
+                        return back() ->with('fail','Your Account is Blocked!');
                     }
                 }else{
-                    return back() ->with('fail','Your Account is Blocked!');
+                    return back() ->with('fail','Your account is not verified yet.Please contact with Reflex');
                 }
             }else{
                 return back() ->with('fail','Password not Matches');

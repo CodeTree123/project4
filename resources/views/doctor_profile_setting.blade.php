@@ -61,7 +61,47 @@
                 </table>
         </div>
         <div class="tab-pane fade" id="Chember_info" role="tabpanel" aria-labelledby="Chember_info-tab">
-        This is some placeholder content the Profile tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.
+        <div class="tab-pane fade show active" id="Treatment_cost" role="tabpanel" aria-labelledby="Treatment_cost-tab">
+            <div class="d-flex justify-content-evenly mt-2">
+                <h4>Chember List</h4>
+                <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#Treatment_Cost_Add">
+                    <i class="bi bi-plus-circle"></i>
+                </a>
+            </div>
+                @if(Session::has('success'))
+                <div class="alert alert-success">{{Session::get('success')}}</div>
+                @endif
+                @if(Session::has('fail'))
+                <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                @endif
+            <table class="table table-bordered mt-4 text-center">
+                    <thead>
+                        <tr>
+                            <th class="">Serial No</th>
+                            <th class="">Chember Name</th>
+                            <th class="">Chember Address</th>
+                            <th class="">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="d-flex justify-content-around">
+                                <button class="btn crud-btns TP_Cost_editbtn" href="" value="" >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button class="btn crud-btns delete-tp_Cost" href="#" value="">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+        </div>
         </div>
         <div class="tab-pane fade" id="Chember_schedule" role="tabpanel" aria-labelledby="Chember_schedule-tab">
         This is some placeholder content the Contact tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.

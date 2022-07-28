@@ -11,10 +11,12 @@
  
 
   <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-    <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-       
-      <span class="fs-4">Menu</span>
-    </a>
+    <div class="d-flex align-items-center justify-content-between">
+        <span class="fs-4">Menu</span>
+        <a  href="{{route('logout')}}" class="" data-bs-toggle="tooltip" data-bs-placement="top" title="Logout">
+            <i class="fa-solid fa-power-off fa-xl"></i>
+        </a>
+    </div>
     <hr>
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
@@ -48,52 +50,118 @@
                         <a class="crud-btns" href="" data-bs-toggle="modal" data-bs-target="#doctor_Add" >
                           <i class="bi bi-plus-circle"></i>
                         </a>
+                        
                     </div>
-                    <!-- Doctor List-->
-                    <table class="table table-bordered mt-4 text-center">
-                        <thead>
-                            <tr>
-                                <th class="">Serial No</th>
-                                <th class="">Doctor Name</th>
-                                <th class="">BMDC</th>
-                                <th class="">Contact No.</th>
-                                <th class="">Email</th>
-                                <th class="">Status</th>
-                                <th class="">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                         @foreach($doctors as $key=>$doctor)
-                            <tr>
-                                <td>{{$key+1}}</td>
-                                <td>{{$doctor->fname." ".$doctor->lname}}</td>
-                                <td>{{$doctor->BMDC}}</td>
-                                <td>{{$doctor->phone}}</td>
-                                <td>{{$doctor->email}}</td>
-                                <td>
-                                    @if($doctor->status == 1)
-                                        <a href="{{route('doctor_status',[$doctor->id])}}" class="btn btn-sm btn-danger my-0">Block</a>
-                                    @else
-                                        <a href="{{route('doctor_status',[$doctor->id])}}" class="btn btn-sm btn-success my-0">Unblock</a>
-                                    @endif
-                                </td>
-                                <td class="d-flex justify-content-around">
-                                      
-                                    <button type="button" class="btn crud-btns Doctor_viewbtn" href="" value="{{$doctor->id}}" >
-                                         <i class="fa-solid fa-file-lines"></i>
-                                    </button>
-                                    <button type="button" class="btn crud-btns Doctor_editbtn" href="" value="{{$doctor->id}}" >
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                    <button class="btn crud-btns delete-doctor" href="#" value="{{$doctor->id}}">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                         @endforeach
-                        </tbody>
-                    </table>
-                  <!--Doctor list end -->
+<!-- ....................... -->
+
+<div class="row justify-content-center align-items-center">
+        <div class="col-lg-12 mt-1">
+            <ul class="nav nav-tabs doctor_profile_setting" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="Verified-Doctor-tab" data-bs-toggle="tab" data-bs-target="#Verified-Doctor" type="button" role="tab" aria-controls="Verified-Doctor" aria-selected="true">Verified Doctors</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="Unverified_Doctors-tab" data-bs-toggle="tab" data-bs-target="#Unverified_Doctors" type="button" role="tab" aria-controls="Unverified_Doctors" aria-selected="false">Unverified Doctors</button>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="Verified-Doctor" role="tabpanel"      aria-labelledby="Verified-Doctor-tab">
+                <!-- Doctor List-->
+                <table class="table table-bordered mt-4 text-center">
+                    <thead>
+                        <tr>
+                            <th class="">Serial No</th>
+                            <th class="">Doctor Name</th>
+                            <th class="">BMDC</th>
+                            <th class="">Contact No.</th>
+                            <th class="">Email</th>
+                            <th class="">Status</th>
+                            <th class="">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($varified_doctors as $key=>$v_doctor)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$v_doctor->fname." ".$v_doctor->lname}}</td>
+                            <td>{{$v_doctor->BMDC}}</td>
+                            <td>{{$v_doctor->phone}}</td>
+                            <td>{{$v_doctor->email}}</td>
+                            <td>
+                                @if($v_doctor->status == 1)
+                                    <a href="{{route('doctor_status',[$v_doctor->id])}}" class="btn btn-sm btn-danger my-0">Block</a>
+                                @else
+                                    <a href="{{route('doctor_status',[$v_doctor->id])}}" class="btn btn-sm btn-success my-0">Unblock</a>
+                                @endif
+                            </td>
+                            <td class="d-flex justify-content-around">
+                                
+                                <button type="button" class="btn crud-btns Doctor_viewbtn" href="" value="{{$v_doctor->id}}" >
+                                    <i class="fa-solid fa-file-lines"></i>
+                                </button>
+                                <button type="button" class="btn crud-btns Doctor_editbtn" href="" value="{{$v_doctor->id}}" >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button class="btn crud-btns delete-doctor" href="#" value="{{$v_doctor->id}}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                <!--Doctor list end -->
+            </div>
+            <div class="tab-pane fade" id="Unverified_Doctors" role="tabpanel" aria-labelledby="Unverified_Doctors-tab">
+                <!-- Doctor List-->
+                <table class="table table-bordered mt-4 text-center">
+                    <thead>
+                        <tr>
+                            <th class="">Serial No</th>
+                            <th class="">Doctor Name</th>
+                            <th class="">BMDC</th>
+                            <th class="">Contact No.</th>
+                            <th class="">Email</th>
+                            <th class="">Status</th>
+                            <th class="">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($unvarified_doctors as $key=>$doctor)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$doctor->fname." ".$doctor->lname}}</td>
+                            <td>{{$doctor->BMDC}}</td>
+                            <td>{{$doctor->phone}}</td>
+                            <td>{{$doctor->email}}</td>
+                            <td>
+                            @if($doctor->verification == 1)
+                                    <a href="{{route('doctor_verification',[$doctor->id])}}" class="btn btn-sm btn-success my-0">Verified</a>    
+                                @else
+                                    <a href="{{route('doctor_verification',[$doctor->id])}}" class="btn btn-sm btn-danger my-0">Unverified</a>
+                                @endif
+                            </td>
+                            <td class="d-flex justify-content-around">
+                            
+                                <button type="button" class="btn crud-btns unverified_Doctor_viewbtn" href="" value="{{$doctor->id}}" >
+                                    <i class="fa-solid fa-file-lines"></i>
+                                </button>
+                                <button class="btn crud-btns delete-doctor" href="#" value="{{$doctor->id}}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            <!--Doctor list end -->
+        </div>
+    </div>
+</div>
+
+<!-- ....................... -->
+                   
                 </div>
                 <div class="tab-pane fade" id="v-pills-subscription" role="tabpanel" aria-labelledby="v-pills-subscription-tab">
                   <div class="mb-2">
@@ -428,15 +496,29 @@
             </div>
             <!-- Modal Header & Close btn end -->
             <!-- Modal Body -->
-            <div class="modal-body">
-                <p>Name: <span id="doctor_view_name"></span></p>
-                <p>Email: <span id="doctor_view_email"></span></p>
-                <p>Phone: <span id="doctor_view_phone"></span></p>
-                <p>BMDC No:<span id="doctor_view_bmdc"></span> </p>
-                <p>NID No: <span id="doctor_view_nid"></span></p>
-                <p>Profile Picture:<img src="" id="doctor_view_profile_pic"></img> </p>
-                <p>BMDC Registration:<img src="" id="doctor_view_bmdc_reg"></img> </p>
-                <p>Post Graduate Degree: <img src="" id="doctor_view_post_grad"></img></p>
+            <div class="modal-body" id="doctor_info">
+
+            </div>
+            <!-- Modal Body end -->
+        </div>
+    </div>
+ </div>
+ <!-- Modal end -->
+  <!-- Modal For Unverified Doctor VIEW -->
+  <div class="modal fade " id="Unverified_Doctor_View" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <!-- Modal Header & Close btn -->
+            <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">
+                    View Unverified Doctor Information 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Header & Close btn end -->
+            <!-- Modal Body -->
+            <div class="modal-body" id="unverified_doc_info">
+
             </div>
             <!-- Modal Body end -->
         </div>
@@ -1229,7 +1311,7 @@
 
         // script for Doctor
 
-      $(document).on('click', '.Doctor_viewbtn',function(){
+        $(document).on('click', '.Doctor_viewbtn',function(){
                 var Doctor_id = $(this).val();
                 // alert(Doctor_id);
                 $("#Doctor_View").modal('show');
@@ -1237,16 +1319,41 @@
                     type:"GET",
                     url: "/edit_doctor/"+Doctor_id,
                     success: function(response){
-                        console.log(response.doctor_info); 
-                        $("#doctor_view_name").text(response.doctor_info.fname +" " +response.doctor_info.lname);
-                        $('#doctor_view_email').text(response.doctor_info.email);
-                        $('#doctor_view_phone').text(response.doctor_info.phone);
-                        $('#doctor_view_bmdc').text(response.doctor_info.BMDC);
-                        $('#doctor_view_nid').text(response.doctor_info.nid);
-
-                        $('#doctor_view_profile_pic').attr("src","url('/uploads/doctor/'+response.doctor_info.p_image");
-                        $('#doctor_view_bmdc_reg').text(response.doctor_info.chember_add);
-                        $('#doctor_view_post_grad').text(response.doctor_info.chember_add);
+                        console.log(response.doctor_info);
+                        $("#doctor_info").html("");
+                        $("#doctor_info").append('\
+                            <p>Name: <span>'+response.doctor_info.fname +" " +response.doctor_info.lname+'</span></p>\
+                            <p>Email: <span>'+response.doctor_info.email+'</span></p>\
+                            <p>Phone: <span>'+response.doctor_info.phone+'</span></p>\
+                            <p>BMDC No: <span>'+response.doctor_info.BMDC+'</span></p>\
+                            <p>NID No: <span>'+response.doctor_info.nid+'</span></p>\
+                            <p>Profile Picture: <img src="/uploads/doctor/'+response.doctor_info.p_image+'" alt=""></p>\
+                        \
+                        '); 
+                    }
+                }); 
+                // .attr("src","anotherImg.jpg");
+      });
+      $(document).on('click', '.unverified_Doctor_viewbtn',function(){
+                var Doctor_id = $(this).val();
+                // alert(Doctor_id);
+                $("#Unverified_Doctor_View").modal('show');
+                $.ajax({
+                    type:"GET",
+                    url: "/edit_doctor/"+Doctor_id,
+                    success: function(response){
+                        // console.log(response.doctor_info);
+                        $("#unverified_doc_info").html("");
+                        $("#unverified_doc_info").append('\
+                            <p>Name: <span>'+response.doctor_info.fname +" " +response.doctor_info.lname+'</span></p>\
+                            <p>Email: <span>'+response.doctor_info.email+'</span></p>\
+                            <p>Phone: <span>'+response.doctor_info.phone+'</span></p>\
+                            <p>BMDC No: <span>'+response.doctor_info.BMDC+'</span></p>\
+                            <p>NID No: <span>'+response.doctor_info.nid+'</span></p>\
+                            <p>Profile Picture: <img src="/uploads/doctor/'+response.doctor_info.p_image+'" alt=""></p>\
+                            <p>BMDC Registration Picture: <img src="/uploads/doctor/'+response.doctor_info.bmdc_image+'" alt=""></p>\
+                        \
+                        ');
                     }
                 }); 
                 // .attr("src","anotherImg.jpg");

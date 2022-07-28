@@ -22,7 +22,8 @@ class AdminController extends Controller
 {
     public function admin()
     {
-        $doctors = doctor::all();
+        $varified_doctors = doctor::where('role','=','0')->where('verification','=','1')->get();
+        $unvarified_doctors = doctor::where('role','=','0')->where('verification','=','0')->get();
         $lc_cs = chife_complaint::orderBy('id','desc')->paginate(10);
         $lc_fs = clinical_finding::orderBy('id','desc')->get();
         $investigation_lists = investigation::orderBy('id','desc')->get();
@@ -30,14 +31,14 @@ class AdminController extends Controller
         $medicines_lists = medicine::orderBy('id','desc')->get();
         $redeems = redeem_code::all();
         $subscription_lists = subscription::orderBy('id','desc')->get();
-        return view('admin_page',compact('doctors','lc_cs','lc_fs','investigation_lists','lt_ps','medicines_lists','redeems','subscription_lists'));
+        return view('admin_page',compact('varified_doctors','unvarified_doctors','lc_cs','lc_fs','investigation_lists','lt_ps','medicines_lists','redeems','subscription_lists'));
         // compact('doctor_info','patient','c_cs','lc_cs','c_fs','lc_fs','t_ps','lt_ps','treatment_infos','investigations','investigation_lists')
     }
 
     public function doctor_add(Request $request){
         $doctor = new doctor();
-        $doctor->fname = $request->name;
-        $doctor->lname = $request->name;
+        $doctor->fname = $request->fname;
+        $doctor->lname = $request->lname;
         $doctor->email = $request->email;
         // $doctor->phone=$request->mobile;
         // $doctor->BMDC=$request->BMDC;
@@ -75,6 +76,17 @@ class AdminController extends Controller
         // dd($del_doctor_id);
         $del_doctor_info = doctor::find($del_doctor_id);
         $del_doctor_info->delete();
+        return back();
+    }
+
+    public function doctor_verification($id){
+        $getVerification = doctor::where('id',$id)->first();
+        if($getVerification->verification == 1){
+            $verification = 0;
+        }else{
+            $verification = 1;
+        }
+        doctor::where('id',$id)->update(['verification' => $verification]);
         return back();
     }
 

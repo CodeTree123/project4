@@ -21,7 +21,7 @@
  <!-- Style CSS -->
  <link rel="stylesheet" href="{{ asset ('assets/css/style.css')}}">
 </head>
-
+<title>ReflexDN</title>
 <body>
    
     <!-- Header Start -->

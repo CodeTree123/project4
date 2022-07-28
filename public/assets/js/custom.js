@@ -41,7 +41,7 @@
     // }
 })(jQuery);
 
-// print button function
+// print prescription button function
 function printpage() {
     //Get the print button and put it into a variable
     var printButton = document.getElementById("printpagebutton");
@@ -53,4 +53,20 @@ function printpage() {
     window.print()
     printButton.style.visibility = 'visible';
     previewBtn.style.visibility = 'visible';
+}
+
+// print invoice button function
+function printInvoicepage() {
+    //Get the print button and put it into a variable
+    var printButton = document.getElementById("printInvoicepagebutton");
+    var addPayment = document.getElementById("add_payment");
+    var backBTN = document.getElementById("backBTN");
+    var savePDF = document.getElementById("savePDF");
+    // var previewBtn = document.getElementById("previewBtn");
+
+    //Set the print button visibility to 'hidden'  
+    // previewBtn.style.visibility = 'hidden';
+
+    //Print the page content
+    window.print() 
 }
